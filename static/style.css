@@ -251,3 +251,32 @@ marquee {
   background:linear-gradient(90deg,#6C4CFF,#9B5CFF);
   border-radius:8px;
 }
+
+/* ✅ Marquee Styling */
+marquee {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(90deg, #6C4CFF, #9B5CFF);
+  border-radius: 8px;
+}
+
+/* ✅ Latest Updates Marquee Box */
+.updates marquee {
+  display: block;
+  width: 100%;
+  height: 150px;
+  padding: 10px;
+  background: #f5f5f5;
+  border: 2px solid #333;
+  border-radius: 5px;
+  color: #111;
+  font-size: 14px;
+}
+.updates marquee div {
+  padding: 5px;
+  border-bottom: 1px dashed #ccc;
+}
+
