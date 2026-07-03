@@ -3,333 +3,132 @@
 <head>
   <meta charset="UTF-8">
   <title>BE.IPOWale | Mainboard IPO GMP, Allotment Status & IPO Updates</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <!-- ✅ SEO Meta Tags -->
- <meta name="description" content="BE-IPOWale provides Mainboard IPO GMP, IPO Allotment Status, Listing Gain, IPO Calendar and Latest IPO Updates.">
-
-<meta name="keywords" content="BE-IPOWale, IPO GMP, Mainboard IPO, IPO Allotment Status, Listing Gain, IPO Calendar, IPO News">
+  <!-- SEO & Social -->
+  <meta name="description" content="BE-IPOWale provides Mainboard IPO GMP, IPO Allotment Status, Listing Gain, IPO Calendar and Latest IPO Updates.">
+  <meta name="keywords" content="BE-IPOWale, IPO GMP, Mainboard IPO, IPO Allotment Status, Listing Gain, IPO Calendar, IPO News">
   <link rel="canonical" href="https://beipowale.onrender.com">
-
-  <!-- ✅ Open Graph -->
   <meta property="og:title" content="BEIPOWALE">
-  <!-- ✅ Favicon / Logo -->
-<link rel="icon" href="https://beipowale.onrender.com/static/logo512.jpg" type="image/x-icon">
-
   <meta property="og:description" content="Latest Mainboard IPO GMP, IPO Allotment Status, Listing Gain, IPO Calendar and Daily IPO Updates.">
   <meta property="og:image" content="https://beipowale.onrender.com/static/logo512.jpg">
   <meta property="og:url" content="https://beipowale.onrender.com/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BEIPOWALE">
-
-  <!-- ✅ Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BEIPOWALE">
   <meta name="twitter:description" content="BE-IPOWale provides Mainboard IPO GMP, IPO Allotment Status, Listing Gain, IPO Calendar and Latest IPO Updates.">
   <meta name="twitter:image" content="https://beipowale.onrender.com/static/logo512.jpg">
   <meta name="twitter:site" content="@beipowale">
 
-  <!-- ✅ JSON-LD Structured Data -->
-  <script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"WebSite",
-  "name":"BE.IPOWale",
-  "url":"https://beipowale.onrender.com/",
-  "description":"Mainboard IPO GMP, IPO Allotment Status, Listing Gain and IPO Updates.",
-  "publisher":{
-      "@type":"Organization",
-      "name":"BE.IPOWale"
-  },
-  "inLanguage":"en"
-}
-</script>
+  <!-- Favicon -->
+  <link rel="icon" href="https://beipowale.onrender.com/static/logo512.jpg" type="image/x-icon">
 
-  <!-- ✅ Icons & Performance -->
-  
-  <link rel="apple-touch-icon" href="https://beipowale.onrender.com/static/logo512.jpg">
-  <link rel="manifest" href="/static/site.webmanifest">
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="dns-prefetch" href="//fonts.googleapis.com">
-  <link rel="prefetch" href="https://beipowale.onrender.com/static-preview.jpg" as="image">
-  <meta name="theme-color" content="#20B2AA">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="msapplication-TileColor" content="#20B2AA">
+  <!-- Styles -->
   <link rel="stylesheet" href="/static/style.css">
-
-  <!-- ✅ WebSite Schema (for Home Page) -->
-<script type="application/ld+json">
-{
- "@context":"https://schema.org",
- "@type":"WebSite",
- "name":"BE.IPOWale Official Website",
- "url":"https://beipowale.onrender.com/"
-}
-</script>
-
-
-<meta name="google-site-verification" content="VgQbpzTBntm3BgU9VcrZLg8rBSd8wYP4PY9u6Q74hg4" />
 </head>
 <body>
+  <!-- Loader -->
+  <div class="page-loader"><div class="loader-spinner"></div></div>
+
+  <!-- Header -->
   <header>
-        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
- 
-
-<h1 id="heading" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">BE.IPOWale</h1>
-
-<script>
-function adjustHeadingSize() {
-    let screenWidth = window.innerWidth;
-    let heading = document.getElementById("heading");
-
-    // Calculate size dynamically: 5% of screen width but min 20px, max 48px
-    let fontSize = Math.max(20, Math.min(48, screenWidth * 0.05));
-    heading.style.fontSize = fontSize + "px";
-}
-
-// Run when page loads
-adjustHeadingSize();
-
-// Run when window is resized
-window.addEventListener("resize", adjustHeadingSize);
-</script>
- 
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <h1 id="heading">BE.IPOWale</h1>
   </header>
- 
 
+  <!-- Navigation -->
   <nav id="mainNav" class="nav-hidden">
-   
-    <a href="#" onclick="location.reload(); return false;">Home</a>
+    <a href="/">Home</a>
     <a href="/contact">Contact</a>
-    <a href="/blog"> Blog / Updates</a>
+    <a href="/blog">Blog / Updates</a>
     <a href="/terms">Privacy & Terms</a>
-   
-   </nav>
-    <div class="live-notice">
+  </nav>
+
+  <!-- Notice Bar -->
+  <div class="live-notice">
     <span class="live-dot"></span>
- <marquee class="marquee" behavior="scroll" direction="left" scrollamount="6" onmouseover="this.stop();" onmouseout="this.start();">
-   📢 Welcome to IPOWale • Mainboard IPO GMP • Allotment Status • Listing Gain Updates
-</marquee>
+    <div class="notice-text">📢 Welcome to IPOWale • Mainboard IPO GMP • Allotment Status • Listing Gain Updates</div>
+  </div>
 
-</div>
-<!--
-<div class="notice-bar">
-  <marquee behavior="scroll" direction="left" scrollamount="3">
-    📢 New Update : Visit Our Second Webpage From Top Site...
-  </marquee>
-</div>
--->
-
-  <div class="container">
-    
+  <!-- Latest Updates -->
+  <section class="updates">
+    <h3>📢 Latest Updates</h3>
+    <div class="updates-scroll">
+      <div>Coming Soon.</div>
     </div>
+  </section>
 
-    
-    <div style="width: 300px; height: 200px; border: 2px solid #333; padding: 10px; background-color: #f5f5f5; border-radius: 5px;">
-    <h3 style="margin-top: 0; text-align: center; color: #333;">📢 Latest Updates</h3>
-    <marquee behavior="scroll" direction="up" height="150" scrollamount="3" onmouseover="this.stop();" onmouseout="this.start();">
-         <div style="padding: 5px; border-bottom: 1px dashed #ccc;">Coming Soon.</div>
-        
-       
-       
-    </marquee>
-</div>
+  <!-- About Section -->
+  <section class="about-section">
+    <h2>🚀 About BE-IPOWale</h2>
+    <p class="about-intro">Your trusted destination for Mainboard IPO GMP, IPO Allotment Status, Listing Gain analysis and daily IPO updates.</p>
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>📈 About Us</h3>
+        <p>BE-IPOWale is a free platform dedicated to providing reliable and timely IPO information.</p>
+      </div>
+      <div class="about-card">
+        <h3>🎯 Our Mission</h3>
+        <p>We aim to simplify IPO investing by delivering fast, accurate and easy-to-understand IPO information.</p>
+      </div>
+      <div class="about-card">
+        <h3>⭐ What We Provide</h3>
+        <ul>
+          <li>📈 Latest IPO GMP</li>
+          <li>✅ IPO Allotment Status</li>
+          <li>💰 Listing Gain Analysis</li>
+          <li>📰 IPO News</li>
+          <li>📅 IPO Calendar</li>
+          <li>📱 Mobile Friendly Experience</li>
+        </ul>
+      </div>
+      <div class="about-card">
+        <h3>⚠ Disclaimer</h3>
+        <p>Grey Market Premium (GMP) is unofficial and changes frequently. Please do your own research before investing.</p>
+      </div>
+    </div>
+  </section>
 
-</div>
-  <hr style="margin:40px 0;border-top:2px solid #ddd;">
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <h2>🗣️ What Users Say</h2>
+    <div class="testimonial-card">"This site keeps me updated daily!"</div>
+    <div class="testimonial-card">"Simple, clean, and reliable IPO info."</div>
+  </section>
 
-<section class="about-section">
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 BEIPOWALE — All Rights Reserved.</p>
+    <div class="footer-links">
+      <a href="/contact">Contact</a> | <a href="/terms">Privacy</a>
+    </div>
+  </footer>
 
-<h2>🚀 About BE-IPOWale</h2>
+  <!-- Scroll-to-Top -->
+  <button onclick="scrollToTop()" id="scrollTopBtn" title="Go to top">⬆️</button>
 
-<p class="about-intro">
-Your trusted destination for Mainboard IPO GMP, IPO Allotment Status,
-Listing Gain analysis and daily IPO updates.
-</p>
-
-<div class="about-grid">
-
-<div class="about-card">
-
-<h3>📈 About Us</h3>
-
-<p>
-BE-IPOWale is a free platform dedicated to providing reliable and timely
-information related to Mainboard IPOs. Our goal is to help investors stay
-updated with IPO Grey Market Premium (GMP), Allotment Status, Listing Gain,
-subscription details and the latest IPO news.
-</p>
-<div class="about-card">
-
-<h3>🎯 Our Mission</h3>
-
-<p>
-We aim to simplify IPO investing by delivering fast, accurate and
-easy-to-understand IPO information for every investor.
-</p>
-
-</div>
-
-<div class="about-card">
-
-<h3>⭐ What We Provide</h3>
-
-<ul>
-
-<li>📈 Latest IPO GMP</li>
-
-<li>✅ IPO Allotment Status</li>
-
-<li>💰 Listing Gain Analysis</li>
-
-<li>📰 IPO News</li>
-
-<li>📅 IPO Calendar</li>
-
-<li>📱 Mobile Friendly Experience</li>
-
-</ul>
-
-</div>
-
-<div class="about-card">
-
-<h3>⚠ Disclaimer</h3>
-
-<p>
-Grey Market Premium (GMP) is unofficial and changes frequently.
-The information provided on BE-IPOWale is for educational purposes only.
-Please do your own research before investing.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<hr style="margin:40px 0;border-top:2px solid #ddd;">
-<!-- 💬 Testimonials -->
-    <hr style="margin: 40px 0; border-top: 2px solid #ccc;" />
-    <section style="margin-top: 40px;">
-      <h2>🗣️ What Users Say</h2>
-      <blockquote>"_______."</blockquote>
-      
-    </section>
-    
-<hr style="margin: 40px 0; border-top: 2px solid #ccc;" />
-
-<hr style="margin: 40px 0; border-top: 2px solid #ccc;" />
-</div>
-
-<!-- Add this right after <body> tag -->
-<div class="page-loader">
-  <div class="loader-spinner"></div>
-</div>
-
-<style>
-  /* Page Loader Animation */
-  .page-loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #FAF3E0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    transition: opacity 0.5s, visibility 0.5s;
-  }
-  .page-loader.fade-out {
-    opacity: 0;
-    visibility: hidden;
-  }
-  .loader-spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid rgba(0, 0, 0, 0.3);
-    border-radius: 50%;
-    border-top-color: white;
-    animation: spin 1s ease-in-out infinite;
-  }
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
-</style>
-
-<script>
-  // Add this to your existing script
-window.addEventListener('load', function () {
-    const loader = document.querySelector('.page-loader');
-
-    setTimeout(() => {
-        loader.classList.add('fade-out');
-        setTimeout(() => loader.remove(), 500);
-    }, 1000);
-});
-</script>
-
-  <p style="text-align:center; font-size:14px; color:#555;">  <!-- ✅ Improved contrast -->
-  © 2026 BEIPOWALE — All Rights Reserved.
-</p>
-<style>
-  /* Floating Action Button */
-  .fab {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: #20B2AA;
-    color: white;
-    border: none;
-    font-size: 20px;
-    box-shadow: 0 4px 15px rgba(32, 178, 170, 0.4);
-    cursor: pointer;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.3s ease;
-    z-index: 100;
-  }
-  .fab.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .fab:hover {
-    transform: translateY(-5px) scale(1.1);
-  }
-  </style>
-
-<script>
-  // Scroll to top function
-  function scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+  <script>
+    // Loader
+    window.addEventListener('load', () => {
+      const loader = document.querySelector('.page-loader');
+      setTimeout(() => loader.classList.add('fade-out'), 1000);
     });
-  }
 
-
-</script>
-<!-- 🔼 Scroll-to-Top Button -->
-<button onclick="scrollToTop()" id="scrollTopBtn" title="Go to top">⬆️</button>
-<script>
-  // Show button after scrolling 200px
-  window.onscroll = function () {
-    const btn = document.getElementById("scrollTopBtn");
-    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-      btn.style.display = "block";
-    } else {
-      btn.style.display = "none";
+    // Scroll-to-top
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  };
+    window.onscroll = () => {
+      const btn = document.getElementById("scrollTopBtn");
+      btn.style.display = (document.documentElement.scrollTop > 200) ? "block" : "none";
+    };
 
-</script>
+    // Toggle Menu
+    function toggleMenu() {
+      document.getElementById("mainNav").classList.toggle("nav-visible");
+    }
+  </script>
 </body>
 </html>
