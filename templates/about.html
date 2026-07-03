@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Me | Jaimin Parmar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn more about Jaimin Parmar — developer of a secure, intelligent productivity dashboard with modern technologies, OTP login, analytics, and more.">
+  <meta name="keywords" content="Jaimin Parmar, About Me, Secure Dashboard, OTP Login, Flask Developer, Dark Mode, QR Code Generator">
+  <meta name="author" content="Jaimin Parmar">
+  <meta name="theme-color" content="#2B7A78">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="About Me | Jaimin Parmar">
+  <meta property="og:description" content="Discover Jaimin Parmar's secure productivity dashboard — blending OTP login, analytics, QR generation, dark mode, and more.">
+  <meta property="og:image" content="https://yourwebsite.com/images/og-image.jpg">
+  <meta property="og:url" content="https://jaiminparmar.onrender.com/about-me">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* 🌈 Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(135deg, #17252A, #2B7A78);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      padding: 20px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.3);
+    }
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #FEFFFF;
+    }
+    main {
+      flex: 1;
+      max-width: 900px;
+      margin: 30px auto;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
+      animation: fadeIn 1.2s ease-in-out;
+    }
+    main h2 {
+      font-size: 1.8rem;
+      color: #FEFFFF;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #3AAFA9;
+      padding-bottom: 5px;
+    }
+    main p {
+      margin-bottom: 20px;
+      font-size: 1rem;
+      color: #E6F2F2;
+    }
+    ul {
+      list-style: none;
+      margin-top: 10px;
+    }
+    ul li {
+      margin-bottom: 12px;
+      padding-left: 30px;
+      position: relative;
+      color: #E6F2F2;
+    }
+    ul li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: #3AAFA9;
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+      background: rgba(0, 0, 0, 0.3);
+    }
+    footer a {
+      color: #3AAFA9;
+      text-decoration: none;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      main { padding: 20px; }
+      main h2 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>About Me</h1>
+  </header>
+
+  <main>
+    <h2>Welcome to My World</h2>
+    <p>
+      This platform is developed and maintained by <strong>Jaimin Parmar</strong> as part of a secure and intelligent productivity toolset.
+      It offers a completely free, secure, and personalized dashboard experience powered by modern technologies.
+    </p>
+
+    <h2>🚀 Key Features</h2>
+    <ul>
+      <li>🔐 OTP-based login with advanced session security</li>
+      <li>📊 Real-time analytics, visit tracking, and user insights</li>
+      <li>📁 Developer-focused activity logs via Google Sheets</li>
+      <li>📎 QR code generator with secure, shareable links</li>
+      <li>🌙 Dark mode support and fully responsive mobile design</li>
+    </ul>
+
+    <h2>💡 My Vision</h2>
+    <p>
+      Whether you're testing secure applications or exploring Python (Flask), this dashboard serves as a live example of
+      <em>performance</em>, <em>design</em>, and <em>usability</em> working seamlessly together.
+    </p>
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> Jaimin Parmar | <a href="https://jaiminparmar.onrender.com">Back to Home</a>
+  </footer>
+
+  <script>
+    // Auto year update
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

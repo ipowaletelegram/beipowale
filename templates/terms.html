@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy & Terms — Jaimin Parmar</title>
+  <meta name="description" content="Privacy Policy and Terms of Service for the official site of Jaimin Parmar." />
+
+  <style>
+    :root{
+      --bg: #0f1115;
+      --panel: rgba(255,255,255,0.06);
+      --text: #e9eef5;
+      --muted: #aab2c5;
+      --accent: #f4b400;   /* your brand yellow */
+      --accent-2: #6aa8ff;
+      --ring: rgba(244,180,0,.35);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 20px;
+      --maxw: 1100px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg: #f7fafc;
+        --panel: rgba(255,255,255,0.9);
+        --text: #0d1321;
+        --muted: #475569;
+        --ring: rgba(244,180,0,.25);
+        --shadow: 0 10px 30px rgba(16,24,40,.1);
+      }
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font:16px/1.7 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text); background:radial-gradient(1200px 600px at 10% -10%, rgba(244,180,0,.12), transparent 50%),
+                         radial-gradient(900px 500px at 110% 10%, rgba(106,168,255,.12), transparent 50%),
+                         var(--bg);
+    }
+
+    /* Header */
+    .hero{
+      position:relative; overflow:hidden;
+      display:grid; place-items:center; text-align:center;
+      padding:60px 20px 40px;
+      isolation:isolate;
+    }
+    .hero::before{
+      content:""; position:absolute; inset:-2px;
+      background: conic-gradient(from 180deg, var(--accent), var(--accent-2), var(--accent));
+      filter: blur(40px); opacity:.25; z-index:-1;
+      animation: spin 16s linear infinite;
+    }
+    @keyframes spin {to{transform:rotate(1turn)}}
+    .title{
+      font-size: clamp(24px, 6vw, 36px);
+      font-weight:800; letter-spacing:.2px;
+    }
+    .subtitle{
+      margin-top:8px; color:var(--muted);
+      font-size: clamp(14px, 3vw, 16px);
+    }
+
+    /* Layout */
+    .wrap{
+      max-width:var(--maxw); margin:0 auto; padding: 16px;
+      display:grid; gap:20px; grid-template-columns: 1fr;
+    }
+
+    /* Card */
+    .card{
+      background:var(--panel); backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: var(--shadow);
+    }
+
+    /* TOC - Mobile version */
+    .toc{
+      position: relative; padding:16px;
+      margin-bottom: 20px;
+    }
+    .toc h3{margin:0 0 10px; font-size:14px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+    .toc-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .toc a{
+      display:block; padding:8px 12px; 
+      text-decoration:none; color:var(--text); border-radius:12px;
+      border:1px solid transparent;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+    .toc a:hover{background:rgba(255,255,255,.06)}
+    .toc a.active{border-color:var(--ring); box-shadow:0 0 0 4px var(--ring);}
+
+    /* Content */
+    .content{padding:16px}
+    .section{padding:16px; border-radius:16px; margin:12px 0; border:1px solid rgba(255,255,255,.08)}
+    .section h2{margin:0 0 6px; font-size: clamp(20px, 5vw, 24px)}
+    .meta{color:var(--muted); font-size:14px; margin-bottom:8px}
+    .section p{margin:8px 0; font-size: 15px;}
+    .kicker{font-weight:700; color:var(--accent)}
+    ul{padding-left:18px; margin:8px 0; font-size: 15px;}
+    a.inline{color:var(--accent-2); text-decoration:none}
+    a.inline:hover{text-decoration:underline}
+
+    /* Accordion (for quick scan) */
+    details{
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:14px; padding:10px 12px; margin:8px 0;
+      transition:transform .2s ease;
+    }
+    details[open]{transform:scale(1.01)}
+    summary{cursor:pointer; font-weight:600; font-size: 15px;}
+    summary::-webkit-details-marker{display:none}
+    .muted{color:var(--muted); font-size: 14px;}
+
+    /* Footer + controls */
+    .bar{
+      display:flex; gap:12px; align-items:center; justify-content:space-between;
+      padding:12px 0 0; border-top:1px solid rgba(255,255,255,.12);
+      flex-wrap: wrap;
+    }
+    .btn{
+      appearance:none; border:1px solid rgba(255,255,255,.2);
+      background:transparent; color:var(--text);
+      border-radius:12px; padding:8px 12px; cursor:pointer;
+      transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
+      font-size: 14px;
+    }
+    .btn:hover{background:rgba(255,255,255,.06)}
+    .btn:active{transform:translateY(1px)}
+    .primary{border-color:transparent; background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#111; font-weight:700}
+
+    /* Reveal animation */
+    .reveal{opacity:0; transform: translateY(12px); transition: all .6s ease}
+    .reveal.show{opacity:1; transform:none}
+
+    /* Back to top */
+    #toTop{
+      position:fixed; right:16px; bottom:16px; z-index:50; display:none;
+      padding: 10px 12px;
+      font-size: 14px;
+    }
+
+    /* Print */
+    @media print{
+      .hero, .toc, #toTop, .bar{display:none !important}
+      body{background:#fff; color:#111}
+      .card{border:0; box-shadow:none}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="hero card">
+    <h1 class="title">Privacy Policy & Terms</h1>
+    <p class="subtitle">How we collect, use, and protect your data, and terms for using this website.</p>
+  </header>
+
+  <!-- Layout -->
+  <main class="wrap">
+    <!-- TOC - Mobile optimized -->
+    <nav class="toc card" aria-label="Table of contents">
+      <h3>Jump to section</h3>
+      <div class="toc-links">
+        <a href="#privacy">Privacy</a>
+        <a href="#collection">Data</a>
+        <a href="#use">Usage</a>
+        <a href="#cookies">Cookies</a>
+        <a href="#terms">Terms</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <!-- Content -->
+    <article class="content card">
+      <section id="privacy" class="section reveal">
+        <div class="meta">Last updated: <time datetime="2025-08-16">Aug 16, 2025</time></div>
+        <h2><span class="kicker">Privacy Policy</span></h2>
+        <p>Welcome to the official site of <strong>Jaimin Parmar</strong> ("we", "us", "our"). We respect your privacy and are committed to protecting it through our compliance with this Policy.</p>
+        <details>
+          <summary>Quick summary (non-legal)</summary>
+          <p class="muted">We collect minimal information to run the site and improve features, never sell your data, and give you control to access or delete your info.</p>
+        </details>
+      </section>
+
+      <section id="collection" class="section reveal">
+        <h2>Information We Collect</h2>
+        <ul>
+          <li><strong>Directly provided:</strong> name, email, messages you send (e.g., contact or feedback forms).</li>
+          <li><strong>Usage data:</strong> pages viewed, actions, device type, browser, IP (for security/anti-abuse), timestamps.</li>
+          <li><strong>Location:</strong> Only if you opt in to location features (e.g., "Your Location").</li>
+          <li><strong>Cookies & local storage:</strong> to keep you logged in, remember preferences, and measure basic analytics.</li>
+        </ul>
+      </section>
+
+      <section id="use" class="section reveal">
+        <h2>How We Use Your Information</h2>
+        <ul>
+          <li>Provide, maintain, and improve the website, tools, and features.</li>
+          <li>Respond to inquiries, feedback, or support requests.</li>
+          <li>Prevent fraud, abuse, and maintain security.</li>
+          <li>Comply with legal obligations and enforce our Terms.</li>
+        </ul>
+      </section>
+
+      <section id="cookies" class="section reveal">
+        <h2>Cookies & Similar Technologies</h2>
+        <p>We use essential cookies for core functionality and optional cookies for analytics. You can control cookies via your browser settings. Some features may not work without essential cookies.</p>
+      </section>
+
+      <section id="sharing" class="section reveal">
+        <h2>Sharing & Third-Party Services</h2>
+        <p>We do not sell personal information. We may share data with service providers who help operate the site (e.g., hosting, analytics), under contracts that require them to protect your data and use it only for our instructions. We may disclose information to comply with law or protect rights and safety.</p>
+      </section>
+
+      <section id="security" class="section reveal">
+        <h2>Data Security & Retention</h2>
+        <p>We apply reasonable administrative, technical, and physical safeguards. No method of transmission is 100% secure; we cannot guarantee absolute security. We retain personal data only as long as necessary for the purposes outlined or as required by law.</p>
+      </section>
+
+      <section id="rights" class="section reveal">
+        <h2>Your Rights & Choices</h2>
+        <ul>
+          <li><strong>Access / Update:</strong> You may request a copy or correction of your data.</li>
+          <li><strong>Delete:</strong> Ask us to delete your information where applicable.</li>
+          <li><strong>Opt-out:</strong> You can opt out of non-essential communications at any time.</li>
+        </ul>
+        <p>To exercise these rights, see <a class="inline" href="#contact">Contact</a>.</p>
+      </section>
+
+      <section id="children" class="section reveal">
+        <h2>Children's Privacy</h2>
+        <p>Our services are not directed to children under 13, and we do not knowingly collect personal information from them. If you believe a child provided us personal information, contact us to remove it.</p>
+      </section>
+
+      <section id="changes" class="section reveal">
+        <h2>Changes to This Policy</h2>
+        <p>We may update this Policy from time to time. We will revise the "Last updated" date and, when appropriate, provide additional notice.</p>
+      </section>
+
+      <section id="terms" class="section reveal">
+        <h2><span class="kicker">Terms of Service</span></h2>
+        <p>By accessing or using this website, you agree to these Terms. If you disagree, please discontinue use.</p>
+      </section>
+
+      <section id="acceptable-use" class="section reveal">
+        <h2>Acceptable Use</h2>
+        <ul>
+          <li>Do not misuse the site, attempt unauthorized access, or interfere with operation.</li>
+          <li>Do not upload illegal content or violate others' rights.</li>
+          <li>You are responsible for the content you submit and ensuring it is accurate and lawful.</li>
+        </ul>
+      </section>
+
+      <section id="ip" class="section reveal">
+        <h2>Intellectual Property</h2>
+        <p>Unless otherwise stated, content on this site is owned by or licensed to us. You may not copy, redistribute, or create derivative works without permission, except as allowed by law or open-source licenses explicitly noted.</p>
+      </section>
+
+      <section id="disclaimers" class="section reveal">
+        <h2>Disclaimers</h2>
+        <p>This site is provided "as is" without warranties of any kind. We do not warrant that the site will be uninterrupted, secure, or error-free.</p>
+      </section>
+
+      <section id="liability" class="section reveal">
+        <h2>Limitation of Liability</h2>
+        <p>To the fullest extent permitted by law, we are not liable for indirect, incidental, special, consequential, or punitive damages arising from your use of the site.</p>
+      </section>
+
+      <section id="governing-law" class="section reveal">
+        <h2>Governing Law</h2>
+        <p>These Terms are governed by the laws of India, without regard to conflict of law principles. Disputes will be subject to the courts of Gujarat, India.</p>
+      </section>
+
+      <section id="contact" class="section reveal">
+        <h2>Contact</h2>
+        <p>For privacy or terms questions, contact: <strong>jaiminparmar024@gmail.com</strong>. We aim to respond within a reasonable time.</p>
+      </section>
+
+      <div class="bar">
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn" id="toggleTheme" aria-pressed="false">Theme</button>
+          <a class="btn primary" href="https://jaiminparmar.onrender.com" aria-label="Go to homepage">Go to Home</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- Back to top -->
+  <button id="toTop" class="btn primary">↑ Top</button>
+
+  <script>
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('show'); observer.unobserve(e.target); }
+      });
+    }, {threshold: 0.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+    // Scroll spy for TOC
+    const sections = Array.from(document.querySelectorAll('article .section[id]'));
+    const tocLinks = Array.from(document.querySelectorAll('.toc a[href^="#"]'));
+    const spy = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          const id = '#' + entry.target.id;
+          tocLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href')===id));
+        }
+      });
+    }, {rootMargin: "-30% 0px -60% 0px", threshold: 0.01});
+    sections.forEach(s=>spy.observe(s));
+
+    // Theme toggle (persists)
+    const btn = document.getElementById('toggleTheme');
+    const getMode = () => localStorage.getItem('jp-theme') || 'auto';
+    const apply = (mode)=>{
+      if(mode==='dark'){document.documentElement.style.colorScheme='dark'; document.body.dataset.theme='dark'}
+      else if(mode==='light'){document.documentElement.style.colorScheme='light'; document.body.dataset.theme='light'}
+      else {document.documentElement.style.colorScheme=''; document.body.dataset.theme=''}
+    };
+    apply(getMode());
+    btn.addEventListener('click', ()=>{
+      const next = getMode()==='dark' ? 'light' : getMode()==='light' ? 'auto' : 'dark';
+      localStorage.setItem('jp-theme', next);
+      apply(next);
+      btn.setAttribute('aria-pressed', next==='dark');
+      btn.textContent = 'Theme: ' + (next[0].toUpperCase()+next.slice(1));
+    });
+    btn.textContent = 'Theme: ' + (getMode()[0].toUpperCase()+getMode().slice(1));
+
+    // Back to top button
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', ()=>{
+      toTop.style.display = window.scrollY > 600 ? 'inline-block' : 'none';
+    });
+    toTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+    // Mobile menu toggle
+    document.querySelector('.toc h3').addEventListener('click', function() {
+      this.nextElementSibling.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
