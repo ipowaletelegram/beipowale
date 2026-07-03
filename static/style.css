@@ -110,101 +110,6 @@ transform:translateY(-3px);
 }
 
 .container{max-width:1200px;margin:auto;padding:24px}
-
-.card,section,.qr-section{
-background:rgba(255,255,255,.62);
-backdrop-filter:blur(18px);
-border-radius:22px;
-box-shadow:var(--shadow);
-padding:28px;
-transition:.35s;
-position:relative;
-overflow:hidden;
-}
-.card:hover,
-section:hover{
-transform:translateY(-8px);
-}
-.card:before{
-content:"";
-position:absolute;
-left:-150%;
-top:0;
-width:80%;
-height:100%;
-background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);
-transform:skewX(-25deg);
-animation:shine 6s infinite;
-}
-@keyframes shine{
-100%{left:180%}
-}
-
-.action-btn{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-padding:12px 24px;
-border-radius:14px;
-background:linear-gradient(90deg,#6C4CFF,#9B5CFF);
-color:#fff;
-text-decoration:none;
-font-weight:700;
-transition:.35s;
-position:relative;
-overflow:hidden;
-}
-.action-btn:hover{
-transform:translateY(-4px) scale(1.04);
-box-shadow:0 15px 35px rgba(108,76,255,.35);
-}
-
-input,select{
-padding:12px 15px;
-border-radius:10px;
-border:2px solid transparent;
-transition:.3s;
-}
-input:focus,select:focus{
-outline:none;
-border-color:#6C4CFF;
-box-shadow:0 0 0 4px rgba(108,76,255,.15);
-}
-
-.live-notice{
-margin:20px;
-padding:14px 18px;
-border-radius:14px;
-background:linear-gradient(90deg,#111827,#1f2937);
-color:#fff;
-display:flex;
-align-items:center;
-}
-.live-dot{
-width:10px;height:10px;border-radius:50%;
-background:#ff3b30;
-margin-right:12px;
-animation:blink 1s infinite;
-}
-@keyframes blink{
-50%{opacity:.35}
-}
-
-.fab{
-position:fixed;
-right:24px;
-bottom:24px;
-width:56px;height:56px;
-border:none;
-border-radius:50%;
-background:linear-gradient(135deg,#6C4CFF,#9B5CFF);
-color:#fff;
-cursor:pointer;
-box-shadow:0 10px 25px rgba(108,76,255,.35);
-transition:.3s;
-}
-.fab:hover{transform:scale(1.08)}
-
 @media(max-width:768px){
 header{padding:14px 18px}
 nav{flex-direction:column}
@@ -232,20 +137,7 @@ font-size:30px !important;
 nav{
 margin:10px;
 }
-
-.cards{
-grid-template-columns:repeat(2,1fr);
-gap:15px;
 }
-
-section,
-.card,
-.qr-section{
-padding:22px;
-}
-
-}
-
 @media (max-width:768px){
 
 html{
@@ -321,100 +213,7 @@ justify-content:center;
 padding:15px;
 
 }
-
-.topbar{
-
-display:flex;
-
-flex-direction:column;
-
-gap:20px;
-
 }
-
-.right-controls{
-
-display:flex;
-
-flex-direction:column;
-
-width:100%;
-
-gap:15px;
-
-}
-
-input,
-select{
-
-width:100%;
-
-}
-
-.cards{
-
-grid-template-columns:1fr;
-
-}
-
-.card{
-
-padding:24px;
-
-}
-
-section{
-
-padding:24px;
-
-margin:20px 0;
-
-}
-
-.action-btn{
-
-width:100%;
-
-}
-
-.live-notice{
-
-margin:10px;
-
-padding:12px;
-
-font-size:14px;
-
-}
-
-#clock{
-
-font-size:22px;
-
-}
-
-#date{
-
-font-size:13px;
-
-}
-
-.fab{
-
-width:50px;
-
-height:50px;
-
-bottom:18px;
-
-right:18px;
-
-font-size:20px;
-
-}
-
-}
-
 @media (max-width:480px){
 
 .container{
@@ -442,43 +241,56 @@ padding:18px;
 border-radius:18px;
 
 }
-
-.card{
-
-padding:18px;
-
-border-radius:18px;
-
+.live-notice{
+    margin:20px;
+    padding:14px 18px;
+    border-radius:14px;
+    background:linear-gradient(90deg,#111827,#1f2937);
+    color:#fff;
+    display:flex;
+    align-items:center;
 }
 
-.action-btn{
-
-padding:14px;
-
-font-size:15px;
-
+.live-dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#ff3b30;
+    margin-right:12px;
+    animation:blink 1s infinite;
 }
 
+@keyframes blink{
+    50%{
+        opacity:.35;
+    }
+}
 .live-notice{
 
 font-size:13px;
 
 }
-
-#clock{
-
-font-size:18px;
-
+}
+#scrollTopBtn{
+position:fixed;
+bottom:30px;
+right:30px;
+width:50px;
+height:50px;
+border:none;
+border-radius:50%;
+background:linear-gradient(135deg,#6C4CFF,#9B5CFF);
+color:#fff;
+cursor:pointer;
+box-shadow:0 10px 25px rgba(108,76,255,.35);
+display:none;
+transition:.3s;
+z-index:999;
 }
 
-#date{
-
-font-size:12px;
-
+#scrollTopBtn:hover{
+transform:scale(1.08);
 }
-
-}
-
 @media (max-width:360px){
 
 #heading{
@@ -492,12 +304,6 @@ nav a{
 font-size:14px;
 
 padding:12px;
-
-}
-
-.card p{
-
-font-size:28px;
 
 }
 
