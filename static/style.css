@@ -240,3 +240,32 @@ box-shadow:0 20px 50px rgba(108,76,255,.25);
 .about-intro{font-size:15px}
 .about-card{padding:20px}
 }
+.marquee {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: scroll-left 12s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.updates-scroll {
+  height: 150px;
+  overflow: hidden;
+  position: relative;
+}
+
+.updates-scroll div {
+  padding: 5px;
+  border-bottom: 1px dashed #ccc;
+  animation: scroll-up 12s linear infinite;
+}
+
+@keyframes scroll-up {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(-100%); }
+}
+
