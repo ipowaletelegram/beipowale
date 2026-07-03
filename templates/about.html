@@ -24,7 +24,9 @@
   <meta property="og:image" content="https://yourwebsite.com/images/og-image.jpg">
   <meta property="og:url" content="https://jaiminparmar.onrender.com/about-me">
   <meta property="og:type" content="website">
-
+  <meta name="theme-color" content="#6C4CFF">
+  <link rel="canonical" href="https://beipowale.onrender.com/about">
+  <meta name="robots" content="index,follow">
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -54,17 +56,46 @@
       font-weight: 700;
       color: #FEFFFF;
     }
-    main {
-      flex: 1;
-      max-width: 900px;
-      margin: 30px auto;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 15px;
-      padding: 30px;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(5px);
-      animation: fadeIn 1.2s ease-in-out;
-    }
+    header h1{
+
+font-size:3rem;
+
+background:linear-gradient(90deg,#FFD54A,#ffffff,#6C4CFF);
+
+background-size:300%;
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+animation:gradient 6s linear infinite;
+
+}
+
+@keyframes gradient{
+
+100%{
+
+background-position:300%;
+
+}
+
+}
+     main{
+max-width:950px;
+margin:40px auto;
+padding:40px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(18px);
+border-radius:20px;
+box-shadow:0 20px 60px rgba(0,0,0,.25);
+animation:fadeIn .8s ease;
+transition:.35s;
+}
+
+main:hover{
+transform:translateY(-5px);
+}
     main h2 {
       font-size: 1.8rem;
       color: #FEFFFF;
@@ -94,6 +125,23 @@
       color: #3AAFA9;
       font-weight: bold;
     }
+    footer{
+
+padding:25px;
+
+background:rgba(0,0,0,.25);
+
+backdrop-filter:blur(10px);
+
+}
+
+footer a{
+
+color:#FFD54A;
+
+font-weight:600;
+
+}
     footer {
       text-align: center;
       padding: 15px;
@@ -113,7 +161,31 @@
       main { padding: 20px; }
       main h2 { font-size: 1.5rem; }
     }
+    @media(max-width:768px){
+
+main{
+
+margin:20px;
+
+padding:25px;
+
+}
+
+header h1{
+
+font-size:2rem;
+
+}
+
+main h2{
+
+font-size:1.4rem;
+
+}
+
+}
   </style>
+  <link rel="icon" href="https://beipowale.onrender.com/static/logo512.jpg">
 </head>
 <body>
 
