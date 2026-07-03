@@ -9,10 +9,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <!-- ✅ SEO Meta Tags -->
-  <meta name="description" content="Welcome to JAIMIN PARMAR's Dream Dashboard – a modern and secure Flask-based dashboard with analytics, user tracking, QR generation, and powerful productivity tools.">
-  <meta name="keywords" content="Dream Dashboard, Jaimin Parmar, analytics, user tracking, secure tools, QR generator, flask project, OTP dashboard, productivity dashboard">
-  <meta name="author" content="Jaimin Parmar">
-  <meta name="robots" content="index, follow">
+  <meta name="description" content="BE-IPOWale provides Mainboard IPO GMP, IPO Allotment Status, Listing Gain, IPO Calendar and Latest IPO Updates.">
+
+<meta name="keywords" content="IPO GMP, Mainboard IPO, IPO Allotment Status, Listing Gain, IPO Calendar, BE-IPOWale">
   <link rel="canonical" href="https://beipowale.onrender.com">
 
   <!-- ✅ Open Graph -->
@@ -21,31 +20,31 @@
 <link rel="icon" href="https://beipowale.onrender.com/static/logo512.jpg" type="image/x-icon">
 
   <meta property="og:description" content="Explore your secure and interactive BEIPOWALE.">
-  <meta property="og:image" content="https://beipowale.onrender.com/static/dashboard-preview.jpg">
-  <meta property="og:url" content="https://beipowale.onrender.com/dashboard">
+  <meta property="og:image" content="https://beipowale.onrender.com/static/logo512.jpg">
+  <meta property="og:url" content="https://beipowale.onrender.com/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="BEIPOWALE">
 
   <!-- ✅ Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BEIPOWALE">
-  <meta name="twitter:description" content="Track, analyze, and manage with JAIMIN PARMAR's secure Dream Dashboard – real-time tools for modern productivity.">
-  <meta name="twitter:image" content="https://beipowale.onrender.com/static/dashboard-preview.jpg">
+  <meta name="twitter:description" content="BE-IPOWale provides Mainboard IPO GMP, IPO Allotment Status, Listing Gain, IPO Calendar and Latest IPO Updates.">
+  <meta name="twitter:image" content="https://beipowale.onrender.com/static/logo512.jpg">
   <meta name="twitter:site" content="@beipowale">
 
   <!-- ✅ JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
+    "@type":"WebSite",
     "name": "BEIPOWale | IPO News,GMP,Allotment-Updates",
     "url": "https://beipowale.onrender.com",
-    "description": "Secure Flask-based Dream Dashboard with analytics, QR generation, user tracking, and tools.",
+    "description": "BE-IPOWale provides Mainboard IPO GMP, IPO Allotment Status, Listing Gain, IPO Calendar and Latest IPO Updates.",
     "author": {
       "@type": "Person",
       "name": "BE-IPOWale"
     },
-    "applicationCategory": "ProductivityApplication",
+    
     "inLanguage": "en"
   }
   </script>
@@ -53,7 +52,7 @@
 
   <!-- ✅ Icons & Performance -->
   
-  <link rel="apple-touch-icon" href="https://beipowale.onrender.com/static/dashboard-preview.jpg">
+  <link rel="apple-touch-icon" href="https://beipowale.onrender.com/static/logo512.jpg">
   <link rel="manifest" href="/static/site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -75,7 +74,6 @@
 
 
 <meta name="google-site-verification" content="VgQbpzTBntm3BgU9VcrZLg8rBSd8wYP4PY9u6Q74hg4" />
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
   <header>
@@ -126,18 +124,6 @@ window.addEventListener("resize", adjustHeadingSize);
   </marquee>
 </div>
 -->
-
-<style>
-.notice-bar {
-  background-color: #ffcc00;
-  color: #000;
-  font-weight: bold;
-  padding: 8px;
-  border-bottom: 2px solid #e2b500;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-</style>
 <style>
   /* 🚀 Action Buttons Style */
 .feature-buttons .action-btn {
@@ -159,25 +145,12 @@ window.addEventListener("resize", adjustHeadingSize);
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 </style>
-<script>
-  // Optional: Change text live from JavaScript
-  document.querySelector('.marquee').setAttribute("data-text", "🚨 New Update: Check out our new tools!");
-</script>
-
   <div class="container">
     <!-- Topbar -->
     <div class="topbar">
-      <div id="greetingText">Loading...</div>
+
       <div class="right-controls">
-        <input type="search" placeholder="Search...">
-        <select>
-           <option>Day</option>
-          <option>Weekly</option>
-          <option>Monthly</option>
-           <option>Yearly</option>
-        </select>
-      
-        <div id="clockContainer">
+
           <div id="clock"></div>
           <div id="date"></div>
         </div>
@@ -196,137 +169,11 @@ window.addEventListener("resize", adjustHeadingSize);
 </div>
 
 <style>
-  /* Futuristic Glassmorphism Updates Panel */
-.updates-box {
-    width: 320px;
-    height: 220px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    overflow: hidden;
-    padding: 0;
-    font-family: 'Inter', sans-serif;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-    position: relative;
-    overflow: hidden;
-}
-
-.updates-box::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-        to bottom right,
-        rgba(0, 180, 216, 0.1),
-        rgba(0, 119, 204, 0.2),
-        rgba(142, 45, 226, 0.1)
-    );
-    transform: rotate(30deg);
-    animation: shimmer 8s infinite linear;
-    z-index: -1;
-}
-
-.updates-box:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 12px 40px rgba(31, 38, 135, 0.25);
-}
-
-/* Header with animated gradient */
-.updates-box h3 {
-    margin: 0;
-    padding: 12px 16px;
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: white;
-    background: linear-gradient(90deg, #0077cc, #00b4d8, #8e2de2);
-    background-size: 200% auto;
-    animation: gradientShift 3s infinite linear;
-    position: relative;
-    overflow: hidden;
-}
-
-.updates-box h3::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
-    animation: shine 2.5s infinite;
-}
-
-/* Update items with staggered animation */
-.updates-content {
-    padding: 8px 12px;
-    max-height: 160px;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(0, 119, 204, 0.5) transparent;
-}
-
-.update-item {
-    padding: 8px 10px;
-    margin: 6px 0;
-    border-radius: 8px;
-    font-size: 0.92rem;
-    color: #333;
-    background: rgba(255, 255, 255, 0.7);
-    transition: all 0.3s ease;
-    transform-origin: left center;
-    opacity: 0;
-    animation: fadeIn 0.4s forwards;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    border-left: 3px solid transparent;
-}
-
-.update-item:nth-child(1) { animation-delay: 0.1s; }
-.update-item:nth-child(2) { animation-delay: 0.2s; }
-.update-item:nth-child(3) { animation-delay: 0.3s; }
-.update-item:nth-child(4) { animation-delay: 0.4s; }
-.update-item:nth-child(5) { animation-delay: 0.5s; }
-
-.update-item:hover {
-    background: rgba(232, 244, 255, 0.9);
-    transform: scale(1.02);
-    border-left: 3px solid #0077cc;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-/* Custom scrollbar */
-.updates-content::-webkit-scrollbar {
-    width: 4px;
-}
-.updates-content::-webkit-scrollbar-thumb {
-    background: rgba(0, 119, 204, 0.5);
-    border-radius: 4px;
-}
-
 /* Animations */
-@keyframes gradientShift {
-    0% { background-position: 0% center; }
-    50% { background-position: 100% center; }
-    100% { background-position: 0% center; }
-}
-
 @keyframes fadeIn {
     from { opacity: 0; transform: translateX(-10px); }
     to { opacity: 1; transform: translateX(0); }
 }
-
-@keyframes shine {
-    0% { transform: translateX(-100%); }
-    20% { transform: translateX(100%); }
-    100% { transform: translateX(100%); }
-}
-
 @keyframes shimmer {
     0% { transform: rotate(30deg) translate(-10%, -10%); }
     100% { transform: rotate(30deg) translate(10%, 10%); }
@@ -437,48 +284,10 @@ Please do your own research before investing.
     }
   }
 </style>
-
-<script>
-document.getElementById("messageForm").addEventListener("submit", async function(e) {
-  e.preventDefault();
-  
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const message = document.getElementById("message").value;
-  const responseMsg = document.getElementById("responseMsg");
-  
-  // Simple validation
-  if (!name || !email || !message) {
-    responseMsg.textContent = "Please fill in all fields";
-    responseMsg.style.color = "red";
-    return;
-  }
-
-  try {
-    // Show loading state
-    responseMsg.textContent = "Sending message...";
-    responseMsg.style.color = "#20B2AA";
-    
-    // Send to Firebase
-    const messageData = {
-      name: name,
-      email: email,
-      message: message,
-      timestamp: new Date().toISOString()
-    };
-    
-    // Add Firebase submission (if you want to keep both)
-    if (typeof db !== 'undefined') {
-      await addDoc(collection(db, "contactMessages"), messageData);
-    }
-    
-</script>
-
 <hr style="margin: 40px 0; border-top: 2px solid #ccc;" />
 </script>
-<!-- Recent Activity moved OUTSIDE to keep white background -->
+
 <footer>
-  <h3>Recent Activity</h3>
   <ul id="activityList"></ul>
 </footer>
 
@@ -524,114 +333,21 @@ document.getElementById("messageForm").addEventListener("submit", async function
 <script>
   // Add this to your existing script
   window.addEventListener('load', function() {
-    const loader = document.querySelector('.page-loader');
+  
     setTimeout(() => {
       loader.classList.add('fade-out');
       setTimeout(() => loader.remove(), 500);
+    const loader = document.querySelector('.page-loader');
     }, 1000);
   });
 </script>
 
-  <script>
-    const email = "{{ email }}";
-    const hour = new Date().getHours();
-    const greetings = {
-      morning: "🌅 Good Morning",
-      afternoon: "🌞 Good Afternoon",
-      evening: "🌙 Good Evening",
-      night: "🌃 Good Night"
-    };
-    const greeting = hour < 12 ? greetings.morning : hour < 18 ? greetings.afternoon : greetings.evening;
-    document.getElementById("greetingText").textContent = `${greeting}, ${email}`;
-
-    function updateClock() {
-      const now = new Date();
-      document.getElementById('clock').textContent = now.toLocaleTimeString();
-      document.getElementById('date').textContent = now.toDateString();
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-
-   
-    function randomInt(min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    let currentUsers = randomInt(10000, 100000);
-    let currentMessages = randomInt(5000, 80000);
-    let currentVisits = randomInt(50000, 1000000);
-
-    function animateCounter(id, target, duration) {
-      const el = document.getElementById(id);
-      let start = 0;
-      const step = Math.ceil(target / (duration / 10));
-      const counter = setInterval(() => {
-        start += step;
-        if (start >= target) {
-          el.textContent = target.toLocaleString();
-          clearInterval(counter);
-        } else {
-          el.textContent = start.toLocaleString();
-        }
-      }, 10);
-    }
-
-    animateCounter("userCount", currentUsers, 2000);
-    animateCounter("messageCount", currentMessages, 2500);
-    animateCounter("visitCount", currentVisits, 3000);
-
-    setInterval(() => {
-      currentUsers += randomInt(1, 5);
-      currentMessages += randomInt(1, 3);
-      currentVisits += randomInt(5, 15);
-
-      document.getElementById("userCount").textContent = currentUsers.toLocaleString();
-      document.getElementById("messageCount").textContent = currentMessages.toLocaleString();
-      document.getElementById("visitCount").textContent = currentVisits.toLocaleString();
-    }, 3000);
-
-    const activities = ["User logged in", "New file uploaded", "Settings updated", "Feedback submitted", "Comment received", "Security alert"];
-    const activityList = document.getElementById("activityList");
-
-    function updateActivityFeed() {
-      activityList.innerHTML = "";
-      for (let i = 0; i < 5; i++) {
-        const li = document.createElement("li");
-        li.textContent = `${activities[randomInt(0, activities.length - 1)]} - ${randomInt(1, 59)} mins ago`;
-        activityList.appendChild(li);
-      }
-    }
-    updateActivityFeed();
-    setInterval(updateActivityFeed, 15000);
-    function toggleMenu() {
-      const nav = document.getElementById('mainNav');
-      nav.classList.toggle('nav-visible');
-      nav.classList.toggle('nav-hidden');
-    }
-  </script>
-
   <p style="text-align:center; font-size:14px; color:#555;">  <!-- ✅ Improved contrast -->
   © 2026 BEIPOWALE — All Rights Reserved.
 </p>
-<!-- Load Firebase SDKs -->
 
-<script>
-  document.querySelectorAll('.dropdown-toggle').forEach(button => {
-    button.addEventListener('click', () => {
-      const dropdown = button.closest('.dropdown');
-      dropdown.classList.toggle('open');
-    });
-  });
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-3TKXF0GDQE');
-</script>
 <!-- Add before closing body tag -->
-<button class="fab" onclick="scrollToTop()">↑</button>
+<button class="fab">↑</button>
 
 <style>
   /* Floating Action Button */
@@ -660,32 +376,7 @@ document.getElementById("messageForm").addEventListener("submit", async function
   .fab:hover {
     transform: translateY(-5px) scale(1.1);
   }
-  #scrollTopBtn {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  z-index: 999;
-  background: transparent;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  font-size: 22px;
-  padding: 12px 16px;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-  display: none;
-  transition: all 0.3s ease;
-}
-
-#scrollTopBtn:hover {
-  background: rgba(255, 255, 255, 0.05); /* slight hover highlight */
-  transform: scale(1.1);
-}
-
-
-</style>
+  </style>
 
 <script>
   // Scroll to top function
@@ -698,29 +389,7 @@ document.getElementById("messageForm").addEventListener("submit", async function
   
   // Show/hide FAB based on scroll
   window.addEventListener('scroll', function() {
-    const fab = document.querySelector('.fab');
-    if (window.scrollY > 300) {
-      fab.classList.add('visible');
-    } else {
-      fab.classList.remove('visible');
-    }
-  });
-
-  // Add this to your script
-function animateOnScroll() {
-  const elements = document.querySelectorAll('.card, section, h2, .qr-section');
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate-in');
-      }
-    });
-  }, {
-    threshold: 0.1
-  });
-
-  elements.forEach(el => {
+    elements.forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -729,110 +398,7 @@ function animateOnScroll() {
 }
 
 document.addEventListener('DOMContentLoaded', animateOnScroll);
-
-// Add to your CSS
-.animate-in {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-}
-
-// Add this function to your script
-function showConfetti() {
-  const confettiSettings = {
-    target: 'confetti-canvas',
-    max: 150,
-    size: 1.5,
-    animate: true,
-    colors: [[44, 186, 169], [255, 255, 255], [32, 178, 170]],
-    clock: 25,
-    rotate: true
-  };
-  
-  const confetti = new ConfettiGenerator(confettiSettings);
-  confetti.render();
-  
-  setTimeout(() => {
-    confetti.clear();
-  }, 3000);
-}
-
 // Add this HTML before closing body tag
-<canvas id="confetti-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9998;pointer-events:none;"></canvas>
-
-// Add this to your head (before other scripts)
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.min.js"></script>
-
-
-
-
-</script>
-<script>
-  function generateQR() {
-  const url = document.getElementById("urlInput").value.trim();
-  const qrImg = document.getElementById("qrImage");
-  
-  qrImg.alt = `QR Code for: ${url}`;  // ✅ Dynamic accessibility
-  qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}`;
-}
-</script>
-<script>
-  function generateQR() {
-    const url = document.getElementById("urlInput").value;
-    if (!url) return alert("Enter a valid URL!");
-    const qrImg = document.getElementById("qrImage");
-    const downloadBtn = document.getElementById("downloadBtn");
-
-    qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}`;
-    qrImg.onload = () => downloadBtn.style.display = "inline-block";
-    downloadBtn.href = qrImg.src;
-  }
-</script>
-<script>
-  document.getElementById("messageForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const message = document.getElementById("message").value;
-
-    fetch("https://script.google.com/macros/s/your-webhook-url/exec", {
-      method: "POST",
-      body: JSON.stringify({ name, email, message }),
-      headers: { "Content-Type": "application/json" }
-    })
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById("responseMsg").textContent = "Message sent successfully!";
-      document.getElementById("messageForm").reset();
-    })
-    .catch(() => document.getElementById("responseMsg").textContent = "Failed to send message.");
-  });
-</script>
-
-<script>
-const menuToggle = document.querySelector(".menu-toggle");
-const navMenu = document.getElementById("mainNav");
-
-function toggleMenu() {
-    navMenu.classList.toggle("nav-visible");
-}
-
-document.addEventListener("click", function (e) {
-
-    if (!menuToggle || !navMenu) return;
-
-    if (
-        !navMenu.contains(e.target) &&
-        !menuToggle.contains(e.target)
-    ) {
-        navMenu.classList.remove("nav-visible");
-    }
-});
-
-document.querySelectorAll("#mainNav a").forEach(link=>{
-    link.addEventListener("click",()=>{
-        navMenu.classList.remove("nav-visible");
-    });
-});
 </script>
 <!-- 🔼 Scroll-to-Top Button -->
 <button onclick="scrollToTop()" id="scrollTopBtn" title="Go to top">⬆️</button>
@@ -855,11 +421,6 @@ document.querySelectorAll("#mainNav a").forEach(link=>{
     });
   }
 </script>
-<!-- Confetti Canvas -->
-<canvas id="confetti-canvas"
-style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9998;">
-</canvas>
-
 <!-- Scroll To Top Button -->
 <button onclick="scrollToTop()" id="scrollTopBtn" title="Go to top">⬆️</button>
 </body>
