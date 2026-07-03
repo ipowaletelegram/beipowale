@@ -240,10 +240,14 @@ box-shadow:0 20px 50px rgba(108,76,255,.25);
 .about-intro{font-size:15px}
 .about-card{padding:20px}
 }
-.marquee {
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  animation: scroll-left 12s linear infinite;
-}
 
+/* ✅ Marquee Styling */
+marquee {
+  display:block;
+  width:100%;
+  color:#fff;
+  font-weight:600;
+  padding:8px 0;
+  background:linear-gradient(90deg,#6C4CFF,#9B5CFF);
+  border-radius:8px;
+}
