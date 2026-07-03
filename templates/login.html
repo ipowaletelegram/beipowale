@@ -19,7 +19,7 @@
   <!-- ✅ Favicon / Logo -->
 <link rel="icon" href="https://beipowale.onrender.com/static/logo512.jpg" type="image/x-icon">
 
-  <meta property="og:description" content="Explore your secure and interactive BEIPOWALE.">
+  <meta property="og:description" content="Latest Mainboard IPO GMP, IPO Allotment Status, Listing Gain, IPO Calendar and Daily IPO Updates.">
   <meta property="og:image" content="https://beipowale.onrender.com/static/logo512.jpg">
   <meta property="og:url" content="https://beipowale.onrender.com/">
   <meta property="og:type" content="website">
@@ -146,15 +146,7 @@ window.addEventListener("resize", adjustHeadingSize);
 }
 </style>
   <div class="container">
-    <!-- Topbar -->
-    <div class="topbar">
-
-      <div class="right-controls">
-
-          <div id="clock"></div>
-          <div id="date"></div>
-        </div>
-      </div>
+    
     </div>
 
     
@@ -168,17 +160,6 @@ window.addEventListener("resize", adjustHeadingSize);
     </marquee>
 </div>
 
-<style>
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateX(-10px); }
-    to { opacity: 1; transform: translateX(0); }
-}
-@keyframes shimmer {
-    0% { transform: rotate(30deg) translate(-10%, -10%); }
-    100% { transform: rotate(30deg) translate(10%, 10%); }
-}
-</style>
 </div>
   <hr style="margin:40px 0;border-top:2px solid #ddd;">
 
@@ -256,10 +237,7 @@ Please do your own research before investing.
 </section>
 
 <hr style="margin:40px 0;border-top:2px solid #ddd;">
-
 <!-- 💬 Testimonials -->
-
-    <!-- 💬 Testimonials -->
     <hr style="margin: 40px 0; border-top: 2px solid #ccc;" />
     <section style="margin-top: 40px;">
       <h2>🗣️ What Users Say</h2>
@@ -270,10 +248,7 @@ Please do your own research before investing.
 <hr style="margin: 40px 0; border-top: 2px solid #ccc;" />
 
 <style>
-  @keyframes fadeIn {
-    from {opacity: 0; transform: translateY(15px);}
-    to {opacity: 1; transform: translateY(0);}
-  }
+  
   @media (max-width: 600px) {
     #messageBox h2 {
       font-size: 1.5rem;
@@ -285,13 +260,7 @@ Please do your own research before investing.
   }
 </style>
 <hr style="margin: 40px 0; border-top: 2px solid #ccc;" />
-</script>
-
-<footer>
-  <ul id="activityList"></ul>
-</footer>
-
-  </div>
+</div>
 
 <!-- Add this right after <body> tag -->
 <div class="page-loader">
@@ -332,23 +301,19 @@ Please do your own research before investing.
 
 <script>
   // Add this to your existing script
-  window.addEventListener('load', function() {
-  
-    setTimeout(() => {
-      loader.classList.add('fade-out');
-      setTimeout(() => loader.remove(), 500);
+window.addEventListener('load', function () {
     const loader = document.querySelector('.page-loader');
+
+    setTimeout(() => {
+        loader.classList.add('fade-out');
+        setTimeout(() => loader.remove(), 500);
     }, 1000);
-  });
+});
 </script>
 
   <p style="text-align:center; font-size:14px; color:#555;">  <!-- ✅ Improved contrast -->
   © 2026 BEIPOWALE — All Rights Reserved.
 </p>
-
-<!-- Add before closing body tag -->
-<button class="fab">↑</button>
-
 <style>
   /* Floating Action Button */
   .fab {
@@ -386,19 +351,8 @@ Please do your own research before investing.
       behavior: 'smooth'
     });
   }
-  
-  // Show/hide FAB based on scroll
-  window.addEventListener('scroll', function() {
-    elements.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-  });
-}
 
-document.addEventListener('DOMContentLoaded', animateOnScroll);
-// Add this HTML before closing body tag
+
 </script>
 <!-- 🔼 Scroll-to-Top Button -->
 <button onclick="scrollToTop()" id="scrollTopBtn" title="Go to top">⬆️</button>
