@@ -280,3 +280,49 @@ marquee {
   border-bottom: 1px dashed #ccc;
 }
 
+/*Instgarm updates section*/
+.instagram-update-box{
+    max-width:700px;
+    margin:40px auto;
+    padding:25px;
+    border-radius:18px;
+    background:linear-gradient(135deg,#1b1b1b,#292929);
+    border:1px solid rgba(255,255,255,.08);
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+.instagram-update-box h3{
+    color:#FFD700;
+    margin-bottom:12px;
+    font-size:28px;
+}
+
+.instagram-update-box p{
+    color:#ddd;
+    line-height:1.7;
+    margin-bottom:15px;
+}
+
+.follow-text{
+    color:#00ff84;
+    font-weight:600;
+    font-size:18px;
+}
+
+.insta-btn{
+    display:inline-block;
+    margin-top:10px;
+    padding:12px 28px;
+    background:linear-gradient(135deg,#E1306C,#833AB4,#405DE6);
+    color:#fff;
+    text-decoration:none;
+    font-weight:700;
+    border-radius:50px;
+    transition:.3s;
+}
+
+.insta-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 20px rgba(225,48,108,.4);
+}
