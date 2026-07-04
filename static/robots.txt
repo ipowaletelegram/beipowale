@@ -1,3 +1,9 @@
+User-agent: *
+
+Allow: /
+
+Sitemap: https://beipowale.onrender.com/sitemap.xml
+
 # ✅ Allow all bots
 User-agent: *
 Disallow:
@@ -14,5 +20,3 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
-# ✅ Sitemap location
-Sitemap: https://jaiminparmar.onrender.com/sitemap.xml
