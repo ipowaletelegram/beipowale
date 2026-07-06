@@ -190,6 +190,7 @@ section{padding:18px;border-radius:18px}
     display:flex;
     align-items:center;
     font-size:13px;
+    transform: translateX(70px);
 }
 .live-dot{
     width:10px;
