@@ -114,7 +114,7 @@
 </header>
 
   <!-- Navigation -->
-  <nav id="mainNav" class="nav-hidden">
+  <nav id="mainNav"></nav>
     <a href="/">Home</a>
     <a href="/contact">Contact</a>
     <a href="/blog">Blog / Updates</a>
@@ -132,6 +132,7 @@
 
 <!-- Latest Updates -->
 <section class="updates">
+  
   <h3>📢 Latest Updates</h3>
   <marquee behavior="scroll" direction="up" scrollamount="3" onmouseover="this.stop();" onmouseout="this.start();">
     <div>📢 Latest Mainboard IPO GMP, IPO Allotment Status, Listing Gain & IPO News are posted first on our official Instagram and Telegram.</div>
@@ -235,9 +236,15 @@
     };
 
     // Toggle Menu
-    function toggleMenu() {
-      document.getElementById("mainNav").classList.toggle("nav-visible");
-    }
+  function toggleMenu(){
+
+const nav=document.getElementById("mainNav");
+
+nav.classList.toggle("nav-visible");
+
+document.body.classList.toggle("menu-open");
+
+}
   </script>
 </body>
 </html>
