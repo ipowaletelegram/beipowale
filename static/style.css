@@ -148,7 +148,7 @@ nav{flex-direction:column}
     filter: grayscale(100%) blur(0.5px);
     pointer-events: none;
     z-index: -1;
-    transform: rotate(-15deg);
+   
 }
 
 @media (max-width:768px){
