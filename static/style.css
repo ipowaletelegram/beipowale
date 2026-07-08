@@ -139,26 +139,41 @@ nav{flex-direction:column}
 .container{padding:16px}
 }
 /*LOGO in background*/
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fc;
+    position: relative;
+    overflow-x: hidden;
+}
+
 body::before {
     content: "";
     position: fixed;
-    inset: 0;
-    margin: auto;
+    top: 50%;
+    left: 50%;
+    width: 450px;
+    height: 450px;
 
-    width: 420px;
-    height: 420px;
-
-    background: url("logo.jpg") center center no-repeat;
+    background: url("logo.jpg") no-repeat center;
     background-size: contain;
 
-    opacity: 0.025;
-    filter: grayscale(100%) blur(0.5px);
+    transform: translate(-50%, -50%);
+    opacity: 0.05;   /* Watermark intensity */
 
-    transform: rotate(-18deg);
-
-    pointer-events: none;
     z-index: -1;
+    pointer-events: none;
 }
+@media (max-width:768px){
+
+body::before{
+    width:250px;
+    height:250px;
+}
+
+}
+
 
 /* =====================================
    MOBILE RESPONSIVE
