@@ -139,39 +139,22 @@ nav{flex-direction:column}
 .container{padding:16px}
 }
 /*LOGO in background*/
-
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: #f8f9fc;
-    position: relative;
-    overflow-x: hidden;
-}
-
-body::before {
-    content: "";
+.watermark{
     position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 450px;
-    height: 450px;
-
-    background: url("logo.jpg") no-repeat center;
-    background-size: contain;
-
-    transform: translate(-50%, -50%);
-    opacity: 0.05;   /* Watermark intensity */
-
-    z-index: -1;
+    inset: 0;
+    background: url("logo.jpg") center center no-repeat;
+    background-size: 420px;
+    opacity: 0.025;
+    filter: grayscale(100%) blur(0.5px);
     pointer-events: none;
+    z-index: -1;
+    transform: rotate(-15deg);
 }
+
 @media (max-width:768px){
-
-body::before{
-    width:250px;
-    height:250px;
-}
-
+    .watermark{
+        background-size:220px;
+    }
 }
 
 
