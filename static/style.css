@@ -138,6 +138,27 @@ header{padding:14px 18px}
 nav{flex-direction:column}
 .container{padding:16px}
 }
+/*LOGO in background*/
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    margin: auto;
+
+    width: 420px;
+    height: 420px;
+
+    background: url("logo.png") center center no-repeat;
+    background-size: contain;
+
+    opacity: 0.025;
+    filter: grayscale(100%) blur(0.5px);
+
+    transform: rotate(-18deg);
+
+    pointer-events: none;
+    z-index: -1;
+}
 
 /* =====================================
    MOBILE RESPONSIVE
