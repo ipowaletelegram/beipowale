@@ -148,7 +148,7 @@ body::before {
     width: 420px;
     height: 420px;
 
-    background: url("logo.png") center center no-repeat;
+    background: url("logo.jpg") center center no-repeat;
     background-size: contain;
 
     opacity: 0.025;
