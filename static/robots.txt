@@ -1,22 +1,4 @@
 User-agent: *
-
 Allow: /
 
 Sitemap: https://beipowale.onrender.com/sitemap.xml
-
-# ✅ Allow all bots
-User-agent: *
-Disallow:
-
-# ✅ Specifically allow BraveBot
-User-agent: BraveBot
-Allow: /
-
-# ✅ Specifically allow Googlebot
-User-agent: Googlebot
-Allow: /
-
-# ✅ Specifically allow Bingbot
-User-agent: Bingbot
-Allow: /
-
