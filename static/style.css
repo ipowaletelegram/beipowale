@@ -377,3 +377,65 @@ marquee {
     transform:translateY(-3px);
     box-shadow:0 10px 20px rgba(225,48,108,.4);
 }
+
+
+/* ===== Navbar Fix ===== */
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+@media (min-width:769px){
+  #mainNav{
+    display:flex !important;
+    position:static !important;
+    flex-direction:row !important;
+    margin-left:auto;
+    background:none !important;
+    box-shadow:none !important;
+    padding:0 !important;
+    opacity:1 !important;
+    pointer-events:auto !important;
+    transform:none !important;
+  }
+
+  .menu-toggle{
+    display:none !important;
+  }
+}
+
+@media (max-width:768px){
+  .menu-toggle{
+    display:block !important;
+    background:none;
+    border:none;
+    font-size:28px;
+    color:var(--primary);
+    cursor:pointer;
+  }
+
+  #mainNav{
+    display:none;
+    position:absolute;
+    top:100%;
+    left:15px;
+    right:15px;
+    margin-top:10px;
+    padding:15px;
+    background:#fff;
+    border-radius:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+    z-index:999;
+  }
+
+  #mainNav.nav-visible{
+    display:flex !important;
+    flex-direction:column;
+  }
+
+  #mainNav a{
+    width:100%;
+    text-align:center;
+  }
+}
