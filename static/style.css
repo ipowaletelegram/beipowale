@@ -10,6 +10,9 @@
     font-size: 28px;
     color: var(--dark);
 }
+.menu-toggle{
+    display: none;
+}
 
 :root{
   --primary:#6C4CFF;
