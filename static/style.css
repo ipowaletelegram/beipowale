@@ -378,3 +378,101 @@ marquee {
     box-shadow:0 10px 20px rgba(225,48,108,.4);
 }
 
+.allotment-btn{
+    width:100%;
+    max-width:650px;
+    margin:35px auto;
+    padding:18px 22px;
+    background:#ffffff;
+    border:2px solid #dbeafe;
+    border-radius:18px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    text-decoration:none;
+    color:#111827;
+    box-shadow:0 10px 25px rgba(37,99,235,.12);
+    transition:.3s;
+}
+
+.allotment-btn:hover{
+    transform:translateY(-5px);
+    border-color:#2563eb;
+    box-shadow:0 18px 35px rgba(37,99,235,.25);
+}
+
+.allotment-icon{
+    width:60px;
+    height:60px;
+    background:#2563eb;
+    color:#fff;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    flex-shrink:0;
+}
+
+.allotment-text{
+    flex:1;
+    margin-left:18px;
+}
+
+.allotment-text h3{
+    margin:0;
+    font-size:22px;
+    font-weight:700;
+}
+
+.allotment-text p{
+    margin-top:5px;
+    color:#6b7280;
+    font-size:15px;
+}
+
+.allotment-arrow{
+    width:46px;
+    height:46px;
+    background:#eff6ff;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#2563eb;
+    font-size:24px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.allotment-btn:hover .allotment-arrow{
+    background:#2563eb;
+    color:#fff;
+}
+
+@media(max-width:600px){
+
+.allotment-btn{
+    padding:15px;
+}
+
+.allotment-icon{
+    width:52px;
+    height:52px;
+    font-size:24px;
+}
+
+.allotment-text h3{
+    font-size:18px;
+}
+
+.allotment-text p{
+    font-size:13px;
+}
+
+.allotment-arrow{
+    width:40px;
+    height:40px;
+}
+
+}
