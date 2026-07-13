@@ -49,7 +49,9 @@ def features():
 @app.route('/terms')
 def terms():
     return render_template('terms.html')
-
+@app.route("/allotment")
+def allotment():
+    return render_template("allotment.html")
 
 
 @app.route('/generate_qr', methods=['POST'])
