@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Check IPO Allotment | BE.IPOWALE</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#eef6ff,#ffffff);
+    color:#222;
+}
+
+header{
+    background:#0f172a;
+    color:#fff;
+    padding:18px 20px;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
+}
+
+header img{
+    width:70px;
+    margin-bottom:10px;
+}
+
+header h1{
+    font-size:32px;
+}
+
+header p{
+    margin-top:8px;
+    color:#d1d5db;
+}
+
+.container{
+    max-width:1100px;
+    margin:50px auto;
+    padding:20px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:#fff;
+    border-radius:20px;
+    padding:35px 25px;
+    text-align:center;
+    text-decoration:none;
+    color:#222;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transition:.35s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 40px rgba(0,0,0,.18);
+}
+
+.card img{
+    width:180px;
+    height:70px;
+    object-fit:contain;
+    margin-bottom:25px;
+}
+
+.card h2{
+    font-size:25px;
+    margin-bottom:12px;
+}
+
+.card p{
+    color:#666;
+    margin-bottom:25px;
+}
+
+.btn{
+    display:inline-block;
+    background:#2563eb;
+    color:#fff;
+    padding:13px 28px;
+    border-radius:10px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.card:hover .btn{
+    background:#1d4ed8;
+}
+
+.home-btn{
+    display:inline-block;
+    margin-top:50px;
+    text-decoration:none;
+    background:#111827;
+    color:#fff;
+    padding:14px 35px;
+    border-radius:10px;
+    font-weight:bold;
+}
+
+.home-btn:hover{
+    background:#000;
+}
+
+footer{
+    margin-top:70px;
+    padding:25px;
+    text-align:center;
+    color:#777;
+    font-size:15px;
+}
+
+@media(max-width:768px){
+
+header h1{
+    font-size:26px;
+}
+
+.card img{
+    width:150px;
+}
+
+.card{
+    padding:30px 20px;
+}
+
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<img src="static/logo.jpg" alt="BE.IPOWALE">
+
+<h1>Check IPO Allotment Status</h1>
+
+<p>Select your IPO Registrar below to check the latest Mainboard IPO allotment.</p>
+
+</header>
+
+<div class="container">
+
+<div class="cards">
+
+<a class="card"
+href="https://ipostatus.kfintech.com/ipostatus"
+target="_blank">
+
+<img src="static/kfintech.png" alt="KFin Technologies">
+
+<h2>KFin Technologies</h2>
+
+<p>Check Mainboard IPO Allotment Status</p>
+
+<div class="btn">Open Official Website ↗</div>
+
+</a>
+
+
+<a class="card"
+href="https://in.mpms.mufg.com/Initial_Offer/public-issues.html"
+target="_blank">
+
+<img src="static/mufg.png" alt="MUFG Intime">
+
+<h2>MUFG Intime</h2>
+
+<p>Check Mainboard IPO Allotment Status</p>
+
+<div class="btn">Open Official Website ↗</div>
+
+</a>
+
+
+<a class="card"
+href="https://ipo.bigshareonline.com/IPO_Status.html"
+target="_blank">
+
+<img src="static/bigshare.png" alt="Bigshare Services">
+
+<h2>Bigshare Services</h2>
+
+<p>Check Mainboard IPO Allotment Status</p>
+
+<div class="btn">Open Official Website ↗</div>
+
+</a>
+
+</div>
+
+<div style="text-align:center;">
+
+<a href="login.html" class="home-btn">
+← Back to Home
+</a>
+
+</div>
+
+</div>
+
+<footer>
+
+© 2026 BE.IPOWALE • Official IPO Information & Updates
+
+</footer>
+
+</body>
+</html>
