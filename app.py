@@ -26,9 +26,7 @@ def check_maintenance():
     if os.environ.get('MAINTENANCE_MODE') == 'on' and request.endpoint != 'maintenance':
         return render_template('maintenance.html'), 503
 
-@app.route('/allotment')
-def allotment():
-    return render_template("allotment.html")
+
 
 @app.route('/contact')
 def contact():
