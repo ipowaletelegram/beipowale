@@ -5,7 +5,7 @@ app = Flask(__name__, static_folder=".")
 
 @app.route("/")
 def home():
-    return send_from_directory(".", "login.html")
+    return send_from_directory(".", "index.html")
 
 @app.route("/<path:path>")
 def static_files(path):
