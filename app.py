@@ -1,15 +1,26 @@
-from flask import Flask, send_from_directory
-import os
+from flask import Flask, render_template
 
-app = Flask(__name__, static_folder=".")
+app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return send_from_directory(".", "index.html")
+    return render_template("index.html")
 
-@app.route("/<path:path>")
-def static_files(path):
-    return send_from_directory(".", path)
+@app.route("/allotment")
+def allotment():
+    return render_template("allotment.html")
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
+@app.route("/blog")
+def blog():
+    return render_template("blog.html")
+
+@app.route("/terms")
+def terms():
+    return render_template("terms.html")
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+    app.run()
