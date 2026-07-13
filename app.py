@@ -26,9 +26,9 @@ def check_maintenance():
     if os.environ.get('MAINTENANCE_MODE') == 'on' and request.endpoint != 'maintenance':
         return render_template('maintenance.html'), 503
 
-@app.route('/maintenance')
-def maintenance():
-    return render_template("maintenance.html"), 503
+@app.route('/allotment')
+def allotment():
+    return render_template("allotment.html")
 
 @app.route('/contact')
 def contact():
@@ -49,10 +49,6 @@ def features():
 @app.route('/terms')
 def terms():
     return render_template('terms.html')
-@app.route("/allotment")
-def allotment():
-    return render_template("allotment.html")
-
 
 @app.route('/generate_qr', methods=['POST'])
 def generate_qr():
