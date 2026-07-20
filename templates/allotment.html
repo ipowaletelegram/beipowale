@@ -142,83 +142,37 @@ header h1{
 
 </head>
 
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>IPO Allotment</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/allotment.css') }}">
+
+</head>
+
 <body>
-
-<header>
-
-<img src="static/logo.jpg" alt="BE.IPOWALE Logo">
-
-<h1>Check IPO Allotment Status</h1>
-
-<p>Select your IPO Registrar below to check the latest Mainboard IPO allotment.</p>
-
-</header>
 
 <div class="container">
 
-<div class="cards">
+<h1>IPO Allotment Status</h1>
 
-<a class="card"
-href="https://ipostatus.kfintech.com/ipostatus"
-target="_blank">
+<input
+type="text"
+id="search"
+placeholder="Search IPO...">
 
-<img src="static/kfintech.png" alt="BE.IPOWALE Logo">
-
-<h2>KFin Technologies</h2>
-
-<p>Check Mainboard IPO Allotment Status</p>
-
-<div class="btn">Open Official Website ↗</div>
-
-</a>
-
-
-<a class="card"
-href="https://in.mpms.mufg.com/Initial_Offer/public-issues.html"
-target="_blank">
-
-<img src="static/mufg.png" alt="BE.IPOWALE Logo">
-
-<h2>MUFG Intime</h2>
-
-<p>Check Mainboard IPO Allotment Status</p>
-
-<div class="btn">Open Official Website ↗</div>
-
-</a>
-
-
-<a class="card"
-href="https://ipo.bigshareonline.com/IPO_Status.html"
-target="_blank">
-
-<img src="static/bigshare.png" alt="BE.IPOWALE Logo">
-
-<h2>Bigshare Services</h2>
-
-<p>Check Mainboard IPO Allotment Status</p>
-
-<div class="btn">Open Official Website ↗</div>
-
-</a>
+<div id="cards"></div>
 
 </div>
 
-<div style="text-align:center;">
-
-<a href="index.html" class="home-btn">
-← Back to Home
-</a>
-
-</div>
-
-</div>
-
-<footer>
-
-© 2026 BE.IPOWALE • Official IPO Information & Updates
-
-</footer>
+<script src="{{ url_for('static', filename='js/allotment.js') }}"></script>
 
 </body>
+
+</html>
 </html>
