@@ -45,8 +45,15 @@ async function loadData() {
             throw new Error("Failed to load JSON");
         }
 
-        ipoData = await response.json();
-        filteredData = [...ipoData];
+       ipoData = await response.json();
+
+ipoData.forEach(ipo => {
+
+    ipo.status = getStatus(ipo.allotment);
+
+});
+
+filteredData = [...ipoData];
 
         updateDashboard();
         updateTicker();
