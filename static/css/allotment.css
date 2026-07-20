@@ -1041,3 +1041,18 @@ footer{
 }
 
 }
+.official-note{
+    margin-top:12px;
+    font-size:13px;
+    color:#16a34a;
+    font-weight:600;
+    text-align:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:6px;
+}
+
+.official-note::before{
+    content:"🛡️";
+}
