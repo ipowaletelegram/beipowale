@@ -44,16 +44,23 @@ def check_allotment():
             "message": "IPO Not Found"
         })
 
+    if registrar == "kfin":
+
+    result = kfin.check(company, search_type, value)
+
+elif registrar == "mufg":
+
+    result = mufg.check(company, search_type, value)
+
+elif registrar == "bigshare":
+
+    result = bigshare.check(company, search_type, value)
+
+else:
+
     return jsonify({
-
-        "success": True,
-
-        "company": company,
-
-        "registrar": registrar,
-
-        "search_type": search_type,
-
-        "value": value
-
+        "success": False,
+        "message": "Registrar not supported."
     })
+
+return jsonify(result)
