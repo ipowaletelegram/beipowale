@@ -1,18 +1,20 @@
 [
   {
-    "company": "Xtranet Technologies Ltd",
-    "logo": "/static/logos/xtranet.png",
-    "registrar": "KFin Technologies",
-    "allotment_date": "28 Jul 2026",
-    "status": "Upcoming",
-    "url": "https://ipostatus.kfintech.com/ipostatus"
+    "company":"Xtranet Technologies Ltd",
+    "logo":"/static/logos/xtranet.png",
+    "registrar":"KFin Technologies",
+    "allotment":"28 Jul 2026",
+    "listing":"30 Jul 2026",
+    "status":"Upcoming",
+    "url":"https://ipostatus.kfintech.com/ipostatus"
   },
   {
-    "company": "Caliber Mining & Logistics Ltd",
-    "logo": "/static/logos/caliber.png",
-    "registrar": "Bigshare Services",
-    "allotment_date": "24 Jul 2026",
-    "status": "Available",
-    "url": "https://ipo.bigshareonline.com/IPO_Status.html"
+    "company":"Caliber Mining & Logistics Ltd",
+    "logo":"/static/logos/caliber.png",
+    "registrar":"Bigshare Services",
+    "allotment":"24 Jul 2026",
+    "listing":"27 Jul 2026",
+    "status":"Available",
+    "url":"https://ipo.bigshareonline.com/IPO_Status.html"
   }
 ]
