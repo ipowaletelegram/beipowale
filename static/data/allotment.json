@@ -2,7 +2,7 @@
 
   {
     "company": "Caliber Mining & Logistics Ltd",
-    "logo": "/logos/caliber.png",
+    "logo": "/static/logos/caliber.png",
     "registrar": "Bigshare Services",
     "allotment": "22 Jul 2026",
     "status": "Available",
@@ -11,7 +11,7 @@
   },
    {
     "company": "SBI Funds Management Ltd",
-    "logo": "/logos/sbi.png",
+    "logo": "/static/logos/sbi.png",
     "registrar": "KFin Technologies",
     "allotment": "17 Jul 2026",
     "status": "Closed",
