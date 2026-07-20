@@ -1,47 +1,75 @@
-const companies = [
+const form = document.getElementById("allotmentForm");
 
-"Caliber Mining & Logistics Ltd",
+form.addEventListener("submit", async function (e) {
 
-"SBI Funds Management Ltd",
+    e.preventDefault();
 
-"Indo-MIM Ltd",
+    document.getElementById("loading").style.display = "block";
 
-"Lohia Corp Ltd"
+    document.getElementById("result").innerHTML = "";
 
-];
+    const company = document.getElementById("company").value;
 
-const dropdown=document.getElementById("company");
+    const search_type = document.getElementById("search_type").value;
 
-companies.forEach(company=>{
+    const value = document.getElementById("search_value").value;
 
-const option=document.createElement("option");
+    const response = await fetch("/check-allotment", {
 
-option.value=company;
+        method: "POST",
 
-option.textContent=company;
+        headers: {
 
-dropdown.appendChild(option);
+            "Content-Type": "application/json"
 
-});
+        },
 
-document.getElementById("allotmentForm").addEventListener("submit",function(e){
+        body: JSON.stringify({
 
-e.preventDefault();
+            company,
 
-document.getElementById("loading").style.display="block";
+            search_type,
 
-document.getElementById("result").innerHTML="";
+            value
 
-setTimeout(()=>{
+        })
 
-document.getElementById("loading").style.display="none";
+    });
 
-document.getElementById("result").innerHTML=`
-<div style="background:#0d1117;padding:20px;border-radius:10px;border:1px solid #333;color:white;text-align:center;">
-Ready for Backend Integration
+    const data = await response.json();
+
+    document.getElementById("loading").style.display = "none";
+
+    if (!data.success) {
+
+        document.getElementById("result").innerHTML =
+
+            `<div class="error">${data.message}</div>`;
+
+        return;
+
+    }
+
+    document.getElementById("result").innerHTML = `
+
+<div class="result-card">
+
+<h2>${data.company}</h2>
+
+<p><b>Registrar :</b> ${data.registrar.toUpperCase()}</p>
+
+<p><b>Search :</b> ${data.search_type}</p>
+
+<p><b>Value :</b> ${data.value}</p>
+
+<p style="margin-top:15px;color:#FFD700">
+
+Backend Connected Successfully
+
+</p>
+
 </div>
-`;
 
-},1200);
+`;
 
 });
