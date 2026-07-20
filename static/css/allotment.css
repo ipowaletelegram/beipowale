@@ -1056,3 +1056,10 @@ footer{
 .official-note::before{
     content:"🛡️";
 }
+.official-note{
+    margin-top:12px;
+    text-align:center;
+    color:#16a34a;
+    font-size:13px;
+    font-weight:600;
+}
