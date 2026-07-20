@@ -54,6 +54,11 @@ ipoData.forEach(ipo => {
 });
 
 filteredData = [...ipoData];
+       ipoData.sort((a,b)=>{
+
+    return new Date(a.allotment)-new Date(b.allotment);
+
+});
 
         updateDashboard();
         updateTicker();
