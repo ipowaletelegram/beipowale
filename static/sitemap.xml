@@ -28,5 +28,10 @@
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
+  <url>
+   <loc>https://beipowale.onrender.com/allotment</loc>
+   <changefreq>daily</changefreq>
+   <priority>0.9</priority>
+</url>
 
 </urlset>
