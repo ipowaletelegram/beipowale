@@ -1,75 +1,98 @@
 const form = document.getElementById("allotmentForm");
 
-form.addEventListener("submit", async function (e) {
+form.addEventListener("submit", async (e) => {
 
     e.preventDefault();
 
-    document.getElementById("loading").style.display = "block";
-
-    document.getElementById("result").innerHTML = "";
-
     const company = document.getElementById("company").value;
-
     const search_type = document.getElementById("search_type").value;
-
     const value = document.getElementById("search_value").value;
 
-    const response = await fetch("/check-allotment", {
+    document.getElementById("loading").style.display = "block";
+    document.getElementById("result").innerHTML = "";
 
-        method: "POST",
+    try {
 
-        headers: {
+        const response = await fetch("/check-allotment", {
 
-            "Content-Type": "application/json"
+            method: "POST",
 
-        },
+            headers: {
+                "Content-Type": "application/json"
+            },
 
-        body: JSON.stringify({
+            body: JSON.stringify({
+                company,
+                search_type,
+                value
+            })
 
-            company,
+        });
 
-            search_type,
+        const data = await response.json();
 
-            value
+        document.getElementById("loading").style.display = "none";
 
-        })
+        if (data.success) {
 
-    });
+            document.getElementById("result").innerHTML = `
 
-    const data = await response.json();
+            <div class="success-card">
 
-    document.getElementById("loading").style.display = "none";
+                <h2>IPO Allotment Result</h2>
 
-    if (!data.success) {
+                <hr>
 
-        document.getElementById("result").innerHTML =
+                <p><strong>Company</strong><br>${company}</p>
 
-            `<div class="error">${data.message}</div>`;
+                <p><strong>Registrar</strong><br>${data.registrar}</p>
 
-        return;
+                <p><strong>Status</strong><br>${data.status}</p>
+
+                <p><strong>Shares</strong><br>${data.shares}</p>
+
+                <p><strong>Lots</strong><br>${data.lots}</p>
+
+            </div>
+
+            `;
+
+        }
+
+        else {
+
+            document.getElementById("result").innerHTML = `
+
+            <div class="error-card">
+
+                <h2>${data.registrar}</h2>
+
+                <p>${data.message}</p>
+
+            </div>
+
+            `;
+
+        }
 
     }
 
-    document.getElementById("result").innerHTML = `
+    catch (err) {
 
-<div class="result-card">
+        document.getElementById("loading").style.display = "none";
 
-<h2>${data.company}</h2>
+        document.getElementById("result").innerHTML = `
 
-<p><b>Registrar :</b> ${data.registrar.toUpperCase()}</p>
+        <div class="error-card">
 
-<p><b>Search :</b> ${data.search_type}</p>
+        <h2>Server Error</h2>
 
-<p><b>Value :</b> ${data.value}</p>
+        <p>Please try again later.</p>
 
-<p style="margin-top:15px;color:#FFD700">
+        </div>
 
-Backend Connected Successfully
+        `;
 
-</p>
-
-</div>
-
-`;
+    }
 
 });
