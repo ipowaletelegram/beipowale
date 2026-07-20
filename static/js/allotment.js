@@ -47,19 +47,15 @@ async function loadData() {
 
        ipoData = await response.json();
 
-ipoData.forEach(ipo => {
-
+        ipoData.forEach(ipo => {
     ipo.status = getStatus(ipo.allotment);
+});
 
+ipoData.sort((a, b) => {
+    return new Date(a.allotment) - new Date(b.allotment);
 });
 
 filteredData = [...ipoData];
-       ipoData.sort((a,b)=>{
-
-    return new Date(a.allotment)-new Date(b.allotment);
-
-});
-
         updateDashboard();
         updateTicker();
         renderCards(filteredData);
@@ -92,7 +88,7 @@ function updateDashboard() {
     const total = document.getElementById("totalCount");
     const upcoming = document.getElementById("upcomingCount");
     const available = document.getElementById("availableCount");
-    const registrar = document.getElementById("registrarCount");
+    const closed = document.getElementById("closedCount");
 
     if (total)
         total.innerText = ipoData.length;
@@ -103,12 +99,9 @@ function updateDashboard() {
     if (available)
         available.innerText = ipoData.filter(i => i.status === "Available").length;
 
-    if (registrar) {
-
-        registrar.innerText =
-            [...new Set(ipoData.map(i => i.registrar))].length;
-
-    }
+    if (closed) {
+    closed.innerText = ipoData.filter(i => i.status === "Closed").length;
+}
 
 }
 
@@ -137,7 +130,12 @@ function renderCards(data) {
 
     <div class="card-top"></div>
 
-    ${ipo.featured ? `<div class="ribbon">FEATURED</div>` : ""}
+    ${ipo.status === "Available"
+
+? `<div class="ribbon">TODAY</div>`
+
+: ""}
+
 
     <div class="card-body">
 
@@ -158,20 +156,36 @@ function renderCards(data) {
             <span class="label">Allotment</span>
             <span class="value">${ipo.allotment}</span>
         </div>
+<span class="status ${ipo.status.toLowerCase()}">
 
-        <span class="status ${ipo.status.toLowerCase()}">
-            ${ipo.status}
-        </span>
+${
+ipo.status==="Available"
+
+?"🟢 Available"
+
+:
+
+ipo.status==="Upcoming"
+
+?"🟡 Upcoming"
+
+:
+
+"⚫ Closed"
+
+}
+
+</span>
 
         <a
-            href="${ipo.url}"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn">
+    href="${ipo.url}"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="btn">
 
-            Check Allotment →
+🏛 Check Official Allotment ↗
 
-        </a>
+</a>
 
         <p class="official-note">
 
@@ -200,9 +214,14 @@ if (search) {
         const keyword = this.value.toLowerCase();
 
         filteredData = ipoData.filter(ipo =>
-            ipo.company.toLowerCase().includes(keyword)
-        );
 
+    ipo.company.toLowerCase().includes(keyword)
+
+    ||
+
+    ipo.registrar.toLowerCase().includes(keyword)
+
+);
         renderCards(filteredData);
 
     });
