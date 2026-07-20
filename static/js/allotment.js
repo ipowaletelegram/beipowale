@@ -15,7 +15,7 @@ function getStatus(date){
     allotment.setHours(0,0,0,0);
 
     if(allotment.getTime() === today.getTime()){
-        return "Available";
+        return "Today's Allotment";
     }
 
     if(allotment > today){
