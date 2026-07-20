@@ -9,40 +9,11 @@
     "url": "https://www.bigshareonline.com/ipo_allotment.html"
 },
    {
-    "company": "SBI Funds Management Ltd",
+    "company": "SBI FUNDS MANAGEMNT  Ltd",
     "logo": "/static/logos/sbi.png",
-    "registrar": "KFin Technologies",
-    "allotment": "17 Jul 2026",
-    "status": "Closed",
-    "featured": true,
-    "url": "https://ipostatus.kfintech.com/"
-  },
-  {
-    "company": "Alpine Texworld Ltd",
-    "logo": "/static/logos/alpine.png",
     "registrar": "Kfin Technologies",
-    "allotment": "17 Jul 2026",
-    "status": "Closed",
+    "allotment": "2026-07-17",
     "featured": false,
     "url": "https://ipostatus.kfintech.com/"
-  },
-  {
-    "company": "Lohia Corp Ltd",
-    "logo": "/static/logos/lohiacorp.png",
-    "registrar": "MUFG",
-    "allotment": "28 Jul 2026",
-    "status": "Upcoming",
-    "featured": false,
-    "url": "https://in.mpms.mufg.com/Initial_Offer/public-issues.html"
-  },
-  {
-    "company": "Indo-MIM Ltd",
-    "logo": "/static/logos/indo.png",
-    "registrar": "MUFG",
-    "allotment": "28 Jul 2026",
-    "status": "Upcoming",
-    "featured": false,
-    "url": "https://in.mpms.mufg.com/Initial_Offer/public-issues.html"
-  }
-  
+}
 ]
