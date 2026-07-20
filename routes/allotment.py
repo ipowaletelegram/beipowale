@@ -2,9 +2,6 @@ from flask import Blueprint, render_template, request, jsonify
 from services import kfin, mufg, bigshare
 import json
 import os
-from services import kfin
-from services import mufg
-from services import bigshare
 
 allotment_bp = Blueprint("allotment", __name__)
 
@@ -48,22 +45,18 @@ def check_allotment():
         })
 
     if registrar == "kfin":
+        result = kfin.check(company, search_type, value)
 
-    result = kfin.check(company, search_type, value)
+    elif registrar == "mufg":
+        result = mufg.check(company, search_type, value)
 
-elif registrar == "mufg":
+    elif registrar == "bigshare":
+        result = bigshare.check(company, search_type, value)
 
-    result = mufg.check(company, search_type, value)
+    else:
+        return jsonify({
+            "success": False,
+            "message": "Registrar not supported."
+        })
 
-elif registrar == "bigshare":
-
-    result = bigshare.check(company, search_type, value)
-
-else:
-
-    return jsonify({
-        "success": False,
-        "message": "Registrar not supported."
-    })
-
-return jsonify(result)
+    return jsonify(result)
