@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, request, jsonify
+from services import kfin, mufg, bigshare
 import json
 import os
 
@@ -33,14 +34,11 @@ def check_allotment():
     registrar = None
 
     for ipo in companies:
-
         if ipo["company"] == company:
-
             registrar = ipo["registrar"]
             break
 
     if registrar is None:
-
         return jsonify({
             "success": False,
             "message": "IPO Not Found"
