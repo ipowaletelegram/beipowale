@@ -54,17 +54,11 @@
 
         <div class="hero-badges">
 
-            <span>
-                📈 Mainboard IPO
-            </span>
+            <span>📈 Mainboard IPO</span>
 
-            <span>
-                ⚡ Fast Updates
-            </span>
+            <span>⚡ Fast Updates</span>
 
-            <span>
-                🏛 Official Registrars
-            </span>
+            <span>🏛 Official Registrars</span>
 
         </div>
 
@@ -77,17 +71,13 @@
 <section class="ticker-section">
 
     <div class="ticker-title">
-
         🔥 LIVE UPDATES
-
     </div>
 
     <div class="ticker">
 
         <div class="ticker-content" id="ticker">
-
             Loading latest IPO allotments...
-
         </div>
 
     </div>
@@ -113,15 +103,16 @@
 
     <div class="stats-grid">
 
+        <!-- Total -->
+
         <div class="stat-card">
 
             <div class="stat-icon">
                 📋
             </div>
 
-            <div class="stat-number"
-                 id="totalCount">
-                 0
+            <div class="stat-number" id="totalCount">
+                0
             </div>
 
             <div class="stat-text">
@@ -130,15 +121,16 @@
 
         </div>
 
+        <!-- Upcoming -->
+
         <div class="stat-card">
 
             <div class="stat-icon">
                 🟠
             </div>
 
-            <div class="stat-number"
-                 id="upcomingCount">
-                 0
+            <div class="stat-number" id="upcomingCount">
+                0
             </div>
 
             <div class="stat-text">
@@ -147,36 +139,38 @@
 
         </div>
 
+        <!-- Today's Allotment -->
+
         <div class="stat-card">
 
             <div class="stat-icon">
                 🟢
             </div>
 
-            <div class="stat-number"
-                 id="availableCount">
-                 0
+            <div class="stat-number" id="todayCount">
+                0
             </div>
 
             <div class="stat-text">
-                Available
+                Today's Allotment
             </div>
 
         </div>
 
+        <!-- Closed -->
+
         <div class="stat-card">
 
             <div class="stat-icon">
-                🏛
+                ⚫
             </div>
 
-            <div class="stat-number"
-                 id="registrarCount">
-                 0
+            <div class="stat-number" id="closedCount">
+                0
             </div>
 
             <div class="stat-text">
-                Registrars
+                Closed
             </div>
 
         </div>
@@ -184,52 +178,54 @@
     </div>
 
     <!-- FILTERS -->
-
     <div class="filters">
 
-        <button class="filter-btn active"
-                data-filter="all">
-            All IPOs
-        </button>
+    <button class="filter-btn active"
+            data-filter="all">
+        All IPOs
+    </button>
 
-        <button class="filter-btn"
-                data-filter="Upcoming">
-            Upcoming
-        </button>
+    <button class="filter-btn"
+            data-filter="Upcoming">
+        Upcoming
+    </button>
 
-        <button class="filter-btn"
-                data-filter="Available">
-            Available
-        </button>
+    <button class="filter-btn"
+            data-filter="Today's Allotment">
+        Today's Allotment
+    </button>
 
-        <button class="filter-btn"
-                data-filter="Closed">
-            Closed
-        </button>
+    <button class="filter-btn"
+            data-filter="Closed">
+        Closed
+    </button>
 
-    </div>
+</div>
 
-    <!-- IPO GRID -->
+<!-- IPO GRID -->
 
-    <div id="cards"
-         class="cards-grid">
+<div id="cards"
+     class="cards-grid">
 
-    </div>
+</div>
 
-        <!-- ================= EMPTY STATE ================= -->
+<!-- ================= EMPTY STATE ================= -->
 
-    <div id="emptyState" class="empty-state" style="display:none;">
+<div id="emptyState"
+     class="empty-state"
+     style="display:none;">
 
-        <img src="{{ url_for('static', filename='logo.jpg') }}" alt="BE.IPOWALE">
+    <img src="{{ url_for('static', filename='logo.jpg') }}"
+         alt="BE.IPOWALE">
 
-        <h2>No IPO Found</h2>
+    <h2>No IPO Found</h2>
 
-        <p>
-            We couldn't find any IPO matching your search.
-            Try another company name.
-        </p>
+    <p>
+        We couldn't find any IPO matching your search.
+        Try another company name.
+    </p>
 
-    </div>
+</div>
 
 </section>
 
@@ -375,7 +371,6 @@
     </div>
 
 </section>
-
 <!-- ================= FOOTER ================= -->
 
 <footer>
@@ -387,10 +382,8 @@
     <h3>BE.IPOWALE</h3>
 
     <p>
-
         Your trusted destination for Mainboard IPO Updates,
         GMP, Subscription, Allotment & Listing Information.
-
     </p>
 
     <div class="footer-links">
@@ -413,21 +406,21 @@
 
 </footer>
 
-<!-- Back To Top -->
+<!-- ================= BACK TO TOP ================= -->
 
 <button id="topBtn">
-
-⬆
-
+    ⬆
 </button>
 
-<!-- Loading -->
+<!-- ================= LOADING ================= -->
 
 <div id="loading">
 
-<div class="loader"></div>
+    <div class="loader"></div>
 
 </div>
+
+<!-- ================= SCRIPT ================= -->
 
 <script src="{{ url_for('static', filename='js/allotment.js') }}"></script>
 
