@@ -4,26 +4,6 @@
 
 let ipoData = [];
 let filteredData = [];
-function getStatus(date){
-
-    const today = new Date();
-
-    today.setHours(0,0,0,0);
-
-    const allotment = new Date(date);
-
-    allotment.setHours(0,0,0,0);
-
-    if(allotment.getTime() === today.getTime()){
-        return "Today's Allotment";
-    }
-
-    if(allotment > today){
-        return "Upcoming";
-    }
-
-    return "Closed";
-}
 
 const cards = document.getElementById("cards");
 const search = document.getElementById("search");
@@ -33,75 +13,201 @@ const emptyState = document.getElementById("emptyState");
 const topBtn = document.getElementById("topBtn");
 
 /* -----------------------------
+   Status
+------------------------------ */
+
+function getStatus(date){
+
+    const today = new Date();
+    today.setHours(0,0,0,0);
+
+    const allotment = new Date(date);
+    allotment.setHours(0,0,0,0);
+
+    if(allotment.getTime()===today.getTime()){
+        return "Today's Allotment";
+    }
+
+    if(allotment>today){
+        return "Upcoming";
+    }
+
+    return "Closed";
+}
+
+/* -----------------------------
+   Status Badge
+------------------------------ */
+
+function getStatusBadge(status){
+
+    switch(status){
+
+        case "Today's Allotment":
+            return "🟢 Today's Allotment";
+
+        case "Upcoming":
+            return "🟡 Upcoming";
+
+        default:
+            return "⚫ Closed";
+
+    }
+
+}
+
+/* -----------------------------
+   Countdown
+------------------------------ */
+
+function getCountdown(date){
+
+    const today = new Date();
+
+    today.setHours(0,0,0,0);
+
+    const allotment = new Date(date);
+
+    allotment.setHours(0,0,0,0);
+
+    const diff = Math.ceil(
+        (allotment-today)/(1000*60*60*24)
+    );
+
+    if(diff===0)
+        return "Today";
+
+    if(diff===1)
+        return "Tomorrow";
+
+    if(diff>1)
+        return diff+" Days Left";
+
+    return "Completed";
+
+}
+
+/* -----------------------------
+   Format Date
+------------------------------ */
+
+function formatDate(date){
+
+    return new Date(date).toLocaleDateString("en-IN",{
+
+        day:"2-digit",
+
+        month:"short",
+
+        year:"numeric"
+
+    });
+
+}
+
+/* -----------------------------
    Load JSON
 ------------------------------ */
 
-async function loadData() {
-    try {
+async function loadData(){
+
+    try{
 
         const response = await fetch("/static/data/allotment.json");
 
-        if (!response.ok) {
-            throw new Error("Failed to load JSON");
+        if(!response.ok){
+
+            throw new Error("Unable to load JSON");
+
         }
 
-       ipoData = await response.json();
+        ipoData = await response.json();
 
-        ipoData.forEach(ipo => {
-    ipo.status = getStatus(ipo.allotment);
-});
+        ipoData.forEach(ipo=>{
 
-ipoData.sort((a, b) => {
-    return new Date(a.allotment) - new Date(b.allotment);
-});
+            ipo.status = getStatus(ipo.allotment);
 
-filteredData = [...ipoData];
+        });
+
+        ipoData.sort((a,b)=>{
+
+            return new Date(a.allotment)-new Date(b.allotment);
+
+        });
+
+        filteredData = [...ipoData];
+
         updateDashboard();
+
         updateTicker();
+
         renderCards(filteredData);
 
-    } catch (error) {
+    }
+
+    catch(error){
 
         console.error(error);
 
-        cards.innerHTML = `
-            <div class="empty">
-                <h2>Unable to load IPO Data</h2>
-            </div>
+        cards.innerHTML=`
+
+        <div class="empty">
+
+            <h2>Unable to load IPO Data</h2>
+
+        </div>
+
         `;
 
-    } finally {
+    }
 
-        if (loading) {
-            loading.style.display = "none";
+    finally{
+
+        if(loading){
+
+            loading.style.display="none";
+
         }
 
     }
+
 }
 
 /* -----------------------------
    Dashboard
 ------------------------------ */
 
-function updateDashboard() {
+function updateDashboard(){
 
-    const total = document.getElementById("totalCount");
-    const upcoming = document.getElementById("upcomingCount");
-    const available = document.getElementById("availableCount");
-    const closed = document.getElementById("closedCount");
+    const total=document.getElementById("totalCount");
 
-    if (total)
-        total.innerText = ipoData.length;
+    const upcoming=document.getElementById("upcomingCount");
 
-    if (upcoming)
-        upcoming.innerText = ipoData.filter(i => i.status === "Upcoming").length;
+    const today=document.getElementById("todayCount");
 
-    if (available)
-        available.innerText = ipoData.filter(i => i.status === "Available").length;
+    const closed=document.getElementById("closedCount");
 
-    if (closed) {
-    closed.innerText = ipoData.filter(i => i.status === "Closed").length;
-}
+    if(total)
+
+        total.innerText=ipoData.length;
+
+    if(upcoming)
+
+        upcoming.innerText=
+
+        ipoData.filter(i=>i.status==="Upcoming").length;
+
+    if(today)
+
+        today.innerText=
+
+        ipoData.filter(i=>i.status==="Today's Allotment").length;
+
+    if(closed)
+
+        closed.innerText=
+
+        ipoData.filter(i=>i.status==="Closed").length;
 
 }
 
@@ -109,91 +215,123 @@ function updateDashboard() {
    Cards
 ------------------------------ */
 
-function renderCards(data) {
+function renderCards(data){
 
-    cards.innerHTML = "";
+    cards.innerHTML="";
 
-    if (data.length === 0) {
+    if(data.length===0){
 
-        emptyState.style.display = "block";
+        emptyState.style.display="block";
+
         return;
 
     }
 
-    emptyState.style.display = "none";
+    emptyState.style.display="none";
 
-    data.forEach(ipo => {
+    data.forEach(ipo=>{
 
-        cards.innerHTML += `
+        cards.innerHTML+=`
 
 <div class="card">
 
-    <div class="card-top"></div>
+<div class="card-top"></div>
 
-    ${ipo.status === "Available"
+${ipo.status==="Today's Allotment"
 
-? `<div class="ribbon">TODAY</div>`
+?`<div class="ribbon">TODAY'S ALLOTMENT</div>`
 
-: ""}
+:""}
 
+<div class="card-body">
 
-    <div class="card-body">
+<img
 
-        <img
-            src="${ipo.logo}"
-            alt="${ipo.company}"
-            class="card-logo"
-            onerror="this.src='/static/logo.jpg'">
+src="${ipo.logo}"
 
-        <h2>${ipo.company}</h2>
+alt="${ipo.company}"
 
-        <div class="info">
-            <span class="label">Registrar</span>
-            <span class="value">${ipo.registrar}</span>
-        </div>
+class="card-logo"
 
-        <div class="info">
-            <span class="label">Allotment</span>
-            <span class="value">${ipo.allotment}</span>
-        </div>
-<span class="status ${ipo.status.toLowerCase()}">
+onerror="this.src='/static/logo.jpg'">
 
-${
-ipo.status==="Available"
+<h2>${ipo.company}</h2>
 
-?"🟢 Available"
+<div class="info">
 
-:
+<span class="label">
 
-ipo.status==="Upcoming"
-
-?"🟡 Upcoming"
-
-:
-
-"⚫ Closed"
-
-}
+Registrar
 
 </span>
 
-        <a
-    href="${ipo.url}"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="btn">
+<span class="value">
+
+${ipo.registrar}
+
+</span>
+
+</div>
+
+<div class="info">
+
+<span class="label">
+
+Allotment
+
+</span>
+
+<span class="value">
+
+${formatDate(ipo.allotment)}
+
+</span>
+
+</div>
+
+<div class="info">
+
+<span class="label">
+
+Countdown
+
+</span>
+
+<span class="value">
+
+${getCountdown(ipo.allotment)}
+
+</span>
+
+</div>
+
+<span class="status ${ipo.status.toLowerCase().replace(/\\s+/g,'-').replace(/'/g,'')}">
+
+${getStatusBadge(ipo.status)}
+
+</span>
+
+<a
+
+href="${ipo.url}"
+
+target="_blank"
+
+rel="noopener noreferrer"
+
+class="btn">
 
 🏛 Check Official Allotment ↗
 
 </a>
 
-        <p class="official-note">
+<p class="official-note">
 
-            🛡️ Redirects to Official Registrar Website
+🛡️ Redirects to Official Registrar Website
 
-        </p>
+</p>
 
-    </div>
+</div>
 
 </div>
 
@@ -202,7 +340,6 @@ ipo.status==="Upcoming"
     });
 
 }
-
 /* -----------------------------
    Search
 ------------------------------ */
@@ -211,17 +348,16 @@ if (search) {
 
     search.addEventListener("keyup", function () {
 
-        const keyword = this.value.toLowerCase();
+        const keyword = this.value.trim().toLowerCase();
 
         filteredData = ipoData.filter(ipo =>
 
-    ipo.company.toLowerCase().includes(keyword)
+            ipo.company.toLowerCase().includes(keyword) ||
 
-    ||
+            ipo.registrar.toLowerCase().includes(keyword)
 
-    ipo.registrar.toLowerCase().includes(keyword)
+        );
 
-);
         renderCards(filteredData);
 
     });
@@ -237,20 +373,38 @@ document.querySelectorAll(".filter-btn").forEach(btn => {
     btn.addEventListener("click", () => {
 
         document.querySelectorAll(".filter-btn")
-            .forEach(b => b.classList.remove("active"));
+            .forEach(button => button.classList.remove("active"));
 
         btn.classList.add("active");
 
         const filter = btn.dataset.filter;
 
-        if (filter === "all") {
+        switch (filter) {
 
-            filteredData = [...ipoData];
+            case "all":
+                filteredData = [...ipoData];
+                break;
 
-        } else {
+            case "Today's Allotment":
+                filteredData = ipoData.filter(
+                    ipo => ipo.status === "Today's Allotment"
+                );
+                break;
 
-            filteredData =
-                ipoData.filter(i => i.status === filter);
+            case "Upcoming":
+                filteredData = ipoData.filter(
+                    ipo => ipo.status === "Upcoming"
+                );
+                break;
+
+            case "Closed":
+                filteredData = ipoData.filter(
+                    ipo => ipo.status === "Closed"
+                );
+                break;
+
+            default:
+                filteredData = [...ipoData];
 
         }
 
@@ -271,6 +425,7 @@ function updateTicker() {
     if (ipoData.length === 0) {
 
         ticker.innerHTML = "No IPO Available";
+
         return;
 
     }
@@ -279,8 +434,11 @@ function updateTicker() {
 
     ipoData.forEach(ipo => {
 
-        ticker.innerHTML +=
-            `🔥 ${ipo.company} (${ipo.status}) &nbsp;&nbsp;&nbsp;&nbsp;`;
+        ticker.innerHTML += `
+            🔥 ${ipo.company}
+            • ${ipo.status}
+            &nbsp;&nbsp;&nbsp;&nbsp;
+        `;
 
     });
 
@@ -311,8 +469,11 @@ if (topBtn) {
     topBtn.addEventListener("click", () => {
 
         window.scrollTo({
+
             top: 0,
+
             behavior: "smooth"
+
         });
 
     });
@@ -323,10 +484,14 @@ if (topBtn) {
    Auto Refresh
 ------------------------------ */
 
-setInterval(loadData, 300000);
+setInterval(() => {
+
+    loadData();
+
+}, 300000); // Refresh every 5 minutes
 
 /* -----------------------------
-   Start
+   Initial Load
 ------------------------------ */
 
 loadData();
