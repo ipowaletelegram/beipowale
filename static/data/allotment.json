@@ -15,5 +15,30 @@
     "allotment": "2026-07-20",
     "featured": false,
     "url": "https://ipostatus.kfintech.com/"
+},
+    {
+    "company": "Alpine Texworld  Ltd",
+    "logo": "/static/logos/alpine.png",
+    "registrar": "Kfin Technologies",
+    "allotment": "2026-07-17",
+    "featured": false,
+    "url": "https://ipostatus.kfintech.com/"
+},
+    {
+    "company": "Lohia Corp Ltd",
+    "logo": "/static/logos/lohiacorp.png",
+    "registrar": "MUFG",
+    "allotment": "2026-07-28",
+    "featured": false,
+    "url": "https://in.mpms.mufg.com/Initial_Offer/public-issues.html"
+},
+    {
+    "company": "Indo-MIM",
+    "logo": "/static/logos/indo.png",
+    "registrar": "MUFG",
+    "allotment": "2026-07-28",
+    "featured": false,
+    "url": "https://in.mpms.mufg.com/Initial_Offer/public-issues.html"
 }
+  
 ]
