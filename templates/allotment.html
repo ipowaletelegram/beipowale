@@ -34,10 +34,19 @@
 
             <select id="company" required>
 
-                <option value="">Select IPO</option>
+    <option value="">Select IPO</option>
 
-            </select>
+    {% for ipo in companies %}
 
+    <option value="{{ ipo.company }}">
+
+        {{ ipo.company }}
+
+    </option>
+
+    {% endfor %}
+
+</select>
             <label>Search By</label>
 
             <select id="search_type">
