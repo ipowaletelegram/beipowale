@@ -4,11 +4,10 @@
     "company": "Caliber Mining & Logistics Ltd",
     "logo": "/static/logos/caliber.png",
     "registrar": "Bigshare Services",
-    "allotment": "22 Jul 2026",
-    "status": "Upcoming",
+    "allotment": "2026-07-22",
     "featured": false,
     "url": "https://www.bigshareonline.com/ipo_allotment.html"
-  },
+},
    {
     "company": "SBI Funds Management Ltd",
     "logo": "/static/logos/sbi.png",
