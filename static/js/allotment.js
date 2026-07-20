@@ -4,6 +4,26 @@
 
 let ipoData = [];
 let filteredData = [];
+function getStatus(date){
+
+    const today = new Date();
+
+    today.setHours(0,0,0,0);
+
+    const allotment = new Date(date);
+
+    allotment.setHours(0,0,0,0);
+
+    if(allotment.getTime() === today.getTime()){
+        return "Available";
+    }
+
+    if(allotment > today){
+        return "Upcoming";
+    }
+
+    return "Closed";
+}
 
 const cards = document.getElementById("cards");
 const search = document.getElementById("search");
