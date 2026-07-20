@@ -16,61 +16,67 @@ const topBtn = document.getElementById("topBtn");
    Load JSON
 ------------------------------ */
 
-async function loadData(){
-
-    try{
+async function loadData() {
+    try {
 
         const response = await fetch("/static/data/allotment.json");
 
-        ipoData = await response.json();
+        if (!response.ok) {
+            throw new Error("Failed to load JSON");
+        }
 
+        ipoData = await response.json();
         filteredData = [...ipoData];
 
         updateDashboard();
-
         updateTicker();
-
         renderCards(filteredData);
 
-    }
-
-    catch(error){
+    } catch (error) {
 
         console.error(error);
 
-        cards.innerHTML =
-        "<h2>Unable to load IPO Data.</h2>";
+        cards.innerHTML = `
+            <div class="empty">
+                <h2>Unable to load IPO Data</h2>
+            </div>
+        `;
+
+    } finally {
+
+        if (loading) {
+            loading.style.display = "none";
+        }
 
     }
-
-    finally{
-
-        loading.style.display="none";
-
-    }
-
 }
 
 /* -----------------------------
    Dashboard
 ------------------------------ */
 
-function updateDashboard(){
+function updateDashboard() {
 
-    document.getElementById("totalCount").innerText =
-    ipoData.length;
+    const total = document.getElementById("totalCount");
+    const upcoming = document.getElementById("upcomingCount");
+    const available = document.getElementById("availableCount");
+    const registrar = document.getElementById("registrarCount");
 
-    document.getElementById("upcomingCount").innerText =
-    ipoData.filter(x=>x.status=="Upcoming").length;
+    if (total)
+        total.innerText = ipoData.length;
 
-    document.getElementById("availableCount").innerText =
-    ipoData.filter(x=>x.status=="Available").length;
+    if (upcoming)
+        upcoming.innerText = ipoData.filter(i => i.status === "Upcoming").length;
 
-    const registrars =
-    [...new Set(ipoData.map(x=>x.registrar))];
+    if (available)
+        available.innerText = ipoData.filter(i => i.status === "Available").length;
 
-    document.getElementById("registrarCount").innerText =
-    registrars.length;
+    if (registrar) {
+
+        registrar.innerText =
+            [...new Set(ipoData.map(i => i.registrar))].length;
+
+    }
 
 }
 
@@ -78,105 +84,70 @@ function updateDashboard(){
    Cards
 ------------------------------ */
 
-function renderCards(data){
+function renderCards(data) {
 
-    cards.innerHTML="";
+    cards.innerHTML = "";
 
-    if(data.length==0){
+    if (data.length === 0) {
 
-        emptyState.style.display="block";
-
+        emptyState.style.display = "block";
         return;
 
     }
 
-    emptyState.style.display="none";
+    emptyState.style.display = "none";
 
-    data.forEach(ipo=>{
+    data.forEach(ipo => {
 
         cards.innerHTML += `
 
 <div class="card">
 
-<div class="card-top"></div>
+    <div class="card-top"></div>
 
-${ipo.featured ? '<div class="ribbon">FEATURED</div>' : ''}
+    ${ipo.featured ? `<div class="ribbon">FEATURED</div>` : ""}
 
-<div class="card-body">
+    <div class="card-body">
 
-<img src="${ipo.logo}"
+        <img
+            src="${ipo.logo}"
+            alt="${ipo.company}"
+            class="card-logo"
+            onerror="this.src='/static/logo.jpg'">
 
-class="card-logo">
+        <h2>${ipo.company}</h2>
 
-<h2>${ipo.company}</h2>
+        <div class="info">
+            <span class="label">Registrar</span>
+            <span class="value">${ipo.registrar}</span>
+        </div>
 
-<div class="info">
+        <div class="info">
+            <span class="label">Allotment</span>
+            <span class="value">${ipo.allotment}</span>
+        </div>
 
-<span class="label">
+        <span class="status ${ipo.status.toLowerCase()}">
+            ${ipo.status}
+        </span>
 
-Registrar
+        <a
+            href="${ipo.url}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn">
 
-</span>
+            Check Allotment →
 
-<span class="value">
+        </a>
 
-${ipo.registrar}
+        <p class="official-note">
 
-</span>
+            🛡️ Redirects to Official Registrar Website
 
-</div>
+        </p>
 
-<div class="info">
-
-<span class="label">
-
-Allotment
-
-</span>
-
-<span class="value">
-
-${ipo.allotment}
-
-</span>
-
-</div>
-
-<div class="info">
-
-<span class="label">
-
-Listing
-
-</span>
-
-<span class="value">
-
-${ipo.listing}
-
-</span>
-
-</div>
-
-<span class="status ${ipo.status.toLowerCase()}">
-
-${ipo.status}
-
-</span>
-
-<a
-
-href="${ipo.url}"
-
-target="_blank"
-
-class="btn">
-
-Check Allotment →
-
-</a>
-
-</div>
+    </div>
 
 </div>
 
@@ -190,57 +161,51 @@ Check Allotment →
    Search
 ------------------------------ */
 
-search.addEventListener("keyup",()=>{
+if (search) {
 
-    const keyword =
+    search.addEventListener("keyup", function () {
 
-    search.value.toLowerCase();
+        const keyword = this.value.toLowerCase();
 
-    filteredData = ipoData.filter(ipo=>
+        filteredData = ipoData.filter(ipo =>
+            ipo.company.toLowerCase().includes(keyword)
+        );
 
-        ipo.company.toLowerCase().includes(keyword)
+        renderCards(filteredData);
 
-    );
+    });
 
-    renderCards(filteredData);
-
-});
+}
 
 /* -----------------------------
    Filters
 ------------------------------ */
 
-document.querySelectorAll(".filter-btn")
+document.querySelectorAll(".filter-btn").forEach(btn => {
 
-.forEach(btn=>{
+    btn.addEventListener("click", () => {
 
-btn.onclick=()=>{
+        document.querySelectorAll(".filter-btn")
+            .forEach(b => b.classList.remove("active"));
 
-document.querySelectorAll(".filter-btn")
+        btn.classList.add("active");
 
-.forEach(x=>x.classList.remove("active"));
+        const filter = btn.dataset.filter;
 
-btn.classList.add("active");
+        if (filter === "all") {
 
-const filter=btn.dataset.filter;
+            filteredData = [...ipoData];
 
-if(filter=="all"){
+        } else {
 
-filteredData=[...ipoData];
+            filteredData =
+                ipoData.filter(i => i.status === filter);
 
-}
+        }
 
-else{
+        renderCards(filteredData);
 
-filteredData=
-
-ipoData.filter(x=>x.status==filter);
-
-}
-
-renderCards(filteredData);
-
-}
+    });
 
 });
 
@@ -248,23 +213,23 @@ renderCards(filteredData);
    Live Ticker
 ------------------------------ */
 
-function updateTicker(){
+function updateTicker() {
 
-    if(ipoData.length==0){
+    if (!ticker) return;
 
-        ticker.innerHTML="No IPO Available";
+    if (ipoData.length === 0) {
 
+        ticker.innerHTML = "No IPO Available";
         return;
 
     }
 
-    ticker.innerHTML="";
+    ticker.innerHTML = "";
 
-    ipoData.forEach(ipo=>{
+    ipoData.forEach(ipo => {
 
         ticker.innerHTML +=
-
-`🔥 ${ipo.company} (${ipo.status}) &nbsp;&nbsp;&nbsp;&nbsp;`;
+            `🔥 ${ipo.company} (${ipo.status}) &nbsp;&nbsp;&nbsp;&nbsp;`;
 
     });
 
@@ -274,45 +239,40 @@ function updateTicker(){
    Back To Top
 ------------------------------ */
 
-window.onscroll=()=>{
+window.addEventListener("scroll", () => {
 
-if(window.scrollY>300){
+    if (!topBtn) return;
 
-topBtn.style.display="block";
+    if (window.scrollY > 300) {
 
-}
+        topBtn.style.display = "block";
 
-else{
+    } else {
 
-topBtn.style.display="none";
+        topBtn.style.display = "none";
 
-}
-
-}
-
-topBtn.onclick=()=>{
-
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
+    }
 
 });
+
+if (topBtn) {
+
+    topBtn.addEventListener("click", () => {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
 
 }
 
 /* -----------------------------
-   Auto Refresh JSON
-
-   Every 5 Minutes
+   Auto Refresh
 ------------------------------ */
 
-setInterval(()=>{
-
-loadData();
-
-},300000);
+setInterval(loadData, 300000);
 
 /* -----------------------------
    Start
