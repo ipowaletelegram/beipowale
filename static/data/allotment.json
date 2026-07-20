@@ -1,20 +1,52 @@
 [
   {
-    "company":"Xtranet Technologies Ltd",
-    "logo":"/static/logos/xtranet.png",
-    "registrar":"KFin Technologies",
-    "allotment":"28 Jul 2026",
-    "listing":"30 Jul 2026",
-    "status":"Upcoming",
-    "url":"https://ipostatus.kfintech.com/ipostatus"
+    "id": 1,
+    "featured": true,
+    "company": "Xtranet Technologies Ltd",
+    "logo": "/static/logos/xtranet.png",
+    "registrar": "KFin Technologies",
+    "registrar_logo": "/static/logos/kfin.png",
+    "category": "Mainboard",
+    "allotment": "28 Jul 2026",
+    "listing": "30 Jul 2026",
+    "status": "Upcoming",
+    "gmp": "₹25 (20%)",
+    "issue_price": "₹127",
+    "lot_size": "110 Shares",
+    "url": "https://ipostatus.kfintech.com/ipostatus"
   },
+
   {
-    "company":"Caliber Mining & Logistics Ltd",
-    "logo":"/static/logos/caliber.png",
-    "registrar":"Bigshare Services",
-    "allotment":"24 Jul 2026",
-    "listing":"27 Jul 2026",
-    "status":"Available",
-    "url":"https://ipo.bigshareonline.com/IPO_Status.html"
+    "id": 2,
+    "featured": false,
+    "company": "Caliber Mining & Logistics Ltd",
+    "logo": "/static/logos/caliber.png",
+    "registrar": "Bigshare Services",
+    "registrar_logo": "/static/logos/bigshare.png",
+    "category": "Mainboard",
+    "allotment": "24 Jul 2026",
+    "listing": "27 Jul 2026",
+    "status": "Available",
+    "gmp": "₹115 (27%)",
+    "issue_price": "₹424",
+    "lot_size": "35 Shares",
+    "url": "https://ipo.bigshareonline.com/IPO_Status.html"
+  },
+
+  {
+    "id": 3,
+    "featured": false,
+    "company": "Lohia Corp Ltd",
+    "logo": "/static/logos/lohia.png",
+    "registrar": "MUFG Intime",
+    "registrar_logo": "/static/logos/mufg.png",
+    "category": "Mainboard",
+    "allotment": "30 Jul 2026",
+    "listing": "01 Aug 2026",
+    "status": "Upcoming",
+    "gmp": "₹20 (5%)",
+    "issue_price": "₹425",
+    "lot_size": "35 Shares",
+    "url": "https://in.mpms.mufg.com/Initial_Offer/public-issues.html"
   }
 ]
