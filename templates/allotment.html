@@ -215,3 +215,222 @@
          class="cards-grid">
 
     </div>
+
+        <!-- ================= EMPTY STATE ================= -->
+
+    <div id="emptyState" class="empty-state" style="display:none;">
+
+        <img src="{{ url_for('static', filename='logo.jpg') }}" alt="BE.IPOWALE">
+
+        <h2>No IPO Found</h2>
+
+        <p>
+            We couldn't find any IPO matching your search.
+            Try another company name.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= HOW TO CHECK ================= -->
+
+<section class="how-section">
+
+    <div class="section-title">
+
+        <h2>How to Check IPO Allotment?</h2>
+
+        <p>
+            Follow these simple steps to check your IPO allotment status.
+        </p>
+
+    </div>
+
+    <div class="steps">
+
+        <div class="step">
+
+            <div class="step-number">
+                1
+            </div>
+
+            <h3>Select IPO</h3>
+
+            <p>
+                Choose your IPO from the list and click
+                <strong>Check Allotment</strong>.
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <div class="step-number">
+                2
+            </div>
+
+            <h3>Official Registrar</h3>
+
+            <p>
+                You will be redirected to the official registrar website.
+            </p>
+
+        </div>
+
+        <div class="step">
+
+            <div class="step-number">
+                3
+            </div>
+
+            <h3>Enter Details</h3>
+
+            <p>
+                Enter PAN, Application Number or DP ID and submit.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= REGISTRARS ================= -->
+
+<section class="registrars">
+
+    <div class="section-title">
+
+        <h2>Official Registrars</h2>
+
+        <p>
+            BE.IPOWALE redirects only to official registrar websites.
+        </p>
+
+    </div>
+
+    <div class="registrar-grid">
+
+        <a href="https://ipostatus.kfintech.com/ipostatus"
+           target="_blank"
+           class="registrar-card">
+
+            <h3>KFin Technologies</h3>
+
+            <span>Official IPO Registrar</span>
+
+        </a>
+
+        <a href="https://in.mpms.mufg.com/Initial_Offer/public-issues.html"
+           target="_blank"
+           class="registrar-card">
+
+            <h3>MUFG Intime</h3>
+
+            <span>Official IPO Registrar</span>
+
+        </a>
+
+        <a href="https://ipo.bigshareonline.com/IPO_Status.html"
+           target="_blank"
+           class="registrar-card">
+
+            <h3>Bigshare Services</h3>
+
+            <span>Official IPO Registrar</span>
+
+        </a>
+
+        <a href="https://linkintime.co.in/initial_offer/public-issues.html"
+           target="_blank"
+           class="registrar-card">
+
+            <h3>Link Intime</h3>
+
+            <span>Official IPO Registrar</span>
+
+        </a>
+
+        <a href="https://www.skylinerta.com/ipo.php"
+           target="_blank"
+           class="registrar-card">
+
+            <h3>Skyline Financial</h3>
+
+            <span>Official IPO Registrar</span>
+
+        </a>
+
+        <a href="https://www.purvashare.com/"
+           target="_blank"
+           class="registrar-card">
+
+            <h3>Purva Sharegistry</h3>
+
+            <span>Official IPO Registrar</span>
+
+        </a>
+
+    </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <img src="{{ url_for('static', filename='logo.jpg') }}"
+         class="footer-logo"
+         alt="BE.IPOWALE">
+
+    <h3>BE.IPOWALE</h3>
+
+    <p>
+
+        Your trusted destination for Mainboard IPO Updates,
+        GMP, Subscription, Allotment & Listing Information.
+
+    </p>
+
+    <div class="footer-links">
+
+        <a href="/">Home</a>
+
+        <a href="/ipo-calendar">IPO Calendar</a>
+
+        <a href="/allotment">Allotment</a>
+
+        <a href="/contact">Contact</a>
+
+    </div>
+
+    <div class="copyright">
+
+        © 2026 BE.IPOWALE. All Rights Reserved.
+
+    </div>
+
+</footer>
+
+<!-- Back To Top -->
+
+<button id="topBtn">
+
+⬆
+
+</button>
+
+<!-- Loading -->
+
+<div id="loading">
+
+<div class="loader"></div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/allotment.js') }}"></script>
+
+</body>
+
+</html>
