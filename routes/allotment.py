@@ -2,6 +2,9 @@ from flask import Blueprint, render_template, request, jsonify
 from services import kfin, mufg, bigshare
 import json
 import os
+from services import kfin
+from services import mufg
+from services import bigshare
 
 allotment_bp = Blueprint("allotment", __name__)
 
