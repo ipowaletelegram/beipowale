@@ -47,6 +47,14 @@
     "allotment": "2026-07-27",
     "featured": false,
     "url": "https://ipostatus.kfintech.com/"
+},
+  {
+    "company": "Manipal Health Enterprises Ltd",
+    "logo": "/static/logos/manipal.png",
+    "registrar": "Kfin Technologies",
+    "allotment": "2026-08-03",
+    "featured": false,
+    "url": "https://ipostatus.kfintech.com/"
 }
   
 ]
