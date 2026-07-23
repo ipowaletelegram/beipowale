@@ -49,6 +49,14 @@
     "url": "https://ipostatus.kfintech.com/"
 },
   {
+    "company": "Xtranet Technologies Ltd",
+    "logo": "/static/logos/xtranet.png",
+    "registrar": "Kfin Technologies",
+    "allotment": "2026-08-28",
+    "featured": false,
+    "url": "https://ipostatus.kfintech.com/"
+},
+  {
     "company": "Manipal Health Enterprises Ltd",
     "logo": "/static/logos/manipal.png",
     "registrar": "Kfin Technologies",
