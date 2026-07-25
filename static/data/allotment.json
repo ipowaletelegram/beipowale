@@ -63,6 +63,14 @@
     "allotment": "2026-08-03",
     "featured": false,
     "url": "https://ipostatus.kfintech.com/"
+},
+   {
+    "company": "Juniper Green Energy Ltd",
+    "logo": "/static/logos/juniper.png",
+    "registrar": "Kfin Technologies",
+    "allotment": "2026-08-04",
+    "featured": false,
+    "url": "https://ipostatus.kfintech.com/"
 }
   
 ]
