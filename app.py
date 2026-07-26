@@ -30,27 +30,37 @@ def ipo_calendar():
     india = pytz.timezone("Asia/Kolkata")
     now = datetime.now(india)
 
-    # Calendar sirf 6 AM ke baad dikhega
+    # Show only after 6 AM
     show_calendar = now.hour >= 6
 
-    today = now.strftime("%Y-%m-%d")
+    calendar_folder = os.path.join(app.static_folder, "calendar")
 
-    image = f"calendar/{today}.jpg"
+    latest_image = None
 
-    image_path = os.path.join(
-        app.static_folder,
-        "calendar",
-        f"{today}.jpg"
-    )
+    if os.path.exists(calendar_folder):
 
-    image_exists = os.path.exists(image_path)
+        images = []
+
+        for file in os.listdir(calendar_folder):
+
+            if file.lower().endswith((".jpg", ".jpeg", ".png", ".webp")):
+
+                full_path = os.path.join(calendar_folder, file)
+
+                images.append(
+                    (
+                        file,
+                        os.path.getmtime(full_path)
+                    )
+                )
+
+        if images:
+            latest_image = max(images, key=lambda x: x[1])[0]
 
     return render_template(
         "ipo-calendar.html",
         show_calendar=show_calendar,
-        image_exists=image_exists,
-        image=image,
-        today=today,
+        latest_image=latest_image,
         current_time=now.strftime("%d %B %Y %I:%M %p")
     )
 
