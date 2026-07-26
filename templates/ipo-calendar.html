@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPO Calendar | BE.IPOWALE</title>
+
+    <style>
+        body{
+            margin:0;
+            background:#111;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            min-height:100vh;
+        }
+
+        img{
+            width:100%;
+            max-width:700px;
+            border-radius:20px;
+            box-shadow:0 0 30px rgba(255,215,0,.25);
+        }
+    </style>
+</head>
+
+<body>
+
+<img src="{{ url_for('static', filename='calendar/latest.webp') }}?v={{ timestamp }}" alt="IPO Calendar">
+
+</body>
+</html>
