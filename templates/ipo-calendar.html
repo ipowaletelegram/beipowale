@@ -6,13 +6,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>IPO Calendar | BE.IPOWALE </title>
+<title>BE.IPOWALE | IPO Calendar</title>
+
+<meta name="description" content="Latest Mainboard IPO Calendar by BE.IPOWALE">
+<meta name="theme-color" content="#0b1220">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -23,26 +25,82 @@ box-sizing:border-box;
 font-family:'Poppins',sans-serif;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
 
 background:
-linear-gradient(135deg,#08111f,#101828,#0b1220);
+radial-gradient(circle at top,#182848 0%,#0b1220 40%,#05070d 100%);
 
 color:white;
 
 min-height:100vh;
 
+overflow-x:hidden;
+
+}
+
+/* Background Glow */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+top:-250px;
+left:-250px;
+
+width:500px;
+height:500px;
+
+background:#FFD70022;
+
+border-radius:50%;
+
+filter:blur(120px);
+
+z-index:-2;
+
+}
+
+body::after{
+
+content:"";
+
+position:fixed;
+
+right:-250px;
+bottom:-250px;
+
+width:500px;
+height:500px;
+
+background:#2979ff22;
+
+border-radius:50%;
+
+filter:blur(120px);
+
+z-index:-2;
+
 }
 
 .container{
 
-max-width:1150px;
+width:100%;
+
+max-width:1180px;
 
 margin:auto;
 
-padding:30px;
+padding:24px;
 
 }
+
+/* Header */
 
 header{
 
@@ -52,9 +110,21 @@ justify-content:space-between;
 
 align-items:center;
 
-margin-bottom:35px;
+padding:18px 24px;
+
+border-radius:18px;
+
+background:rgba(255,255,255,.05);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.08);
+
+margin-bottom:25px;
 
 }
+
+/* Logo */
 
 .logo{
 
@@ -68,43 +138,49 @@ gap:15px;
 
 .logo img{
 
-width:65px;
+width:62px;
 
-height:65px;
+height:62px;
 
 border-radius:50%;
 
 border:2px solid #FFD700;
 
-box-shadow:0 0 18px rgba(255,215,0,.45);
+box-shadow:0 0 25px rgba(255,215,0,.45);
+
+object-fit:cover;
 
 }
 
 .brand h1{
 
-font-size:32px;
+font-size:30px;
+
+font-weight:800;
 
 color:#FFD700;
 
-font-weight:700;
+letter-spacing:1px;
 
 }
 
 .brand p{
 
-color:#bdbdbd;
+font-size:14px;
 
-font-size:15px;
-
-margin-top:2px;
+color:#b9c2d3;
 
 }
+
+/* Navigation */
 
 nav{
 
 display:flex;
 
-gap:15px;
+gap:12px;
+
+flex-wrap:wrap;
 
 }
 
@@ -112,17 +188,17 @@ nav a{
 
 text-decoration:none;
 
-padding:12px 24px;
+padding:11px 22px;
 
-border-radius:10px;
+border-radius:12px;
 
-background:#1d2433;
+background:#172132;
 
 color:white;
 
-transition:.3s;
+font-weight:600;
 
-font-weight:500;
+transition:.3s;
 
 }
 
@@ -132,21 +208,25 @@ background:#FFD700;
 
 color:#111;
 
+transform:translateY(-2px);
+
 }
+
+/* Hero */
 
 .hero{
 
-background:rgba(255,255,255,.05);
-
-backdrop-filter:blur(18px);
+background:rgba(255,255,255,.06);
 
 border:1px solid rgba(255,255,255,.08);
 
-padding:28px;
+backdrop-filter:blur(20px);
 
-border-radius:22px;
+padding:30px;
 
-box-shadow:0 15px 40px rgba(0,0,0,.35);
+border-radius:24px;
+
+box-shadow:0 25px 60px rgba(0,0,0,.35);
 
 margin-bottom:25px;
 
@@ -168,9 +248,11 @@ gap:20px;
 
 .page-title{
 
-font-size:34px;
+font-size:36px;
 
-font-weight:700;
+font-weight:800;
+
+line-height:1.3;
 
 }
 
@@ -180,21 +262,41 @@ color:#FFD700;
 
 }
 
-.badge{
+.subtitle{
 
-display:inline-block;
+margin-top:8px;
 
-padding:8px 18px;
+color:#bfc9d8;
 
-border-radius:30px;
+font-size:16px;
+
+}
+
+/* Status Badge */
+
+.status{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:8px;
+
+padding:10px 18px;
+
+border-radius:40px;
 
 background:#16C784;
 
+font-weight:700;
+
 font-size:15px;
 
-font-weight:600;
+box-shadow:0 0 20px rgba(22,199,132,.35);
 
 }
+
+/* Info Cards */
 
 .info-grid{
 
@@ -210,15 +312,15 @@ margin-top:28px;
 
 .info-card{
 
-background:#182233;
+background:#111b2b;
 
-padding:20px;
+padding:22px;
 
-border-radius:16px;
+border-radius:18px;
+
+border:1px solid rgba(255,255,255,.06);
 
 text-align:center;
-
-border:1px solid rgba(255,255,255,.08);
 
 transition:.3s;
 
@@ -226,15 +328,19 @@ transition:.3s;
 
 .info-card:hover{
 
-transform:translateY(-4px);
+transform:translateY(-6px);
+
+box-shadow:0 15px 30px rgba(0,0,0,.35);
 
 }
 
-.info-card h3{
+.info-card h4{
 
 font-size:14px;
 
-color:#999;
+font-weight:500;
+
+color:#9ba9bd;
 
 margin-bottom:10px;
 
@@ -246,31 +352,23 @@ font-size:24px;
 
 color:#FFD700;
 
+font-weight:700;
+
 }
+
+/* Calendar Card */
 
 .calendar-card{
 
 background:rgba(255,255,255,.05);
 
-padding:25px;
+border-radius:24px;
 
-border-radius:22px;
+padding:22px;
 
 border:1px solid rgba(255,255,255,.08);
 
-box-shadow:0 15px 40px rgba(0,0,0,.35);
-
-margin-top:25px;
-
-text-align:center;
-
-}
-
-.calendar-card h2{
-
-margin-bottom:20px;
-
-font-size:28px;
+box-shadow:0 20px 50px rgba(0,0,0,.35);
 
 }
 
@@ -278,25 +376,37 @@ font-size:28px;
 
 width:100%;
 
-border-radius:16px;
-
 display:block;
+
+border-radius:18px;
+
+transition:.35s;
 
 }
 
+.calendar-card img:hover{
+
+transform:scale(1.01);
+
+}
+
+/* Message Box */
+
 .message{
 
-padding:80px 30px;
+padding:90px 25px;
+
+text-align:center;
 
 }
 
 .message h2{
 
-font-size:32px;
+font-size:34px;
 
 color:#FFD700;
 
-margin-bottom:15px;
+margin-bottom:18px;
 
 }
 
@@ -304,11 +414,13 @@ margin-bottom:15px;
 
 font-size:18px;
 
-color:#d0d0d0;
-
 line-height:1.8;
 
+color:#d4d4d4;
+
 }
+
+/* Mobile */
 
 @media(max-width:900px){
 
@@ -316,7 +428,21 @@ header{
 
 flex-direction:column;
 
-gap:25px;
+gap:18px;
+
+padding:18px;
+
+}
+
+.brand h1{
+
+font-size:24px;
+
+}
+
+.page-title{
+
+font-size:28px;
 
 }
 
@@ -326,9 +452,29 @@ grid-template-columns:1fr;
 
 }
 
-.page-title{
+nav{
 
-font-size:28px;
+justify-content:center;
+
+width:100%;
+
+}
+
+nav a{
+
+flex:1;
+
+text-align:center;
+
+padding:12px;
+
+}
+
+.logo{
+
+flex-direction:column;
+
+text-align:center;
 
 }
 
@@ -341,126 +487,128 @@ font-size:28px;
 <body>
 
 <div class="container">
+    <header>
 
-<header>
+    <div class="logo">
 
-<div class="logo">
+        <img src="{{ url_for('static', filename='logo.jpg') }}" alt="BE.IPOWALE Logo">
 
-<img src="{{ url_for('static', filename='logo.jpg') }}" alt="Logo">
+        <div class="brand">
 
-<div class="brand">
+            <h1>BE.IPOWALE</h1>
 
-<h1>BE.IPOWALE</h1>
+            <p>Mainboard IPO Updates</p>
 
-<p>Mainboard IPO Updates</p>
-
-</div>
-
-</div>
-
-<nav>
-
-<a href="/">Home</a>
-
-<a href="/allotment">Allotment</a>
-
-<a href="/contact">Contact</a>
-
-</nav>
-
-</header>
-
-<div class="hero">
-
-<div class="hero-top">
-
-<div>
-
-<div class="page-title">
-
-📅 <span>IPO Calendar</span>
-
-</div>
-
-</div>
-
-<div class="badge">
-
-🟢 LIVE
-
-</div>
-
-</div>
-
-<div class="info-grid">
-
-<div class="info-card">
-
-<h3>Today's Date</h3>
-
-<h2>{{ current_time.split(' ')[0] }} {{ current_time.split(' ')[1] }} {{ current_time.split(' ')[2] }}</h2>
-
-</div>
-
-<div class="info-card">
-
-<h3>Status</h3>
-
-<h2>Available</h2>
-
-</div>
-
-<div class="info-card">
-
-<h3>Powered By</h3>
-
-<h2>BE.IPOWALE</h2>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="calendar-card">
-    {% if show_calendar %}
-
-    {% if latest_image %}
-
-    <div style="margin-bottom:25px;">
-
-        <img
-        src="{{ url_for('static', filename='calendar/' + latest_image) }}?v={{ current_time }}"
-        alt="IPO Calendar">
+        </div>
 
     </div>
 
-    <div style="display:flex;justify-content:center;gap:15px;flex-wrap:wrap;">
+    <nav>
 
-        <a href="/"
-        style="
-        background:#FFD700;
-        color:#111;
-        text-decoration:none;
-        padding:14px 26px;
-        border-radius:10px;
-        font-weight:600;">
-        🏠 Home
-        </a>
+        <a href="/">🏠 Home</a>
 
-        <button
-        onclick="location.reload();"
+        <a href="/allotment">📋 Allotment</a>
+
+        <a href="/blog">📰 Blog</a>
+
+        <a href="/contact">📞 Contact</a>
+
+    </nav>
+
+</header>
+
+
+<section class="hero">
+
+    <div class="hero-top">
+
+        <div>
+
+            <div class="page-title">
+
+                📅 <span>IPO Calendar</span>
+
+            </div>
+
+            <div class="subtitle">
+
+                Today's Mainboard IPO Calendar by BE.IPOWALE
+
+            </div>
+
+        </div>
+
+        <div class="status">
+
+            🟢 LIVE
+
+        </div>
+
+    </div>
+
+
+    <div class="info-grid">
+
+        <div class="info-card">
+
+            <h4>📅 Today's Date</h4>
+
+            <h2>{{ current_time.split(' AM')[0].split(' PM')[0] }}</h2>
+
+        </div>
+
+        <div class="info-card">
+
+            <h4>📈 Market</h4>
+
+            <h2>Mainboard IPO</h2>
+
+        </div>
+
+        <div class="info-card">
+
+            <h4>⚡ Powered By</h4>
+
+            <h2>BE.IPOWALE</h2>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<div class="calendar-card">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;margin-bottom:25px;">
+
+    <div>
+
+        <h2 style="font-size:28px;font-weight:700;color:#FFD700;">
+            📅 Today's IPO Calendar
+        </h2>
+
+        <p style="color:#bfc9d8;margin-top:6px;">
+            Updated automatically every minute
+        </p>
+
+    </div>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+
+        <button onclick="location.reload()"
         style="
         background:#16C784;
         color:white;
         border:none;
-        padding:14px 26px;
-        border-radius:10px;
+        padding:12px 22px;
+        border-radius:12px;
         cursor:pointer;
-        font-size:16px;
-        font-weight:600;">
+        font-weight:600;
+        transition:.3s;">
         🔄 Refresh
         </button>
+
+        {% if latest_image %}
 
         <a
         href="{{ url_for('static', filename='calendar/' + latest_image) }}"
@@ -469,29 +617,110 @@ font-size:28px;
         background:#2F81F7;
         color:white;
         text-decoration:none;
-        padding:14px 26px;
-        border-radius:10px;
+        padding:12px 22px;
+        border-radius:12px;
         font-weight:600;">
         📥 Download
         </a>
 
+        {% endif %}
+
+    </div>
+
+</div>
+
+
+{% if show_calendar %}
+
+    {% if latest_image %}
+
+    <div style="
+    position:relative;
+    overflow:hidden;
+    border-radius:22px;
+    background:#0f172a;
+    border:1px solid rgba(255,255,255,.08);
+    ">
+
+        <img
+        src="{{ url_for('static', filename='calendar/' + latest_image) }}?v={{ current_time }}"
+        alt="IPO Calendar"
+        style="
+        width:100%;
+        display:block;
+        border-radius:20px;
+        transition:0.35s;
+        cursor:pointer;"
+        onclick="window.open(this.src,'_blank')">
+
+        <div style="
+        position:absolute;
+        top:15px;
+        right:15px;
+        background:rgba(0,0,0,.65);
+        color:#FFD700;
+        padding:8px 15px;
+        border-radius:30px;
+        font-size:14px;
+        font-weight:600;">
+
+            BE.IPOWALE
+
+        </div>
+
     </div>
 
     <div style="
-    margin-top:25px;
-    color:#bdbdbd;
-    font-size:15px;">
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    margin-top:20px;
+    gap:12px;">
 
-        Last Updated :
-        <strong>{{ current_time }}</strong>
+        <div style="color:#bfc9d8;">
+
+            🕒 Last Updated :
+            <strong>{{ current_time }}</strong>
+
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+
+            <a href="/"
+            style="
+            text-decoration:none;
+            background:#FFD700;
+            color:#111;
+            padding:11px 18px;
+            border-radius:10px;
+            font-weight:600;">
+            🏠 Home
+            </a>
+
+            <button
+            onclick="navigator.share ? navigator.share({title:'BE.IPOWALE IPO Calendar',url:window.location.href}) : alert('Share not supported');"
+            style="
+            background:#7C3AED;
+            color:white;
+            border:none;
+            padding:11px 18px;
+            border-radius:10px;
+            cursor:pointer;
+            font-weight:600;">
+            📤 Share
+            </button>
+
+        </div>
 
     </div>
+        {% else %}
 
-    {% else %}
+    <!-- Upload Pending -->
 
     <div class="message">
 
-        <div style="font-size:65px;margin-bottom:20px;">
+        <div style="font-size:75px;margin-bottom:20px;">
             📤
         </div>
 
@@ -499,13 +728,26 @@ font-size:28px;
 
         <p>
 
-        Today's IPO Calendar is currently being uploaded.
+            Today's IPO Calendar is currently being uploaded.
 
-        <br><br>
+            <br><br>
 
-        Please check again after a few minutes.
+            Please check again in a few minutes.
 
         </p>
+
+        <div style="
+        margin-top:30px;
+        display:inline-block;
+        padding:12px 24px;
+        border-radius:40px;
+        background:#FFB547;
+        color:#111;
+        font-weight:700;">
+
+            Upload in Progress...
+
+        </div>
 
     </div>
 
@@ -513,160 +755,363 @@ font-size:28px;
 
 {% else %}
 
+<!-- Before 6 AM -->
+
 <div class="message">
 
-    <div style="font-size:70px;margin-bottom:20px;">
-        ⏳
+    <div style="font-size:80px;margin-bottom:25px;">
+        🌅
     </div>
 
-    <h2>Today's Calendar</h2>
+    <h2>Today's IPO Calendar</h2>
 
     <p>
 
-    Today's IPO Calendar
+        Today's IPO Calendar
 
-    <br><br>
+        <br><br>
 
-    will become available after
+        will be available after
 
-    <br><br>
+        <br><br>
 
-    <span style="color:#FFD700;font-size:28px;font-weight:700;">
+        <span style="
+        color:#FFD700;
+        font-size:32px;
+        font-weight:700;">
 
-    06:00 AM IST
+        06:00 AM IST
 
-    </span>
-
-    <br><br>
-
-    Please visit again later.
+        </span>
 
     </p>
+
+    <div style="
+    margin-top:35px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;">
+
+        <div style="
+        background:#111b2b;
+        padding:18px;
+        border-radius:15px;
+        border:1px solid rgba(255,255,255,.08);">
+
+            <h4 style="color:#9ba9bd;margin-bottom:8px;">
+                📅 Status
+            </h4>
+
+            <strong style="color:#FFD700;">
+                Hidden
+            </strong>
+
+        </div>
+
+        <div style="
+        background:#111b2b;
+        padding:18px;
+        border-radius:15px;
+        border:1px solid rgba(255,255,255,.08);">
+
+            <h4 style="color:#9ba9bd;margin-bottom:8px;">
+                🕒 Available
+            </h4>
+
+            <strong style="color:#16C784;">
+                06:00 AM IST
+            </strong>
+
+        </div>
+
+    </div>
 
 </div>
 
 {% endif %}
 
 </div>
+
+<!-- Quick Actions -->
+
+<div style="
+margin-top:25px;
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;">
+
+    <a href="/"
+    style="
+    text-decoration:none;
+    background:#FFD700;
+    color:#111;
+    padding:14px 24px;
+    border-radius:12px;
+    font-weight:600;">
+    🏠 Home
+    </a>
+
+    <button
+    onclick="location.reload()"
+    style="
+    background:#16C784;
+    color:white;
+    border:none;
+    padding:14px 24px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:600;">
+    🔄 Refresh
+    </button>
+
+</div>
 <footer style="
-margin-top:40px;
-padding:30px 20px;
+margin-top:35px;
 background:rgba(255,255,255,.05);
-backdrop-filter:blur(15px);
+backdrop-filter:blur(18px);
 border:1px solid rgba(255,255,255,.08);
-border-radius:20px;
-text-align:center;
+border-radius:24px;
+padding:30px;
 ">
 
-    <h2 style="color:#FFD700;margin-bottom:10px;">
+<div style="
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+align-items:center;">
+
+    <!-- Branding -->
+
+    <div>
+
+        <h2 style="
+        color:#FFD700;
+        margin-bottom:10px;
+        font-size:30px;">
+
         BE.IPOWALE
-    </h2>
 
-    <p style="color:#cccccc;margin-bottom:20px;">
-        Daily Mainboard IPO Updates, GMP, Allotment & IPO Calendar
-    </p>
+        </h2>
 
-    <div style="
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    flex-wrap:wrap;
-    margin-bottom:20px;">
+        <p style="
+        color:#bfc9d8;
+        line-height:1.8;">
 
-        <a href="/"
-        style="
-        text-decoration:none;
-        background:#FFD700;
-        color:#111;
-        padding:12px 22px;
-        border-radius:10px;
-        font-weight:600;">
-        🏠 Home
-        </a>
+        India's Premium Mainboard IPO Platform
 
-        <a href="/allotment"
-        style="
-        text-decoration:none;
-        background:#16C784;
-        color:white;
-        padding:12px 22px;
-        border-radius:10px;
-        font-weight:600;">
-        📋 Allotment
-        </a>
+        <br>
 
-        <a href="/contact"
-        style="
-        text-decoration:none;
-        background:#2F81F7;
-        color:white;
-        padding:12px 22px;
-        border-radius:10px;
-        font-weight:600;">
-        📞 Contact
-        </a>
+        IPO Calendar • GMP • Allotment • Subscription
+
+        </p>
 
     </div>
 
-    <div style="margin-bottom:20px;">
 
-        <a href="https://instagram.com/be.ipowale"
+    <!-- Social -->
+
+    <div>
+
+        <h3 style="margin-bottom:15px;">
+        Follow Us
+        </h3>
+
+        <div style="
+        display:flex;
+        gap:12px;
+        flex-wrap:wrap;">
+
+            <a
+            href="https://instagram.com/be.ipowale"
+            target="_blank"
+            style="
+            text-decoration:none;
+            background:#E1306C;
+            color:white;
+            padding:12px 18px;
+            border-radius:12px;
+            font-weight:600;">
+
+            📸 Instagram
+
+            </a>
+
+            <a
+            href="https://t.me/BE_IPOWALE"
+            target="_blank"
+            style="
+            text-decoration:none;
+            background:#229ED9;
+            color:white;
+            padding:12px 18px;
+            border-radius:12px;
+            font-weight:600;">
+
+            📢 Telegram
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- Website -->
+
+    <div>
+
+        <h3 style="margin-bottom:15px;">
+        Website
+        </h3>
+
+        <a
+        href="https://beipowale.onrender.com"
         target="_blank"
         style="
         color:#FFD700;
         text-decoration:none;
-        margin-right:20px;
-        font-weight:600;">
-        📸 Instagram
+        font-size:17px;">
+
+        🌐 beipowale.onrender.com
+
         </a>
 
-        <a href="https://t.me/BE_IPOWALE"
-        target="_blank"
-        style="
-        color:#FFD700;
-        text-decoration:none;
-        font-weight:600;">
-        📢 Telegram
-        </a>
+        <p style="
+        color:#888;
+        margin-top:15px;">
+
+        Last Updated
+
+        <br>
+
+        <strong>{{ current_time }}</strong>
+
+        </p>
 
     </div>
 
-    <p style="color:#888;font-size:14px;">
-        Last Updated : <strong>{{ current_time }}</strong>
-    </p>
+</div>
 
-    <p style="color:#666;font-size:13px;margin-top:10px;">
-        © {{ current_time.split(' ')[2] }} BE.IPOWALE. All Rights Reserved.
-    </p>
+<hr style="
+margin:30px 0;
+border:none;
+height:1px;
+background:rgba(255,255,255,.08);">
+
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:15px;">
+
+<p style="color:#999;">
+
+© {{ current_time.split(' ')[2] }}
+BE.IPOWALE
+
+All Rights Reserved.
+
+</p>
+
+<p style="color:#666;">
+
+Made with ❤️ for IPO Investors
+
+</p>
+
+</div>
 
 </footer>
 
 </div>
 
+<!-- Floating Top Button -->
+
+<button
+id="topBtn"
+onclick="window.scrollTo({top:0,behavior:'smooth'})"
+style="
+position:fixed;
+bottom:25px;
+right:25px;
+width:55px;
+height:55px;
+border:none;
+border-radius:50%;
+background:#FFD700;
+color:#111;
+font-size:22px;
+cursor:pointer;
+box-shadow:0 10px 25px rgba(255,215,0,.4);
+display:none;
+z-index:999;">
+
+⬆
+
+</button>
+
 <script>
 
-// Auto Refresh Every 60 Seconds
-setTimeout(function(){
-    location.reload();
+// Auto Refresh Every Minute
+
+setInterval(function(){
+
+location.reload();
+
 },60000);
 
+
+// Floating Button
+
+window.onscroll=function(){
+
+let btn=document.getElementById("topBtn");
+
+if(document.documentElement.scrollTop>250){
+
+btn.style.display="block";
+
+}else{
+
+btn.style.display="none";
+
+}
+
+};
+
+
 // Fade Animation
+
 document.addEventListener("DOMContentLoaded",function(){
 
-    document.querySelector(".hero").style.opacity="0";
-    document.querySelector(".hero").style.transform="translateY(20px)";
+document.body.style.opacity="0";
 
-    setTimeout(function(){
+setTimeout(function(){
 
-        document.querySelector(".hero").style.transition=".6s";
+document.body.style.transition="opacity .6s";
 
-        document.querySelector(".hero").style.opacity="1";
+document.body.style.opacity="1";
 
-        document.querySelector(".hero").style.transform="translateY(0px)";
-
-    },100);
+},100);
 
 });
+
+
+// Image Zoom
+
+const img=document.querySelector(".calendar-card img");
+
+if(img){
+
+img.addEventListener("click",function(){
+
+window.open(this.src,"_blank");
+
+});
+
+}
 
 </script>
 
