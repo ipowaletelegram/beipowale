@@ -71,6 +71,14 @@
     "allotment": "2026-08-04",
     "featured": false,
     "url": "https://ipostatus.kfintech.com/"
+},
+  {
+    "company": "MV Electrosystems Ltd",
+    "logo": "/static/logos/mv.png",
+    "registrar": "Kfin Technologies",
+    "allotment": "2026-08-04",
+    "featured": false,
+    "url": "https://ipostatus.kfintech.com/"
 }
   
 ]
