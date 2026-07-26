@@ -1,32 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IPO Calendar | BE.IPOWALE</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body{
-            margin:0;
-            background:#111;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            min-height:100vh;
-        }
+<title>IPO Calendar | BE.IPOWALE</title>
 
-        img{
-            width:100%;
-            max-width:700px;
-            border-radius:20px;
-            box-shadow:0 0 30px rgba(255,215,0,.25);
-        }
-    </style>
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:
+    radial-gradient(circle at top,#2b2200,#111 60%);
+    color:#fff;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+}
+
+.container{
+    width:100%;
+    max-width:900px;
+}
+
+.header{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.header h1{
+    color:#FFD700;
+    font-size:38px;
+    letter-spacing:1px;
+}
+
+.header p{
+    color:#bbb;
+    margin-top:8px;
+}
+
+.card{
+
+    background:#1a1a1a;
+    border:1px solid rgba(255,215,0,.15);
+    border-radius:20px;
+    padding:18px;
+
+    box-shadow:
+    0 0 30px rgba(255,215,0,.15);
+
+}
+
+.calendar{
+
+    width:100%;
+    border-radius:15px;
+    display:block;
+}
+
+.actions{
+
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-top:20px;
+    flex-wrap:wrap;
+}
+
+button{
+
+    background:#FFD700;
+    color:#000;
+    border:none;
+    padding:12px 28px;
+    border-radius:10px;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+
+    transform:translateY(-2px);
+    box-shadow:0 0 18px rgba(255,215,0,.5);
+
+}
+
+.loading{
+    display:none;
+    text-align:center;
+    margin-bottom:15px;
+    color:#FFD700;
+}
+
+.footer{
+
+    margin-top:18px;
+    text-align:center;
+    color:#888;
+    font-size:14px;
+
+}
+
+@media(max-width:600px){
+
+.header h1{
+
+font-size:28px;
+
+}
+
+button{
+
+width:100%;
+
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
-<img src="{{ url_for('static', filename='calendar/latest.jpeg') }}?v={{ timestamp }}" alt="IPO Calendar">
+<div class="container">
+
+<div class="header">
+
+<h1>📅 IPO Calendar</h1>
+
+<p>Latest Mainboard IPO Events</p>
+
+</div>
+
+<div class="loading" id="loading">
+Loading latest calendar...
+</div>
+
+<div class="card">
+
+<img
+id="calendar"
+class="calendar"
+src="{{ url_for('static', filename='calendar/latest.jpeg') }}?v={{ timestamp }}"
+alt="IPO Calendar">
+
+</div>
+
+<div class="actions">
+
+<button onclick="refreshImage()">
+🔄 Refresh
+</button>
+
+<button onclick="window.location.href='/'">
+🏠 Home
+</button>
+
+</div>
+
+<div class="footer">
+
+Powered by <b style="color:#FFD700;">BE.IPOWALE</b>
+
+</div>
+
+</div>
+
+<script>
+
+function refreshImage(){
+
+document.getElementById("loading").style.display="block";
+
+const img=document.getElementById("calendar");
+
+img.src="{{ url_for('static', filename='calendar/latest.jpeg') }}?t="+new Date().getTime();
+
+img.onload=function(){
+
+document.getElementById("loading").style.display="none";
+
+}
+
+}
+
+</script>
 
 </body>
 </html>
