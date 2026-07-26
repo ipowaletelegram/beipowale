@@ -1,133 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>IPO Calendar | BE.IPOWALE</title>
 
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,Helvetica,sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-    background:
-    radial-gradient(circle at top,#2b2200,#111 60%);
-    color:#fff;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:30px;
+
+background:
+linear-gradient(180deg,#111,#1d1d1d);
+
+color:white;
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:30px;
+
 }
 
 .container{
-    width:100%;
-    max-width:900px;
+
+max-width:900px;
+width:100%;
+
 }
 
 .header{
-    text-align:center;
-    margin-bottom:25px;
+
+text-align:center;
+margin-bottom:25px;
+
 }
 
-.header h1{
-    color:#FFD700;
-    font-size:38px;
-    letter-spacing:1px;
+.logo{
+
+font-size:36px;
+font-weight:bold;
+color:#FFD700;
+
 }
 
-.header p{
-    color:#bbb;
-    margin-top:8px;
+.subtitle{
+
+color:#bbbbbb;
+margin-top:8px;
+
 }
 
 .card{
 
-    background:#1a1a1a;
-    border:1px solid rgba(255,215,0,.15);
-    border-radius:20px;
-    padding:18px;
+background:#181818;
 
-    box-shadow:
-    0 0 30px rgba(255,215,0,.15);
+border-radius:20px;
+
+padding:20px;
+
+border:1px solid rgba(255,215,0,.15);
+
+box-shadow:0 10px 40px rgba(0,0,0,.4);
 
 }
 
 .calendar{
 
-    width:100%;
-    border-radius:15px;
-    display:block;
+width:100%;
+
+border-radius:15px;
+
+display:block;
+
 }
 
-.actions{
+.hidden{
 
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    margin-top:20px;
-    flex-wrap:wrap;
+padding:70px 30px;
+
+text-align:center;
+
+}
+
+.hidden h2{
+
+color:#FFD700;
+
+font-size:34px;
+
+margin-bottom:15px;
+
+}
+
+.hidden p{
+
+color:#cccccc;
+
+font-size:18px;
+
+line-height:30px;
+
 }
 
 button{
 
-    background:#FFD700;
-    color:#000;
-    border:none;
-    padding:12px 28px;
-    border-radius:10px;
-    font-size:15px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.3s;
+margin-top:20px;
+
+padding:12px 28px;
+
+border:none;
+
+border-radius:10px;
+
+background:#FFD700;
+
+color:#000;
+
+font-size:15px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.3s;
+
 }
 
 button:hover{
 
-    transform:translateY(-2px);
-    box-shadow:0 0 18px rgba(255,215,0,.5);
+transform:translateY(-2px);
 
-}
-
-.loading{
-    display:none;
-    text-align:center;
-    margin-bottom:15px;
-    color:#FFD700;
 }
 
 .footer{
 
-    margin-top:18px;
-    text-align:center;
-    color:#888;
-    font-size:14px;
+text-align:center;
+
+margin-top:20px;
+
+color:#888;
 
 }
 
-@media(max-width:600px){
+@media(max-width:768px){
 
-.header h1{
+.logo{
 
 font-size:28px;
 
 }
 
-button{
+.hidden h2{
 
-width:100%;
+font-size:26px;
+
+}
+
+.hidden p{
+
+font-size:16px;
 
 }
 
 }
 
 </style>
+
 </head>
 
 <body>
@@ -136,41 +188,61 @@ width:100%;
 
 <div class="header">
 
-<h1>📅 IPO Calendar</h1>
+<div class="logo">
+📅 BE.IPOWALE
+</div>
 
-<p>Latest Mainboard IPO Events</p>
+<div class="subtitle">
+
+Mainboard IPO Calendar
 
 </div>
 
-<div class="loading" id="loading">
-Loading latest calendar...
 </div>
 
 <div class="card">
 
+{% if show_calendar %}
+
 <img
 id="calendar"
 class="calendar"
-src="{{ url_for('static', filename='calendar/latest.jpeg') }}?v={{ timestamp }}"
-alt="IPO Calendar">
+src="{{ url_for('static', filename='calendar/latest.jpeg') }}?v={{ timestamp }}">
+
+<center>
+
+<button onclick="refreshCalendar()">
+
+🔄 Refresh
+
+</button>
+
+</center>
+
+{% else %}
+
+<div class="hidden">
+
+<h2>Calendar Not Available</h2>
+
+<p>
+
+Today's IPO Calendar will be available after
+
+<b style="color:#FFD700;">06:00 AM IST</b>
+
+</p>
 
 </div>
 
-<div class="actions">
-
-<button onclick="refreshImage()">
-🔄 Refresh
-</button>
-
-<button onclick="window.location.href='/'">
-🏠 Home
-</button>
+{% endif %}
 
 </div>
 
 <div class="footer">
 
-Powered by <b style="color:#FFD700;">BE.IPOWALE</b>
+Last Visit :
+{{ current_time }}
 
 </div>
 
@@ -178,23 +250,22 @@ Powered by <b style="color:#FFD700;">BE.IPOWALE</b>
 
 <script>
 
-function refreshImage(){
-
-document.getElementById("loading").style.display="block";
+function refreshCalendar(){
 
 const img=document.getElementById("calendar");
 
 img.src="{{ url_for('static', filename='calendar/latest.jpeg') }}?t="+new Date().getTime();
 
-img.onload=function(){
-
-document.getElementById("loading").style.display="none";
-
 }
 
-}
+setInterval(function(){
+
+location.reload();
+
+},300000);
 
 </script>
 
 </body>
+
 </html>
