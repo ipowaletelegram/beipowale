@@ -1,286 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPO Calendar | BE.IPOWALE</title>
 
-<meta charset="UTF-8">
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial,Helvetica,sans-serif;
+        }
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+        body{
+            background:#0f1115;
+            color:#fff;
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:30px;
+        }
 
-<title>IPO Calendar | BE.IPOWALE</title>
+        .container{
+            width:100%;
+            max-width:900px;
+        }
 
-<style>
+        .card{
+            background:#1b1b1b;
+            border-radius:18px;
+            padding:25px;
+            box-shadow:0 0 30px rgba(255,215,0,.12);
+            border:1px solid rgba(255,215,0,.15);
+        }
 
-body{
+        h1{
+            text-align:center;
+            color:#FFD700;
+            margin-bottom:20px;
+        }
 
-margin:0;
+        img{
+            width:100%;
+            border-radius:12px;
+            display:block;
+        }
 
-background:#101010;
+        .message{
+            text-align:center;
+            padding:70px 20px;
+        }
 
-font-family:Arial;
+        .message h2{
+            color:#FFD700;
+            margin-bottom:15px;
+        }
 
-color:white;
+        .message p{
+            color:#ccc;
+            font-size:18px;
+            line-height:1.6;
+        }
 
-}
+        .footer{
+            margin-top:20px;
+            text-align:center;
+            color:#888;
+            font-size:14px;
+        }
 
-.container{
+        .btn{
+            display:inline-block;
+            margin-top:20px;
+            padding:12px 24px;
+            background:#FFD700;
+            color:#000;
+            text-decoration:none;
+            border-radius:8px;
+            font-weight:bold;
+        }
 
-max-width:900px;
-
-margin:auto;
-
-padding:30px;
-
-}
-
-.card{
-
-background:#181818;
-
-border-radius:20px;
-
-padding:20px;
-
-text-align:center;
-
-box-shadow:0 0 30px rgba(255,215,0,.12);
-
-}
-
-img{
-
-width:100%;
-
-border-radius:15px;
-
-}
-
-.message{
-
-padding:70px 30px;
-
-}
-
-h1{
-
-color:#FFD700;
-
-}
-
-p{
-
-color:#ccc;
-
-font-size:18px;
-
-}
-
-.footer{
-
-margin-top:20px;
-
-color:#888;
-
-}
-
-</style>
-
+        .btn:hover{
+            opacity:.9;
+        }
+    </style>
 </head>
 
 <body>
 
 <div class="container">
 
-<div class="card">
+    <div class="card">
 
-{% if show_calendar %}
+        <h1>📅 IPO Calendar</h1>
 
-    {% if image_exists %}
+        {% if show_calendar %}
 
-        <img
-        src="{{ url_for('static', filename=image) }}?v={{ current_time }}">
+            {% if latest_image %}
 
-    {% else %}
+                <img src="{{ url_for('static', filename='calendar/' + latest_image) }}?v={{ current_time }}" alt="IPO Calendar">
 
-        <div class="message">
+            {% else %}
 
-            <h1>Today's Calendar</h1>
+                <div class="message">
 
-            <p>
+                    <h2>No Calendar Uploaded</h2>
 
-            Calendar is being uploaded.
+                    <p>
+                        Today's IPO Calendar is being uploaded.<br>
+                        Please check again in a few minutes.
+                    </p>
 
-            Please check again shortly.
+                </div>
 
-            </p>
+            {% endif %}
 
-        </div>
+        {% else %}
 
-    {% endif %}
+            <div class="message">
 
-{% else %}
+                <h2>Calendar Not Available</h2>
 
-<div class="message">
+                <p>
+                    Today's IPO Calendar will be available
+                    <br><br>
+                    <strong>After 06:00 AM IST</strong>
+                </p>
 
-<h1>📅 Today's IPO Calendar</h1>
+            </div>
 
-<p>
+        {% endif %}
 
-Calendar will be available
+    </div>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>IPO Calendar | BE.IPOWALE</title>
-
-<style>
-
-body{
-
-margin:0;
-
-background:#0d0d0d;
-
-font-family:Arial,Helvetica,sans-serif;
-
-color:white;
-
-}
-
-.container{
-
-max-width:900px;
-
-margin:auto;
-
-padding:30px;
-
-}
-
-.card{
-
-background:#181818;
-
-padding:20px;
-
-border-radius:20px;
-
-box-shadow:0 0 25px rgba(255,215,0,.15);
-
-}
-
-img{
-
-width:100%;
-
-border-radius:15px;
-
-display:block;
-
-}
-
-.message{
-
-padding:80px 20px;
-
-text-align:center;
-
-}
-
-.message h2{
-
-color:#FFD700;
-
-margin-bottom:15px;
-
-}
-
-.message p{
-
-color:#cccccc;
-
-font-size:18px;
-
-}
-
-.footer{
-
-text-align:center;
-
-margin-top:20px;
-
-color:#888;
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div class="container">
-
-<div class="card">
-
-{% if show_calendar %}
-
-    {% if latest_image %}
-
-        <img
-        src="{{ url_for('static', filename='calendar/' + latest_image) }}?v={{ current_time }}"
-        alt="IPO Calendar">
-
-    {% else %}
-
-        <div class="message">
-
-            <h2>No Calendar Uploaded</h2>
-
-            <p>
-
-            Please upload today's IPO Calendar.
-
-            </p>
-
-        </div>
-
-    {% endif %}
-
-{% else %}
-
-<div class="message">
-
-<h2>📅 Today's IPO Calendar</h2>
-
-<p>
-
-Today's calendar will be available
-
-after <b>06:00 AM IST</b>
-
-</p>
-
-</div>
-
-{% endif %}
-
-</div>
-
-<div class="footer">
-
-BE.IPOWALE
-
-</div>
+    <div class="footer">
+        BE.IPOWALE • {{ current_time }}
+    </div>
 
 </div>
 
 </body>
-
 </html>
