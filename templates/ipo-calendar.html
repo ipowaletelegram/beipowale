@@ -8,13 +8,10 @@
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>IPO Calendar | BE.IPOWALE </title>
+<title>IPO Calendar | BE.IPOWALE</title>
 
 <meta name="theme-color"
 content="#0B1220">
-
-<meta name="description"
-content="Latest Mainboard IPO Calendar by BE.IPOWALE">
 
 <link rel="preconnect"
 href="https://fonts.googleapis.com">
@@ -23,7 +20,7 @@ href="https://fonts.googleapis.com">
 href="https://fonts.gstatic.com"
 crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
 rel="stylesheet">
 
 <style>
@@ -57,17 +54,17 @@ content:"";
 
 position:fixed;
 
-width:300px;
-height:300px;
+width:250px;
+height:250px;
 
-left:-150px;
-top:-150px;
+left:-120px;
+top:-120px;
 
 background:#FFD70022;
 
-border-radius:50%;
+filter:blur(80px);
 
-filter:blur(90px);
+border-radius:50%;
 
 z-index:-1;
 
@@ -79,17 +76,17 @@ content:"";
 
 position:fixed;
 
-width:300px;
-height:300px;
+width:250px;
+height:250px;
 
-right:-150px;
-bottom:-150px;
+right:-120px;
+bottom:-120px;
 
 background:#2979ff22;
 
-border-radius:50%;
+filter:blur(80px);
 
-filter:blur(90px);
+border-radius:50%;
 
 z-index:-1;
 
@@ -97,11 +94,11 @@ z-index:-1;
 
 .container{
 
-max-width:820px;
+max-width:760px;
 
 margin:auto;
 
-padding:16px;
+padding:14px;
 
 }
 
@@ -115,15 +112,15 @@ align-items:center;
 
 gap:12px;
 
-margin-bottom:16px;
+margin-bottom:14px;
 
 }
 
 .logo{
 
-width:52px;
+width:50px;
 
-height:52px;
+height:50px;
 
 border-radius:50%;
 
@@ -153,31 +150,29 @@ color:#FFD700;
 
 font-size:13px;
 
-color:#a9b4c6;
+color:#AEB7C8;
 
 margin-top:2px;
 
 }
 
-/* Top Card */
+/* Info Card */
 
-.top-card{
+.info{
 
-background:rgba(255,255,255,.05);
-
-backdrop-filter:blur(15px);
+background:#141E30;
 
 border:1px solid rgba(255,255,255,.08);
 
-border-radius:18px;
+border-radius:16px;
 
 padding:16px;
 
-margin-bottom:18px;
+margin-bottom:15px;
 
 }
 
-.page-title{
+.title{
 
 font-size:24px;
 
@@ -187,13 +182,13 @@ margin-bottom:10px;
 
 }
 
-.page-title span{
+.title span{
 
 color:#FFD700;
 
 }
 
-.top-row{
+.row{
 
 display:flex;
 
@@ -201,9 +196,9 @@ justify-content:space-between;
 
 align-items:center;
 
-gap:10px;
-
 flex-wrap:wrap;
+
+gap:10px;
 
 }
 
@@ -211,7 +206,7 @@ flex-wrap:wrap;
 
 font-size:15px;
 
-color:#d7d7d7;
+color:#d2d2d2;
 
 }
 
@@ -219,7 +214,7 @@ color:#d7d7d7;
 
 background:#16C784;
 
-padding:7px 14px;
+padding:6px 14px;
 
 border-radius:30px;
 
@@ -229,19 +224,19 @@ font-weight:600;
 
 }
 
-/* Calendar Card */
+/* Calendar */
 
 .calendar{
 
-background:#121B2D;
+background:#141E30;
 
-border-radius:18px;
+border-radius:16px;
 
-padding:12px;
+padding:10px;
 
 border:1px solid rgba(255,255,255,.08);
 
-box-shadow:0 12px 30px rgba(0,0,0,.35);
+box-shadow:0 10px 25px rgba(0,0,0,.35);
 
 }
 
@@ -273,7 +268,7 @@ flex-wrap:wrap;
 
 flex:1;
 
-min-width:120px;
+text-decoration:none;
 
 text-align:center;
 
@@ -281,11 +276,13 @@ padding:12px;
 
 border-radius:10px;
 
-text-decoration:none;
-
 font-weight:600;
 
 transition:.25s;
+
+cursor:pointer;
+
+border:none;
 
 }
 
@@ -303,25 +300,21 @@ background:#16C784;
 
 color:#fff;
 
-border:none;
-
-cursor:pointer;
-
 }
 
 .download{
 
 background:#2979ff;
 
-color:white;
+color:#fff;
 
 }
 
 .btn:hover{
 
-transform:translateY(-2px);
-
 opacity:.95;
+
+transform:translateY(-2px);
 
 }
 
@@ -329,25 +322,25 @@ opacity:.95;
 
 .message{
 
-padding:55px 15px;
-
 text-align:center;
+
+padding:50px 20px;
 
 }
 
 .message h2{
 
+font-size:28px;
+
 color:#FFD700;
 
-margin-bottom:10px;
-
-font-size:26px;
+margin-bottom:12px;
 
 }
 
 .message p{
 
-color:#cfd5df;
+color:#d5d5d5;
 
 line-height:1.8;
 
@@ -363,7 +356,7 @@ text-align:center;
 
 font-size:13px;
 
-color:#8c96a7;
+color:#8f99aa;
 
 }
 
@@ -391,7 +384,7 @@ font-size:20px;
 
 }
 
-.page-title{
+.title{
 
 font-size:22px;
 
@@ -418,9 +411,9 @@ width:100%;
 <body>
 
 <div class="container">
-<!-- =========================
+     <!-- =========================
      HEADER
-========================== -->
+========================= -->
 
 <div class="header">
 
@@ -440,18 +433,18 @@ width:100%;
 </div>
 
 <!-- =========================
-     TOP INFO CARD
-========================== -->
+     TOP INFO
+========================= -->
 
-<div class="top-card">
+<div class="info">
 
-    <div class="page-title">
+    <div class="title">
 
         📅 <span>IPO Calendar</span>
 
     </div>
 
-    <div class="top-row">
+    <div class="row">
 
         <div class="date">
 
@@ -470,11 +463,9 @@ width:100%;
         {% else %}
 
         <div class="live"
-        style="
-        background:#FFB547;
-        color:#111;">
+        style="background:#F4B400;color:#111;">
 
-            ⏳ Available at 06:00 AM
+            ⏳ UPCOMING
 
         </div>
 
@@ -485,53 +476,18 @@ width:100%;
 </div>
 
 <!-- =========================
-     CALENDAR CARD START
-========================== -->
+     CALENDAR CARD
+========================= -->
 
 <div class="calendar">
-  {% if show_calendar %}
+
+{% if show_calendar %}
 
     {% if latest_image %}
 
         <img
             src="{{ url_for('static', filename='calendar/' + latest_image) }}"
-            alt="IPO Calendar">
-
-        <div class="actions">
-
-            <a
-                href="/"
-                class="btn home">
-
-                🏠 Home
-
-            </a>
-
-            <button
-                class="btn refresh"
-                onclick="location.reload();">
-
-                🔄 Refresh
-
-            </button>
-
-            <a
-                href="{{ url_for('static', filename='calendar/' + latest_image) }}"
-                class="btn download"
-                download>
-
-                📥 Download
-
-            </a>
-
-        </div>
-
-        <div class="footer">
-
-            Last Updated :
-            <strong>{{ current_time }}</strong>
-
-        </div>
+            alt="Today's IPO Calendar">
 
     {% else %}
 
@@ -552,20 +508,22 @@ width:100%;
         </div>
 
     {% endif %}
-  {% else %}
+
+{% else %}
 
     <div class="message">
 
-        <h2>⏰ Calendar Coming Soon</h2>
+        <h2>📅 Upcoming IPO Calendar</h2>
 
         <p>
 
-            Today's IPO Calendar will be available after
-            <strong>06:00 AM (IST)</strong>.
+            Today's IPO Calendar will be available at
+
+            <strong>06:00 AM IST</strong>.
 
             <br><br>
 
-            Please visit again later.
+            Please visit again after 6:00 AM.
 
         </p>
 
@@ -574,7 +532,6 @@ width:100%;
 {% endif %}
 
 </div>
-
 <div class="actions">
 
     <a
@@ -592,6 +549,26 @@ width:100%;
         🔄 Refresh
 
     </button>
+
+    {% if show_calendar and latest_image %}
+
+    <a
+        href="{{ url_for('static', filename='calendar/' + latest_image) }}"
+        class="btn download"
+        download>
+
+        📥 Download
+
+    </a>
+
+    {% endif %}
+
+</div>
+
+<div class="footer">
+
+    Last Updated :
+    <strong>{{ current_time }}</strong>
 
 </div>
 <footer class="footer">
@@ -623,13 +600,13 @@ window.addEventListener("load", function () {
 
     document.body.style.opacity = "0";
 
-    document.body.style.transition = "opacity .35s";
+    document.body.style.transition = "opacity .35s ease";
 
     setTimeout(function () {
 
         document.body.style.opacity = "1";
 
-    }, 80);
+    }, 100);
 
 });
 
