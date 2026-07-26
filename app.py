@@ -29,31 +29,29 @@ def ipo_calendar():
 
     now = datetime.now(ZoneInfo("Asia/Kolkata"))
 
-    # Before 6 AM show yesterday's calendar
-    if now.hour < 6:
-        display_date = now.date() - timedelta(days=1)
-    else:
-        display_date = now.date()
+    current_date = now.strftime("%Y-%m-%d")
 
     calendar_folder = os.path.join(app.static_folder, "calendar")
 
     latest_image = None
 
-    # Supported image extensions
-    extensions = [".jpg", ".jpeg", ".png", ".webp"]
-
-    for ext in extensions:
-
-        filename = display_date.strftime("%Y-%m-%d") + ext
+    for ext in [".jpg", ".jpeg", ".png", ".webp"]:
+        filename = current_date + ext
 
         if os.path.exists(os.path.join(calendar_folder, filename)):
             latest_image = filename
             break
 
+    # 12 AM - 5:59 AM
+    if now.hour < 6:
+        show_calendar = False
+    else:
+        show_calendar = True
+
     return render_template(
         "ipo-calendar.html",
         latest_image=latest_image,
-        show_calendar=True,
+        show_calendar=show_calendar,
         current_time=now.strftime("%d %b %Y %I:%M %p")
     )
 
