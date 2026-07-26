@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from datetime import datetime
 import pytz
+import os import abort
 app = Flask(__name__)
 
 @app.route("/")
@@ -29,14 +30,28 @@ def ipo_calendar():
     india = pytz.timezone("Asia/Kolkata")
     now = datetime.now(india)
 
-    # Show calendar only after 6 AM
+    # Calendar sirf 6 AM ke baad dikhega
     show_calendar = now.hour >= 6
+
+    today = now.strftime("%Y-%m-%d")
+
+    image = f"calendar/{today}.jpg"
+
+    image_path = os.path.join(
+        app.static_folder,
+        "calendar",
+        f"{today}.jpg"
+    )
+
+    image_exists = os.path.exists(image_path)
 
     return render_template(
         "ipo-calendar.html",
         show_calendar=show_calendar,
-        current_time=now.strftime("%d %B %Y %I:%M %p"),
-        timestamp=int(now.timestamp())
+        image_exists=image_exists,
+        image=image,
+        today=today,
+        current_time=now.strftime("%d %B %Y %I:%M %p")
     )
 
 if __name__ == "__main__":
