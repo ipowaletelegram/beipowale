@@ -1,66 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>IPO Calendar | BE.IPOWALE</title>
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
-}
-
 body{
 
-background:
-linear-gradient(180deg,#111,#1d1d1d);
+margin:0;
+
+background:#101010;
+
+font-family:Arial;
 
 color:white;
-
-min-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-padding:30px;
 
 }
 
 .container{
 
 max-width:900px;
-width:100%;
 
-}
+margin:auto;
 
-.header{
-
-text-align:center;
-margin-bottom:25px;
-
-}
-
-.logo{
-
-font-size:36px;
-font-weight:bold;
-color:#FFD700;
-
-}
-
-.subtitle{
-
-color:#bbbbbb;
-margin-top:8px;
+padding:30px;
 
 }
 
@@ -72,109 +41,45 @@ border-radius:20px;
 
 padding:20px;
 
-border:1px solid rgba(255,215,0,.15);
+text-align:center;
 
-box-shadow:0 10px 40px rgba(0,0,0,.4);
+box-shadow:0 0 30px rgba(255,215,0,.12);
 
 }
 
-.calendar{
+img{
 
 width:100%;
 
 border-radius:15px;
 
-display:block;
-
 }
 
-.hidden{
+.message{
 
 padding:70px 30px;
 
-text-align:center;
-
 }
 
-.hidden h2{
+h1{
 
 color:#FFD700;
 
-font-size:34px;
-
-margin-bottom:15px;
-
 }
 
-.hidden p{
+p{
 
-color:#cccccc;
+color:#ccc;
 
 font-size:18px;
-
-line-height:30px;
-
-}
-
-button{
-
-margin-top:20px;
-
-padding:12px 28px;
-
-border:none;
-
-border-radius:10px;
-
-background:#FFD700;
-
-color:#000;
-
-font-size:15px;
-
-font-weight:bold;
-
-cursor:pointer;
-
-transition:.3s;
-
-}
-
-button:hover{
-
-transform:translateY(-2px);
 
 }
 
 .footer{
 
-text-align:center;
-
 margin-top:20px;
 
 color:#888;
-
-}
-
-@media(max-width:768px){
-
-.logo{
-
-font-size:28px;
-
-}
-
-.hidden h2{
-
-font-size:26px;
-
-}
-
-.hidden p{
-
-font-size:16px;
-
-}
 
 }
 
@@ -186,50 +91,44 @@ font-size:16px;
 
 <div class="container">
 
-<div class="header">
-
-<div class="logo">
-📅 BE.IPOWALE
-</div>
-
-<div class="subtitle">
-
-Mainboard IPO Calendar
-
-</div>
-
-</div>
-
 <div class="card">
 
 {% if show_calendar %}
 
-<img
-id="calendar"
-class="calendar"
-src="{{ url_for('static', filename='calendar/latest.jpeg') }}?v={{ timestamp }}">
+    {% if image_exists %}
 
-<center>
+        <img
+        src="{{ url_for('static', filename=image) }}?v={{ current_time }}">
 
-<button onclick="refreshCalendar()">
+    {% else %}
 
-🔄 Refresh
+        <div class="message">
 
-</button>
+            <h1>Today's Calendar</h1>
 
-</center>
+            <p>
+
+            Calendar is being uploaded.
+
+            Please check again shortly.
+
+            </p>
+
+        </div>
+
+    {% endif %}
 
 {% else %}
 
-<div class="hidden">
+<div class="message">
 
-<h2>Calendar Not Available</h2>
+<h1>📅 Today's IPO Calendar</h1>
 
 <p>
 
-Today's IPO Calendar will be available after
+Calendar will be available
 
-<b style="color:#FFD700;">06:00 AM IST</b>
+after <b>06:00 AM IST</b>
 
 </p>
 
@@ -237,34 +136,15 @@ Today's IPO Calendar will be available after
 
 {% endif %}
 
-</div>
-
 <div class="footer">
 
-Last Visit :
 {{ current_time }}
 
 </div>
 
 </div>
 
-<script>
-
-function refreshCalendar(){
-
-const img=document.getElementById("calendar");
-
-img.src="{{ url_for('static', filename='calendar/latest.jpeg') }}?t="+new Date().getTime();
-
-}
-
-setInterval(function(){
-
-location.reload();
-
-},300000);
-
-</script>
+</div>
 
 </body>
 
