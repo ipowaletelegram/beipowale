@@ -418,3 +418,223 @@ width:100%;
 <body>
 
 <div class="container">
+<!-- =========================
+     HEADER
+========================== -->
+
+<div class="header">
+
+    <img
+        src="{{ url_for('static', filename='logo.jpg') }}"
+        class="logo"
+        alt="BE.IPOWALE Logo">
+
+    <div class="brand">
+
+        <h1>BE.IPOWALE</h1>
+
+        <p>Mainboard IPO Updates</p>
+
+    </div>
+
+</div>
+
+<!-- =========================
+     TOP INFO CARD
+========================== -->
+
+<div class="top-card">
+
+    <div class="page-title">
+
+        📅 <span>IPO Calendar</span>
+
+    </div>
+
+    <div class="top-row">
+
+        <div class="date">
+
+            {{ current_time }}
+
+        </div>
+
+        {% if show_calendar %}
+
+        <div class="live">
+
+            🟢 LIVE
+
+        </div>
+
+        {% else %}
+
+        <div class="live"
+        style="
+        background:#FFB547;
+        color:#111;">
+
+            ⏳ Available at 06:00 AM
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+<!-- =========================
+     CALENDAR CARD START
+========================== -->
+
+<div class="calendar">
+  {% if show_calendar %}
+
+    {% if latest_image %}
+
+        <img
+            src="{{ url_for('static', filename='calendar/' + latest_image) }}"
+            alt="IPO Calendar">
+
+        <div class="actions">
+
+            <a
+                href="/"
+                class="btn home">
+
+                🏠 Home
+
+            </a>
+
+            <button
+                class="btn refresh"
+                onclick="location.reload();">
+
+                🔄 Refresh
+
+            </button>
+
+            <a
+                href="{{ url_for('static', filename='calendar/' + latest_image) }}"
+                class="btn download"
+                download>
+
+                📥 Download
+
+            </a>
+
+        </div>
+
+        <div class="footer">
+
+            Last Updated :
+            <strong>{{ current_time }}</strong>
+
+        </div>
+
+    {% else %}
+
+        <div class="message">
+
+            <h2>📂 Upload Pending</h2>
+
+            <p>
+
+                Today's IPO Calendar has not been uploaded yet.
+
+                <br><br>
+
+                Please check again after a few minutes.
+
+            </p>
+
+        </div>
+
+    {% endif %}
+  {% else %}
+
+    <div class="message">
+
+        <h2>⏰ Calendar Coming Soon</h2>
+
+        <p>
+
+            Today's IPO Calendar will be available after
+            <strong>06:00 AM (IST)</strong>.
+
+            <br><br>
+
+            Please visit again later.
+
+        </p>
+
+    </div>
+
+{% endif %}
+
+</div>
+
+<div class="actions">
+
+    <a
+        href="/"
+        class="btn home">
+
+        🏠 Home
+
+    </a>
+
+    <button
+        class="btn refresh"
+        onclick="location.reload();">
+
+        🔄 Refresh
+
+    </button>
+
+</div>
+<footer class="footer">
+
+    © {{ current_time.split(' ')[2] }} BE.IPOWALE
+
+    <br><br>
+
+    Mainboard IPO Updates
+
+</footer>
+
+</div>
+
+<script>
+
+// Auto Refresh Every 60 Seconds
+
+setInterval(function () {
+
+    location.reload();
+
+}, 60000);
+
+
+// Smooth Page Load
+
+window.addEventListener("load", function () {
+
+    document.body.style.opacity = "0";
+
+    document.body.style.transition = "opacity .35s";
+
+    setTimeout(function () {
+
+        document.body.style.opacity = "1";
+
+    }, 80);
+
+});
+
+</script>
+
+</body>
+
+</html>
