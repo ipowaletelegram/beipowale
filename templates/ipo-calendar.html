@@ -24,384 +24,280 @@ crossorigin>
 rel="stylesheet">
 
 <style>
-
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
 }
 
 html{
-scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-
-background:#0B1220;
-
-color:#fff;
-
-overflow-x:hidden;
-
+    background:#F5F7FB;
+    color:#1F2937;
+    overflow-x:hidden;
 }
 
 /* Background Glow */
 
 body::before{
-
-content:"";
-
-position:fixed;
-
-width:250px;
-height:250px;
-
-left:-120px;
-top:-120px;
-
-background:#FFD70022;
-
-filter:blur(80px);
-
-border-radius:50%;
-
-z-index:-1;
-
+    content:"";
+    position:fixed;
+    width:320px;
+    height:320px;
+    left:-150px;
+    top:-150px;
+    background:#2563EB18;
+    filter:blur(120px);
+    border-radius:50%;
+    z-index:-1;
 }
 
 body::after{
-
-content:"";
-
-position:fixed;
-
-width:250px;
-height:250px;
-
-right:-120px;
-bottom:-120px;
-
-background:#2979ff22;
-
-filter:blur(80px);
-
-border-radius:50%;
-
-z-index:-1;
-
+    content:"";
+    position:fixed;
+    width:320px;
+    height:320px;
+    right:-150px;
+    bottom:-150px;
+    background:#7C3AED18;
+    filter:blur(120px);
+    border-radius:50%;
+    z-index:-1;
 }
 
 .container{
-
-max-width:760px;
-
-margin:auto;
-
-padding:14px;
-
+    max-width:760px;
+    margin:auto;
+    padding:18px;
 }
 
 /* Header */
 
 .header{
-
-display:flex;
-
-align-items:center;
-
-gap:12px;
-
-margin-bottom:14px;
-
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:18px;
 }
 
 .logo{
-
-width:50px;
-
-height:50px;
-
-border-radius:50%;
-
-border:2px solid #FFD700;
-
-object-fit:cover;
-
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    border:3px solid #FFD700;
+    object-fit:cover;
+    box-shadow:0 6px 18px rgba(0,0,0,.12);
 }
 
 .brand{
-
-flex:1;
-
+    flex:1;
 }
 
 .brand h1{
-
-font-size:22px;
-
-font-weight:700;
-
-color:#FFD700;
-
+    font-size:24px;
+    font-weight:700;
+    color:#111827;
 }
 
 .brand p{
-
-font-size:13px;
-
-color:#AEB7C8;
-
-margin-top:2px;
-
+    font-size:14px;
+    color:#6B7280;
+    margin-top:3px;
 }
 
 /* Info Card */
 
 .info{
-
-background:#141E30;
-
-border:1px solid rgba(255,255,255,.08);
-
-border-radius:16px;
-
-padding:16px;
-
-margin-bottom:15px;
-
+    background:#FFFFFF;
+    border:1px solid #E5E7EB;
+    border-radius:18px;
+    padding:18px;
+    margin-bottom:18px;
+    box-shadow:0 8px 24px rgba(15,23,42,.08);
 }
 
 .title{
-
-font-size:24px;
-
-font-weight:700;
-
-margin-bottom:10px;
-
+    font-size:26px;
+    font-weight:700;
+    margin-bottom:12px;
+    color:#111827;
 }
 
 .title span{
-
-color:#FFD700;
-
+    color:#2563EB;
 }
 
 .row{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-flex-wrap:wrap;
-
-gap:10px;
-
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
 }
 
 .date{
-
-font-size:15px;
-
-color:#d2d2d2;
-
+    font-size:15px;
+    color:#6B7280;
+    font-weight:500;
 }
 
 .live{
-
-background:#16C784;
-
-padding:6px 14px;
-
-border-radius:30px;
-
-font-size:13px;
-
-font-weight:600;
-
+    background:#DCFCE7;
+    color:#15803D;
+    padding:8px 18px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:700;
 }
 
 /* Calendar */
 
 .calendar{
-
-background:#141E30;
-
-border-radius:16px;
-
-padding:10px;
-
-border:1px solid rgba(255,255,255,.08);
-
-box-shadow:0 10px 25px rgba(0,0,0,.35);
-
+    background:#FFFFFF;
+    border-radius:18px;
+    padding:12px;
+    border:1px solid #E5E7EB;
+    box-shadow:0 12px 30px rgba(15,23,42,.08);
 }
 
 .calendar img{
-
-width:100%;
-
-display:block;
-
-border-radius:12px;
-
+    width:100%;
+    display:block;
+    border-radius:14px;
 }
 
 /* Buttons */
 
 .actions{
-
-display:flex;
-
-gap:10px;
-
-margin-top:15px;
-
-flex-wrap:wrap;
-
+    display:flex;
+    gap:12px;
+    margin-top:18px;
+    flex-wrap:wrap;
 }
 
 .btn{
-
-flex:1;
-
-text-decoration:none;
-
-text-align:center;
-
-padding:12px;
-
-border-radius:10px;
-
-font-weight:600;
-
-transition:.25s;
-
-cursor:pointer;
-
-border:none;
-
+    flex:1;
+    text-decoration:none;
+    text-align:center;
+    padding:13px;
+    border-radius:12px;
+    font-weight:600;
+    transition:.25s;
+    cursor:pointer;
+    border:none;
+    box-shadow:0 4px 14px rgba(0,0,0,.08);
 }
 
 .home{
-
-background:#FFD700;
-
-color:#111;
-
+    background:#2563EB;
+    color:#fff;
 }
 
 .refresh{
-
-background:#16C784;
-
-color:#fff;
-
+    background:#10B981;
+    color:#fff;
 }
 
 .download{
-
-background:#2979ff;
-
-color:#fff;
-
+    background:#7C3AED;
+    color:#fff;
 }
 
 .btn:hover{
-
-opacity:.95;
-
-transform:translateY(-2px);
-
+    transform:translateY(-3px);
+    box-shadow:0 10px 24px rgba(0,0,0,.15);
+    opacity:.97;
 }
 
 /* Message */
 
 .message{
-
-text-align:center;
-
-padding:50px 20px;
-
+    text-align:center;
+    padding:60px 20px;
 }
 
 .message h2{
-
-font-size:28px;
-
-color:#FFD700;
-
-margin-bottom:12px;
-
+    font-size:30px;
+    color:#2563EB;
+    margin-bottom:14px;
 }
 
 .message p{
-
-color:#d5d5d5;
-
-line-height:1.8;
-
+    color:#6B7280;
+    line-height:1.9;
+    font-size:15px;
 }
 
 /* Footer */
 
 .footer{
+    margin-top:20px;
+    text-align:center;
+    font-size:13px;
+    color:#6B7280;
+}
 
-margin-top:18px;
+/* Card Animation */
 
-text-align:center;
+.info,
+.calendar{
+    transition:.3s ease;
+}
 
-font-size:13px;
-
-color:#8f99aa;
-
+.info:hover,
+.calendar:hover{
+    transform:translateY(-3px);
+    box-shadow:0 18px 36px rgba(15,23,42,.10);
 }
 
 /* Mobile */
 
 @media(max-width:600px){
 
-.container{
+    .container{
+        padding:14px;
+    }
 
-padding:12px;
+    .header{
+        gap:10px;
+    }
 
-}
+    .logo{
+        width:50px;
+        height:50px;
+    }
 
-.logo{
+    .brand h1{
+        font-size:21px;
+    }
 
-width:45px;
+    .brand p{
+        font-size:13px;
+    }
 
-height:45px;
+    .title{
+        font-size:23px;
+    }
 
-}
+    .actions{
+        flex-direction:column;
+    }
 
-.brand h1{
+    .btn{
+        width:100%;
+    }
 
-font-size:20px;
+    .message{
+        padding:45px 15px;
+    }
 
-}
-
-.title{
-
-font-size:22px;
-
-}
-
-.actions{
-
-flex-direction:column;
-
-}
-
-.btn{
-
-width:100%;
-
-}
-
+    .message h2{
+        font-size:25px;
+    }
 }
 
 </style>
