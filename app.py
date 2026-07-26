@@ -1,6 +1,6 @@
-from flask import Flask, render_template, abort
-from datetime import datetime
-import pytz
+from flask import render_template , abort
+from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
 import os
 
 app = Flask(__name__)
@@ -28,41 +28,36 @@ def terms():
 @app.route("/ipo-calendar")
 def ipo_calendar():
 
-    india = pytz.timezone("Asia/Kolkata")
-    now = datetime.now(india)
-
-    # Show only after 6 AM
-    show_calendar = now.hour >= 6
-
     calendar_folder = os.path.join(app.static_folder, "calendar")
+
+    now = datetime.now(ZoneInfo("Asia/Kolkata"))
+
+    # 6 AM Rule
+    if now.hour < 6:
+        display_date = now.date() - timedelta(days=1)
+    else:
+        display_date = now.date()
 
     latest_image = None
 
-    if os.path.exists(calendar_folder):
+    # Supported extensions
+    extensions = [".jpg", ".jpeg", ".png", ".webp"]
 
-        images = []
+    for ext in extensions:
+        filename = display_date.strftime("%Y-%m-%d") + ext
+        filepath = os.path.join(calendar_folder, filename)
 
-        for file in os.listdir(calendar_folder):
+        if os.path.exists(filepath):
+            latest_image = filename
+            break
 
-            if file.lower().endswith((".jpg", ".jpeg", ".png", ".webp")):
-
-                full_path = os.path.join(calendar_folder, file)
-
-                images.append(
-                    (
-                        file,
-                        os.path.getmtime(full_path)
-                    )
-                )
-
-        if images:
-            latest_image = max(images, key=lambda x: x[1])[0]
+    show_calendar = True
 
     return render_template(
         "ipo-calendar.html",
-        show_calendar=show_calendar,
         latest_image=latest_image,
-        current_time=now.strftime("%d %B %Y %I:%M %p")
+        show_calendar=show_calendar,
+        current_time=now.strftime("%d %b %Y %I:%M %p")
     )
 
 if __name__ == "__main__":
