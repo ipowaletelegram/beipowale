@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta , send_from_directory
 from zoneinfo import ZoneInfo
 import os
 app = Flask(__name__)
@@ -23,6 +23,14 @@ def blog():
 @app.route("/terms")
 def terms():
     return render_template("terms.html")
+
+@app.route("/robots.txt")
+def robots():
+    return send_from_directory("static", "robots.txt")
+
+@app.route("/sitemap.xml")
+def sitemap():
+    return send_from_directory("static", "sitemap.xml")
 
 @app.route("/ipo-calendar")
 def ipo_calendar():
