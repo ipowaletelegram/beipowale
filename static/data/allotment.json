@@ -46,6 +46,14 @@
     "allotment": "2026-08-04",
     "featured": false,
     "url": "https://ipostatus.kfintech.com/"
+},
+    {
+    "company": "Ardee Industries Ltd",
+    "logo": "/static/logos/ardee.png",
+    "registrar": "Kfin Technologies",
+    "allotment": "2026-08-10",
+    "featured": false,
+    "url": "https://ipostatus.kfintech.com/"
 }
   
 ]
