@@ -1742,32 +1742,62 @@ font-size:16px;
 
 }
 /*MARQUEE DISCLAIMER*/
+/* ===========================================
+   PREMIUM STOCK MARKET DISCLAIMER
+   BE.IPOWALE
+=========================================== */
+
 .disclaimer-marquee{
-    margin:30px auto;
     max-width:1200px;
-    background:linear-gradient(135deg,#0f172a,#1e293b,#111827);
-    border:1px solid #334155;
-    border-left:6px solid #ef4444;
+    margin:35px auto;
     border-radius:14px;
     overflow:hidden;
-    box-shadow:0 15px 30px rgba(15,23,42,.35);
+    border:1px solid #2d3748;
+    background:#0b1220;
+    box-shadow:0 8px 25px rgba(0,0,0,.18);
 }
 
 .disclaimer-title{
-    background:linear-gradient(90deg,#dc2626,#ef4444);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    background:linear-gradient(90deg,#b91c1c,#ef4444);
     color:#ffffff;
-    text-align:center;
-    padding:12px;
+    padding:12px 20px;
     font-size:16px;
     font-weight:700;
     letter-spacing:1px;
     text-transform:uppercase;
+    border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .disclaimer-marquee marquee{
+    display:block;
+    background:#111827;
     color:#f8fafc;
-    padding:15px;
+    padding:14px 0;
     font-size:15px;
     font-weight:500;
     line-height:1.6;
+}
+
+/* Highlight important words */
+.disclaimer-marquee strong{
+    color:#22c55e;
+}
+
+/* Mobile */
+@media(max-width:768px){
+
+.disclaimer-title{
+    font-size:14px;
+    padding:10px;
+}
+
+.disclaimer-marquee marquee{
+    font-size:13px;
+    padding:12px 0;
+}
+
 }
