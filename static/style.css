@@ -1741,3 +1741,11 @@ font-size:16px;
 }
 
 }
+/*MARQUEE DISCLAIMER*/
+.risk-marquee{
+    background:#b71c1c;
+    color:#fff;
+    padding:12px 0;
+    font-weight:600;
+    font-size:15px;
+}
