@@ -1742,10 +1742,32 @@ font-size:16px;
 
 }
 /*MARQUEE DISCLAIMER*/
-.risk-marquee{
-    background:#b71c1c;
-    color:#fff;
-    padding:12px 0;
-    font-weight:600;
+.disclaimer-marquee{
+    margin:30px auto;
+    max-width:1200px;
+    background:linear-gradient(135deg,#0f172a,#1e293b,#111827);
+    border:1px solid #334155;
+    border-left:6px solid #ef4444;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 15px 30px rgba(15,23,42,.35);
+}
+
+.disclaimer-title{
+    background:linear-gradient(90deg,#dc2626,#ef4444);
+    color:#ffffff;
+    text-align:center;
+    padding:12px;
+    font-size:16px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.disclaimer-marquee marquee{
+    color:#f8fafc;
+    padding:15px;
     font-size:15px;
+    font-weight:500;
+    line-height:1.6;
 }
