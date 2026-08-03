@@ -1,28 +1,4 @@
 [
-    {
-    "company": "Lohia Corp Ltd",
-    "logo": "/static/logos/lohiacorp.png",
-    "registrar": "MUFG",
-    "allotment": "2026-07-28",
-    "featured": false,
-    "url": "https://in.mpms.mufg.com/Initial_Offer/public-issues.html"
-},
-    {
-    "company": "Indo-MIM",
-    "logo": "/static/logos/indo.png",
-    "registrar": "MUFG",
-    "allotment": "2026-07-28",
-    "featured": false,
-    "url": "https://in.mpms.mufg.com/Initial_Offer/public-issues.html"
-},
-  {
-    "company": "Xtranet Technologies Ltd",
-    "logo": "/static/logos/xtranet.png",
-    "registrar": "Kfin Technologies",
-    "allotment": "2026-07-28",
-    "featured": false,
-    "url": "https://ipostatus.kfintech.com/"
-},
   {
     "company": "Manipal Health Enterprises Ltd",
     "logo": "/static/logos/manipal.png",
@@ -54,6 +30,22 @@
     "allotment": "2026-08-12",
     "featured": false,
     "url": "https://ipo.bigshareonline.com/IPO_Status.html"
+},
+    {
+    "company": "Ardee Industries Ltd",
+    "logo": "/static/logos/ardee.png",
+    "registrar": "Kfin Technologies",
+    "allotment": "2026-08-10",
+    "featured": false,
+    "url": "https://ipostatus.kfintech.com/"
+},
+    {
+    "company": "Leap India Ltd",
+    "logo": "/static/logos/leap.png",
+    "registrar": "MUFG",
+    "allotment": "2026-08-12",
+    "featured": false,
+    "url": "https://in.mpms.mufg.com/Initial_Offer/public-issues.html"
 }
   
 ]
