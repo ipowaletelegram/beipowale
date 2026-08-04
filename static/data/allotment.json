@@ -46,6 +46,14 @@
     "allotment": "2026-08-12",
     "featured": false,
     "url": "https://in.mpms.mufg.com/Initial_Offer/public-issues.html"
+},
+  {
+    "company": "Dhoot Transmission Ltd",
+    "logo": "/static/logos/dhoot.png",
+    "registrar": "Kfin Technologies",
+    "allotment": "2026-08-13",
+    "featured": false,
+    "url": "https://ipostatus.kfintech.com/"
 }
   
 ]
