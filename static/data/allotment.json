@@ -54,6 +54,38 @@
     "allotment": "2026-08-13",
     "featured": false,
     "url": "https://ipostatus.kfintech.com/"
+},
+  {
+    "company": "Molbio Diagnostics Ltd",
+    "logo": "/static/logos/molbio.png",
+    "registrar": "Kfin Technologies",
+    "allotment": "2026-08-13",
+    "featured": false,
+    "url": "https://ipostatus.kfintech.com/"
+},
+  {
+    "company": "Milky Mist Dairy Food Ltd",
+    "logo": "/static/logos/milky.png",
+    "registrar": "Kfin Technologies",
+    "allotment": "2026-08-14",
+    "featured": false,
+    "url": "https://ipostatus.kfintech.com/"
+},
+  {
+    "company": "Shiprocket Ltd",
+    "logo": "/static/logos/shiprocket.png",
+    "registrar": "Kfin Technologies",
+    "allotment": "2026-08-17",
+    "featured": false,
+    "url": "https://ipostatus.kfintech.com/"
+},
+  {
+    "company": "Behari LAl Engineering Ltd",
+    "logo": "/static/logos/behari.png",
+    "registrar": "MUFG",
+    "allotment": "2026-08-17",
+    "featured": false,
+    "url": "https://in.mpms.mufg.com/Initial_Offer/public-issues.html"
 }
   
 ]
