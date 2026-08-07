@@ -1,28 +1,4 @@
 [
-  {
-    "company": "Manipal Health Enterprises Ltd",
-    "logo": "/static/logos/manipal.png",
-    "registrar": "Kfin Technologies",
-    "allotment": "2026-08-03",
-    "featured": false,
-    "url": "https://ipostatus.kfintech.com/"
-},
-   {
-    "company": "Juniper Green Energy Ltd",
-    "logo": "/static/logos/juniper.png",
-    "registrar": "Kfin Technologies",
-    "allotment": "2026-08-04",
-    "featured": false,
-    "url": "https://ipostatus.kfintech.com/"
-},
-  {
-    "company": "MV Electrosystems Ltd",
-    "logo": "/static/logos/mv.png",
-    "registrar": "Kfin Technologies",
-    "allotment": "2026-08-04",
-    "featured": false,
-    "url": "https://ipostatus.kfintech.com/"
-},
     {
     "company": "Technocraft Ventures Ltd IPO",
     "logo": "/static/logos/techno.png",
@@ -80,7 +56,7 @@
     "url": "https://ipostatus.kfintech.com/"
 },
   {
-    "company": "Behari LAl Engineering Ltd",
+    "company": "Behari Lal Engineering Ltd",
     "logo": "/static/logos/behari.png",
     "registrar": "MUFG",
     "allotment": "2026-08-17",
