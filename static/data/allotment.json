@@ -70,6 +70,14 @@
     "allotment": "2026-08-20",
     "featured": false,
     "url": "https://in.mpms.mufg.com/Initial_Offer/public-issues.html"
+},
+    {
+    "company": "Shankesh Jewellers Ltd",
+    "logo": "/static/logos/shankesh.png",
+    "registrar": "Kfin Technologies",
+    "allotment": "2026-08-21",
+    "featured": false,
+    "url": "https://ipostatus.kfintech.com/"
 }
   
 ]
