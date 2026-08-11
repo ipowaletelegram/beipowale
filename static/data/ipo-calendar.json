@@ -1,6 +1,6 @@
 [
     {
-        "name": "Milky Mist Dairy Food",
+        "name": "IPO 1",
         "type": "MAINBOARD",
         "open": "2026-08-11",
         "close": "2026-08-13",
@@ -8,11 +8,11 @@
         "listing": "2026-08-18"
     },
     {
-        "name": "Technocraft Ventures  Ltd",
-        "type": "MAINBOARD",
-        "open": "2026-08-07",
-        "close": "2026-08-11",
-        "allotment": "2026-08-12",
-        "listing": "2026-08-14"
-    },
+        "name": "IPO 2",
+        "type": "SME",
+        "open": "2026-08-12",
+        "close": "2026-08-14",
+        "allotment": "2026-08-18",
+        "listing": "2026-08-19"
+    }
 ]
