@@ -14,33 +14,27 @@ const activeDays =
 ========================================== */
 
 const EVENT_TYPES = [
-
     {
         key: "open",
         label: "OPEN",
         className: "status-open"
     },
-
     {
         key: "close",
         label: "CLOSE",
         className: "status-close"
     },
-
-    {
-        key: "allotment",
-        label: "ALLOTMENT",
-        className: "status-allotment"
-    },
-
     {
         key: "listing",
         label: "LISTING",
         className: "status-listing"
+    },
+    {
+        key: "allotment",
+        label: "ALLOTMENT",
+        className: "status-allotment"
     }
-
 ];
-
 
 
 /* ==========================================
