@@ -1476,3 +1476,67 @@ footer p {
     }
 
 }
+/* ==========================================
+   SIMPLE MODERN FONT
+========================================== */
+
+body,
+.calendar-page,
+.brand-header,
+.stats-grid,
+.section-heading,
+.day-card,
+.status-guide,
+.promotion-card,
+footer {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* Main heading */
+
+.brand-content h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+
+/* Upcoming IPO Events */
+
+.section-heading h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 21px;
+    font-weight: 600;
+}
+
+
+/* Date */
+
+.day-date {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+}
+
+
+/* IPO names */
+
+.ipo-name {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+
+/* Promotion heading */
+
+.promotion-card h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+
+/* Footer */
+
+.footer-logo {
+    font-family: 'Poppins', sans-serif;
+}
