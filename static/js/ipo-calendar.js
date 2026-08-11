@@ -11,30 +11,60 @@ const activeDays =
 
 /* ==========================================
    EVENT TYPES
+   Display Priority:
+
+   1. OPEN
+   2. CLOSE
+   3. LISTING
+   4. ALLOTMENT
 ========================================== */
 
 const EVENT_TYPES = [
+
     {
         key: "open",
         label: "OPEN",
         className: "status-open"
     },
+
     {
         key: "close",
         label: "CLOSE",
         className: "status-close"
     },
+
     {
         key: "listing",
         label: "LISTING",
         className: "status-listing"
     },
+
     {
         key: "allotment",
         label: "ALLOTMENT",
         className: "status-allotment"
     }
+
 ];
+
+
+
+/* ==========================================
+   EVENT SORT PRIORITY
+========================================== */
+
+const STATUS_PRIORITY = {
+
+    open: 1,
+
+    close: 2,
+
+    listing: 3,
+
+    allotment: 4
+
+};
+
 
 
 /* ==========================================
@@ -46,15 +76,18 @@ function dateKey(date) {
     const year =
         date.getFullYear();
 
+
     const month =
         String(
             date.getMonth() + 1
         ).padStart(2, "0");
 
+
     const day =
         String(
             date.getDate()
         ).padStart(2, "0");
+
 
     return `${year}-${month}-${day}`;
 
@@ -105,10 +138,16 @@ function getNext30Days() {
 
     const dates = [];
 
-    const today = new Date();
+
+    const today =
+        new Date();
+
 
     today.setHours(
-        0, 0, 0, 0
+        0,
+        0,
+        0,
+        0
     );
 
 
@@ -121,9 +160,11 @@ function getNext30Days() {
         const date =
             new Date(today);
 
+
         date.setDate(
             today.getDate() + i
         );
+
 
         dates.push(date);
 
@@ -144,6 +185,7 @@ async function loadCalendar() {
 
     try {
 
+
         const response =
             await fetch(
                 "/api/ipo-calendar"
@@ -153,7 +195,8 @@ async function loadCalendar() {
         if (!response.ok) {
 
             throw new Error(
-                "API Error"
+                "API Error: " +
+                response.status
             );
 
         }
@@ -175,9 +218,15 @@ async function loadCalendar() {
         generateCalendar(data);
 
 
-    } catch (error) {
+    }
 
-        console.error(error);
+    catch (error) {
+
+
+        console.error(
+            "IPO Calendar Error:",
+            error
+        );
 
 
         calendar.innerHTML = `
@@ -215,6 +264,7 @@ function generateCalendar(ipoData) {
 
 
     let eventCount = 0;
+
 
     let activeDayCount = 0;
 
@@ -269,15 +319,52 @@ function generateCalendar(ipoData) {
 
 
 
-        /* No event = don't display day */
+        /* ==================================
+           SORT EVENTS
 
-        if (events.length === 0) {
+           OPEN
+           ↓
+           CLOSE
+           ↓
+           LISTING
+           ↓
+           ALLOTMENT
+        ================================== */
+
+        events.sort(
+            (a, b) => {
+
+                return (
+                    STATUS_PRIORITY[
+                        a.type.key
+                    ] -
+                    STATUS_PRIORITY[
+                        b.type.key
+                    ]
+                );
+
+            }
+        );
+
+
+
+        /* ==================================
+           NO EVENT
+        ================================== */
+
+        if (
+            events.length === 0
+        ) {
 
             return;
 
         }
 
 
+
+        /* ==================================
+           UPDATE COUNTERS
+        ================================== */
 
         eventCount +=
             events.length;
@@ -301,7 +388,12 @@ function generateCalendar(ipoData) {
             "day-card";
 
 
-        if (isToday(date)) {
+
+        /* TODAY */
+
+        if (
+            isToday(date)
+        ) {
 
             dayCard.classList.add(
                 "today"
@@ -326,6 +418,10 @@ function generateCalendar(ipoData) {
 
 
 
+        /* ==================================
+           DAY LABEL
+        ================================== */
+
         const dayLabel =
             document.createElement(
                 "div"
@@ -337,8 +433,11 @@ function generateCalendar(ipoData) {
 
 
         dayLabel.textContent =
+
             isToday(date)
+
                 ? "• TODAY"
+
                 : date
                     .toLocaleDateString(
                         "en-IN",
@@ -350,6 +449,10 @@ function generateCalendar(ipoData) {
                     .toUpperCase();
 
 
+
+        /* ==================================
+           DAY DATE
+        ================================== */
 
         const dayDate =
             document.createElement(
@@ -365,6 +468,10 @@ function generateCalendar(ipoData) {
             formatDate(date);
 
 
+
+        /* ==================================
+           HEADER APPEND
+        ================================== */
 
         dayHeader.appendChild(
             dayLabel
@@ -386,96 +493,118 @@ function generateCalendar(ipoData) {
            IPO EVENTS
         ================================== */
 
-        events.forEach(event => {
+        events.forEach(
+            event => {
 
 
-            const row =
-                document.createElement(
-                    "div"
-                );
+                const row =
+                    document.createElement(
+                        "div"
+                    );
 
 
-            row.className =
-                "ipo-row";
-
-
-
-            const info =
-                document.createElement(
-                    "div"
-                );
-
-
-            info.className =
-                "ipo-info";
+                row.className =
+                    "ipo-row";
 
 
 
-            const name =
-                document.createElement(
-                    "div"
-                );
+                /* ==========================
+                   IPO INFO
+                ========================== */
+
+                const info =
+                    document.createElement(
+                        "div"
+                    );
 
 
-            name.className =
-                "ipo-name";
+                info.className =
+                    "ipo-info";
 
 
-            name.innerHTML = `
 
-                ${escapeHTML(
-                    event.ipo.name
-                )}
+                /* ==========================
+                   IPO NAME
+                ========================== */
 
-                <span class="ipo-type">
+                const name =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                name.className =
+                    "ipo-name";
+
+
+                name.innerHTML = `
 
                     ${escapeHTML(
-                        event.ipo.type
+                        event.ipo.name
                     )}
 
-                </span>
+                    <span class="ipo-type">
 
-            `;
+                        ${escapeHTML(
+                            event.ipo.type
+                        )}
+
+                    </span>
+
+                `;
 
 
 
-            const status =
-                document.createElement(
-                    "div"
+                /* ==========================
+                   STATUS
+                ========================== */
+
+                const status =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                status.className =
+                    `status ${event.type.className}`;
+
+
+                status.textContent =
+                    event.type.label;
+
+
+
+                /* ==========================
+                   APPEND INFO
+                ========================== */
+
+                info.appendChild(
+                    name
                 );
 
 
-            status.className =
-                `status ${event.type.className}`;
+                row.appendChild(
+                    info
+                );
 
 
-            status.textContent =
-                event.type.label;
+                row.appendChild(
+                    status
+                );
+
+
+                dayCard.appendChild(
+                    row
+                );
+
+            }
+        );
 
 
 
-            info.appendChild(
-                name
-            );
-
-
-            row.appendChild(
-                info
-            );
-
-
-            row.appendChild(
-                status
-            );
-
-
-            dayCard.appendChild(
-                row
-            );
-
-        });
-
-
+        /* ==================================
+           ADD DAY CARD
+        ================================== */
 
         calendar.appendChild(
             dayCard
@@ -502,7 +631,9 @@ function generateCalendar(ipoData) {
        EMPTY CALENDAR
     ====================================== */
 
-    if (activeDayCount === 0) {
+    if (
+        activeDayCount === 0
+    ) {
 
         calendar.innerHTML = `
 
@@ -563,7 +694,7 @@ function escapeHTML(value) {
 
 
 /* ==========================================
-   START
+   START CALENDAR
 ========================================== */
 
 loadCalendar();
