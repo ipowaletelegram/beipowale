@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        IPO Calendar | BE.IPOWALE
+    </title>
+
+    <meta
+        name="description"
+        content="BE.IPOWALE IPO Calendar - IPO Opening, Closing, Allotment and Listing Dates."
+    >
+
+    <meta
+        name="robots"
+        content="index,follow"
+    >
+
+    <link
+        rel="canonical"
+        href="https://beipowale.onrender.com/ipo-calendar"
+    >
+
+    <!-- Google Font -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Calendar CSS -->
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for(
+            'static',
+            filename='css/ipo-calendar.css'
+        ) }}"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================================
+     PAGE
+========================================== -->
+
+<div class="calendar-page">
+
+
+    <!-- ======================================
+         TOP HEADER
+    ======================================= -->
+
+    <section class="calendar-top">
+
+
+        <div class="calendar-heading">
+
+            <h1>
+                IPO <span>Calendar</span>
+            </h1>
+
+            <p>
+                NEXT 30 DAYS • OPEN • CLOSE •
+                ALLOTMENT • LISTING
+            </p>
+
+        </div>
+
+
+        <div class="top-stats">
+
+
+            <div class="top-stat">
+
+                <strong id="totalEvents">
+                    0
+                </strong>
+
+                <span>
+                    EVENTS
+                </span>
+
+            </div>
+
+
+            <div class="top-stat">
+
+                <strong id="activeDays">
+                    0
+                </strong>
+
+                <span>
+                    ACTIVE DAYS
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ======================================
+         CALENDAR
+    ======================================= -->
+
+    <main id="calendar">
+
+        <div class="loading">
+
+            Loading IPO Calendar...
+
+        </div>
+
+    </main>
+
+
+
+    <!-- ======================================
+         FOOTER
+    ======================================= -->
+
+    <footer>
+
+        <a href="/">
+            ← Back to BE.IPOWALE
+        </a>
+
+        <p>
+            Last Updated:
+            {{ current_time }}
+        </p>
+
+    </footer>
+
+
+</div>
+
+
+<!-- Calendar JS -->
+
+<script
+    src="{{ url_for(
+        'static',
+        filename='js/ipo-calendar.js'
+    ) }}"
+></script>
+
+
+</body>
+
+</html>
