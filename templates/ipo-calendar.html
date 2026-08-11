@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -11,31 +10,21 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>
-        IPO Calendar | BE.IPOWALE
-    </title>
+    <title>IPO Calendar | BE.IPOWALE</title>
 
     <meta
         name="description"
-        content="BE.IPOWALE IPO Calendar - IPO Opening, Closing, Allotment and Listing Dates."
+        content="BE.IPOWALE IPO Calendar - Track IPO Open, Close, Allotment and Listing dates."
     >
 
     <meta
-        name="robots"
-        content="index,follow"
+        name="theme-color"
+        content="#111a32"
     >
 
-    <link
-        rel="canonical"
-        href="https://beipowale.onrender.com/ipo-calendar"
-    >
+    <!-- Google Fonts -->
 
-    <!-- Google Font -->
-
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link
         rel="preconnect"
@@ -64,51 +53,100 @@
 <body>
 
 
-<!-- ==========================================
-     PAGE
-========================================== -->
-
 <div class="calendar-page">
 
 
-    <!-- ======================================
-         TOP HEADER
-    ======================================= -->
+    <!-- =========================================
+         BE.IPOWALE BRAND HEADER
+    ========================================== -->
 
-    <section class="calendar-top">
-
-
-        <div class="calendar-heading">
-
-            <h1>
-                IPO <span>Calendar</span>
-            </h1>
-
-            <p>
-                NEXT 30 DAYS • OPEN • CLOSE •
-                ALLOTMENT • LISTING
-            </p>
-
-        </div>
+    <section class="brand-header">
 
 
-        <div class="top-stats">
+        <div class="brand-top">
 
+            <div class="brand-logo">
 
-            <div class="top-stat">
-
-                <strong id="totalEvents">
-                    0
-                </strong>
+                <span class="brand-dot"></span>
 
                 <span>
-                    EVENTS
+                    BE.<b>IPOWALE</b>
                 </span>
 
             </div>
 
 
-            <div class="top-stat">
+            <div class="brand-tag">
+
+                DAILY IPO UPDATES
+
+            </div>
+
+        </div>
+
+
+        <div class="brand-content">
+
+            <div>
+
+                <h1>
+                    IPO <span>Calendar</span>
+                </h1>
+
+                <p>
+                    Track every important IPO date
+                    in one place.
+                </p>
+
+            </div>
+
+
+            <div class="calendar-icon">
+
+                📅
+
+            </div>
+
+        </div>
+
+
+        <div class="brand-features">
+
+            <span>OPEN</span>
+
+            <i>•</i>
+
+            <span>CLOSE</span>
+
+            <i>•</i>
+
+            <span>ALLOTMENT</span>
+
+            <i>•</i>
+
+            <span>LISTING</span>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================================
+         STATS
+    ========================================== -->
+
+    <section class="stats-grid">
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                📅
+            </div>
+
+            <div>
 
                 <strong id="activeDays">
                     0
@@ -120,20 +158,74 @@
 
             </div>
 
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                📈
+            </div>
+
+            <div>
+
+                <strong id="totalEvents">
+                    0
+                </strong>
+
+                <span>
+                    TOTAL EVENTS
+                </span>
+
+            </div>
 
         </div>
+
 
     </section>
 
 
 
-    <!-- ======================================
+    <!-- =========================================
+         CALENDAR TITLE
+    ========================================== -->
+
+    <div class="section-heading">
+
+        <div>
+
+            <h2>
+                Upcoming IPO Events
+            </h2>
+
+            <p>
+                NEXT 30 DAYS
+            </p>
+
+        </div>
+
+
+        <div class="live-badge">
+
+            <span></span>
+
+            LIVE CALENDAR
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
          CALENDAR
-    ======================================= -->
+    ========================================== -->
 
     <main id="calendar">
 
         <div class="loading">
+
+            <div class="loader"></div>
 
             Loading IPO Calendar...
 
@@ -143,20 +235,216 @@
 
 
 
-    <!-- ======================================
+    <!-- =========================================
+         STATUS GUIDE
+    ========================================== -->
+
+    <section class="status-guide">
+
+
+        <div class="guide-title">
+
+            <span>QUICK GUIDE</span>
+
+        </div>
+
+
+        <div class="guide-items">
+
+
+            <div class="guide-item">
+
+                <span class="guide-dot open"></span>
+
+                <div>
+
+                    <strong>OPEN</strong>
+
+                    <small>
+                        IPO application starts
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="guide-item">
+
+                <span class="guide-dot close"></span>
+
+                <div>
+
+                    <strong>CLOSE</strong>
+
+                    <small>
+                        Last day to apply
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="guide-item">
+
+                <span class="guide-dot allotment"></span>
+
+                <div>
+
+                    <strong>ALLOTMENT</strong>
+
+                    <small>
+                        Allotment date
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="guide-item">
+
+                <span class="guide-dot listing"></span>
+
+                <div>
+
+                    <strong>LISTING</strong>
+
+                    <small>
+                        Stock market listing
+                    </small>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         BE.IPOWALE PROMOTION
+    ========================================== -->
+
+    <section class="promotion-card">
+
+
+        <div class="promo-glow"></div>
+
+
+        <div class="promo-content">
+
+
+            <div class="promo-brand">
+
+                <span class="brand-dot"></span>
+
+                BE.<b>IPOWALE</b>
+
+            </div>
+
+
+            <h2>
+                Don't Miss the Next IPO 🚀
+            </h2>
+
+
+            <p>
+                Get daily IPO updates, GMP,
+                subscription, allotment,
+                listing & market updates.
+            </p>
+
+
+            <div class="promo-tags">
+
+                <span>GMP</span>
+
+                <span>SUBSCRIPTION</span>
+
+                <span>ALLOTMENT</span>
+
+                <span>LISTING</span>
+
+            </div>
+
+
+            <a
+                href="https://www.instagram.com/be.ipowale/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="follow-button"
+            >
+                Follow @be.ipowale →
+            </a>
+
+
+        </div>
+
+
+        <div class="promo-symbol">
+
+            🚀
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================================
          FOOTER
-    ======================================= -->
+    ========================================== -->
 
     <footer>
 
-        <a href="/">
-            ← Back to BE.IPOWALE
-        </a>
+
+        <div class="footer-logo">
+
+            BE.<b>IPOWALE</b>
+
+        </div>
+
 
         <p>
-            Last Updated:
-            {{ current_time }}
+            Daily IPO Updates • GMP • Allotment • Listing
         </p>
+
+
+        <div class="footer-links">
+
+            <a
+                href="https://www.instagram.com/be.ipowale/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Instagram
+            </a>
+
+            <span>•</span>
+
+            <a
+                href="https://t.me/BE_IPOWALE"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Telegram
+            </a>
+
+        </div>
+
+
+        <div class="footer-copy">
+
+            © 2026 BE.IPOWALE
+
+        </div>
+
 
     </footer>
 
@@ -164,7 +452,8 @@
 </div>
 
 
-<!-- Calendar JS -->
+
+<!-- Existing Calendar JS -->
 
 <script
     src="{{ url_for(
