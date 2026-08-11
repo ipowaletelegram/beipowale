@@ -1,0 +1,585 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+
+    background: #f3f4f7;
+
+    color: #172033;
+
+    font-family: 'Poppins', sans-serif;
+
+}
+
+
+.calendar-page {
+
+    width: 100%;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 10px;
+
+}
+
+
+/* =========================================
+   TOP CARD
+========================================= */
+
+.calendar-top {
+
+    background:
+        radial-gradient(
+            circle at 90% 0%,
+            rgba(255,255,255,.12),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #1c2a4b,
+            #111b34
+        );
+
+    color: white;
+
+    border-radius: 20px;
+
+    padding: 25px 22px;
+
+    margin-bottom: 14px;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.18);
+
+}
+
+
+.calendar-heading h1 {
+
+    font-family:
+        'DM Serif Display',
+        serif;
+
+    font-size: 36px;
+
+    font-weight: 400;
+
+}
+
+
+.calendar-heading h1 span {
+
+    font-style: italic;
+
+}
+
+
+.calendar-heading p {
+
+    margin-top: 8px;
+
+    font-size: 11px;
+
+    letter-spacing: 1.5px;
+
+    opacity: .72;
+
+}
+
+
+.top-stats {
+
+    display: flex;
+
+    gap: 40px;
+
+    margin-top: 22px;
+
+    padding-top: 15px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.18);
+
+}
+
+
+.top-stat {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+.top-stat strong {
+
+    font-size: 25px;
+
+    line-height: 1.1;
+
+}
+
+
+.top-stat span {
+
+    font-size: 9px;
+
+    letter-spacing: 1.2px;
+
+    opacity: .65;
+
+    margin-top: 3px;
+
+}
+
+
+/* =========================================
+   DAY CARD
+========================================= */
+
+.day-card {
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    padding: 15px 18px;
+
+    margin-bottom: 12px;
+
+    border:
+        1px solid #e1e4ea;
+
+    box-shadow:
+        0 3px 12px rgba(0,0,0,.07);
+
+}
+
+
+.day-card.today {
+
+    border:
+        2px solid #263a65;
+
+}
+
+
+/* =========================================
+   DAY HEADER
+========================================= */
+
+.day-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding-bottom: 10px;
+
+    border-bottom:
+        1px solid #e1e3e7;
+
+    margin-bottom: 2px;
+
+}
+
+
+.day-label {
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.4px;
+
+    color: #263653;
+
+}
+
+
+.day-date {
+
+    font-family:
+        'DM Serif Display',
+        serif;
+
+    font-size: 15px;
+
+    font-style: italic;
+
+    color: #273149;
+
+}
+
+
+/* =========================================
+   IPO ROW
+========================================= */
+
+.ipo-row {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    min-height: 53px;
+
+    border-bottom:
+        1px solid #e5e6e9;
+
+}
+
+
+.ipo-row:last-child {
+
+    border-bottom: none;
+
+}
+
+
+.ipo-info {
+
+    flex: 1;
+
+    min-width: 0;
+
+}
+
+
+.ipo-name {
+
+    font-family:
+        'DM Serif Display',
+        serif;
+
+    font-size: 17px;
+
+    color: #172033;
+
+    line-height: 1.3;
+
+}
+
+
+.ipo-type {
+
+    display: inline-block;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: .7px;
+
+    background: #e9ebef;
+
+    color: #4d5668;
+
+    border-radius: 10px;
+
+    padding: 3px 7px;
+
+    margin-left: 5px;
+
+    vertical-align: middle;
+
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.status {
+
+    flex-shrink: 0;
+
+    border-radius: 20px;
+
+    padding: 7px 11px;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: .7px;
+
+    white-space: nowrap;
+
+}
+
+
+.status::before {
+
+    content: "• ";
+
+}
+
+
+.status-open {
+
+    background: #dcefe4;
+
+    color: #28734d;
+
+}
+
+
+.status-close {
+
+    background: #f5dcdc;
+
+    color: #a92e38;
+
+}
+
+
+.status-allotment {
+
+    background: #f8e9c9;
+
+    color: #9d6907;
+
+}
+
+
+.status-listing {
+
+    background: #eadcf7;
+
+    color: #7439a3;
+
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.loading {
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 50px 20px;
+
+    text-align: center;
+
+    color: #6b7280;
+
+}
+
+
+/* =========================================
+   EMPTY
+========================================= */
+
+.empty {
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 50px 20px;
+
+    text-align: center;
+
+    color: #6b7280;
+
+}
+
+
+.empty strong {
+
+    display: block;
+
+    font-size: 20px;
+
+    color: #172033;
+
+    margin-bottom: 5px;
+
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+
+    text-align: center;
+
+    padding: 25px 10px;
+
+    color: #6b7280;
+
+    font-size: 12px;
+
+}
+
+
+footer a {
+
+    display: inline-block;
+
+    color: #2563eb;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+
+    .calendar-page {
+
+        padding: 5px;
+
+    }
+
+
+    .calendar-top {
+
+        padding: 22px 18px;
+
+        border-radius: 18px;
+
+    }
+
+
+    .calendar-heading h1 {
+
+        font-size: 31px;
+
+    }
+
+
+    .calendar-heading p {
+
+        font-size: 9px;
+
+        letter-spacing: 1px;
+
+    }
+
+
+    .top-stats {
+
+        gap: 30px;
+
+    }
+
+
+    .top-stat strong {
+
+        font-size: 23px;
+
+    }
+
+
+    .day-card {
+
+        border-radius: 16px;
+
+        padding: 13px 14px;
+
+    }
+
+
+    .day-header {
+
+        align-items: flex-start;
+
+        gap: 5px;
+
+    }
+
+
+    .day-date {
+
+        font-size: 14px;
+
+    }
+
+
+    .ipo-row {
+
+        min-height: 52px;
+
+    }
+
+
+    .ipo-name {
+
+        font-size: 15px;
+
+    }
+
+
+    .ipo-type {
+
+        font-size: 7px;
+
+        padding: 3px 6px;
+
+    }
+
+
+    .status {
+
+        font-size: 8px;
+
+        padding: 6px 8px;
+
+    }
+
+}
+
+
+@media (max-width: 380px) {
+
+
+    .ipo-name {
+
+        font-size: 14px;
+
+    }
+
+
+    .status {
+
+        font-size: 7px;
+
+        padding: 5px 7px;
+
+    }
+
+}
