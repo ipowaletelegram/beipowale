@@ -3,6 +3,10 @@
 
 <head>
 
+    <!-- ==========================================
+         BASIC SEO
+    =========================================== -->
+
     <meta charset="UTF-8">
 
     <meta
@@ -10,11 +14,33 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>IPO Calendar | BE.IPOWALE</title>
+    <title>
+        IPO Calendar | Mainboard IPO Dates, Listings & Schedule | BE.IPOWALE
+    </title>
 
     <meta
         name="description"
-        content="BE.IPOWALE IPO Calendar - Track IPO Open, Close, Allotment and Listing dates."
+        content="IPO Calendar 2026 by BE.IPOWALE. Track upcoming and ongoing Mainboard IPO opening, closing, allotment and listing dates in one place."
+    >
+
+    <meta
+        name="keywords"
+        content="IPO Calendar, IPO Calendar 2026, IPO dates, IPO today, upcoming IPO, Mainboard IPO, IPO opening date, IPO closing date, IPO allotment date, IPO listing date, Indian IPO, IPO schedule, BE.IPOWALE"
+    >
+
+    <meta
+        name="author"
+        content="BE.IPOWALE"
+    >
+
+    <meta
+        name="robots"
+        content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    >
+
+    <meta
+        name="googlebot"
+        content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     >
 
     <meta
@@ -22,9 +48,116 @@
         content="#111a32"
     >
 
-    <!-- Google Fonts -->
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- ==========================================
+         CANONICAL URL
+    =========================================== -->
+
+    <link
+        rel="canonical"
+        href="https://beipowale.onrender.com/ipo-calendar"
+    >
+
+
+    <!-- ==========================================
+         FAVICON
+    =========================================== -->
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="{{ url_for('static', filename='images/favicon.png') }}"
+    >
+
+    <link
+        rel="apple-touch-icon"
+        href="{{ url_for('static', filename='images/favicon.png') }}"
+    >
+
+
+    <!-- ==========================================
+         OPEN GRAPH - FACEBOOK / WHATSAPP / LINK PREVIEW
+    =========================================== -->
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:title"
+        content="IPO Calendar | Mainboard IPO Dates | BE.IPOWALE"
+    >
+
+    <meta
+        property="og:description"
+        content="Track Mainboard IPO opening, closing, allotment and listing dates with the BE.IPOWALE IPO Calendar."
+    >
+
+    <meta
+        property="og:url"
+        content="https://beipowale.onrender.com/ipo-calendar"
+    >
+
+    <meta
+        property="og:site_name"
+        content="BE.IPOWALE"
+    >
+
+    <meta
+        property="og:locale"
+        content="en_IN"
+    >
+
+    <meta
+        property="og:image"
+        content="https://beipowale.onrender.com/static/images/ipo-calendar-og.jpg"
+    >
+
+    <meta
+        property="og:image:alt"
+        content="BE.IPOWALE IPO Calendar 2026"
+    >
+
+
+    <!-- ==========================================
+         TWITTER / X CARD
+    =========================================== -->
+
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
+
+    <meta
+        name="twitter:title"
+        content="IPO Calendar | Mainboard IPO Dates | BE.IPOWALE"
+    >
+
+    <meta
+        name="twitter:description"
+        content="Track upcoming Mainboard IPO opening, closing, allotment and listing dates with BE.IPOWALE."
+    >
+
+    <meta
+        name="twitter:image"
+        content="https://beipowale.onrender.com/static/images/ipo-calendar-og.jpg"
+    >
+
+    <meta
+        name="twitter:image:alt"
+        content="BE.IPOWALE IPO Calendar 2026"
+    >
+
+
+    <!-- ==========================================
+         GOOGLE FONTS
+    =========================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
 
     <link
         rel="preconnect"
@@ -37,18 +170,66 @@
         rel="stylesheet"
     >
 
-    <!-- Calendar CSS -->
+
+    <!-- ==========================================
+         CALENDAR CSS
+    =========================================== -->
 
     <link
         rel="stylesheet"
-        href="{{ url_for(
-            'static',
-            filename='css/ipo-calendar.css'
-        ) }}"
+        href="{{ url_for('static', filename='css/ipo-calendar.css') }}"
     >
 
-</head>
 
+    <!-- ==========================================
+         STRUCTURED DATA - IPO CALENDAR
+    =========================================== -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": "https://beipowale.onrender.com/ipo-calendar#webpage",
+        "url": "https://beipowale.onrender.com/ipo-calendar",
+        "name": "IPO Calendar Today | Mainboard IPO Dates, Listings & Schedule",
+        "headline": "IPO Calendar 2026 - Mainboard IPO Dates",
+        "description": "Track upcoming and ongoing Mainboard IPO opening, closing, allotment and listing dates with BE.IPOWALE.",
+        "inLanguage": "en-IN",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "BE.IPOWALE",
+            "url": "https://beipowale.onrender.com/"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "BE.IPOWALE",
+            "url": "https://beipowale.onrender.com/"
+        }
+    }
+    </script>
+
+
+    <!-- ==========================================
+         WEBSITE STRUCTURED DATA
+    =========================================== -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://beipowale.onrender.com/#website",
+        "url": "https://beipowale.onrender.com/",
+        "name": "BE.IPOWALE",
+        "description": "Daily IPO updates, GMP, subscription, allotment and listing information.",
+        "inLanguage": "en-IN",
+        "publisher": {
+            "@type": "Organization",
+            "name": "BE.IPOWALE"
+        }
+    }
+    </script>
+
+</head>
 
 <body>
 
