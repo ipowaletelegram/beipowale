@@ -86,6 +86,14 @@
     "allotment": "2026-08-21",
     "featured": false,
     "url": "https://ipo.bigshareonline.com/IPO_Status.html"
+},
+    {
+    "company": "Horizon Industrial Parks Ltd",
+    "logo": "/static/logos/horizon.png",
+    "registrar": "Kfin Technologies",
+    "allotment": "2026-08-20",
+    "featured": false,
+    "url": "https://ipostatus.kfintech.com/"
 }
   
 ]
