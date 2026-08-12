@@ -94,6 +94,15 @@
     "allotment": "2026-08-27",
     "featured": false,
     "url": "https://ipo.bigshareonline.com/IPO_Status.html"
+},
+    {
+    "company": "Gaja Alternative Asset Management Ltd IPO",
+    "logo": "/static/logos/gaja.png",
+    "registrar": "MUFG",
+    "allotment": "2026-08-24",
+    "featured": false,
+    "url": "https://in.mpms.mufg.com/Initial_Offer/public-issues.html"
 }
+  
   
 ]
