@@ -94,5 +94,13 @@
         "close": "2026-08-26",
         "allotment": "2026-08-27",
         "listing": "2026-08-31"
+    },
+    {
+        "name": "Gaja Alternative Asset Management Ltd IPO",
+        "type": "MAINBOARD",
+        "open": "2026-08-19",
+        "close": "2026-08-21",
+        "allotment": "2026-08-24",
+        "listing": "2026-08-26"
     }
 ]
