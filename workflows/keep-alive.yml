@@ -1,0 +1,15 @@
+name: Keep Render Website Alive
+
+on:
+  schedule:
+    # Yeh har 10 minutes mein chalega (UTC time ke hisab se)
+    - cron: '*/10 * * * *'
+  workflow_dispatch: # Isse aap manually bhi run kar sakte hain
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Render Website
+        run: |
+          curl -I https://beipowale.onrender.com/
