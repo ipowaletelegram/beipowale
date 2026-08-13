@@ -1,34 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>IPO Blog | BE.IPOWale - IPO News, GMP & Investment Guides</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Read the latest IPO news, GMP updates, allotment guides, stock market education, IPO investment tips, and Mainboard IPO analysis by BE.IPOWale.">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
+
+    <meta charset="UTF-8">
+
+    <title>
+        IPO Blog | BE.IPOWale - IPO News, GMP & Investment Guides
+    </title>
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Read IPO guides, GMP information, allotment guides, Mainboard vs SME IPO comparisons, listing gain calculations and IPO educational content by BE.IPOWale."
+    >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <link
+        rel="canonical"
+        href="https://beipowale.onrender.com/blog"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+    <!-- Poppins -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+<style>
+
 /* =========================================
    BE.IPOWale BLOG
-   LIGHT THEME + MOBILE RESPONSIVE
+   LIGHT THEME
 ========================================= */
 
 :root {
+
     --primary: #2563eb;
+
     --primary-dark: #1d4ed8;
 
     --green: #16a34a;
 
     --bg: #f5f7fb;
+
     --card: #ffffff;
 
     --text: #111827;
+
     --text-secondary: #475569;
+
     --muted: #64748b;
 
     --border: #e5e7eb;
 
-    --shadow: 0 8px 25px rgba(15, 23, 42, 0.06);
+    --shadow:
+        0 8px 25px rgba(15, 23, 42, 0.06);
 }
 
 
@@ -38,15 +80,20 @@
 
 * {
     margin: 0;
+
     padding: 0;
+
     box-sizing: border-box;
 }
+
 
 html {
     scroll-behavior: smooth;
 }
 
+
 body {
+
     font-family: 'Poppins', sans-serif;
 
     background: var(--bg);
@@ -60,16 +107,19 @@ body {
 
 
 /* =========================================
-   ANIMATED BACKGROUND
+   BACKGROUND
 ========================================= */
 
 .bg-animation {
+
     position: fixed;
 
     top: 0;
+
     left: 0;
 
     width: 100%;
+
     height: 100%;
 
     z-index: -1;
@@ -79,7 +129,9 @@ body {
     pointer-events: none;
 }
 
+
 .bg-circle {
+
     position: absolute;
 
     border-radius: 50%;
@@ -87,25 +139,32 @@ body {
     background:
         radial-gradient(
             circle,
-            rgba(37, 99, 235, 0.06) 0%,
+            rgba(37, 99, 235, 0.05) 0%,
             rgba(37, 99, 235, 0) 70%
         );
 
     animation: float 15s infinite linear;
 }
 
+
 @keyframes float {
 
     0% {
-        transform: translateY(0) rotate(0deg);
+        transform:
+            translateY(0)
+            rotate(0deg);
     }
 
     50% {
-        transform: translateY(-20px) rotate(180deg);
+        transform:
+            translateY(-20px)
+            rotate(180deg);
     }
 
     100% {
-        transform: translateY(0) rotate(360deg);
+        transform:
+            translateY(0)
+            rotate(360deg);
     }
 }
 
@@ -115,16 +174,20 @@ body {
 ========================================= */
 
 header {
-    background: rgba(255, 255, 255, 0.92);
+
+    background:
+        rgba(255, 255, 255, 0.94);
 
     backdrop-filter: blur(12px);
+
     -webkit-backdrop-filter: blur(12px);
 
     padding: 24px 20px;
 
     text-align: center;
 
-    border-bottom: 1px solid var(--border);
+    border-bottom:
+        1px solid var(--border);
 
     position: relative;
 
@@ -134,7 +197,9 @@ header {
         0 4px 20px rgba(15, 23, 42, 0.04);
 }
 
+
 header h1 {
+
     margin: 0;
 
     font-size: 2.2rem;
@@ -145,10 +210,11 @@ header h1 {
         linear-gradient(
             90deg,
             var(--primary),
-            #16a34a
+            var(--green)
         );
 
     -webkit-background-clip: text;
+
     background-clip: text;
 
     color: transparent;
@@ -158,7 +224,9 @@ header h1 {
     position: relative;
 }
 
+
 header h1::after {
+
     content: '';
 
     position: absolute;
@@ -167,7 +235,8 @@ header h1::after {
 
     left: 50%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     width: 50px;
 
@@ -177,19 +246,18 @@ header h1::after {
         linear-gradient(
             90deg,
             var(--primary),
-            #16a34a
+            var(--green)
         );
 
     border-radius: 3px;
 }
 
 
-/* Header Subtitle */
+.header-subtitle {
 
-header p {
-    margin-top: 14px !important;
+    margin-top: 14px;
 
-    color: var(--muted) !important;
+    color: var(--muted);
 
     font-size: 14px;
 
@@ -202,6 +270,7 @@ header p {
 ========================================= */
 
 .container {
+
     width: 100%;
 
     max-width: 1100px;
@@ -209,25 +278,32 @@ header p {
     margin: 0 auto;
 
     padding: 45px 24px;
-
-    position: relative;
 }
 
 
 /* =========================================
-   LATEST ARTICLES TITLE
+   PAGE TITLE
 ========================================= */
 
-.container > h2 {
-    color: var(--text) !important;
+.page-title {
 
     text-align: center;
 
-    margin-bottom: 25px !important;
+    margin-bottom: 25px;
+
+    color: var(--text);
 
     font-size: 1.8rem;
 
     line-height: 1.4;
+}
+
+
+.page-title i {
+
+    color: var(--primary);
+
+    margin-right: 6px;
 }
 
 
@@ -236,6 +312,7 @@ header p {
 ========================================= */
 
 .blog-grid {
+
     display: grid;
 
     grid-template-columns:
@@ -255,22 +332,15 @@ header p {
 ========================================= */
 
 .blog-post {
+
     background: var(--card);
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
     border-radius: 16px;
 
     padding: 26px;
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease,
-        border-color 0.25s ease;
-
-    backdrop-filter: blur(8px);
-
-    -webkit-backdrop-filter: blur(8px);
 
     box-shadow: var(--shadow);
 
@@ -278,41 +348,48 @@ header p {
 
     overflow: hidden;
 
-    cursor: pointer;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
 }
 
 
-/* Top Accent */
+/* Top Line */
 
 .blog-post::before {
+
     content: '';
 
     position: absolute;
 
     top: 0;
+
     left: 0;
 
     width: 100%;
+
     height: 4px;
 
     background:
         linear-gradient(
             90deg,
             var(--primary),
-            #16a34a
+            var(--green)
         );
-
-    opacity: 0.9;
 }
 
 
 /* Hover */
 
 .blog-post:hover {
-    transform: translateY(-7px);
+
+    transform:
+        translateY(-6px);
 
     box-shadow:
-        0 15px 35px rgba(15, 23, 42, 0.10);
+        0 15px 35px
+        rgba(15, 23, 42, 0.10);
 
     border-color:
         rgba(37, 99, 235, 0.25);
@@ -320,103 +397,14 @@ header p {
 
 
 /* =========================================
-   BLOG TITLE
-========================================= */
-
-.blog-post h2 {
-    margin-top: 0;
-
-    font-size: 1.35rem;
-
-    font-weight: 600;
-
-    margin-bottom: 12px;
-
-    color: var(--text);
-
-    line-height: 1.45;
-}
-
-
-/* =========================================
-   DATE
-========================================= */
-
-.blog-post .date {
-    font-size: 0.82rem;
-
-    color: var(--muted);
-
-    margin-bottom: 14px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-}
-
-.blog-post .date i {
-    color: var(--primary);
-
-    font-size: 0.85rem;
-}
-
-
-/* =========================================
-   BLOG DESCRIPTION
-========================================= */
-
-.blog-post p {
-    line-height: 1.75;
-
-    color: var(--text-secondary);
-
-    font-size: 0.93rem;
-
-    margin-bottom: 20px;
-}
-
-
-/* =========================================
-   READ MORE
-========================================= */
-
-.blog-post .read-more {
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    color: var(--primary);
-
-    font-weight: 600;
-
-    font-size: 0.9rem;
-
-    text-decoration: none;
-
-    transition: all 0.25s ease;
-}
-
-.blog-post .read-more:hover {
-    color: var(--primary-dark);
-
-    gap: 11px;
-}
-
-.blog-post .read-more i {
-    transition: transform 0.25s ease;
-}
-
-
-/* =========================================
-   FEATURED POST
+   FEATURED CARD
 ========================================= */
 
 .featured-post {
+
     grid-column: 1 / -1;
+
+    padding: 34px;
 
     background:
         linear-gradient(
@@ -426,47 +414,188 @@ header p {
         );
 
     border:
-        1px solid rgba(37, 99, 235, 0.18);
-
-    padding: 34px;
-
-    margin-bottom: 5px;
+        1px solid
+        rgba(37, 99, 235, 0.18);
 }
+
 
 .featured-post h2 {
+
     font-size: 1.75rem;
-
-    color: var(--text);
-}
-
-.featured-post p {
-    font-size: 1rem;
-
-    max-width: 900px;
-}
-
-.featured-post .date {
-    font-size: 0.9rem;
 }
 
 
 /* =========================================
-   FADE ANIMATION
+   BLOG TITLE
 ========================================= */
 
-@keyframes fadeIn {
+.blog-post h2 {
 
-    from {
-        opacity: 0;
+    margin-top: 0;
 
-        transform: translateY(20px);
-    }
+    margin-bottom: 12px;
 
-    to {
-        opacity: 1;
+    color: var(--text);
 
-        transform: translateY(0);
-    }
+    font-size: 1.35rem;
+
+    font-weight: 600;
+
+    line-height: 1.45;
+}
+
+
+/* =========================================
+   DATE
+========================================= */
+
+.date {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 14px;
+
+    color: var(--muted);
+
+    font-size: 0.82rem;
+}
+
+
+.date i {
+
+    color: var(--primary);
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.blog-post p {
+
+    color: var(--text-secondary);
+
+    font-size: 0.93rem;
+
+    line-height: 1.75;
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================================
+   EXTERNAL SOURCE
+========================================= */
+
+.external-source {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-top: 4px;
+
+    margin-bottom: 18px;
+
+    padding: 9px 11px;
+
+    background: #f8fafc;
+
+    border:
+        1px solid #e2e8f0;
+
+    border-radius: 8px;
+
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+
+.external-source i {
+
+    color: var(--primary);
+
+    font-size: 11px;
+}
+
+
+/* =========================================
+   READ MORE
+========================================= */
+
+.read-more {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: var(--primary);
+
+    font-size: 0.9rem;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        all 0.25s ease;
+}
+
+
+.read-more:hover {
+
+    color: var(--primary-dark);
+
+    gap: 11px;
+}
+
+
+.read-more i {
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   DISCLAIMER
+========================================= */
+
+.blog-disclaimer {
+
+    margin-top: 30px;
+
+    padding: 18px 20px;
+
+    background: #ffffff;
+
+    border:
+        1px solid var(--border);
+
+    border-left:
+        4px solid var(--primary);
+
+    border-radius: 10px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+.blog-disclaimer strong {
+
+    color: var(--text);
 }
 
 
@@ -475,59 +604,27 @@ header p {
 ========================================= */
 
 footer {
+
     text-align: center;
 
     padding: 30px 20px;
 
-    font-size: 0.9rem;
-
-    color: var(--muted);
+    margin-top: 25px;
 
     background: #ffffff;
 
-    border-top: 1px solid var(--border);
+    border-top:
+        1px solid var(--border);
 
-    margin-top: 25px;
-
-    box-shadow:
-        0 -4px 20px rgba(15, 23, 42, 0.03);
-}
-
-footer p {
-    color: var(--muted);
-}
-
-
-/* =========================================
-   SOCIAL LINKS
-========================================= */
-
-.social-links {
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    flex-wrap: wrap;
-
-    gap: 18px;
-
-    margin: 15px 0;
-}
-
-.social-links a {
     color: var(--muted);
 
-    font-size: 1.2rem;
-
-    transition: all 0.25s ease;
+    font-size: 13px;
 }
 
-.social-links a:hover {
+
+footer strong {
+
     color: var(--primary);
-
-    transform: translateY(-3px);
 }
 
 
@@ -538,19 +635,26 @@ footer p {
 @media (max-width: 900px) {
 
     header {
+
         padding: 22px 18px;
     }
 
+
     header h1 {
+
         font-size: 2rem;
     }
 
+
     .container {
+
         padding:
             35px 20px;
     }
 
+
     .blog-grid {
+
         grid-template-columns:
             repeat(
                 2,
@@ -560,11 +664,15 @@ footer p {
         gap: 18px;
     }
 
+
     .featured-post {
+
         padding: 28px;
     }
 
+
     .featured-post h2 {
+
         font-size: 1.55rem;
     }
 }
@@ -577,16 +685,21 @@ footer p {
 @media (max-width: 768px) {
 
     header {
+
         padding: 20px 15px;
     }
 
+
     header h1 {
+
         font-size: 1.7rem;
 
         line-height: 1.3;
     }
 
+
     header h1::after {
+
         width: 40px;
 
         height: 2px;
@@ -594,30 +707,32 @@ footer p {
         bottom: -5px;
     }
 
-    header p {
+
+    .header-subtitle {
+
         font-size: 12.5px;
 
-        margin-top: 12px !important;
+        margin-top: 12px;
     }
 
 
     .container {
-        width: 100%;
 
-        padding: 25px 14px;
-
-        margin: 0 auto;
+        padding:
+            25px 14px;
     }
 
 
-    .container > h2 {
+    .page-title {
+
         font-size: 1.35rem;
 
-        margin-bottom: 18px !important;
+        margin-bottom: 18px;
     }
 
 
     .blog-grid {
+
         grid-template-columns: 1fr;
 
         gap: 15px;
@@ -627,6 +742,7 @@ footer p {
 
 
     .blog-post {
+
         width: 100%;
 
         padding: 22px 18px;
@@ -636,11 +752,13 @@ footer p {
 
 
     .blog-post:hover {
+
         transform: none;
     }
 
 
     .blog-post h2 {
+
         font-size: 1.15rem;
 
         line-height: 1.45;
@@ -649,7 +767,8 @@ footer p {
     }
 
 
-    .blog-post .date {
+    .date {
+
         font-size: 0.75rem;
 
         margin-bottom: 12px;
@@ -657,27 +776,23 @@ footer p {
 
 
     .blog-post p {
+
         font-size: 0.88rem;
 
         line-height: 1.7;
 
-        margin-bottom: 17px;
-    }
-
-
-    .blog-post .read-more {
-        font-size: 0.85rem;
+        margin-bottom: 15px;
     }
 
 
     .featured-post {
-        padding: 23px 18px;
 
-        margin-bottom: 0;
+        padding: 23px 18px;
     }
 
 
     .featured-post h2 {
+
         font-size: 1.3rem;
 
         line-height: 1.4;
@@ -685,43 +800,64 @@ footer p {
 
 
     .featured-post p {
-        font-size: 0.9rem;
 
-        line-height: 1.7;
+        font-size: 0.9rem;
+    }
+
+
+    .external-source {
+
+        font-size: 10.5px;
+
+        padding: 8px 10px;
+    }
+
+
+    .read-more {
+
+        font-size: 0.85rem;
+    }
+
+
+    .blog-disclaimer {
+
+        font-size: 11.5px;
+
+        padding: 15px;
     }
 
 
     footer {
-        padding: 25px 15px;
 
-        font-size: 0.8rem;
+        padding:
+            25px 15px;
 
-        margin-top: 15px;
-    }
-
-
-    .social-links {
-        gap: 15px;
+        font-size: 11px;
     }
 }
 
 
 /* =========================================
    SMALL PHONES
-   360px - 400px
 ========================================= */
 
 @media (max-width: 400px) {
 
     header {
-        padding: 18px 12px;
+
+        padding:
+            18px 12px;
     }
 
+
     header h1 {
+
         font-size: 1.45rem;
     }
 
-    header p {
+
+    .header-subtitle {
+
         font-size: 11.5px;
 
         line-height: 1.5;
@@ -729,230 +865,546 @@ footer p {
 
 
     .container {
+
         padding:
             20px 9px;
     }
 
 
-    .container > h2 {
-        font-size: 1.2rem;
+    .page-title {
 
-        line-height: 1.4;
+        font-size: 1.2rem;
     }
 
 
     .blog-grid {
+
         gap: 12px;
     }
 
 
     .blog-post {
-        padding: 20px 15px;
+
+        padding:
+            20px 15px;
 
         border-radius: 13px;
     }
 
 
     .blog-post h2 {
+
         font-size: 1.05rem;
-
-        line-height: 1.45;
-    }
-
-
-    .blog-post .date {
-        font-size: 0.7rem;
-
-        gap: 6px;
     }
 
 
     .blog-post p {
+
         font-size: 0.83rem;
 
         line-height: 1.7;
     }
 
 
-    .blog-post .read-more {
+    .external-source {
+
+        font-size: 10px;
+
+        line-height: 1.5;
+    }
+
+
+    .read-more {
+
         font-size: 0.82rem;
-    }
-
-
-    .featured-post {
-        padding: 21px 15px;
-    }
-
-
-    .featured-post h2 {
-        font-size: 1.15rem;
-    }
-
-
-    .featured-post p {
-        font-size: 0.85rem;
     }
 }
 
 
 /* =========================================
    VERY SMALL PHONES
-   320px - 359px
 ========================================= */
 
 @media (max-width: 359px) {
 
     header h1 {
-        font-size: 1.3rem;
-    }
 
-    header p {
-        font-size: 11px;
+        font-size: 1.3rem;
     }
 
 
     .container {
+
         padding:
             18px 7px;
     }
 
 
     .blog-post {
-        padding: 18px 13px;
+
+        padding:
+            18px 13px;
     }
 
 
     .blog-post h2 {
+
         font-size: 1rem;
     }
 
 
     .blog-post p {
+
         font-size: 0.8rem;
     }
-
-
-    .featured-post h2 {
-        font-size: 1.08rem;
-    }
 }
+
 </style>
+
 </head>
+
+
 <body>
-  <!-- Animated Background -->
-  <div class="bg-animation">
-    <div class="bg-circle" style="width: 300px; height: 300px; top: 10%; left: 5%; animation-delay: 0s;"></div>
-    <div class="bg-circle" style="width: 150px; height: 150px; top: 60%; left: 80%; animation-delay: 2s;"></div>
-    <div class="bg-circle" style="width: 200px; height: 200px; top: 30%; left: 70%; animation-delay: 4s;"></div>
-    <div class="bg-circle" style="width: 250px; height: 250px; top: 70%; left: 20%; animation-delay: 6s;"></div>
-  </div>
 
-  <header>
-    <h1>
-<i class="fas fa-chart-line"></i>
-BE.IPOWale Blog
-</h1>
 
-<p style="margin-top:10px;color:#94a3b8">
-IPO News • GMP Updates • IPO Guides • Stock Market Education
-</p>
-  </header>
+<!-- =====================================
+     BACKGROUND
+===================================== -->
 
-  <div class="container">
-    <!-- Blog Posts -->
-    <h2 style="color: var(--light); text-align: center; margin-bottom: 1rem; font-size: 1.8rem;">
-      <i class="fas fa-newspaper"></i> Latest IPO Articles
-    </h2>
-    
-    <div class="blog-grid">
-      <div class="blog-post featured-post" onclick="window.location.href='#'">
-        <h2>📈 What is IPO GMP? Complete Beginner Guide (2026)</h2>
-        <div class="date"><i class="far fa-calendar-alt"></i> Posted on July 2026</div>
-        <p>Learn what IPO Grey Market Premium (GMP) means, how it works, why it changes every day, and whether investors should rely on GMP before applying for an IPO.</p>
-        <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
-      </div>
+<div class="bg-animation">
 
-      <div class="blog-post" onclick="window.location.href='#'">
-        <h2>🏦 Mainboard IPO vs SME IPO</h2>
-        <div class="date"><i class="far fa-calendar-alt"></i> Posted on July 2026</div>
-        <p>Understand the key differences between Mainboard and SME IPOs including eligibility, lot size, investment amount, listing platform, and risks.</p>
-        <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
-      </div>
-
-      <div class="blog-post" onclick="window.location.href='#'">
-        <h2>📅 How to Check IPO Allotment Status</h2>
-        <div class="date"><i class="far fa-calendar-alt"></i> Posted on July 2026</div>
-        <p>Step-by-step guide to checking IPO allotment on MUFG, KFintech, Bigshare, and Link Intime.</p>
-        <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
-      </div>
-
-      <div class="blog-post" onclick="window.location.href='#'">
-        <h2>💰 How Listing Gain is Calculated</h2>
-        <div class="date"><i class="far fa-calendar-alt"></i> Posted on July 2026</div>
-        <p>Learn how listing gain works, how profit per lot is calculated, and how IPO returns are estimated before listing.</p>
-        <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
-      </div>
-
-      <div class="blog-post" onclick="window.location.href='#'">
-        <h2>📊 Should You Apply for Every IPO?</h2>
-        <div class="date"><i class="far fa-calendar-alt"></i> Posted on July 2026</div>
-        <p>Discover important factors such as GMP, subscription, company fundamentals, financials, and valuation before investing in any IPO.</p>
-        <a href="https://beipowale.onrender.com" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
-      </div>
-
-      <div class="blog-post" onclick="window.location.href='#'">
-        <h2>🔥 Upcoming Mainboard IPOs to Watch</h2>
-        <div class="date"><i class="far fa-calendar-alt"></i> Posted on July 2026</div>
-        <p>Explore the upcoming IPO calendar, expected issue dates, price bands, and important dates for investors.</p>
-        <a href="https://beipowale.onrender.com/ipo-calendar" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
-      </div>
+    <div
+        class="bg-circle"
+        style="
+            width:300px;
+            height:300px;
+            top:10%;
+            left:5%;
+        ">
     </div>
-  </div>
 
-  <footer>
-    
-    <p> © 2026 BE.IPOWale | All Rights Reserved</p>
-    </footer>
+    <div
+        class="bg-circle"
+        style="
+            width:150px;
+            height:150px;
+            top:60%;
+            left:80%;
+        ">
+    </div>
 
-  <script>
-    // Create floating background circles
-    function createBackgroundCircles() {
-      const bgAnimation = document.querySelector('.bg-animation');
-      for (let i = 0; i < 6; i++) {
-        const circle = document.createElement('div');
-        circle.classList.add('bg-circle');
-        const size = Math.random() * 200 + 100;
-        circle.style.width = `${size}px`;
-        circle.style.height = `${size}px`;
-        circle.style.top = `${Math.random() * 100}%`;
-        circle.style.left = `${Math.random() * 100}%`;
-        circle.style.animationDelay = `${Math.random() * 10}s`;
-        circle.style.animationDuration = `${15 + Math.random() * 20}s`;
-        bgAnimation.appendChild(circle);
-      }
-    }
-    
-    // Initialize
-    document.addEventListener('DOMContentLoaded', function() {
-      createBackgroundCircles();
-      
-      // Animate blog posts on scroll
-      const blogPosts = document.querySelectorAll('.blog-post');
-      blogPosts.forEach((post, index) => {
-        post.style.animationDelay = `${index * 0.1}s`;
-        post.style.opacity = '0';
-      });
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.animation = 'fadeIn 0.5s ease forwards';
-          }
-        });
-      }, { threshold: 0.1 });
-      
-      blogPosts.forEach(post => observer.observe(post));
-    });
-  </script>
+    <div
+        class="bg-circle"
+        style="
+            width:200px;
+            height:200px;
+            top:30%;
+            left:70%;
+        ">
+    </div>
+
+</div>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header>
+
+    <h1>
+        <i class="fas fa-chart-line"></i>
+        BE.IPOWale Blog
+    </h1>
+
+    <p class="header-subtitle">
+        IPO News • GMP Updates • IPO Guides • Stock Market Education
+    </p>
+
+</header>
+
+
+<!-- =====================================
+     MAIN
+===================================== -->
+
+<main class="container">
+
+
+    <h2 class="page-title">
+
+        <i class="fas fa-newspaper"></i>
+
+        Latest IPO Articles
+
+    </h2>
+
+
+    <div class="blog-grid">
+
+
+        <!-- =================================
+             ARTICLE 1
+        ================================== -->
+
+        <article class="blog-post featured-post">
+
+            <h2>
+                📈 What is IPO GMP? Complete Beginner Guide (2026)
+            </h2>
+
+            <div class="date">
+
+                <i class="far fa-calendar-alt"></i>
+
+                Posted on August 2026
+
+            </div>
+
+            <p>
+                Learn what IPO Grey Market Premium (GMP) means,
+                how it works, why it changes, and why investors
+                should not rely on GMP alone before applying for
+                an IPO.
+            </p>
+
+
+            <div class="external-source">
+
+                <i class="fas fa-link"></i>
+
+                External educational resource
+
+            </div>
+
+
+            <!-- CHANGE THIS URL -->
+
+            <a
+                href="https://indiaipohub.com/blog-post.php?slug=what-is-ipo-gmp-grey-market-premium-complete-guide-2026"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="read-more"
+            >
+
+                Read more
+
+                <i class="fas fa-arrow-up-right-from-square"></i>
+
+            </a>
+
+        </article>
+
+
+        <!-- =================================
+             ARTICLE 2
+        ================================== -->
+
+        <article class="blog-post">
+
+            <h2>
+                🏦 Mainboard IPO vs SME IPO
+            </h2>
+
+            <div class="date">
+
+                <i class="far fa-calendar-alt"></i>
+
+                Posted on August 2026
+
+            </div>
+
+            <p>
+                Understand the key differences between Mainboard
+                and SME IPOs including eligibility, lot size,
+                investment amount, listing platform and risks.
+            </p>
+
+
+            <div class="external-source">
+
+                <i class="fas fa-link"></i>
+
+                External educational resource
+
+            </div>
+
+
+            <!-- CHANGE THIS URL -->
+
+            <a
+                href="https://www.indiainfoline.com/knowledge-center/ipo/difference-between-mainboard-ipo-sme-ipo"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="read-more"
+            >
+
+                Read more
+
+                <i class="fas fa-arrow-up-right-from-square"></i>
+
+            </a>
+
+        </article>
+
+
+        <!-- =================================
+             ARTICLE 3
+        ================================== -->
+
+        <article class="blog-post">
+
+            <h2>
+                📅 How to Check IPO Allotment Status
+            </h2>
+
+            <div class="date">
+
+                <i class="far fa-calendar-alt"></i>
+
+                Posted on August 2026
+
+            </div>
+
+            <p>
+                Step-by-step guide to checking IPO allotment
+                status through IPO registrars such as MUFG Intime,
+                KFintech and Bigshare.
+            </p>
+
+
+            <div class="external-source">
+
+                <i class="fas fa-link"></i>
+
+                External educational resource
+
+            </div>
+
+
+            <!-- CHANGE THIS URL -->
+
+            <a
+                href="https://beipowale.onrender.com/allotment"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="read-more"
+            >
+
+                Read more
+
+                <i class="fas fa-arrow-up-right-from-square"></i>
+
+            </a>
+
+        </article>
+
+
+        <!-- =================================
+             ARTICLE 4
+        ================================== -->
+
+        <article class="blog-post">
+
+            <h2>
+                💰 How Listing Gain is Calculated
+            </h2>
+
+            <div class="date">
+
+                <i class="far fa-calendar-alt"></i>
+
+                Posted on August 2026
+
+            </div>
+
+            <p>
+                Learn how IPO listing gain works, how profit
+                per share and profit per lot are calculated,
+                and how listing returns are estimated.
+            </p>
+
+
+            <div class="external-source">
+
+                <i class="fas fa-link"></i>
+
+                External educational resource
+
+            </div>
+
+
+            <!-- CHANGE THIS URL -->
+
+            <a
+                href="https://www.chittorgarh.com/faq_pg/how-to-investor-compute-listing-day-gain/5938/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="read-more"
+            >
+
+                Read more
+
+                <i class="fas fa-arrow-up-right-from-square"></i>
+
+            </a>
+
+        </article>
+
+
+        <!-- =================================
+             ARTICLE 5
+        ================================== -->
+
+        <article class="blog-post">
+
+            <h2>
+                📊 Should You Apply for Every IPO?
+            </h2>
+
+            <div class="date">
+
+                <i class="far fa-calendar-alt"></i>
+
+                Posted on August 2026
+
+            </div>
+
+            <p>
+                Discover important factors such as GMP,
+                subscription, company fundamentals, financials
+                and valuation before applying for an IPO.
+            </p>
+
+
+            <div class="external-source">
+
+                <i class="fas fa-link"></i>
+
+                External educational resource
+
+            </div>
+
+
+            <!-- CHANGE THIS URL -->
+
+            <a
+                href="https://example.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="read-more"
+            >
+
+                Read more
+
+                <i class="fas fa-arrow-up-right-from-square"></i>
+
+            </a>
+
+        </article>
+
+
+        <!-- =================================
+             ARTICLE 6
+        ================================== -->
+
+        <article class="blog-post">
+
+            <h2>
+                🔥 Upcoming Mainboard IPOs to Watch
+            </h2>
+
+            <div class="date">
+
+                <i class="far fa-calendar-alt"></i>
+
+                Posted on August 2026
+
+            </div>
+
+            <p>
+                Explore upcoming IPOs, expected issue dates,
+                price bands and important IPO dates for investors.
+            </p>
+
+
+            <div class="external-source">
+
+                <i class="fas fa-link"></i>
+
+                External educational resource
+
+            </div>
+
+
+            <!-- CHANGE THIS URL -->
+
+            <a
+                href="https://beipowale.onrender.com/ipo-calendar"
+                class="read-more"
+            >
+
+                View IPO Calendar
+
+                <i class="fas fa-arrow-right"></i>
+
+            </a>
+
+        </article>
+
+
+    </div>
+
+
+    <!-- =====================================
+         DISCLAIMER
+    ====================================== -->
+
+    <div class="blog-disclaimer">
+
+        <strong>
+            Disclaimer:
+        </strong>
+
+        BE.IPOWale provides IPO-related information and
+        educational content for informational purposes only.
+        External links are provided for reference and
+        educational purposes.
+
+        BE.IPOWale does not control or guarantee the accuracy,
+        availability, security or content of external websites
+        and is not responsible for their content, privacy
+        practices or services.
+
+        Users should independently verify important information
+        through relevant official sources before making any
+        investment decision.
+
+    </div>
+
+
+</main>
+
+
+<!-- =====================================
+     FOOTER
+===================================== -->
+
+<footer>
+
+    <p>
+        © 2026
+        <strong>BE.IPOWale</strong>
+        | All Rights Reserved
+    </p>
+
+    <p style="margin-top:5px;">
+        Information • Education • Awareness
+    </p>
+
+</footer>
+
+
 </body>
+
 </html>
