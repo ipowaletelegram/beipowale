@@ -2,23 +2,28 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>IPO Documents | DRHP, RHP & Anchor Investor List | BE.IPOWALE</title>
 
     <meta name="description"
-        content="Find IPO documents including DRHP, RHP, Anchor Investor List, Prospectus and other important IPO documents at BE.IPOWALE.">
+        content="Find IPO DRHP, RHP, Anchor Investor List, Prospectus and other important IPO documents at BE.IPOWALE.">
+
+    <meta name="keywords"
+        content="IPO documents, DRHP, RHP, Anchor Investor List, IPO Prospectus, BE IPOWale">
 
     <meta name="robots" content="index, follow">
 
-    <link rel="canonical"
-        href="{{ request.url }}">
+    <meta name="theme-color" content="#f5f7fb">
 
-    <link rel="preconnect"
-        href="https://fonts.googleapis.com">
+    <link rel="canonical" href="{{ request.url }}">
+
+    <!-- GOOGLE FONT -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link rel="preconnect"
         href="https://fonts.gstatic.com"
@@ -27,26 +32,1247 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet"
-        href="{{ url_for('static', filename='css/ipo-documents.css') }}">
+
+    <style>
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* =========================================
+           VARIABLES
+        ========================================= */
+
+        :root {
+
+            --bg: #f5f7fb;
+
+            --white: #ffffff;
+
+            --text: #172033;
+
+            --muted: #6b7280;
+
+            --border: #e5e9f2;
+
+            --primary: #2457d6;
+
+            --primary-dark: #1946b5;
+
+            --primary-light: #eef3ff;
+
+            --green: #0a9b68;
+
+            --shadow:
+                0 8px 30px rgba(25, 40, 80, 0.07);
+
+        }
+
+
+        /* =========================================
+           BODY
+        ========================================= */
+
+        body {
+
+            font-family: "Poppins", sans-serif;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #f8faff 0%,
+                    #f5f7fb 100%
+                );
+
+            color: var(--text);
+
+            min-height: 100vh;
+
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .top-header {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            background:
+                rgba(255, 255, 255, 0.92);
+
+            backdrop-filter:
+                blur(15px);
+
+            -webkit-backdrop-filter:
+                blur(15px);
+
+            border-bottom:
+                1px solid var(--border);
+
+        }
+
+
+        .header-inner {
+
+            max-width: 1180px;
+
+            margin: auto;
+
+            padding:
+                13px 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+        }
+
+
+        /* =========================================
+           BRAND
+        ========================================= */
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 11px;
+
+            text-decoration: none;
+
+            color: var(--text);
+
+            min-width: 0;
+
+        }
+
+
+        .brand-logo {
+
+            width: 42px;
+
+            height: 42px;
+
+            flex-shrink: 0;
+
+            border-radius: 13px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #183b9b,
+                    #3473ef
+                );
+
+            color: white;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            box-shadow:
+                0 6px 18px
+                rgba(36, 87, 214, 0.25);
+
+        }
+
+
+        .brand-name {
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            letter-spacing: -0.3px;
+
+        }
+
+
+        .brand-tagline {
+
+            color: var(--muted);
+
+            font-size: 9px;
+
+            margin-top: 1px;
+
+        }
+
+
+        .home-btn {
+
+            text-decoration: none;
+
+            color: var(--text);
+
+            background: white;
+
+            border:
+                1px solid var(--border);
+
+            padding:
+                8px 13px;
+
+            border-radius: 9px;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            transition: 0.2s;
+
+            white-space: nowrap;
+
+        }
+
+
+        .home-btn:hover {
+
+            color: var(--primary);
+
+            border-color:
+                var(--primary);
+
+        }
+
+
+        /* =========================================
+           MAIN
+        ========================================= */
+
+        .documents-page {
+
+            max-width: 1180px;
+
+            margin: auto;
+
+            padding:
+                35px 20px 60px;
+
+        }
+
+
+        /* =========================================
+           HERO
+        ========================================= */
+
+        .hero-section {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 17px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .hero-icon {
+
+            width: 62px;
+
+            height: 62px;
+
+            flex-shrink: 0;
+
+            border-radius: 18px;
+
+            background:
+                var(--primary-light);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 28px;
+
+        }
+
+
+        .hero-section h1 {
+
+            font-size: 30px;
+
+            line-height: 1.2;
+
+            letter-spacing: -0.8px;
+
+        }
+
+
+        .hero-section p {
+
+            color: var(--muted);
+
+            font-size: 12px;
+
+            margin-top: 5px;
+
+        }
+
+
+        /* =========================================
+           SEARCH CARD
+        ========================================= */
+
+        .controls {
+
+            background: var(--white);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 17px;
+
+            padding: 16px;
+
+            box-shadow: var(--shadow);
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .search-box {
+
+            height: 47px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            padding:
+                0 13px;
+
+            background:
+                #fafbfe;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 11px;
+
+        }
+
+
+        .search-icon {
+
+            font-size: 16px;
+
+            flex-shrink: 0;
+
+        }
+
+
+        .search-box input {
+
+            width: 100%;
+
+            height: 100%;
+
+            border: none;
+
+            outline: none;
+
+            background: transparent;
+
+            font-family: inherit;
+
+            font-size: 12px;
+
+            color: var(--text);
+
+        }
+
+
+        .search-box input::placeholder {
+
+            color: #9aa1af;
+
+        }
+
+
+        /* =========================================
+           FILTERS
+        ========================================= */
+
+        .filter-buttons {
+
+            display: flex;
+
+            gap: 8px;
+
+            flex-wrap: wrap;
+
+            margin-top: 12px;
+
+        }
+
+
+        .filter-btn {
+
+            border:
+                1px solid var(--border);
+
+            background:
+                white;
+
+            color:
+                var(--muted);
+
+            border-radius: 8px;
+
+            padding:
+                7px 12px;
+
+            font-family: inherit;
+
+            font-size: 10px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+        }
+
+
+        .filter-btn:hover {
+
+            border-color:
+                var(--primary);
+
+            color:
+                var(--primary);
+
+        }
+
+
+        .filter-btn.active {
+
+            background:
+                var(--primary);
+
+            color: white;
+
+            border-color:
+                var(--primary);
+
+        }
+
+
+        /* =========================================
+           RESULT COUNT
+        ========================================= */
+
+        .result-info {
+
+            color:
+                var(--muted);
+
+            font-size: 11px;
+
+            margin:
+                0 0 12px 2px;
+
+        }
+
+
+        /* =========================================
+           DOCUMENT GRID
+        ========================================= */
+
+        .documents-container {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 17px;
+
+        }
+
+
+        /* =========================================
+           COMPANY CARD
+        ========================================= */
+
+        .company-card {
+
+            background:
+                var(--white);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 17px;
+
+            overflow: hidden;
+
+            box-shadow:
+                var(--shadow);
+
+            transition:
+                transform 0.2s,
+                box-shadow 0.2s;
+
+        }
+
+
+        .company-card:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 15px 35px
+                rgba(25, 40, 80, 0.10);
+
+        }
+
+
+        /* =========================================
+           COMPANY HEADER
+        ========================================= */
+
+        .company-header {
+
+            padding: 17px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            border-bottom:
+                1px solid var(--border);
+
+        }
+
+
+        .company-logo-fallback {
+
+            width: 48px;
+
+            height: 48px;
+
+            flex-shrink: 0;
+
+            border-radius: 12px;
+
+            background:
+                var(--primary-light);
+
+            color:
+                var(--primary);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+        }
+
+
+        .company-info {
+
+            min-width: 0;
+
+        }
+
+
+        .company-name {
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            line-height: 1.35;
+
+            word-break: break-word;
+
+        }
+
+
+        .company-type {
+
+            display: inline-block;
+
+            margin-top: 5px;
+
+            padding:
+                3px 7px;
+
+            border-radius: 5px;
+
+            background:
+                #f2f4f8;
+
+            color:
+                var(--muted);
+
+            font-size: 8px;
+
+            font-weight: 600;
+
+        }
+
+
+        /* =========================================
+           DOCUMENT LIST
+        ========================================= */
+
+        .document-list {
+
+            padding:
+                5px 17px 11px;
+
+        }
+
+
+        .document-row {
+
+            min-height: 53px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 10px;
+
+            border-bottom:
+                1px solid #f0f2f6;
+
+        }
+
+
+        .document-row:last-child {
+
+            border-bottom: none;
+
+        }
+
+
+        .document-left {
+
+            min-width: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+        }
+
+
+        .document-icon {
+
+            width: 34px;
+
+            height: 34px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 8px;
+
+            background:
+                #f3f6ff;
+
+            font-size: 14px;
+
+        }
+
+
+        .document-name {
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+
+        }
+
+
+        .document-type {
+
+            color:
+                var(--muted);
+
+            font-size: 8px;
+
+            margin-top: 1px;
+
+        }
+
+
+        .view-btn {
+
+            flex-shrink: 0;
+
+            text-decoration: none;
+
+            padding:
+                6px 9px;
+
+            border-radius: 7px;
+
+            background:
+                var(--primary-light);
+
+            color:
+                var(--primary);
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            transition: 0.2s;
+
+        }
+
+
+        .view-btn:hover {
+
+            background:
+                var(--primary);
+
+            color:
+                white;
+
+        }
+
+
+        /* =========================================
+           NO RESULTS
+        ========================================= */
+
+        .no-results {
+
+            text-align: center;
+
+            background:
+                white;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 17px;
+
+            padding:
+                50px 20px;
+
+            box-shadow:
+                var(--shadow);
+
+        }
+
+
+        .no-results-icon {
+
+            font-size: 35px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .no-results h3 {
+
+            font-size: 15px;
+
+        }
+
+
+        .no-results p {
+
+            color:
+                var(--muted);
+
+            font-size: 10px;
+
+            margin-top: 4px;
+
+        }
+
+
+        .hidden {
+
+            display: none !important;
+
+        }
+
+
+        /* =========================================
+           LOADING
+        ========================================= */
+
+        .loading {
+
+            grid-column:
+                1 / -1;
+
+            background:
+                white;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 17px;
+
+            padding:
+                50px 20px;
+
+            text-align: center;
+
+            color:
+                var(--muted);
+
+            font-size: 12px;
+
+            box-shadow:
+                var(--shadow);
+
+        }
+
+
+        .loading-icon {
+
+            font-size: 28px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        .footer {
+
+            text-align: center;
+
+            background:
+                white;
+
+            border-top:
+                1px solid var(--border);
+
+            padding:
+                32px 20px;
+
+            color:
+                var(--muted);
+
+        }
+
+
+        .footer-brand {
+
+            color:
+                var(--text);
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+        }
+
+
+        .footer-tagline {
+
+            font-size: 10px;
+
+            margin-top: 2px;
+
+        }
+
+
+        .footer-links {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+
+            margin:
+                17px 0;
+
+        }
+
+
+        .footer-links a {
+
+            color:
+                var(--muted);
+
+            text-decoration: none;
+
+            font-size: 10px;
+
+        }
+
+
+        .footer-links a:hover {
+
+            color:
+                var(--primary);
+
+        }
+
+
+        .copyright {
+
+            font-size: 9px;
+
+        }
+
+
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media (max-width: 800px) {
+
+            .documents-container {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 600px) {
+
+            .header-inner {
+
+                padding:
+                    11px 13px;
+
+            }
+
+
+            .documents-page {
+
+                padding:
+                    25px 13px 45px;
+
+            }
+
+
+            .brand-logo {
+
+                width: 38px;
+
+                height: 38px;
+
+                border-radius: 11px;
+
+            }
+
+
+            .brand-name {
+
+                font-size: 14px;
+
+            }
+
+
+            .brand-tagline {
+
+                font-size: 8px;
+
+            }
+
+
+            .home-btn {
+
+                padding:
+                    7px 9px;
+
+                font-size: 9px;
+
+            }
+
+
+            .hero-section {
+
+                gap: 12px;
+
+                margin-bottom: 20px;
+
+            }
+
+
+            .hero-icon {
+
+                width: 51px;
+
+                height: 51px;
+
+                border-radius: 14px;
+
+                font-size: 22px;
+
+            }
+
+
+            .hero-section h1 {
+
+                font-size: 23px;
+
+            }
+
+
+            .hero-section p {
+
+                font-size: 10px;
+
+                line-height: 1.5;
+
+            }
+
+
+            .controls {
+
+                padding: 12px;
+
+                border-radius: 14px;
+
+            }
+
+
+            .filter-buttons {
+
+                flex-wrap: nowrap;
+
+                overflow-x: auto;
+
+                padding-bottom: 3px;
+
+                scrollbar-width: none;
+
+            }
+
+
+            .filter-buttons::-webkit-scrollbar {
+
+                display: none;
+
+            }
+
+
+            .filter-btn {
+
+                flex-shrink: 0;
+
+                white-space: nowrap;
+
+            }
+
+
+            .company-card {
+
+                border-radius: 14px;
+
+            }
+
+
+            .company-header {
+
+                padding: 14px;
+
+            }
+
+
+            .company-logo-fallback {
+
+                width: 44px;
+
+                height: 44px;
+
+                border-radius: 10px;
+
+            }
+
+
+            .company-name {
+
+                font-size: 12px;
+
+            }
+
+
+            .document-list {
+
+                padding:
+                    4px 13px 8px;
+
+            }
+
+
+            .document-name {
+
+                font-size: 10px;
+
+                max-width: 150px;
+
+            }
+
+
+            .document-type {
+
+                font-size: 7px;
+
+            }
+
+
+            .view-btn {
+
+                padding:
+                    6px 8px;
+
+                font-size: 8px;
+
+            }
+
+        }
+
+
+        /* =========================================
+           VERY SMALL MOBILE
+        ========================================= */
+
+        @media (max-width: 380px) {
+
+            .brand-tagline {
+
+                display: none;
+
+            }
+
+
+            .hero-section h1 {
+
+                font-size: 21px;
+
+            }
+
+
+            .hero-section p {
+
+                font-size: 9px;
+
+            }
+
+
+            .document-name {
+
+                max-width: 125px;
+
+            }
+
+
+            .view-btn {
+
+                padding:
+                    5px 7px;
+
+            }
+
+        }
+
+    </style>
+
 </head>
 
 
 <body>
 
-    <!-- HEADER -->
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
 
     <header class="top-header">
 
         <div class="header-inner">
 
+
             <a href="/" class="brand">
+
 
                 <div class="brand-logo">
                     BE
                 </div>
 
+
                 <div>
+
                     <div class="brand-name">
                         BE.IPOWALE
                     </div>
@@ -54,7 +1280,9 @@
                     <div class="brand-tagline">
                         Daily IPO Updates
                     </div>
+
                 </div>
+
 
             </a>
 
@@ -63,12 +1291,16 @@
                 ← Home
             </a>
 
+
         </div>
 
     </header>
 
 
-    <!-- MAIN -->
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
 
     <main class="documents-page">
 
@@ -77,9 +1309,11 @@
 
         <section class="hero-section">
 
+
             <div class="hero-icon">
                 📄
             </div>
+
 
             <div>
 
@@ -93,12 +1327,17 @@
 
             </div>
 
+
         </section>
 
 
-        <!-- SEARCH -->
+
+        <!-- =====================================
+             SEARCH & FILTER
+        ====================================== -->
 
         <section class="controls">
+
 
             <div class="search-box">
 
@@ -106,59 +1345,94 @@
                     🔍
                 </span>
 
+
                 <input
                     type="text"
                     id="searchInput"
-                    placeholder="Search company..."
+                    placeholder="Search company or document..."
                     autocomplete="off">
 
+
             </div>
+
 
 
             <div class="filter-buttons">
 
+
                 <button
                     class="filter-btn active"
                     data-filter="ALL">
+
                     All
+
                 </button>
+
 
                 <button
                     class="filter-btn"
                     data-filter="DRHP">
+
                     DRHP
+
                 </button>
+
 
                 <button
                     class="filter-btn"
                     data-filter="RHP">
+
                     RHP
+
                 </button>
+
 
                 <button
                     class="filter-btn"
                     data-filter="ANCHOR">
+
                     Anchor
+
                 </button>
+
 
                 <button
                     class="filter-btn"
                     data-filter="PROSPECTUS">
+
                     Prospectus
+
                 </button>
+
+
+                <button
+                    class="filter-btn"
+                    data-filter="BASIS">
+
+                    Basis
+
+                </button>
+
 
                 <button
                     class="filter-btn"
                     data-filter="OTHER">
+
                     Other
+
                 </button>
 
+
             </div>
+
 
         </section>
 
 
-        <!-- DOCUMENT COUNT -->
+
+        <!-- =====================================
+             RESULT COUNT
+        ====================================== -->
 
         <div class="result-info">
 
@@ -169,32 +1443,54 @@
         </div>
 
 
-        <!-- COMPANY DOCUMENTS -->
+
+        <!-- =====================================
+             DOCUMENTS
+        ====================================== -->
 
         <section
             id="documentsContainer"
             class="documents-container">
 
+
+            <div class="loading">
+
+                <div class="loading-icon">
+                    📄
+                </div>
+
+                Loading IPO documents...
+
+            </div>
+
+
         </section>
 
 
-        <!-- NO RESULT -->
+
+        <!-- =====================================
+             NO RESULTS
+        ====================================== -->
 
         <div
             id="noResults"
             class="no-results hidden">
 
+
             <div class="no-results-icon">
                 📂
             </div>
+
 
             <h3>
                 No documents found
             </h3>
 
+
             <p>
                 Try searching another company or document type.
             </p>
+
 
         </div>
 
@@ -202,48 +1498,1043 @@
     </main>
 
 
-    <!-- FOOTER -->
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
 
     <footer class="footer">
+
 
         <div class="footer-brand">
             BE.IPOWALE
         </div>
 
-        <p>
+
+        <div class="footer-tagline">
             Daily IPO Updates
-        </p>
+        </div>
+
 
         <div class="footer-links">
+
 
             <a href="/">
                 Home
             </a>
 
+
             <a href="/ipo-calendar">
                 IPO Calendar
             </a>
+
 
             <a href="/allotment">
                 Allotment
             </a>
 
+
             <a href="/blog">
                 Blog
             </a>
 
+
         </div>
 
+
         <div class="copyright">
-            © 2026 BE.IPOWALE. All Rights Reserved.
+
+            © 2026 BE.IPOWALE.
+            All Rights Reserved.
+
         </div>
+
 
     </footer>
 
 
-    <script
-        src="{{ url_for('static', filename='js/ipo-documents.js') }}">
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script>
+
+
+        /*
+        ==================================================
+        GOOGLE SHEET CSV URL
+        ==================================================
+
+        IMPORTANT:
+
+        YAHAN APNI GOOGLE SHEET KI
+        PUBLISHED CSV URL PASTE KARO.
+
+        Example:
+
+        https://docs.google.com/spreadsheets/d/XXXX/pub?output=csv
+
+        ==================================================
+        */
+
+
+        const SHEET_URL =
+            "YOUR_GOOGLE_SHEET_CSV_URL";
+
+
+
+        /* =========================================
+           GLOBAL VARIABLES
+        ========================================= */
+
+        let allDocuments = [];
+
+        let currentFilter = "ALL";
+
+
+        const container =
+            document.getElementById(
+                "documentsContainer"
+            );
+
+
+        const searchInput =
+            document.getElementById(
+                "searchInput"
+            );
+
+
+        const resultCount =
+            document.getElementById(
+                "resultCount"
+            );
+
+
+        const noResults =
+            document.getElementById(
+                "noResults"
+            );
+
+
+
+        /* =========================================
+           LOAD GOOGLE SHEET
+        ========================================= */
+
+        async function loadDocuments() {
+
+
+            try {
+
+
+                if (
+                    !SHEET_URL ||
+                    SHEET_URL ===
+                    "YOUR_GOOGLE_SHEET_CSV_URL"
+                ) {
+
+                    throw new Error(
+                        "Google Sheet URL not added."
+                    );
+
+                }
+
+
+                const response =
+                    await fetch(
+                        SHEET_URL
+                    );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Unable to load Google Sheet."
+                    );
+
+                }
+
+
+                const csv =
+                    await response.text();
+
+
+                allDocuments =
+                    parseCSV(csv);
+
+
+                renderDocuments();
+
+
+            }
+
+
+            catch (error) {
+
+
+                console.error(error);
+
+
+                container.innerHTML = `
+
+                    <div class="loading">
+
+                        <div class="loading-icon">
+                            ⚠️
+                        </div>
+
+                        Unable to load IPO documents.
+
+                        <br>
+
+                        <small>
+                            Please check the Google Sheet CSV URL.
+                        </small>
+
+                    </div>
+
+                `;
+
+
+                resultCount.innerText =
+                    "Unable to load documents.";
+
+            }
+
+
+        }
+
+
+
+        /* =========================================
+           CSV PARSER
+        ========================================= */
+
+        function parseCSV(csv) {
+
+
+            const lines =
+                csv
+                    .trim()
+                    .split(/\r?\n/);
+
+
+            if (
+                lines.length <= 1
+            ) {
+
+                return [];
+
+            }
+
+
+            const headers =
+                parseCSVLine(
+                    lines[0]
+                )
+                .map(
+                    value =>
+                        value
+                            .trim()
+                            .toLowerCase()
+                );
+
+
+            const companyIndex =
+                headers.indexOf(
+                    "company"
+                );
+
+
+            const typeIndex =
+                headers.indexOf(
+                    "type"
+                );
+
+
+            const urlIndex =
+                headers.indexOf(
+                    "document url"
+                );
+
+
+            if (
+                companyIndex === -1 ||
+                typeIndex === -1 ||
+                urlIndex === -1
+            ) {
+
+                throw new Error(
+                    "Google Sheet columns are incorrect."
+                );
+
+            }
+
+
+            const rows = [];
+
+
+            for (
+                let i = 1;
+                i < lines.length;
+                i++
+            ) {
+
+
+                if (
+                    !lines[i].trim()
+                ) {
+
+                    continue;
+
+                }
+
+
+                const values =
+                    parseCSVLine(
+                        lines[i]
+                    );
+
+
+                const company =
+                    values[
+                        companyIndex
+                    ]?.trim();
+
+
+                const type =
+                    values[
+                        typeIndex
+                    ]?.trim()
+                    .toUpperCase();
+
+
+                const url =
+                    values[
+                        urlIndex
+                    ]?.trim();
+
+
+                if (
+                    company &&
+                    type &&
+                    url
+                ) {
+
+
+                    rows.push({
+
+                        company:
+                            company,
+
+                        type:
+                            type,
+
+                        url:
+                            url
+
+                    });
+
+
+                }
+
+            }
+
+
+            return rows;
+
+        }
+
+
+
+        /* =========================================
+           CSV LINE PARSER
+        ========================================= */
+
+        function parseCSVLine(line) {
+
+
+            const result = [];
+
+            let current = "";
+
+            let insideQuotes =
+                false;
+
+
+            for (
+                let i = 0;
+                i < line.length;
+                i++
+            ) {
+
+
+                const char =
+                    line[i];
+
+
+                if (
+                    char === '"'
+                ) {
+
+
+                    if (
+                        insideQuotes &&
+                        line[i + 1] === '"'
+                    ) {
+
+                        current += '"';
+
+                        i++;
+
+                    }
+
+                    else {
+
+                        insideQuotes =
+                            !insideQuotes;
+
+                    }
+
+
+                }
+
+
+                else if (
+                    char === "," &&
+                    !insideQuotes
+                ) {
+
+
+                    result.push(
+                        current
+                    );
+
+
+                    current = "";
+
+                }
+
+
+                else {
+
+
+                    current +=
+                        char;
+
+                }
+
+
+            }
+
+
+            result.push(
+                current
+            );
+
+
+            return result;
+
+        }
+
+
+
+        /* =========================================
+           RENDER DOCUMENTS
+        ========================================= */
+
+        function renderDocuments() {
+
+
+            const search =
+                searchInput.value
+                    .trim()
+                    .toLowerCase();
+
+
+            container.innerHTML =
+                "";
+
+
+            const companies = {};
+
+
+            allDocuments.forEach(
+                document => {
+
+
+                    const companyMatch =
+                        document.company
+                            .toLowerCase()
+                            .includes(
+                                search
+                            );
+
+
+                    const typeMatch =
+                        document.type
+                            .toLowerCase()
+                            .includes(
+                                search
+                            );
+
+
+                    const searchMatch =
+                        companyMatch ||
+                        typeMatch;
+
+
+                    const filterMatch =
+                        currentFilter ===
+                        "ALL" ||
+                        document.type ===
+                        currentFilter;
+
+
+                    if (
+                        searchMatch &&
+                        filterMatch
+                    ) {
+
+
+                        if (
+                            !companies[
+                                document.company
+                            ]
+                        ) {
+
+                            companies[
+                                document.company
+                            ] = [];
+
+                        }
+
+
+                        companies[
+                            document.company
+                        ].push(
+                            document
+                        );
+
+                    }
+
+
+                }
+            );
+
+
+            const companyNames =
+                Object.keys(
+                    companies
+                );
+
+
+            let totalDocuments =
+                0;
+
+
+            companyNames.forEach(
+                companyName => {
+
+
+                    const documents =
+                        companies[
+                            companyName
+                        ];
+
+
+                    totalDocuments +=
+                        documents.length;
+
+
+                    const card =
+                        createCompanyCard(
+                            companyName,
+                            documents
+                        );
+
+
+                    container.appendChild(
+                        card
+                    );
+
+
+                }
+            );
+
+
+            resultCount.innerText =
+
+                `${companyNames.length} compan${companyNames.length === 1 ? "y" : "ies"} • ${totalDocuments} document${totalDocuments === 1 ? "" : "s"}`;
+
+
+            if (
+                companyNames.length === 0
+            ) {
+
+
+                noResults.classList.remove(
+                    "hidden"
+                );
+
+
+            }
+
+            else {
+
+
+                noResults.classList.add(
+                    "hidden"
+                );
+
+
+            }
+
+
+        }
+
+
+
+        /* =========================================
+           CREATE COMPANY CARD
+        ========================================= */
+
+        function createCompanyCard(
+            companyName,
+            documents
+        ) {
+
+
+            const card =
+                document.createElement(
+                    "article"
+                );
+
+
+            card.className =
+                "company-card";
+
+
+            const initials =
+                getInitials(
+                    companyName
+                );
+
+
+            let documentsHTML =
+                "";
+
+
+            documents.forEach(
+                document => {
+
+
+                    documentsHTML += `
+
+                        <div class="document-row">
+
+
+                            <div class="document-left">
+
+
+                                <div class="document-icon">
+
+                                    ${getIcon(
+                                        document.type
+                                    )}
+
+                                </div>
+
+
+                                <div>
+
+
+                                    <div class="document-name">
+
+                                        ${escapeHTML(
+                                            getDocumentName(
+                                                document.type
+                                            )
+                                        )}
+
+                                    </div>
+
+
+                                    <div class="document-type">
+
+                                        ${escapeHTML(
+                                            document.type
+                                        )}
+
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                            <a
+
+                                href="${escapeAttribute(
+                                    document.url
+                                )}"
+
+                                target="_blank"
+
+                                rel="noopener noreferrer"
+
+                                class="view-btn"
+
+                            >
+
+                                View PDF ↗
+
+                            </a>
+
+
+                        </div>
+
+                    `;
+
+
+                }
+            );
+
+
+            card.innerHTML = `
+
+
+                <div class="company-header">
+
+
+                    <div class="company-logo-fallback">
+
+                        ${escapeHTML(
+                            initials
+                        )}
+
+                    </div>
+
+
+                    <div class="company-info">
+
+
+                        <div class="company-name">
+
+                            ${escapeHTML(
+                                companyName
+                            )}
+
+                        </div>
+
+
+                        <span class="company-type">
+
+                            IPO Documents
+
+                        </span>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="document-list">
+
+                    ${documentsHTML}
+
+                </div>
+
+
+            `;
+
+
+            return card;
+
+        }
+
+
+
+        /* =========================================
+           DOCUMENT ICON
+        ========================================= */
+
+        function getIcon(type) {
+
+
+            switch (type) {
+
+
+                case "DRHP":
+
+                    return "📑";
+
+
+                case "RHP":
+
+                    return "📄";
+
+
+                case "ANCHOR":
+
+                    return "⚓";
+
+
+                case "PROSPECTUS":
+
+                    return "📘";
+
+
+                case "BASIS":
+
+                    return "📊";
+
+
+                default:
+
+                    return "📎";
+
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           DOCUMENT NAME
+        ========================================= */
+
+        function getDocumentName(type) {
+
+
+            const names = {
+
+
+                DRHP:
+                    "Draft Red Herring Prospectus",
+
+
+                RHP:
+                    "Red Herring Prospectus",
+
+
+                ANCHOR:
+                    "Anchor Investor List",
+
+
+                PROSPECTUS:
+                    "Prospectus",
+
+
+                BASIS:
+                    "Basis of Allotment",
+
+
+                OTHER:
+                    "Other Document"
+
+
+            };
+
+
+            return (
+                names[type] ||
+                type
+            );
+
+        }
+
+
+
+        /* =========================================
+           INITIALS
+        ========================================= */
+
+        function getInitials(name) {
+
+
+            return name
+
+                .split(" ")
+
+                .filter(
+                    word =>
+                        word.length > 0
+                )
+
+                .slice(0, 2)
+
+                .map(
+                    word =>
+                        word[0]
+                )
+
+                .join("")
+
+                .toUpperCase();
+
+        }
+
+
+
+        /* =========================================
+           HTML SECURITY
+        ========================================= */
+
+        function escapeHTML(value) {
+
+
+            return String(value)
+
+                .replace(
+                    /&/g,
+                    "&amp;"
+                )
+
+                .replace(
+                    /</g,
+                    "&lt;"
+                )
+
+                .replace(
+                    />/g,
+                    "&gt;"
+                )
+
+                .replace(
+                    /"/g,
+                    "&quot;"
+                )
+
+                .replace(
+                    /'/g,
+                    "&#039;"
+                );
+
+        }
+
+
+
+        /* =========================================
+           URL SECURITY
+        ========================================= */
+
+        function escapeAttribute(value) {
+
+
+            return String(value)
+
+                .replace(
+                    /"/g,
+                    "&quot;"
+                )
+
+                .replace(
+                    /'/g,
+                    "&#039;"
+                )
+
+                .replace(
+                    /</g,
+                    "%3C"
+                )
+
+                .replace(
+                    />/g,
+                    "%3E"
+                );
+
+        }
+
+
+
+        /* =========================================
+           SEARCH
+        ========================================= */
+
+        searchInput.addEventListener(
+            "input",
+            function() {
+
+                renderDocuments();
+
+            }
+        );
+
+
+
+        /* =========================================
+           FILTER BUTTONS
+        ========================================= */
+
+        document
+
+            .querySelectorAll(
+                ".filter-btn"
+            )
+
+            .forEach(
+                button => {
+
+
+                    button.addEventListener(
+                        "click",
+                        function() {
+
+
+                            document
+
+                                .querySelectorAll(
+                                    ".filter-btn"
+                                )
+
+                                .forEach(
+                                    btn => {
+
+                                        btn.classList.remove(
+                                            "active"
+                                        );
+
+                                    }
+                                );
+
+
+                            button.classList.add(
+                                "active"
+                            );
+
+
+                            currentFilter =
+                                button.dataset.filter;
+
+
+                            renderDocuments();
+
+
+                        }
+                    );
+
+
+                }
+            );
+
+
+
+        /* =========================================
+           START
+        ========================================= */
+
+        loadDocuments();
+
+
     </script>
+
 
 </body>
 
