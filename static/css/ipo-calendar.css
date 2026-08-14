@@ -12,8 +12,8 @@
 
 :root {
 
-    --navy: #111a32;
-    --navy-light: #1c2b4d;
+    --navy: #ffffff;
+    --navy-light: #f3f7fb;
 
     --text: #172033;
     --muted: #697386;
@@ -22,8 +22,8 @@
 
     --green: #28764d;
     --red: #a52f38;
-    --gold: #a06a08;
-    --purple: #7139a1;
+    --gold: #8a6418;
+    --purple: #5b55a6;
 
 }
 
@@ -31,11 +31,7 @@
 body {
 
     background:
-        linear-gradient(
-            180deg,
-            #eef1f5 0%,
-            #f7f8fa 100%
-        );
+        linear-gradient(180deg, #f8fbff 0%, #eef4f9 100%);
 
     color: var(--text);
 
@@ -70,26 +66,11 @@ body {
     overflow: hidden;
 
     background:
-        radial-gradient(
-            circle at 90% 10%,
-            rgba(255,255,255,.14),
-            transparent 28%
-        ),
+        linear-gradient(135deg, #ffffff 0%, #f1f7fc 55%, #e8f1f8 100%);
 
-        radial-gradient(
-            circle at 10% 100%,
-            rgba(91,120,190,.18),
-            transparent 30%
-        ),
+    color: var(--text);
 
-        linear-gradient(
-            135deg,
-            #1b294b,
-            #0d162d
-        );
-
-    color: white;
-
+    border: 1px solid #dce7f1;
     border-radius: 24px;
 
     padding: 22px;
@@ -97,7 +78,7 @@ body {
     margin-bottom: 14px;
 
     box-shadow:
-        0 12px 30px rgba(17,26,50,.18);
+        0 10px 28px rgba(39,72,105,.10);
 
 }
 
@@ -151,11 +132,11 @@ body {
 
     border-radius: 50%;
 
-    background: #9bb5ff;
+    background: #3978b8;
 
     box-shadow:
         0 0 12px
-        rgba(155,181,255,.8);
+        rgba(57,120,184,.25);
 
 }
 
@@ -166,7 +147,7 @@ body {
 
     letter-spacing: 1.3px;
 
-    color: rgba(255,255,255,.65);
+    color: #728198;
 
 }
 
@@ -210,7 +191,7 @@ body {
 
     margin-top: 10px;
 
-    color: rgba(255,255,255,.68);
+    color: #65758a;
 
     font-size: 11px;
 
@@ -234,11 +215,11 @@ body {
     border-radius: 17px;
 
     background:
-        rgba(255,255,255,.09);
+        rgba(57,120,184,.07);
 
     border:
         1px solid
-        rgba(255,255,255,.13);
+        rgba(57,120,184,.15);
 
 }
 
@@ -255,7 +236,7 @@ body {
 
     letter-spacing: 1.2px;
 
-    color: rgba(255,255,255,.65);
+    color: #728198;
 
 }
 
@@ -264,7 +245,7 @@ body {
 
     font-style: normal;
 
-    color: #8497c2;
+    color: #4f82b5;
 
 }
 
@@ -836,20 +817,11 @@ body {
     overflow: hidden;
 
     background:
-        radial-gradient(
-            circle at 90% 10%,
-            rgba(126,153,221,.25),
-            transparent 30%
-        ),
+        linear-gradient(135deg, #ffffff 0%, #f4f9fd 60%, #e8f2f8 100%);
 
-        linear-gradient(
-            135deg,
-            #182747,
-            #0d162c
-        );
+    color: var(--text);
 
-    color: white;
-
+    border: 1px solid #dce7f1;
     border-radius: 21px;
 
     padding: 24px;
@@ -857,8 +829,7 @@ body {
     margin-top: 14px;
 
     box-shadow:
-        0 10px 25px
-        rgba(17,26,50,.16);
+        0 8px 24px rgba(39,72,105,.10);
 
 }
 
@@ -877,8 +848,7 @@ body {
 
     border-radius: 50%;
 
-    background:
-        rgba(127,158,236,.12);
+    background: rgba(57,120,184,.08);
 
     filter: blur(10px);
 
@@ -906,7 +876,7 @@ body {
 
     letter-spacing: .6px;
 
-    opacity: .9;
+    opacity: .85;
 
 }
 
@@ -941,8 +911,7 @@ body {
 
     line-height: 1.7;
 
-    color:
-        rgba(255,255,255,.67);
+    color: #63758a;
 
     margin-top: 7px;
 
@@ -968,19 +937,17 @@ body {
 
     border-radius: 12px;
 
-    background:
-        rgba(255,255,255,.08);
+    background: #edf4f9;
 
     border:
         1px solid
-        rgba(255,255,255,.10);
+        #dce7f0;
 
     font-size: 7px;
 
     letter-spacing: .6px;
 
-    color:
-        rgba(255,255,255,.72);
+    color: #5f7185;
 
 }
 
@@ -995,9 +962,9 @@ body {
 
     border-radius: 20px;
 
-    background: white;
+    background: #2d6fa8;
 
-    color: #16213c;
+    color: white;
 
     text-decoration: none;
 
@@ -1016,8 +983,7 @@ body {
         translateY(-2px);
 
     box-shadow:
-        0 5px 12px
-        rgba(0,0,0,.2);
+        0 5px 12px rgba(45,111,168,.20);
 
 }
 
@@ -1032,7 +998,7 @@ body {
 
     font-size: 55px;
 
-    opacity: .15;
+    opacity: .08;
 
     transform: rotate(-10deg);
 
@@ -1540,3 +1506,171 @@ footer {
 .footer-logo {
     font-family: 'Poppins', sans-serif;
 }
+
+
+/* =====================================================
+   ORIGINAL LIGHT FINTECH OVERRIDES
+   BE.IPOWale — clean, independent visual system
+   ===================================================== */
+
+.brand-header {
+    box-shadow: 0 8px 24px rgba(48, 83, 112, .09);
+}
+
+.brand-top {
+    border-bottom-color: #e6edf4;
+}
+
+.brand-logo {
+    color: #1d2d3d;
+}
+
+.brand-logo b {
+    color: #1f6ea7;
+}
+
+.brand-tag {
+    color: #718096;
+}
+
+.brand-content h1 {
+    color: #162a3d;
+    letter-spacing: -.5px;
+}
+
+.brand-content p {
+    color: #66788c;
+}
+
+.calendar-icon {
+    background: #eaf3f9;
+    border-color: #d7e5ef;
+    color: #2d6fa8;
+}
+
+.brand-features {
+    color: #6e8092;
+}
+
+.brand-features i {
+    color: #2d6fa8;
+}
+
+.stat-icon {
+    background: #edf5fa;
+    color: #2d6fa8;
+}
+
+.stat-card strong {
+    color: #1b2b3a;
+}
+
+.section-heading h2 {
+    color: #182b3d;
+}
+
+.live-badge {
+    background: #ffffff;
+    color: #56687a;
+}
+
+.day-card.today {
+    border-color: #4d8ab9;
+    box-shadow: 0 5px 18px rgba(45,111,168,.11);
+}
+
+.day-label {
+    color: #29435b;
+}
+
+.day-date {
+    color: #49657d;
+}
+
+.ipo-name {
+    color: #1a2b3b;
+}
+
+.ipo-type {
+    background: #edf3f7;
+    color: #5c6f81;
+}
+
+.status-open {
+    background: #e5f5eb;
+    color: #28764d;
+}
+
+.status-close {
+    background: #fdebec;
+    color: #a52f38;
+}
+
+.status-allotment {
+    background: #fff3dc;
+    color: #8a6418;
+}
+
+.status-listing {
+    background: #eeebfb;
+    color: #5b55a6;
+}
+
+.promotion-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f2f7fb 100%);
+}
+
+.promotion-card h2 {
+    color: #182b3d;
+}
+
+.promotion-card p {
+    color: #65778a;
+}
+
+.promo-brand {
+    color: #49677f;
+}
+
+.promo-brand b {
+    color: #246b9f;
+}
+
+.promo-tags span {
+    background: #edf4f8;
+    border-color: #dbe7ef;
+    color: #5d7082;
+}
+
+.follow-button {
+    background: #2d6fa8;
+    color: #ffffff;
+}
+
+.follow-button:hover {
+    box-shadow: 0 5px 12px rgba(45,111,168,.18);
+}
+
+.promo-symbol {
+    color: #2d6fa8;
+}
+
+.footer-logo {
+    color: #243b50;
+}
+
+.footer-logo b {
+    color: #2d6fa8;
+}
+
+.footer-links a {
+    color: #3e6d91;
+}
+
+@media (max-width: 600px) {
+    .brand-header,
+    .promotion-card {
+        box-shadow: 0 6px 18px rgba(48, 83, 112, .08);
+    }
+}
+
