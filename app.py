@@ -33,7 +33,9 @@ def allotment():
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
-
+@app.route("/ipo-documents")
+def ipo_documents():
+    return render_template("ipo-documents.html")
 
 # =========================================================
 # BLOG
