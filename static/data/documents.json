@@ -3,13 +3,13 @@
         "company": "Milky Mist Dairy Food Ltd",
         "slug": "milky-mist",
         "type": "Mainboard",
-        "logo": "/static/logos/milky-mist.png",
+        "logo": "/static/logos/milky.png",
         "documents": [
             {
                 "name": "Draft Red Herring Prospectus",
                 "shortName": "DRHP",
                 "type": "DRHP",
-                "url": "/static/documents/milky-mist/drhp.pdf"
+                "url": "https://www.sebi.gov.in/filings/public-issues/jul-2025/milky-mist-dairy-food-limited_95576.html"
             },
             {
                 "name": "Red Herring Prospectus",
