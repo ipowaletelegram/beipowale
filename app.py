@@ -175,49 +175,6 @@ def api_ipo_documents():
         return jsonify({
             "error": str(e)
         }), 500
-@app.route("/api/ipo-calendar")
-def ipo_calendar_data():
-
-    # JSON file location:
-    #
-    # static/
-    #     data/
-    #         ipo-calendar.json
-
-    json_file = os.path.join(
-        app.static_folder,
-        "data",
-        "ipo-calendar.json"
-    )
-
-
-    # =====================================================
-    # Check if JSON file exists
-    # =====================================================
-
-    if not os.path.exists(json_file):
-
-        return jsonify({
-            "error": True,
-            "message": "IPO calendar JSON file not found",
-            "data": []
-        }), 404
-
-
-    try:
-
-        # =================================================
-        # Read JSON
-        # =================================================
-
-        with open(
-            json_file,
-            "r",
-            encoding="utf-8"
-        ) as file:
-
-            data = json.load(file)
-
 
         # =================================================
         # Make sure JSON contains a list
@@ -231,31 +188,109 @@ def ipo_calendar_data():
                 "data": []
             }), 500
 
+# =========================================================
+# IPO CALENDAR GOOGLE SHEET API
+# =========================================================
 
-        # =================================================
-        # Return IPO data
-        # =================================================
+@app.route("/api/ipo-calendar")
+def ipo_calendar_data():
 
-        return jsonify(data)
+    try:
+
+        response = requests.get(
+            GOOGLE_CALENDAR_CSV_URL,
+            timeout=20,
+            headers={
+                "User-Agent": "Mozilla/5.0"
+            }
+        )
+
+        response.raise_for_status()
+
+        csv_text = response.text.lstrip("\ufeff")
+
+        reader = csv.DictReader(
+            io.StringIO(csv_text)
+        )
+
+        calendar_data = []
 
 
-    except json.JSONDecodeError:
+        for row in reader:
 
-        return jsonify({
-            "error": True,
-            "message": "Invalid JSON syntax in ipo-calendar.json",
-            "data": []
-        }), 500
+            company = row.get(
+                "Company",
+                ""
+            ).strip()
+
+            ipo_type = row.get(
+                "Type",
+                ""
+            ).strip()
+
+
+            open_date = row.get(
+                "Open Date",
+                ""
+            ).strip()
+
+
+            close_date = row.get(
+                "Close Date",
+                ""
+            ).strip()
+
+
+            allotment_date = row.get(
+                "Allotment Date",
+                ""
+            ).strip()
+
+
+            listing_date = row.get(
+                "Listing Date",
+                ""
+            ).strip()
+
+
+            if not company:
+                continue
+
+
+            calendar_data.append({
+
+                "company": company,
+
+                "type": ipo_type or "Mainboard",
+
+                "open_date": open_date,
+
+                "close_date": close_date,
+
+                "allotment_date": allotment_date,
+
+                "listing_date": listing_date
+
+            })
+
+
+        return jsonify(calendar_data)
 
 
     except Exception as e:
 
-        return jsonify({
-            "error": True,
-            "message": str(e),
-            "data": []
-        }), 500
+        print(
+            "IPO CALENDAR ERROR:",
+            repr(e)
+        )
 
+        return jsonify({
+
+            "error": True,
+
+            "message": str(e)
+
+        }), 500
 
 # =========================================================
 # RUN APPLICATION
