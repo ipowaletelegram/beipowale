@@ -3,281 +3,1236 @@
 
 <head>
 
-    <!-- ==========================================
-         BASIC SEO
-    =========================================== -->
-
     <meta charset="UTF-8">
 
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+        content="width=device-width, initial-scale=1.0">
 
     <title>
-        IPO Calendar | Mainboard IPO Dates, Listings & Schedule | BE.IPOWALE
+        IPO Calendar | Upcoming IPO Dates | BE.IPOWALE
     </title>
 
     <meta
         name="description"
-        content="IPO Calendar 2026 by BE.IPOWALE. Track upcoming and ongoing Mainboard IPO opening, closing, allotment and listing dates in one place."
-    >
-
-    <meta
-        name="keywords"
-        content="IPO Calendar, IPO Calendar 2026, IPO dates, IPO today, upcoming IPO, Mainboard IPO, IPO opening date, IPO closing date, IPO allotment date, IPO listing date, Indian IPO, IPO schedule, BE.IPOWALE"
-    >
-
-    <meta
-        name="author"
-        content="BE.IPOWALE"
-    >
+        content="Track IPO opening, closing, allotment and listing dates with the BE.IPOWALE IPO Calendar.">
 
     <meta
         name="robots"
-        content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-    >
-
-    <meta
-        name="googlebot"
-        content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-    >
+        content="index, follow">
 
     <meta
         name="theme-color"
-        content="#111a32"
-    >
+        content="#eef2f7">
 
-
-    <!-- ==========================================
-         CANONICAL URL
-    =========================================== -->
-
-    <link
-        rel="canonical"
-        href="https://beipowale.onrender.com/ipo-calendar"
-    >
-
-
-    <!-- ==========================================
-         FAVICON
-    =========================================== -->
-
-    <link
-        rel="icon"
-        type="image/png"
-        href="{{ url_for('static', filename='images/favicon.png') }}"
-    >
-
-    <link
-        rel="apple-touch-icon"
-        href="{{ url_for('static', filename='images/favicon.png') }}"
-    >
-
-
-    <!-- ==========================================
-         OPEN GRAPH - FACEBOOK / WHATSAPP / LINK PREVIEW
-    =========================================== -->
-
-    <meta
-        property="og:type"
-        content="website"
-    >
-
-    <meta
-        property="og:title"
-        content="IPO Calendar | Mainboard IPO Dates | BE.IPOWALE"
-    >
-
-    <meta
-        property="og:description"
-        content="Track Mainboard IPO opening, closing, allotment and listing dates with the BE.IPOWALE IPO Calendar."
-    >
-
-    <meta
-        property="og:url"
-        content="https://beipowale.onrender.com/ipo-calendar"
-    >
-
-    <meta
-        property="og:site_name"
-        content="BE.IPOWALE"
-    >
-
-    <meta
-        property="og:locale"
-        content="en_IN"
-    >
-
-    <meta
-        property="og:image"
-        content="https://beipowale.onrender.com/static/images/ipo-calendar-og.jpg"
-    >
-
-    <meta
-        property="og:image:alt"
-        content="BE.IPOWALE IPO Calendar 2026"
-    >
-
-
-    <!-- ==========================================
-         TWITTER / X CARD
-    =========================================== -->
-
-    <meta
-        name="twitter:card"
-        content="summary_large_image"
-    >
-
-    <meta
-        name="twitter:title"
-        content="IPO Calendar | Mainboard IPO Dates | BE.IPOWALE"
-    >
-
-    <meta
-        name="twitter:description"
-        content="Track upcoming Mainboard IPO opening, closing, allotment and listing dates with BE.IPOWALE."
-    >
-
-    <meta
-        name="twitter:image"
-        content="https://beipowale.onrender.com/static/images/ipo-calendar-og.jpg"
-    >
-
-    <meta
-        name="twitter:image:alt"
-        content="BE.IPOWALE IPO Calendar 2026"
-    >
-
-
-    <!-- ==========================================
-         GOOGLE FONTS
-    =========================================== -->
 
     <link
         rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
+        href="https://fonts.googleapis.com">
 
     <link
         rel="preconnect"
         href="https://fonts.gstatic.com"
-        crossorigin
-    >
+        crossorigin>
+
 
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@400;500;600;700&display=swap"
-        rel="stylesheet"
-    >
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
 
-    <!-- ==========================================
-         CALENDAR CSS
-    =========================================== -->
+    <style>
 
-    <link
-        rel="stylesheet"
-        href="{{ url_for('static', filename='css/ipo-calendar.css') }}"
-    >
-
-
-    <!-- ==========================================
-         STRUCTURED DATA - IPO CALENDAR
-    =========================================== -->
-
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "@id": "https://beipowale.onrender.com/ipo-calendar#webpage",
-        "url": "https://beipowale.onrender.com/ipo-calendar",
-        "name": "IPO Calendar Today | Mainboard IPO Dates, Listings & Schedule",
-        "headline": "IPO Calendar 2026 - Mainboard IPO Dates",
-        "description": "Track upcoming and ongoing Mainboard IPO opening, closing, allotment and listing dates with BE.IPOWALE.",
-        "inLanguage": "en-IN",
-        "isPartOf": {
-            "@type": "WebSite",
-            "name": "BE.IPOWALE",
-            "url": "https://beipowale.onrender.com/"
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "BE.IPOWALE",
-            "url": "https://beipowale.onrender.com/"
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-    }
-    </script>
 
 
-    <!-- ==========================================
-         WEBSITE STRUCTURED DATA
-    =========================================== -->
+        :root {
 
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "@id": "https://beipowale.onrender.com/#website",
-        "url": "https://beipowale.onrender.com/",
-        "name": "BE.IPOWALE",
-        "description": "Daily IPO updates, GMP, subscription, allotment and listing information.",
-        "inLanguage": "en-IN",
-        "publisher": {
-            "@type": "Organization",
-            "name": "BE.IPOWALE"
+            --bg: #eef2f7;
+
+            --card: #ffffff;
+
+            --navy: #13213f;
+
+            --navy2: #182744;
+
+            --text: #10203d;
+
+            --muted: #73809a;
+
+            --border: #e1e6ef;
+
+            --blue: #315cae;
+
+            --blue-light: #edf3ff;
+
+            --green: #16885d;
+
         }
-    }
-    </script>
+
+
+        body {
+
+            font-family:
+                "Poppins",
+                sans-serif;
+
+            background:
+                var(--bg);
+
+            color:
+                var(--text);
+
+            min-height:
+                100vh;
+
+        }
+
+
+        /* =====================================================
+           PAGE
+        ===================================================== */
+
+        .page {
+
+            max-width:
+                900px;
+
+            margin:
+                0 auto;
+
+            padding:
+                0 0 50px;
+
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--navy),
+                    var(--navy2)
+                );
+
+            color:
+                white;
+
+            border-radius:
+                0 0 28px 28px;
+
+            padding:
+                22px 22px 25px;
+
+            min-height:
+                215px;
+
+            box-shadow:
+                0 12px 30px
+                rgba(20, 35, 70, 0.12);
+
+        }
+
+
+        .top-brand {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            padding-bottom:
+                20px;
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.15);
+
+        }
+
+
+        .brand {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                8px;
+
+            font-size:
+                15px;
+
+            font-weight:
+                700;
+
+        }
+
+
+        .brand-dot {
+
+            width:
+                9px;
+
+            height:
+                9px;
+
+            border-radius:
+                50%;
+
+            background:
+                #9fc0ff;
+
+            box-shadow:
+                0 0 10px
+                rgba(159,192,255,.8);
+
+        }
+
+
+        .tagline {
+
+            font-size:
+                8px;
+
+            letter-spacing:
+                1.5px;
+
+            color:
+                #b8c5df;
+
+        }
+
+
+        .hero-main {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                20px;
+
+            padding-top:
+                25px;
+
+        }
+
+
+        .hero-title {
+
+            font-size:
+                43px;
+
+            line-height:
+                1.05;
+
+            font-weight:
+                600;
+
+            letter-spacing:
+                -1.5px;
+
+        }
+
+
+        .hero-title span {
+
+            font-style:
+                italic;
+
+            font-weight:
+                400;
+
+        }
+
+
+        .hero-subtitle {
+
+            margin-top:
+                9px;
+
+            font-size:
+                11px;
+
+            color:
+                #b9c6df;
+
+        }
+
+
+        .hero-tabs {
+
+            display:
+                flex;
+
+            gap:
+                13px;
+
+            margin-top:
+                22px;
+
+            font-size:
+                8px;
+
+            letter-spacing:
+                1.2px;
+
+            color:
+                #aac0eb;
+
+        }
+
+
+        .calendar-icon {
+
+            width:
+                62px;
+
+            height:
+                62px;
+
+            border-radius:
+                17px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            background:
+                rgba(255,255,255,.10);
+
+            border:
+                1px solid
+                rgba(255,255,255,.15);
+
+            font-size:
+                29px;
+
+            flex-shrink:
+                0;
+
+        }
+
+
+        /* =====================================================
+           STATS
+        ===================================================== */
+
+        .stats {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(2,1fr);
+
+            gap:
+                13px;
+
+            margin:
+                14px 0 24px;
+
+        }
+
+
+        .stat-card {
+
+            background:
+                var(--card);
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                16px;
+
+            padding:
+                15px 17px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                12px;
+
+            box-shadow:
+                0 5px 20px
+                rgba(25,40,80,.05);
+
+        }
+
+
+        .stat-icon {
+
+            width:
+                42px;
+
+            height:
+                42px;
+
+            border-radius:
+                12px;
+
+            background:
+                #f1f4f8;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            font-size:
+                20px;
+
+        }
+
+
+        .stat-number {
+
+            font-size:
+                23px;
+
+            font-weight:
+                700;
+
+            line-height:
+                1;
+
+        }
+
+
+        .stat-label {
+
+            font-size:
+                8px;
+
+            color:
+                var(--muted);
+
+            letter-spacing:
+                .8px;
+
+            margin-top:
+                4px;
+
+        }
+
+
+        /* =====================================================
+           SECTION TITLE
+        ===================================================== */
+
+        .section-head {
+
+            display:
+                flex;
+
+            align-items:
+                flex-end;
+
+            justify-content:
+                space-between;
+
+            gap:
+                10px;
+
+            margin:
+                0 3px 13px;
+
+        }
+
+
+        .section-title {
+
+            font-size:
+                21px;
+
+            font-weight:
+                700;
+
+        }
+
+
+        .section-subtitle {
+
+            font-size:
+                8px;
+
+            color:
+                var(--muted);
+
+            letter-spacing:
+                1.3px;
+
+            margin-top:
+                3px;
+
+        }
+
+
+        .live {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                6px;
+
+            padding:
+                6px 10px;
+
+            background:
+                white;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                20px;
+
+            font-size:
+                7px;
+
+            font-weight:
+                600;
+
+            color:
+                var(--green);
+
+        }
+
+
+        .live-dot {
+
+            width:
+                6px;
+
+            height:
+                6px;
+
+            border-radius:
+                50%;
+
+            background:
+                var(--green);
+
+        }
+
+
+        /* =====================================================
+           CALENDAR EVENTS
+        ===================================================== */
+
+        #calendarContainer {
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            gap:
+                10px;
+
+        }
+
+
+        .date-card {
+
+            background:
+                white;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                16px;
+
+            overflow:
+                hidden;
+
+            box-shadow:
+                0 5px 18px
+                rgba(25,40,80,.04);
+
+        }
+
+
+        .date-card.today {
+
+            border:
+                2px solid
+                #365eac;
+
+        }
+
+
+        .date-header {
+
+            padding:
+                12px 18px;
+
+            border-bottom:
+                1px solid
+                var(--border);
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                10px;
+
+        }
+
+
+        .today-label {
+
+            font-size:
+                9px;
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                1px;
+
+        }
+
+
+        .date-text {
+
+            font-size:
+                14px;
+
+            color:
+                #273a5e;
+
+            font-weight:
+                500;
+
+        }
+
+
+        .ipo-row {
+
+            min-height:
+                53px;
+
+            padding:
+                0 18px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                10px;
+
+            border-bottom:
+                1px solid
+                #edf0f5;
+
+        }
+
+
+        .ipo-row:last-child {
+
+            border-bottom:
+                none;
+
+        }
+
+
+        .company-area {
+
+            min-width:
+                0;
+
+        }
+
+
+        .company-name {
+
+            font-size:
+                14px;
+
+            font-weight:
+                600;
+
+            white-space:
+                nowrap;
+
+            overflow:
+                hidden;
+
+            text-overflow:
+                ellipsis;
+
+        }
+
+
+        .ipo-type {
+
+            display:
+                inline-block;
+
+            margin-left:
+                7px;
+
+            vertical-align:
+                middle;
+
+            padding:
+                3px 7px;
+
+            border-radius:
+                7px;
+
+            background:
+                #f0f3f7;
+
+            color:
+                #66738a;
+
+            font-size:
+                7px;
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                .7px;
+
+        }
+
+
+        /* =====================================================
+           STATUS
+        ===================================================== */
+
+        .status {
+
+            flex-shrink:
+                0;
+
+            padding:
+                7px 12px;
+
+            border-radius:
+                18px;
+
+            font-size:
+                8px;
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                .7px;
+
+        }
+
+
+        .status.open {
+
+            background:
+                #dff7eb;
+
+            color:
+                #148458;
+
+        }
+
+
+        .status.close {
+
+            background:
+                #f9dfe0;
+
+            color:
+                #c85055;
+
+        }
+
+
+        .status.allotment {
+
+            background:
+                #fff0d7;
+
+            color:
+                #b87912;
+
+        }
+
+
+        .status.listing {
+
+            background:
+                #eadcf8;
+
+            color:
+                #7a43a8;
+
+        }
+
+
+        /* =====================================================
+           EMPTY / ERROR / LOADING
+        ===================================================== */
+
+        .message-box {
+
+            background:
+                white;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                16px;
+
+            padding:
+                50px 20px;
+
+            text-align:
+                center;
+
+            color:
+                var(--muted);
+
+            font-size:
+                11px;
+
+        }
+
+
+        .message-icon {
+
+            font-size:
+                30px;
+
+            margin-bottom:
+                10px;
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .footer {
+
+            text-align:
+                center;
+
+            margin-top:
+                30px;
+
+            padding:
+                25px 15px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                9px;
+
+        }
+
+
+        .footer strong {
+
+            color:
+                var(--text);
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 650px) {
+
+
+            .page {
+
+                padding:
+                    0 12px 35px;
+
+            }
+
+
+            .hero {
+
+                border-radius:
+                    0 0 22px 22px;
+
+                padding:
+                    17px 16px 20px;
+
+            }
+
+
+            .top-brand {
+
+                padding-bottom:
+                    16px;
+
+            }
+
+
+            .brand {
+
+                font-size:
+                    14px;
+
+            }
+
+
+            .tagline {
+
+                font-size:
+                    7px;
+
+            }
+
+
+            .hero-main {
+
+                padding-top:
+                    20px;
+
+            }
+
+
+            .hero-title {
+
+                font-size:
+                    32px;
+
+            }
+
+
+            .hero-subtitle {
+
+                font-size:
+                    9px;
+
+            }
+
+
+            .hero-tabs {
+
+                gap:
+                    9px;
+
+                font-size:
+                    7px;
+
+            }
+
+
+            .calendar-icon {
+
+                width:
+                    51px;
+
+                height:
+                    51px;
+
+                font-size:
+                    23px;
+
+            }
+
+
+            .stats {
+
+                gap:
+                    9px;
+
+                margin:
+                    10px 0 20px;
+
+            }
+
+
+            .stat-card {
+
+                padding:
+                    12px;
+
+                gap:
+                    8px;
+
+            }
+
+
+            .stat-icon {
+
+                width:
+                    35px;
+
+                height:
+                    35px;
+
+                font-size:
+                    16px;
+
+            }
+
+
+            .stat-number {
+
+                font-size:
+                    19px;
+
+            }
+
+
+            .stat-label {
+
+                font-size:
+                    7px;
+
+            }
+
+
+            .section-title {
+
+                font-size:
+                    18px;
+
+            }
+
+
+            .section-subtitle {
+
+                font-size:
+                    7px;
+
+            }
+
+
+            .date-header {
+
+                padding:
+                    11px 13px;
+
+            }
+
+
+            .date-text {
+
+                font-size:
+                    11px;
+
+            }
+
+
+            .ipo-row {
+
+                min-height:
+                    54px;
+
+                padding:
+                    0 13px;
+
+            }
+
+
+            .company-name {
+
+                font-size:
+                    11px;
+
+            }
+
+
+            .ipo-type {
+
+                font-size:
+                    6px;
+
+                padding:
+                    2px 5px;
+
+            }
+
+
+            .status {
+
+                padding:
+                    6px 8px;
+
+                font-size:
+                    7px;
+
+            }
+
+        }
+
+
+        @media (max-width: 380px) {
+
+
+            .hero-title {
+
+                font-size:
+                    28px;
+
+            }
+
+
+            .hero-icon {
+
+                display:
+                    none;
+
+            }
+
+
+            .company-name {
+
+                max-width:
+                    190px;
+
+            }
+
+        }
+
+    </style>
 
 </head>
+
 
 <body>
 
 
-<div class="calendar-page">
+<div class="page">
 
 
-    <!-- =========================================
-         BE.IPOWALE BRAND HEADER
-    ========================================== -->
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
 
-    <section class="brand-header">
+    <section class="hero">
 
 
-        <div class="brand-top">
+        <div class="top-brand">
 
-            <div class="brand-logo">
+
+            <div class="brand">
 
                 <span class="brand-dot"></span>
 
-                <span>
-                    BE.<b>IPOWALE</b>
-                </span>
+                BE.IPOWALE
 
             </div>
 
 
-            <div class="brand-tag">
+            <div class="tagline">
 
                 DAILY IPO UPDATES
 
             </div>
 
+
         </div>
 
 
-        <div class="brand-content">
+        <div class="hero-main">
+
 
             <div>
 
-                <h1>
+
+                <h1 class="hero-title">
+
                     IPO <span>Calendar</span>
+
                 </h1>
 
-                <p>
-                    Track every important IPO date
-                    in one place.
+
+                <p class="hero-subtitle">
+
+                    Track every important IPO date in one place.
+
                 </p>
+
+
+                <div class="hero-tabs">
+
+                    <span>OPEN</span>
+
+                    <span>•</span>
+
+                    <span>CLOSE</span>
+
+                    <span>•</span>
+
+                    <span>ALLOTMENT</span>
+
+                    <span>•</span>
+
+                    <span>LISTING</span>
+
+                </div>
+
 
             </div>
 
@@ -288,24 +1243,6 @@
 
             </div>
 
-        </div>
-
-
-        <div class="brand-features">
-
-            <span>OPEN</span>
-
-            <i>•</i>
-
-            <span>CLOSE</span>
-
-            <i>•</i>
-
-            <span>ALLOTMENT</span>
-
-            <i>•</i>
-
-            <span>LISTING</span>
 
         </div>
 
@@ -314,51 +1251,76 @@
 
 
 
-    <!-- =========================================
+    <!-- =====================================================
          STATS
-    ========================================== -->
+    ====================================================== -->
 
-    <section class="stats-grid">
+    <section class="stats">
 
 
         <div class="stat-card">
 
+
             <div class="stat-icon">
+
                 📅
+
             </div>
+
 
             <div>
 
-                <strong id="activeDays">
-                    0
-                </strong>
+                <div
+                    id="activeDays"
+                    class="stat-number">
 
-                <span>
+                    0
+
+                </div>
+
+
+                <div class="stat-label">
+
                     ACTIVE DAYS
-                </span>
+
+                </div>
 
             </div>
+
 
         </div>
 
 
+
         <div class="stat-card">
 
+
             <div class="stat-icon">
+
                 📈
+
             </div>
+
 
             <div>
 
-                <strong id="totalEvents">
-                    0
-                </strong>
+                <div
+                    id="totalEvents"
+                    class="stat-number">
 
-                <span>
+                    0
+
+                </div>
+
+
+                <div class="stat-label">
+
                     TOTAL EVENTS
-                </span>
+
+                </div>
 
             </div>
+
 
         </div>
 
@@ -367,209 +1329,67 @@
 
 
 
-    <!-- =========================================
-         CALENDAR TITLE
-    ========================================== -->
+    <!-- =====================================================
+         SECTION TITLE
+    ====================================================== -->
 
-    <div class="section-heading">
+    <div class="section-head">
+
 
         <div>
 
-            <h2>
-                Upcoming IPO Events
-            </h2>
 
-            <p>
+            <div class="section-title">
+
+                Upcoming IPO Events
+
+            </div>
+
+
+            <div class="section-subtitle">
+
                 MAINBOARD IPOs
-            </p>
+
+            </div>
+
 
         </div>
 
 
-        <div class="live-badge">
+        <div class="live">
 
-            <span></span>
+
+            <span class="live-dot"></span>
 
             LIVE CALENDAR
 
         </div>
 
+
     </div>
 
 
 
-    <!-- =========================================
+    <!-- =====================================================
          CALENDAR
-    ========================================== -->
+    ====================================================== -->
 
-    <main id="calendar">
-
-        <div class="loading">
-
-            <div class="loader"></div>
-
-            Loading IPO Calendar...
-
-        </div>
-
-    </main>
+    <section
+        id="calendarContainer">
 
 
-
-    <!-- =========================================
-         STATUS GUIDE
-    ========================================== -->
-
-    <section class="status-guide">
+        <div class="message-box">
 
 
-        <div class="guide-title">
+            <div class="message-icon">
 
-            <span>QUICK GUIDE</span>
-
-        </div>
-
-
-        <div class="guide-items">
-
-
-            <div class="guide-item">
-
-                <span class="guide-dot open"></span>
-
-                <div>
-
-                    <strong>OPEN</strong>
-
-                    <small>
-                        IPO application starts
-                    </small>
-
-                </div>
+                📅
 
             </div>
 
 
-            <div class="guide-item">
+            Loading IPO calendar...
 
-                <span class="guide-dot close"></span>
-
-                <div>
-
-                    <strong>CLOSE</strong>
-
-                    <small>
-                        Last day to apply
-                    </small>
-
-                </div>
-
-            </div>
-
-
-            <div class="guide-item">
-
-                <span class="guide-dot allotment"></span>
-
-                <div>
-
-                    <strong>ALLOTMENT</strong>
-
-                    <small>
-                        Allotment date
-                    </small>
-
-                </div>
-
-            </div>
-
-
-            <div class="guide-item">
-
-                <span class="guide-dot listing"></span>
-
-                <div>
-
-                    <strong>LISTING</strong>
-
-                    <small>
-                        Stock market listing
-                    </small>
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================================
-         BE.IPOWALE PROMOTION
-    ========================================== -->
-
-    <section class="promotion-card">
-
-
-        <div class="promo-glow"></div>
-
-
-        <div class="promo-content">
-
-
-            <div class="promo-brand">
-
-                <span class="brand-dot"></span>
-
-                BE.<b>IPOWALE</b>
-
-            </div>
-
-
-            <h2>
-                Don't Miss the Next IPO 🚀
-            </h2>
-
-
-            <p>
-                Get daily IPO updates, GMP,
-                subscription, allotment,
-                listing & market updates.
-            </p>
-
-
-            <div class="promo-tags">
-
-                <span>GMP</span>
-
-                <span>SUBSCRIPTION</span>
-
-                <span>ALLOTMENT</span>
-
-                <span>LISTING</span>
-
-            </div>
-
-
-            <a
-                href="https://www.instagram.com/be.ipowale/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="follow-button"
-            >
-                Follow @be.ipowale →
-            </a>
-
-
-        </div>
-
-
-        <div class="promo-symbol">
-
-            🚀
 
         </div>
 
@@ -578,54 +1398,17 @@
 
 
 
-    <!-- =========================================
+    <!-- =====================================================
          FOOTER
-    ========================================== -->
+    ====================================================== -->
 
-    <footer>
+    <footer class="footer">
 
+        <strong>BE.IPOWALE</strong>
 
-        <div class="footer-logo">
+        <br>
 
-            BE.<b>IPOWALE</b>
-
-        </div>
-
-
-        <p>
-            Daily IPO Updates • GMP • Allotment • Listing
-        </p>
-
-
-        <div class="footer-links">
-
-            <a
-                href="https://www.instagram.com/be.ipowale/"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Instagram
-            </a>
-
-            <span>•</span>
-
-            <a
-                href="https://t.me/BE_IPOWALE"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Telegram
-            </a>
-
-        </div>
-
-
-        <div class="footer-copy">
-
-            © 2026 BE.IPOWALE
-
-        </div>
-
+        Daily IPO Updates
 
     </footer>
 
@@ -634,14 +1417,780 @@
 
 
 
-<!-- Existing Calendar JS -->
+<script>
 
-<script
-    src="{{ url_for(
-        'static',
-        filename='js/ipo-calendar.js'
-    ) }}"
-></script>
+
+/* =========================================================
+   GLOBAL DATA
+========================================================= */
+
+let ipoData = [];
+
+const IST_TIMEZONE =
+    "Asia/Kolkata";
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const calendarContainer =
+    document.getElementById(
+        "calendarContainer"
+    );
+
+
+const activeDaysElement =
+    document.getElementById(
+        "activeDays"
+    );
+
+
+const totalEventsElement =
+    document.getElementById(
+        "totalEvents"
+    );
+
+
+/* =========================================================
+   LOAD GOOGLE SHEET DATA
+   THROUGH FLASK API
+========================================================= */
+
+async function loadCalendar() {
+
+
+    try {
+
+
+        const response =
+            await fetch(
+                "/api/ipo-calendar",
+                {
+                    cache: "no-store"
+                }
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Calendar API failed: " +
+                response.status
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        console.log(
+            "IPO Calendar Data:",
+            data
+        );
+
+
+        if (
+            !Array.isArray(data)
+        ) {
+
+            throw new Error(
+                data.message ||
+                data.error ||
+                "Invalid calendar data"
+            );
+
+        }
+
+
+        ipoData = data;
+
+
+        buildCalendar();
+
+
+    }
+
+
+    catch (error) {
+
+
+        console.error(
+            "IPO Calendar Error:",
+            error
+        );
+
+
+        calendarContainer.innerHTML = `
+
+            <div class="message-box">
+
+                <div class="message-icon">
+                    ⚠️
+                </div>
+
+                <strong>
+                    Unable to load IPO calendar
+                </strong>
+
+                <br><br>
+
+                Please try again later.
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* =========================================================
+   DATE PARSER
+========================================================= */
+
+function parseDate(value) {
+
+
+    if (!value) {
+
+        return null;
+
+    }
+
+
+    value =
+        String(value).trim();
+
+
+    /* YYYY-MM-DD */
+
+    if (
+        /^\d{4}-\d{2}-\d{2}$/
+            .test(value)
+    ) {
+
+        const [
+            year,
+            month,
+            day
+        ] =
+            value.split("-")
+                .map(Number);
+
+
+        return new Date(
+            year,
+            month - 1,
+            day
+        );
+
+    }
+
+
+    /* DD MMM YYYY */
+
+    const parsed =
+        new Date(value);
+
+
+    if (
+        !isNaN(
+            parsed.getTime()
+        )
+    ) {
+
+        return new Date(
+            parsed.getFullYear(),
+            parsed.getMonth(),
+            parsed.getDate()
+        );
+
+    }
+
+
+    return null;
+
+}
+
+
+/* =========================================================
+   DATE KEY
+========================================================= */
+
+function dateKey(date) {
+
+
+    if (!date) {
+
+        return null;
+
+    }
+
+
+    const year =
+        date.getFullYear();
+
+
+    const month =
+        String(
+            date.getMonth() + 1
+        ).padStart(2, "0");
+
+
+    const day =
+        String(
+            date.getDate()
+        ).padStart(2, "0");
+
+
+    return `${year}-${month}-${day}`;
+
+}
+
+
+/* =========================================================
+   TODAY
+========================================================= */
+
+function getToday() {
+
+
+    const now =
+        new Date();
+
+
+    return new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate()
+    );
+
+}
+
+
+/* =========================================================
+   ADD DAYS
+========================================================= */
+
+function addDays(
+    date,
+    days
+) {
+
+
+    const result =
+        new Date(date);
+
+
+    result.setDate(
+        result.getDate() + days
+    );
+
+
+    return result;
+
+}
+
+
+/* =========================================================
+   DATE LABEL
+========================================================= */
+
+function formatDate(
+    date
+) {
+
+
+    return date.toLocaleDateString(
+        "en-IN",
+        {
+            weekday: "long",
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+        }
+    );
+
+}
+
+
+/* =========================================================
+   EVENT STATUS
+========================================================= */
+
+function getEventForDate(
+    ipo,
+    date
+) {
+
+
+    const current =
+        dateKey(date);
+
+
+    const open =
+        parseDate(
+            ipo.open_date
+        );
+
+
+    const close =
+        parseDate(
+            ipo.close_date
+        );
+
+
+    const allotment =
+        parseDate(
+            ipo.allotment_date
+        );
+
+
+    const listing =
+        parseDate(
+            ipo.listing_date
+        );
+
+
+    /* LISTING */
+
+    if (
+        listing &&
+        current === dateKey(listing)
+    ) {
+
+        return {
+            label: "LISTING",
+            className: "listing"
+        };
+
+    }
+
+
+    /* ALLOTMENT */
+
+    if (
+        allotment &&
+        current === dateKey(allotment)
+    ) {
+
+        return {
+            label: "ALLOTMENT",
+            className: "allotment"
+        };
+
+    }
+
+
+    /* CLOSE */
+
+    if (
+        close &&
+        current === dateKey(close)
+    ) {
+
+        return {
+            label: "CLOSE",
+            className: "close"
+        };
+
+    }
+
+
+    /* OPEN */
+
+    if (
+        open &&
+        current === dateKey(open)
+    ) {
+
+        return {
+            label: "OPEN",
+            className: "open"
+        };
+
+    }
+
+
+    return null;
+
+}
+
+
+/* =========================================================
+   BUILD CALENDAR
+========================================================= */
+
+function buildCalendar() {
+
+
+    calendarContainer.innerHTML =
+        "";
+
+
+    const today =
+        getToday();
+
+
+    /*
+       We show dates from TODAY
+       to 90 days ahead.
+    */
+
+    const dates = {};
+
+
+    for (
+        let i = 0;
+        i <= 90;
+        i++
+    ) {
+
+
+        const date =
+            addDays(
+                today,
+                i
+            );
+
+
+        const key =
+            dateKey(date);
+
+
+        dates[key] = {
+
+            date: date,
+
+            events: []
+
+        };
+
+    }
+
+
+    /* =====================================================
+       ADD IPO EVENTS
+    ===================================================== */
+
+    ipoData.forEach(
+        ipo => {
+
+
+            for (
+                const key in dates
+            ) {
+
+
+                const event =
+                    getEventForDate(
+                        ipo,
+                        dates[key].date
+                    );
+
+
+                if (event) {
+
+
+                    dates[key]
+                        .events
+                        .push({
+
+                            ipo: ipo,
+
+                            event: event
+
+                        });
+
+                }
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       REMOVE EMPTY DATES
+    ===================================================== */
+
+    const activeDateKeys =
+        Object.keys(
+            dates
+        )
+        .filter(
+            key =>
+                dates[key]
+                    .events
+                    .length > 0
+        );
+
+
+    /* =====================================================
+       STATS
+    ===================================================== */
+
+    activeDaysElement.innerText =
+        activeDateKeys.length;
+
+
+    let totalEvents = 0;
+
+
+    activeDateKeys.forEach(
+        key => {
+
+            totalEvents +=
+                dates[key]
+                    .events
+                    .length;
+
+        }
+    );
+
+
+    totalEventsElement.innerText =
+        totalEvents;
+
+
+    /* =====================================================
+       EMPTY STATE
+    ===================================================== */
+
+    if (
+        activeDateKeys.length === 0
+    ) {
+
+
+        calendarContainer.innerHTML = `
+
+            <div class="message-box">
+
+                <div class="message-icon">
+                    📅
+                </div>
+
+                <strong>
+                    No upcoming IPO events
+                </strong>
+
+                <br><br>
+
+                Check back soon for new IPO dates.
+
+            </div>
+
+        `;
+
+
+        return;
+
+    }
+
+
+    /* =====================================================
+       CREATE DATE CARDS
+    ===================================================== */
+
+    activeDateKeys.forEach(
+        key => {
+
+
+            const dayData =
+                dates[key];
+
+
+            const date =
+                dayData.date;
+
+
+            const isToday =
+                key ===
+                dateKey(today);
+
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "date-card" +
+                (
+                    isToday
+                        ? " today"
+                        : ""
+                );
+
+
+            let rows = "";
+
+
+            dayData.events.forEach(
+                item => {
+
+
+                    const ipo =
+                        item.ipo;
+
+
+                    const event =
+                        item.event;
+
+
+                    rows += `
+
+                        <div class="ipo-row">
+
+
+                            <div class="company-area">
+
+
+                                <span
+                                    class="company-name">
+
+                                    ${escapeHTML(
+                                        ipo.company
+                                    )}
+
+                                </span>
+
+
+                                <span
+                                    class="ipo-type">
+
+                                    ${escapeHTML(
+                                        (
+                                            ipo.type ||
+                                            "MAINBOARD"
+                                        ).toUpperCase()
+                                    )}
+
+                                </span>
+
+
+                            </div>
+
+
+                            <span
+                                class="status ${event.className}">
+
+                                • ${event.label}
+
+                            </span>
+
+
+                        </div>
+
+                    `;
+
+
+                }
+            );
+
+
+            card.innerHTML = `
+
+                <div class="date-header">
+
+
+                    <div>
+
+
+                        ${
+                            isToday
+                            ?
+                            `<span class="today-label">
+                                • TODAY
+                            </span>`
+                            :
+                            ""
+                        }
+
+
+                    </div>
+
+
+                    <div class="date-text">
+
+                        ${formatDate(
+                            date
+                        )}
+
+                    </div>
+
+
+                </div>
+
+
+                ${rows}
+
+            `;
+
+
+            calendarContainer.appendChild(
+                card
+            );
+
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   SECURITY
+========================================================= */
+
+function escapeHTML(
+    value
+) {
+
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =========================================================
+   START
+========================================================= */
+
+loadCalendar();
+
+
+</script>
 
 
 </body>
