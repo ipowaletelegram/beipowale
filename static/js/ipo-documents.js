@@ -1,7 +1,8 @@
-let allCompanies = [];
+const SHEET_URL =
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vQeTO-2tCHWLT6qJOUUIadywyp1GO8MHHRkHkMzNFjfskCjH97Wu2FuJHHWH8rTLwaqcq8rBcPCl7C_/pubhtml";
 
+let allDocuments = [];
 let currentFilter = "ALL";
-
 
 const container =
     document.getElementById("documentsContainer");
@@ -16,21 +17,22 @@ const noResults =
     document.getElementById("noResults");
 
 
-
-/* LOAD DATA */
-
 async function loadDocuments() {
 
     try {
 
         const response =
-            await fetch("/static/data/documents.json");
+            await fetch(SHEET_URL);
 
         if (!response.ok) {
-            throw new Error("Unable to load documents");
+            throw new Error("Unable to load sheet");
         }
 
-        allCompanies = await response.json();
+        const csv =
+            await response.text();
+
+        allDocuments =
+            parseCSV(csv);
 
         renderDocuments();
 
@@ -42,12 +44,136 @@ async function loadDocuments() {
             "Unable to load documents.";
 
     }
-
 }
 
 
+/* CSV PARSER */
 
-/* FILTER */
+function parseCSV(csv) {
+
+    const lines =
+        csv.trim().split("\n");
+
+    if (lines.length <= 1) {
+        return [];
+    }
+
+    const headers =
+        lines[0]
+            .split(",")
+            .map(x =>
+                x.trim().toLowerCase()
+            );
+
+    const companyIndex =
+        headers.indexOf("company");
+
+    const typeIndex =
+        headers.indexOf("type");
+
+    const urlIndex =
+        headers.indexOf("document url");
+
+
+    const rows = [];
+
+    for (
+        let i = 1;
+        i < lines.length;
+        i++
+    ) {
+
+        const values =
+            parseCSVLine(lines[i]);
+
+        if (!values.length) {
+            continue;
+        }
+
+        const company =
+            values[companyIndex]?.trim();
+
+        const type =
+            values[typeIndex]?.trim()
+                .toUpperCase();
+
+        const url =
+            values[urlIndex]?.trim();
+
+
+        if (
+            company &&
+            type &&
+            url
+        ) {
+
+            rows.push({
+                company,
+                type,
+                url
+            });
+
+        }
+
+    }
+
+    return rows;
+}
+
+
+/* CSV LINE */
+
+function parseCSVLine(line) {
+
+    const result = [];
+
+    let current = "";
+    let insideQuotes = false;
+
+
+    for (
+        let i = 0;
+        i < line.length;
+        i++
+    ) {
+
+        const char = line[i];
+
+
+        if (char === '"') {
+
+            insideQuotes =
+                !insideQuotes;
+
+            continue;
+        }
+
+
+        if (
+            char === "," &&
+            !insideQuotes
+        ) {
+
+            result.push(current);
+
+            current = "";
+
+        } else {
+
+            current += char;
+
+        }
+
+    }
+
+
+    result.push(current);
+
+    return result;
+}
+
+
+/* RENDER */
 
 function renderDocuments() {
 
@@ -60,204 +186,201 @@ function renderDocuments() {
     container.innerHTML = "";
 
 
-    let visibleCompanies = 0;
-
-    let visibleDocuments = 0;
+    const companies = {};
 
 
-    allCompanies.forEach(company => {
+    allDocuments.forEach(doc => {
 
-        const companyMatch =
-            company.company
+        const matchesSearch =
+            doc.company
+                .toLowerCase()
+                .includes(search) ||
+
+            doc.type
                 .toLowerCase()
                 .includes(search);
 
 
-        const filteredDocuments =
-            company.documents.filter(doc => {
-
-                const filterMatch =
-                    currentFilter === "ALL" ||
-                    doc.type === currentFilter;
-
-                const documentMatch =
-                    doc.name
-                        .toLowerCase()
-                        .includes(search) ||
-                    doc.shortName
-                        .toLowerCase()
-                        .includes(search);
-
-                return filterMatch &&
-                    (companyMatch || documentMatch);
-
-            });
+        const matchesFilter =
+            currentFilter === "ALL" ||
+            doc.type === currentFilter;
 
 
         if (
-            filteredDocuments.length === 0
+            matchesSearch &&
+            matchesFilter
         ) {
-            return;
+
+            if (!companies[doc.company]) {
+
+                companies[doc.company] = [];
+
+            }
+
+            companies[doc.company]
+                .push(doc);
+
         }
-
-
-        visibleCompanies++;
-
-        visibleDocuments +=
-            filteredDocuments.length;
-
-
-        const card =
-            createCompanyCard(
-                company,
-                filteredDocuments
-            );
-
-
-        container.appendChild(card);
 
     });
 
 
-    resultCount.innerText =
-        `${visibleCompanies} compan${visibleCompanies === 1 ? "y" : "ies"} • ${visibleDocuments} document${visibleDocuments === 1 ? "" : "s"}`;
+    const companyNames =
+        Object.keys(companies);
 
 
-    if (visibleCompanies === 0) {
-
-        noResults.classList.remove("hidden");
-
-    } else {
-
-        noResults.classList.add("hidden");
-
-    }
-
-}
+    let totalDocuments = 0;
 
 
+    companyNames.forEach(
+        companyName => {
 
-/* COMPANY CARD */
-
-function createCompanyCard(
-    company,
-    documents
-) {
-
-    const card =
-        document.createElement("article");
-
-    card.className =
-        "company-card";
+            const docs =
+                companies[companyName];
 
 
-    let logoHTML = "";
+            totalDocuments +=
+                docs.length;
 
 
-    if (company.logo) {
+            const card =
+                document.createElement(
+                    "article"
+                );
 
-        logoHTML = `
-            <img
-                class="company-logo"
-                src="${company.logo}"
-                alt="${escapeHTML(company.company)}"
-                onerror="this.outerHTML='<div class=&quot;company-logo-fallback&quot;>${getInitials(company.company)}</div>'"
-            >
-        `;
-
-    } else {
-
-        logoHTML = `
-            <div class="company-logo-fallback">
-                ${getInitials(company.company)}
-            </div>
-        `;
-
-    }
+            card.className =
+                "company-card";
 
 
-    const documentsHTML =
-        documents.map(doc => {
+            let documentsHTML =
+                "";
 
-            return `
-                <div class="document-row">
 
-                    <div class="document-left">
+            docs.forEach(doc => {
 
-                        <div class="document-icon">
-                            ${getDocumentIcon(doc.type)}
-                        </div>
+                documentsHTML += `
 
-                        <div>
+                    <div class="document-row">
 
-                            <div class="document-name">
-                                ${escapeHTML(doc.name)}
+                        <div class="document-left">
+
+                            <div class="document-icon">
+                                ${getIcon(doc.type)}
                             </div>
 
-                            <div class="document-type">
-                                ${escapeHTML(doc.shortName)}
+                            <div>
+
+                                <div class="document-name">
+                                    ${escapeHTML(
+                                        getDocumentName(
+                                            doc.type
+                                        )
+                                    )}
+                                </div>
+
+                                <div class="document-type">
+                                    ${escapeHTML(
+                                        doc.type
+                                    )}
+                                </div>
+
                             </div>
 
                         </div>
+
+
+                        <a
+                            href="${doc.url}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="view-btn">
+
+                            View PDF ↗
+
+                        </a>
+
+                    </div>
+
+                `;
+
+            });
+
+
+            card.innerHTML = `
+
+                <div class="company-header">
+
+                    <div class="company-logo-fallback">
+
+                        ${getInitials(
+                            companyName
+                        )}
 
                     </div>
 
 
-                    <a
-                        class="view-btn"
-                        href="${doc.url}"
-                        target="_blank"
-                        rel="noopener noreferrer">
+                    <div class="company-info">
 
-                        View PDF ↗
+                        <div class="company-name">
 
-                    </a>
+                            ${escapeHTML(
+                                companyName
+                            )}
+
+                        </div>
+
+                        <span class="company-type">
+
+                            IPO Documents
+
+                        </span>
+
+                    </div>
 
                 </div>
+
+
+                <div class="document-list">
+
+                    ${documentsHTML}
+
+                </div>
+
             `;
 
-        }).join("");
+
+            container.appendChild(card);
+
+        }
+    );
 
 
-    card.innerHTML = `
-
-        <div class="company-header">
-
-            ${logoHTML}
-
-            <div class="company-info">
-
-                <div class="company-name">
-                    ${escapeHTML(company.company)}
-                </div>
-
-                <span class="company-type">
-                    ${escapeHTML(company.type || "IPO")}
-                </span>
-
-            </div>
-
-        </div>
+    resultCount.innerText =
+        `${companyNames.length} compan${companyNames.length === 1 ? "y" : "ies"} • ${totalDocuments} document${totalDocuments === 1 ? "" : "s"}`;
 
 
-        <div class="document-list">
+    if (
+        companyNames.length === 0
+    ) {
 
-            ${documentsHTML}
+        noResults.classList.remove(
+            "hidden"
+        );
 
-        </div>
+    } else {
 
-    `;
+        noResults.classList.add(
+            "hidden"
+        );
 
-
-    return card;
+    }
 
 }
 
 
+/* ICON */
 
-/* DOCUMENT ICON */
-
-function getDocumentIcon(type) {
+function getIcon(type) {
 
     switch (type) {
 
@@ -273,6 +396,9 @@ function getDocumentIcon(type) {
         case "PROSPECTUS":
             return "📘";
 
+        case "BASIS":
+            return "📊";
+
         default:
             return "📎";
 
@@ -281,6 +407,35 @@ function getDocumentIcon(type) {
 }
 
 
+/* DOCUMENT NAME */
+
+function getDocumentName(type) {
+
+    const names = {
+
+        DRHP:
+            "Draft Red Herring Prospectus",
+
+        RHP:
+            "Red Herring Prospectus",
+
+        ANCHOR:
+            "Anchor Investor List",
+
+        PROSPECTUS:
+            "Prospectus",
+
+        BASIS:
+            "Basis of Allotment",
+
+        OTHER:
+            "Other Document"
+
+    };
+
+    return names[type] || type;
+}
+
 
 /* INITIALS */
 
@@ -288,14 +443,13 @@ function getInitials(name) {
 
     return name
         .split(" ")
-        .filter(word => word.length > 0)
+        .filter(Boolean)
         .slice(0, 2)
-        .map(word => word[0])
+        .map(x => x[0])
         .join("")
         .toUpperCase();
 
 }
-
 
 
 /* SECURITY */
@@ -312,7 +466,6 @@ function escapeHTML(value) {
 }
 
 
-
 /* SEARCH */
 
 searchInput.addEventListener(
@@ -321,8 +474,7 @@ searchInput.addEventListener(
 );
 
 
-
-/* FILTER BUTTONS */
+/* FILTER */
 
 document
     .querySelectorAll(".filter-btn")
@@ -333,13 +485,19 @@ document
             () => {
 
                 document
-                    .querySelectorAll(".filter-btn")
-                    .forEach(btn => {
-                        btn.classList.remove("active");
-                    });
+                    .querySelectorAll(
+                        ".filter-btn"
+                    )
+                    .forEach(btn =>
+                        btn.classList.remove(
+                            "active"
+                        )
+                    );
 
 
-                button.classList.add("active");
+                button.classList.add(
+                    "active"
+                );
 
 
                 currentFilter =
@@ -353,8 +511,5 @@ document
 
     });
 
-
-
-/* START */
 
 loadDocuments();
