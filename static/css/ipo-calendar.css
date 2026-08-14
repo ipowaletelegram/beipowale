@@ -1,2130 +1,1071 @@
-/* =====================================================
-   BE.IPOWALE IPO CALENDAR
-===================================================== */
-
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
+/* =========================================================
+   BE.IPOWale IPO CALENDAR
+   FINAL LIGHT + MODERN RESPONSIVE DESIGN
+   ========================================================= */
 
 :root {
+    --bg: #f4f7fb;
+    --card: #ffffff;
+    --primary: #1769aa;
+    --primary-dark: #0d4f82;
+    --primary-soft: #eaf4fc;
 
-    --navy: #ffffff;
-    --navy-light: #f3f7fb;
+    --text: #10243a;
+    --text-2: #40556a;
+    --muted: #7b8b9c;
 
-    --text: #172033;
-    --muted: #697386;
+    --border: #dce5ee;
 
-    --border: #e2e5eb;
+    --green: #16945a;
+    --green-bg: #e8f7ef;
 
-    --green: #28764d;
-    --red: #a52f38;
-    --gold: #8a6418;
-    --purple: #5b55a6;
+    --red: #d33d4b;
+    --red-bg: #fdebed;
 
-}
+    --orange: #b87813;
+    --orange-bg: #fff4df;
 
-
-body {
-
-    background:
-        linear-gradient(180deg, #f8fbff 0%, #eef4f9 100%);
-
-    color: var(--text);
-
-    font-family:
-        'Poppins',
-        sans-serif;
-
-}
-
-
-.calendar-page {
-
-    width: 100%;
-
-    max-width: 900px;
-
-    margin: auto;
-
-    padding: 12px;
-
-}
-
-
-/* =====================================================
-   BRAND HEADER
-===================================================== */
-
-.brand-header {
-
-    position: relative;
-
-    overflow: hidden;
-
-    background:
-        linear-gradient(135deg, #ffffff 0%, #f1f7fc 55%, #e8f1f8 100%);
-
-    color: var(--text);
-
-    border: 1px solid #dce7f1;
-    border-radius: 24px;
-
-    padding: 22px;
-
-    margin-bottom: 14px;
-
-    box-shadow:
-        0 10px 28px rgba(39,72,105,.10);
-
-}
-
-
-.brand-top {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    padding-bottom: 17px;
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.12);
-
-}
-
-
-.brand-logo {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    font-size: 16px;
-
-    font-weight: 500;
-
-    letter-spacing: .5px;
-
-}
-
-
-.brand-logo b {
-
-    font-weight: 700;
-
-}
-
-
-.brand-dot {
-
-    width: 9px;
-
-    height: 9px;
-
-    border-radius: 50%;
-
-    background: #3978b8;
-
-    box-shadow:
-        0 0 12px
-        rgba(57,120,184,.25);
-
-}
-
-
-.brand-tag {
-
-    font-size: 8px;
-
-    letter-spacing: 1.3px;
-
-    color: #728198;
-
-}
-
-
-.brand-content {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    padding: 28px 0 23px;
-
-}
-
-
-.brand-content h1 {
-
-    font-family:
-        'DM Serif Display',
-        serif;
-
-    font-size: 42px;
-
-    font-weight: 400;
-
-    line-height: 1;
-
-}
-
-
-.brand-content h1 span {
-
-    font-style: italic;
-
-}
-
-
-.brand-content p {
-
-    margin-top: 10px;
-
-    color: #65758a;
-
-    font-size: 11px;
-
-}
-
-
-.calendar-icon {
-
-    width: 62px;
-
-    height: 62px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 29px;
-
-    border-radius: 17px;
-
-    background:
-        rgba(57,120,184,.07);
-
-    border:
-        1px solid
-        rgba(57,120,184,.15);
-
-}
-
-
-.brand-features {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 9px;
-
-    font-size: 8px;
-
-    letter-spacing: 1.2px;
-
-    color: #728198;
-
-}
-
-
-.brand-features i {
-
-    font-style: normal;
-
-    color: #4f82b5;
-
-}
-
-
-/* =====================================================
-   STATS
-===================================================== */
-
-.stats-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 12px;
-
-    margin-bottom: 20px;
-
-}
-
-
-.stat-card {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 13px;
-
-    background: white;
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius: 17px;
-
-    padding: 15px 17px;
-
-    box-shadow:
-        0 3px 10px
-        rgba(0,0,0,.05);
-
-}
-
-
-.stat-icon {
-
-    width: 39px;
-
-    height: 39px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: #f0f2f6;
-
-    border-radius: 12px;
-
-    font-size: 17px;
-
-}
-
-
-.stat-card strong {
-
-    display: block;
-
-    font-size: 23px;
-
-    line-height: 1.1;
-
-}
-
-
-.stat-card span {
-
-    display: block;
-
-    margin-top: 3px;
-
-    font-size: 8px;
-
-    font-weight: 600;
-
-    letter-spacing: 1px;
-
-    color: var(--muted);
-
-}
-
-
-/* =====================================================
-   SECTION HEADING
-===================================================== */
-
-.section-heading {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    margin: 5px 3px 12px;
-
-}
-
-
-.section-heading h2 {
-
-    font-family:
-        'DM Serif Display',
-        serif;
-
-    font-size: 24px;
-
-    font-weight: 400;
-
-}
-
-
-.section-heading p {
-
-    font-size: 8px;
-
-    letter-spacing: 1.3px;
-
-    color: var(--muted);
-
-    margin-top: 2px;
-
-}
-
-
-.live-badge {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 6px;
-
-    background: white;
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius: 20px;
-
-    padding: 7px 10px;
-
-    font-size: 7px;
-
-    font-weight: 700;
-
-    letter-spacing: .7px;
-
-    color: #596274;
-
-}
-
-
-.live-badge span {
-
-    width: 6px;
-
-    height: 6px;
-
-    border-radius: 50%;
-
-    background: #3a9c63;
-
-    box-shadow:
-        0 0 7px
-        rgba(58,156,99,.6);
-
-}
-
-
-/* =====================================================
-   DAY CARD
-===================================================== */
-
-.day-card {
-
-    background: white;
-
-    border-radius: 18px;
-
-    padding: 15px 18px;
-
-    margin-bottom: 12px;
-
-    border:
-        1px solid
-        var(--border);
-
-    box-shadow:
-        0 3px 12px
-        rgba(0,0,0,.055);
-
-    transition:
-        transform .2s ease,
-        box-shadow .2s ease;
-
-}
-
-
-.day-card:hover {
-
-    transform:
-        translateY(-1px);
-
-    box-shadow:
-        0 7px 18px
-        rgba(0,0,0,.08);
-
-}
-
-
-.day-card.today {
-
-    border:
-        2px solid #344d7e;
-
-    box-shadow:
-        0 5px 18px
-        rgba(39,59,99,.12);
-
-}
-
-
-/* =====================================================
-   DAY HEADER
-===================================================== */
-
-.day-header {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    padding-bottom: 10px;
-
-    margin-bottom: 2px;
-
-    border-bottom:
-        1px solid
-        #e5e7eb;
-
-}
-
-
-.day-label {
-
-    font-size: 10px;
-
-    font-weight: 700;
-
-    letter-spacing: 1.3px;
-
-    color: #263654;
-
-}
-
-
-.day-date {
-
-    font-family:
-        'DM Serif Display',
-        serif;
-
-    font-size: 15px;
-
-    font-style: italic;
-
-    color: #394258;
-
-}
-
-
-/* =====================================================
-   IPO ROW
-===================================================== */
-
-.ipo-row {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 10px;
-
-    min-height: 55px;
-
-    border-bottom:
-        1px solid
-        #e7e8eb;
-
-}
-
-
-.ipo-row:last-child {
-
-    border-bottom: none;
-
-}
-
-
-.ipo-info {
-
-    flex: 1;
-
-    min-width: 0;
-
-}
-
-
-.ipo-name {
-
-    font-family:
-        'DM Serif Display',
-        serif;
-
-    font-size: 17px;
-
-    line-height: 1.3;
-
-    color: #172033;
-
-}
-
-
-.ipo-type {
-
-    display: inline-block;
-
-    font-family:
-        'Poppins',
-        sans-serif;
-
-    font-size: 7px;
-
-    font-weight: 700;
-
-    letter-spacing: .7px;
-
-    background: #edf0f4;
-
-    color: #5b6473;
-
-    border-radius: 10px;
-
-    padding: 3px 7px;
-
-    margin-left: 5px;
-
-    vertical-align: middle;
-
-}
-
-
-/* =====================================================
-   STATUS
-===================================================== */
-
-.status {
-
-    flex-shrink: 0;
-
-    border-radius: 20px;
-
-    padding: 7px 11px;
-
-    font-size: 8px;
-
-    font-weight: 700;
-
-    letter-spacing: .7px;
-
-    white-space: nowrap;
-
-}
-
-
-.status::before {
-
-    content: "• ";
-
-}
-
-
-.status-open {
-
-    background: #dcefe4;
-
-    color: var(--green);
-
-}
-
-
-.status-close {
-
-    background: #f5dcdc;
-
-    color: var(--red);
-
-}
-
-
-.status-allotment {
-
-    background: #f7e8c8;
-
-    color: var(--gold);
-
-}
-
-
-.status-listing {
-
-    background: #eadcf7;
-
-    color: var(--purple);
-
-}
-
-
-/* =====================================================
-   STATUS GUIDE
-===================================================== */
-
-.status-guide {
-
-    background: white;
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius: 19px;
-
-    padding: 17px;
-
-    margin-top: 20px;
-
-    box-shadow:
-        0 3px 12px
-        rgba(0,0,0,.05);
-
-}
-
-
-.guide-title {
-
-    font-size: 8px;
-
-    font-weight: 700;
-
-    letter-spacing: 1.3px;
-
-    color: #697386;
-
-    margin-bottom: 13px;
-
-}
-
-
-.guide-items {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 12px;
-
-}
-
-
-.guide-item {
-
-    display: flex;
-
-    align-items: flex-start;
-
-    gap: 8px;
-
-}
-
-
-.guide-dot {
-
-    width: 9px;
-
-    height: 9px;
-
-    border-radius: 50%;
-
-    margin-top: 4px;
-
-    flex-shrink: 0;
-
-}
-
-
-.guide-dot.open {
-    background: #4a9c70;
-}
-
-
-.guide-dot.close {
-    background: #c34a53;
-}
-
-
-.guide-dot.allotment {
-    background: #c28a25;
-}
-
-
-.guide-dot.listing {
-    background: #8751b4;
-}
-
-
-.guide-item strong {
-
-    display: block;
-
-    font-size: 8px;
-
-    letter-spacing: .7px;
-
-}
-
-
-.guide-item small {
-
-    display: block;
-
-    font-size: 7px;
-
-    color: #858d9b;
-
-    margin-top: 2px;
-
-}
-
-
-/* =====================================================
-   PROMOTION CARD
-===================================================== */
-
-.promotion-card {
-
-    position: relative;
-
-    overflow: hidden;
-
-    background:
-        linear-gradient(135deg, #ffffff 0%, #f4f9fd 60%, #e8f2f8 100%);
-
-    color: var(--text);
-
-    border: 1px solid #dce7f1;
-    border-radius: 21px;
-
-    padding: 24px;
-
-    margin-top: 14px;
-
-    box-shadow:
-        0 8px 24px rgba(39,72,105,.10);
-
-}
-
-
-.promo-glow {
-
-    position: absolute;
-
-    width: 170px;
-
-    height: 170px;
-
-    right: -70px;
-
-    bottom: -80px;
-
-    border-radius: 50%;
-
-    background: rgba(57,120,184,.08);
-
-    filter: blur(10px);
-
-}
-
-
-.promo-content {
-
-    position: relative;
-
-    z-index: 2;
-
-}
-
-
-.promo-brand {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 7px;
-
-    font-size: 11px;
-
-    letter-spacing: .6px;
-
-    opacity: .85;
-
-}
-
-
-.promo-brand b {
-
-    font-weight: 700;
-
-}
-
-
-.promotion-card h2 {
-
-    font-family:
-        'DM Serif Display',
-        serif;
-
-    font-size: 27px;
-
-    font-weight: 400;
-
-    margin-top: 13px;
-
-}
-
-
-.promotion-card p {
-
-    max-width: 570px;
-
-    font-size: 10px;
-
-    line-height: 1.7;
-
-    color: #63758a;
-
-    margin-top: 7px;
-
-}
-
-
-.promo-tags {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 6px;
-
-    margin-top: 14px;
-
-}
-
-
-.promo-tags span {
-
-    padding: 5px 8px;
-
-    border-radius: 12px;
-
-    background: #edf4f9;
-
-    border:
-        1px solid
-        #dce7f0;
-
-    font-size: 7px;
-
-    letter-spacing: .6px;
-
-    color: #5f7185;
-
-}
-
-
-.follow-button {
-
-    display: inline-block;
-
-    margin-top: 17px;
-
-    padding: 9px 14px;
-
-    border-radius: 20px;
-
-    background: #2d6fa8;
-
-    color: white;
-
-    text-decoration: none;
-
-    font-size: 9px;
-
-    font-weight: 700;
-
-    transition: .2s ease;
-
-}
-
-
-.follow-button:hover {
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 5px 12px rgba(45,111,168,.20);
-
-}
-
-
-.promo-symbol {
-
-    position: absolute;
-
-    right: 25px;
-
-    bottom: 18px;
-
-    font-size: 55px;
-
-    opacity: .08;
-
-    transform: rotate(-10deg);
-
-}
-
-
-/* =====================================================
-   LOADING
-===================================================== */
-
-.loading {
-
-    background: white;
-
-    border-radius: 18px;
-
-    padding: 55px 20px;
-
-    text-align: center;
-
-    color: #697386;
-
-    font-size: 12px;
-
-}
-
-
-.loader {
-
-    width: 25px;
-
-    height: 25px;
-
-    margin:
-        0 auto 12px;
-
-    border-radius: 50%;
-
-    border:
-        3px solid
-        #e1e4e9;
-
-    border-top-color:
-        #263b66;
-
-    animation:
-        spin .8s linear infinite;
-
-}
-
-
-@keyframes spin {
-
-    to {
-        transform: rotate(360deg);
-    }
-
-}
-
-
-/* =====================================================
-   EMPTY
-===================================================== */
-
-.empty {
-
-    background: white;
-
-    border-radius: 18px;
-
-    padding: 50px 20px;
-
-    text-align: center;
-
-    color: #697386;
-
-}
-
-
-.empty strong {
-
-    display: block;
-
-    color: #172033;
-
-    font-family:
-        'DM Serif Display',
-        serif;
-
-    font-size: 21px;
-
-    margin-bottom: 5px;
-
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-footer {
-
-    text-align: center;
-
-    padding: 28px 10px 18px;
-
-    color: #7a8290;
-
-}
-
-
-.footer-logo {
-
-    font-size: 15px;
-
-    color: #273653;
-
-    letter-spacing: .4px;
-
-}
-
-
-.footer-logo b {
-
-    font-weight: 700;
-
-}
-
-
-footer p {
-
-    font-size: 8px;
-
-    margin-top: 5px;
-
-}
-
-
-.footer-links {
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    gap: 8px;
-
-    margin-top: 10px;
-
-    font-size: 8px;
-
-}
-
-
-.footer-links a {
-
-    color: #435575;
-
-    text-decoration: none;
-
-    font-weight: 600;
-
-}
-
-
-.footer-copy {
-
-    font-size: 7px;
-
-    margin-top: 12px;
-
-    opacity: .65;
-
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media (max-width: 600px) {
-
-
-    .calendar-page {
-
-        padding: 6px;
-
-    }
-
-
-    .brand-header {
-
-        border-radius: 20px;
-
-        padding: 18px;
-
-    }
-
-
-    .brand-tag {
-
-        display: none;
-
-    }
-
-
-    .brand-content {
-
-        padding: 24px 0 20px;
-
-    }
-
-
-    .brand-content h1 {
-
-        font-size: 35px;
-
-    }
-
-
-    .brand-content p {
-
-        font-size: 9px;
-
-    }
-
-
-    .calendar-icon {
-
-        width: 50px;
-
-        height: 50px;
-
-        font-size: 23px;
-
-    }
-
-
-    .brand-features {
-
-        font-size: 6.5px;
-
-        gap: 5px;
-
-        letter-spacing: .8px;
-
-    }
-
-
-    .stats-grid {
-
-        gap: 8px;
-
-    }
-
-
-    .stat-card {
-
-        padding: 12px;
-
-        border-radius: 15px;
-
-    }
-
-
-    .stat-icon {
-
-        width: 34px;
-
-        height: 34px;
-
-        font-size: 14px;
-
-    }
-
-
-    .stat-card strong {
-
-        font-size: 20px;
-
-    }
-
-
-    .section-heading h2 {
-
-        font-size: 21px;
-
-    }
-
-
-    .live-badge {
-
-        font-size: 6px;
-
-        padding: 6px 8px;
-
-    }
-
-
-    .day-card {
-
-        border-radius: 16px;
-
-        padding: 13px 14px;
-
-    }
-
-
-    .day-header {
-
-        align-items: flex-start;
-
-        gap: 5px;
-
-    }
-
-
-    .day-label {
-
-        font-size: 8px;
-
-    }
-
-
-    .day-date {
-
-        font-size: 13px;
-
-    }
-
-
-    .ipo-row {
-
-        min-height: 52px;
-
-    }
-
-
-    .ipo-name {
-
-        font-size: 15px;
-
-    }
-
-
-    .ipo-type {
-
-        font-size: 6px;
-
-        padding: 3px 5px;
-
-    }
-
-
-    .status {
-
-        font-size: 7px;
-
-        padding: 6px 7px;
-
-    }
-
-
-    .guide-items {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-        row-gap: 13px;
-
-    }
-
-
-    .promotion-card {
-
-        padding: 20px;
-
-        border-radius: 18px;
-
-    }
-
-
-    .promotion-card h2 {
-
-        font-size: 23px;
-
-    }
-
-
-    .promotion-card p {
-
-        font-size: 9px;
-
-    }
-
-
-    .promo-symbol {
-
-        font-size: 45px;
-
-        right: 15px;
-
-        bottom: 12px;
-
-    }
-
-}
-
-
-@media (max-width: 380px) {
-
-
-    .brand-content h1 {
-
-        font-size: 31px;
-
-    }
-
-
-    .brand-features {
-
-        font-size: 5.5px;
-
-    }
-
-
-    .ipo-name {
-
-        font-size: 14px;
-
-    }
-
-
-    .status {
-
-        font-size: 6.5px;
-
-        padding: 5px 6px;
-
-    }
-
-}
-/* ==========================================
-   SIMPLE MODERN FONT
-========================================== */
-
-body,
-.calendar-page,
-.brand-header,
-.stats-grid,
-.section-heading,
-.day-card,
-.status-guide,
-.promotion-card,
-footer {
-    font-family: 'Poppins', sans-serif;
-}
-
-
-/* Main heading */
-
-.brand-content h1 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-}
-
-
-/* Upcoming IPO Events */
-
-.section-heading h2 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 21px;
-    font-weight: 600;
-}
-
-
-/* Date */
-
-.day-date {
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-}
-
-
-/* IPO names */
-
-.ipo-name {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-}
-
-
-/* Promotion heading */
-
-.promotion-card h2 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-}
-
-
-/* Footer */
-
-.footer-logo {
-    font-family: 'Poppins', sans-serif;
-}
-
-
-/* =====================================================
-   ORIGINAL LIGHT FINTECH OVERRIDES
-   BE.IPOWale — clean, independent visual system
-   ===================================================== */
-
-.brand-header {
-    box-shadow: 0 8px 24px rgba(48, 83, 112, .09);
-}
-
-.brand-top {
-    border-bottom-color: #e6edf4;
-}
-
-.brand-logo {
-    color: #1d2d3d;
-}
-
-.brand-logo b {
-    color: #1f6ea7;
-}
-
-.brand-tag {
-    color: #718096;
-}
-
-.brand-content h1 {
-    color: #162a3d;
-    letter-spacing: -.5px;
-}
-
-.brand-content p {
-    color: #66788c;
-}
-
-.calendar-icon {
-    background: #eaf3f9;
-    border-color: #d7e5ef;
-    color: #2d6fa8;
-}
-
-.brand-features {
-    color: #6e8092;
-}
-
-.brand-features i {
-    color: #2d6fa8;
-}
-
-.stat-icon {
-    background: #edf5fa;
-    color: #2d6fa8;
-}
-
-.stat-card strong {
-    color: #1b2b3a;
-}
-
-.section-heading h2 {
-    color: #182b3d;
-}
-
-.live-badge {
-    background: #ffffff;
-    color: #56687a;
-}
-
-.day-card.today {
-    border-color: #4d8ab9;
-    box-shadow: 0 5px 18px rgba(45,111,168,.11);
-}
-
-.day-label {
-    color: #29435b;
-}
-
-.day-date {
-    color: #49657d;
-}
-
-.ipo-name {
-    color: #1a2b3b;
-}
-
-.ipo-type {
-    background: #edf3f7;
-    color: #5c6f81;
-}
-
-.status-open {
-    background: #e5f5eb;
-    color: #28764d;
-}
-
-.status-close {
-    background: #fdebec;
-    color: #a52f38;
-}
-
-.status-allotment {
-    background: #fff3dc;
-    color: #8a6418;
-}
-
-.status-listing {
-    background: #eeebfb;
-    color: #5b55a6;
-}
-
-.promotion-card {
-    background: linear-gradient(135deg, #ffffff 0%, #f2f7fb 100%);
-}
-
-.promotion-card h2 {
-    color: #182b3d;
-}
-
-.promotion-card p {
-    color: #65778a;
-}
-
-.promo-brand {
-    color: #49677f;
-}
-
-.promo-brand b {
-    color: #246b9f;
-}
-
-.promo-tags span {
-    background: #edf4f8;
-    border-color: #dbe7ef;
-    color: #5d7082;
-}
-
-.follow-button {
-    background: #2d6fa8;
-    color: #ffffff;
-}
-
-.follow-button:hover {
-    box-shadow: 0 5px 12px rgba(45,111,168,.18);
-}
-
-.promo-symbol {
-    color: #2d6fa8;
-}
-
-.footer-logo {
-    color: #243b50;
-}
-
-.footer-logo b {
-    color: #2d6fa8;
-}
-
-.footer-links a {
-    color: #3e6d91;
-}
-
-@media (max-width: 600px) {
-    .brand-header,
-    .promotion-card {
-        box-shadow: 0 6px 18px rgba(48, 83, 112, .08);
-    }
+    --purple: #6d55c7;
+    --purple-bg: #f0ebff;
 }
 
 
 /* =========================================================
-   BE.IPOWale — RADICAL ORIGINAL CALENDAR LAYOUT
-   Replaces the previous "soft premium card" look.
+   PAGE
    ========================================================= */
 
-:root {
-    --bg: #f5f7fa;
-    --surface: #ffffff;
-    --surface-2: #f0f3f6;
-    --ink: #111827;
-    --ink-2: #334155;
-    --muted: #718096;
-    --line: #d9e0e7;
-    --brand: #1769aa;
-    --brand-dark: #0f4f82;
-    --green: #16834b;
-    --red: #c33b46;
-    --orange: #b66a00;
-    --violet: #6556b3;
+html {
+    scroll-behavior: smooth;
 }
 
-/* Page */
 body {
-    background: #f5f7fa !important;
-    color: var(--ink) !important;
+    background: var(--bg) !important;
+    color: var(--text) !important;
+    font-family: "Poppins", sans-serif !important;
 }
 
 .calendar-page {
-    max-width: 1080px !important;
-    padding: 28px 22px 50px !important;
+    width: 100%;
+    max-width: 1050px !important;
+    margin: 0 auto !important;
+    padding: 20px 18px 50px !important;
 }
 
-/* ---------- HEADER: flat editorial, NOT a giant rounded card ---------- */
+
+/* =========================================================
+   HERO
+   ========================================================= */
 
 .brand-header {
-    background: var(--surface) !important;
-    color: var(--ink) !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    padding: 0 0 28px !important;
-    margin-bottom: 26px !important;
-    overflow: visible !important;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 88% 20%,
+            rgba(23,105,170,.10),
+            transparent 24%
+        ),
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f8fbfe 60%,
+            #eef6fc 100%
+        ) !important;
+
+    color: var(--text) !important;
+
+    border: 1px solid var(--border) !important;
+    border-radius: 22px !important;
+
+    padding: 0 24px 24px !important;
+    margin-bottom: 18px !important;
+
+    box-shadow:
+        0 10px 35px rgba(20,55,85,.07) !important;
 }
 
+
+/* top brand bar */
+
 .brand-top {
-    min-height: 48px;
-    padding: 0 0 15px !important;
-    border-bottom: 1px solid var(--line) !important;
+    min-height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 0 13px !important;
+
+    border-bottom: 1px solid var(--border) !important;
 }
 
 .brand-logo {
-    font-size: 17px !important;
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 16px !important;
     font-weight: 800 !important;
-    letter-spacing: .2px !important;
-    color: #152536 !important;
+
+    color: #172c41 !important;
 }
 
 .brand-logo b {
-    color: var(--brand) !important;
+    color: var(--primary) !important;
 }
 
 .brand-dot {
     width: 7px !important;
     height: 7px !important;
-    background: var(--brand) !important;
+
+    background: var(--primary) !important;
+
     box-shadow: none !important;
 }
 
 .brand-tag {
-    color: var(--muted) !important;
-    font-size: 8px !important;
+    color: #74879a !important;
+
+    font-size: 7px !important;
+    letter-spacing: 1.5px !important;
+    font-weight: 600 !important;
 }
 
-/* Title area becomes a clean two-column editorial block */
+
+/* hero content */
+
 .brand-content {
     display: grid !important;
-    grid-template-columns: 1fr auto !important;
-    align-items: end !important;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        auto !important;
+
+    align-items: center !important;
+
     gap: 30px !important;
-    padding: 34px 0 18px !important;
+
+    padding: 34px 0 23px !important;
 }
 
 .brand-content h1 {
-    font-size: clamp(42px, 6vw, 68px) !important;
-    line-height: .95 !important;
-    font-weight: 800 !important;
-    letter-spacing: -2.8px !important;
-    color: #0e2032 !important;
     margin: 0 !important;
+
+    font-family: "Poppins", sans-serif !important;
+
+    font-size: clamp(
+        40px,
+        6vw,
+        64px
+    ) !important;
+
+    line-height: .98 !important;
+
+    font-weight: 800 !important;
+
+    letter-spacing: -2.8px !important;
+
+    color: #10243a !important;
 }
 
 .brand-content h1 span {
-    color: var(--brand) !important;
+    color: var(--primary) !important;
+
     font-style: normal !important;
 }
 
 .brand-content p {
-    color: #64748b !important;
-    font-size: 12px !important;
-    margin-top: 14px !important;
+    margin-top: 13px !important;
+
+    color: #667b90 !important;
+
+    font-size: 11px !important;
+
+    line-height: 1.6;
 }
 
+
+/* calendar icon */
+
 .calendar-icon {
-    width: 76px !important;
-    height: 76px !important;
-    border-radius: 12px !important;
-    background: #edf5fb !important;
-    border: 1px solid #cfe1ef !important;
-    color: var(--brand) !important;
+    width: 72px !important;
+    height: 72px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    border-radius: 16px !important;
+
+    background: var(--primary-soft) !important;
+
+    border: 1px solid #cfe2f2 !important;
+
+    color: var(--primary) !important;
+
     box-shadow: none !important;
 }
 
-/* Header legend becomes a thin navigation strip */
+
+/* feature legend */
+
 .brand-features {
-    border-top: 1px solid var(--line);
-    padding-top: 13px;
-    font-size: 8px !important;
-    color: #68788a !important;
-    letter-spacing: 1.4px !important;
+    display: flex !important;
+
+    align-items: center !important;
+
+    gap: 10px !important;
+
+    padding-top: 14px;
+
+    border-top: 1px solid var(--border);
+
+    color: #65798c !important;
+
+    font-size: 7px !important;
+
+    letter-spacing: 1.3px !important;
 }
 
 .brand-features i {
-    color: var(--brand) !important;
+    color: var(--primary) !important;
 }
 
-/* ---------- STATS: rectangular dashboard tiles ---------- */
+
+/* =========================================================
+   STATS
+   ========================================================= */
 
 .stats-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
+    display: grid !important;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr)) !important;
+
     gap: 14px !important;
-    margin-bottom: 34px !important;
+
+    margin-bottom: 28px !important;
 }
 
 .stat-card {
-    background: var(--surface) !important;
-    border: 1px solid var(--line) !important;
-    border-radius: 8px !important;
-    box-shadow: none !important;
-    padding: 17px 20px !important;
-    min-height: 74px;
+    min-height: 88px;
+
+    display: flex !important;
+    align-items: center !important;
+
+    gap: 14px !important;
+
+    background: var(--card) !important;
+
+    border: 1px solid var(--border) !important;
+
+    border-radius: 14px !important;
+
+    padding: 16px 18px !important;
+
+    box-shadow:
+        0 5px 18px rgba(20,55,85,.045) !important;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 9px 24px rgba(20,55,85,.08) !important;
 }
 
 .stat-icon {
-    width: 38px !important;
-    height: 38px !important;
-    border-radius: 7px !important;
-    background: #edf5fb !important;
-    color: var(--brand) !important;
+    width: 43px !important;
+    height: 43px !important;
+
+    flex-shrink: 0;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    border-radius: 12px !important;
+
+    background: var(--primary-soft) !important;
+
+    color: var(--primary) !important;
+
+    font-size: 17px !important;
 }
 
 .stat-card strong {
+    display: block;
+
+    color: var(--text) !important;
+
     font-size: 25px !important;
-    color: var(--ink) !important;
+
+    line-height: 1;
 }
 
 .stat-card span {
-    color: #7b8795 !important;
+    display: block;
+
+    margin-top: 5px !important;
+
+    color: var(--muted) !important;
+
+    font-size: 7px !important;
+
+    font-weight: 700 !important;
+
+    letter-spacing: 1.1px !important;
 }
 
-/* ---------- SECTION HEADER ---------- */
+
+/* =========================================================
+   SECTION TITLE
+   ========================================================= */
 
 .section-heading {
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    gap: 15px;
+
     margin: 0 0 13px !important;
-    padding-left: 2px;
-    border-left: 4px solid var(--brand);
+
     padding-left: 12px;
+
+    border-left: 4px solid var(--primary);
 }
 
 .section-heading h2 {
-    font-size: 24px !important;
+    margin: 0 !important;
+
+    font-family: "Poppins", sans-serif !important;
+
+    font-size: 23px !important;
+
     font-weight: 800 !important;
-    color: #12263a !important;
+
     letter-spacing: -.5px;
+
+    color: var(--text) !important;
 }
 
 .section-heading p {
-    font-size: 8px !important;
-    color: #8290a0 !important;
+    margin-top: 3px !important;
+
+    color: var(--muted) !important;
+
+    font-size: 7px !important;
+
+    letter-spacing: 1.3px !important;
 }
 
 .live-badge {
-    border-radius: 5px !important;
-    padding: 7px 10px !important;
+    flex-shrink: 0;
+
+    display: flex !important;
+    align-items: center !important;
+
+    gap: 6px !important;
+
     background: #fff !important;
-    border: 1px solid var(--line) !important;
+
+    border: 1px solid var(--border) !important;
+
+    border-radius: 20px !important;
+
+    padding: 7px 11px !important;
+
+    color: #52687c !important;
+
+    font-size: 7px !important;
 }
 
-/* ---------- DAY CARDS: timeline/document style ---------- */
+.live-badge span {
+    width: 6px !important;
+    height: 6px !important;
+
+    background: var(--green) !important;
+
+    box-shadow:
+        0 0 0 3px rgba(22,148,90,.08) !important;
+}
+
+
+/* =========================================================
+   IPO DAY CARD
+   ========================================================= */
 
 .day-card {
     position: relative;
-    background: #fff !important;
-    border: 1px solid var(--line) !important;
-    border-left: 4px solid #cfd8e1 !important;
-    border-radius: 5px !important;
-    box-shadow: none !important;
+
+    background: var(--card) !important;
+
+    border: 1px solid var(--border) !important;
+
+    border-radius: 15px !important;
+
     padding: 0 18px !important;
-    margin-bottom: 14px !important;
+
+    margin-bottom: 13px !important;
+
+    box-shadow:
+        0 5px 20px rgba(20,55,85,.045) !important;
+
+    overflow: hidden;
 }
 
 .day-card:hover {
     transform: none !important;
-    box-shadow: 0 4px 14px rgba(15, 40, 65, .06) !important;
+
+    box-shadow:
+        0 8px 25px rgba(20,55,85,.075) !important;
 }
 
 .day-card.today {
-    border: 1px solid #8db8d8 !important;
-    border-left: 4px solid var(--brand) !important;
-    box-shadow: none !important;
+    border: 1.5px solid #4c95c9 !important;
+
+    box-shadow:
+        0 6px 24px rgba(23,105,170,.08) !important;
 }
 
-/* Day header */
+
+/* =========================================================
+   DAY HEADER
+   ========================================================= */
+
 .day-header {
-    min-height: 48px;
+    min-height: 51px;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
     padding: 0 !important;
+
     margin: 0 !important;
-    border-bottom: 1px solid var(--line) !important;
+
+    border-bottom: 1px solid var(--border) !important;
 }
 
 .day-label {
-    color: var(--brand-dark) !important;
-    font-size: 9px !important;
-    letter-spacing: 1.5px !important;
+    color: var(--primary-dark) !important;
+
+    font-size: 8px !important;
+
+    font-weight: 800 !important;
+
+    letter-spacing: 1.4px !important;
 }
 
 .day-date {
-    font-size: 13px !important;
-    color: #526579 !important;
+    color: #526a80 !important;
+
+    font-family: "Poppins", sans-serif !important;
+
+    font-size: 12px !important;
+
     font-weight: 700 !important;
+
+    font-style: normal !important;
 }
 
-/* IPO rows */
+
+/* =========================================================
+   IPO ROW
+   ========================================================= */
+
 .ipo-row {
     min-height: 62px !important;
-    border-bottom: 1px solid #e8edf2 !important;
-    padding: 3px 0 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    gap: 12px !important;
+
+    border-bottom: 1px solid #edf1f5 !important;
+}
+
+.ipo-row:last-child {
+    border-bottom: none !important;
+}
+
+.ipo-info {
+    min-width: 0;
 }
 
 .ipo-name {
-    font-size: 16px !important;
+    color: #172b40 !important;
+
+    font-family: "Poppins", sans-serif !important;
+
+    font-size: 15px !important;
+
     font-weight: 700 !important;
-    color: #17283a !important;
+
+    line-height: 1.4 !important;
 }
 
 .ipo-type {
-    background: #eef3f7 !important;
-    color: #657588 !important;
-    border-radius: 3px !important;
-    margin-left: 7px !important;
-    padding: 3px 6px !important;
+    display: inline-block;
+
+    background: #edf4fa !important;
+
+    color: #557086 !important;
+
+    border-radius: 5px !important;
+
+    padding: 3px 7px !important;
+
+    margin-left: 5px !important;
+
+    font-family: "Poppins", sans-serif !important;
+
+    font-size: 6px !important;
+
+    font-weight: 800 !important;
+
+    letter-spacing: .7px !important;
 }
 
-/* Status becomes compact rectangular labels */
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
 .status {
-    border-radius: 4px !important;
-    padding: 6px 9px !important;
+    flex-shrink: 0;
+
+    border-radius: 7px !important;
+
+    padding: 7px 10px !important;
+
     font-size: 7px !important;
-    letter-spacing: 1px !important;
+
+    font-weight: 800 !important;
+
+    letter-spacing: .7px !important;
 }
 
 .status::before {
-    content: "" !important;
+    content: "• " !important;
 }
 
 .status-open {
-    background: #e8f6ee !important;
+    background: var(--green-bg) !important;
     color: var(--green) !important;
 }
 
 .status-close {
-    background: #fcecee !important;
+    background: var(--red-bg) !important;
     color: var(--red) !important;
 }
 
 .status-allotment {
-    background: #fff3df !important;
+    background: var(--orange-bg) !important;
     color: var(--orange) !important;
 }
 
 .status-listing {
-    background: #eeebfa !important;
-    color: var(--violet) !important;
+    background: var(--purple-bg) !important;
+    color: var(--purple) !important;
 }
 
-/* ---------- GUIDE: compact horizontal legend ---------- */
+
+/* =========================================================
+   STATUS GUIDE
+   ========================================================= */
 
 .status-guide {
     background: #fff !important;
-    border: 1px solid var(--line) !important;
-    border-radius: 5px !important;
-    box-shadow: none !important;
-    padding: 15px 17px !important;
+
+    border: 1px solid var(--border) !important;
+
+    border-radius: 13px !important;
+
+    padding: 17px !important;
+
+    box-shadow:
+        0 5px 18px rgba(20,55,85,.04) !important;
 }
 
 .guide-title {
-    color: #64748b !important;
+    color: #65798c !important;
+
+    font-size: 8px !important;
+
+    font-weight: 800 !important;
+}
+
+.guide-items {
+    display: grid !important;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr)) !important;
+
+    gap: 12px !important;
 }
 
 .guide-item strong {
-    color: #26384a;
+    color: var(--text) !important;
 }
 
-.guide-dot {
-    width: 7px !important;
-    height: 7px !important;
+.guide-item small {
+    color: #8593a2 !important;
 }
 
-/* ---------- PROMOTION: simple blue information banner ---------- */
+
+/* =========================================================
+   PROMOTION
+   ========================================================= */
 
 .promotion-card {
-    background: #123f63 !important;
+    position: relative;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0f5f96,
+            #176fa9
+        ) !important;
+
     color: white !important;
-    border-radius: 6px !important;
-    border: 0 !important;
-    box-shadow: none !important;
-    padding: 22px 24px !important;
-    margin-top: 18px !important;
+
+    border: none !important;
+
+    border-radius: 15px !important;
+
+    padding: 22px !important;
+
+    margin-top: 15px !important;
+
+    box-shadow:
+        0 10px 25px rgba(23,105,170,.14) !important;
 }
 
 .promotion-card h2 {
     color: white !important;
+
+    font-family: "Poppins", sans-serif !important;
+
     font-size: 24px !important;
+
+    font-weight: 800 !important;
 }
 
 .promotion-card p {
-    color: #d3e2ee !important;
+    color: rgba(255,255,255,.78) !important;
+
+    font-size: 9px !important;
 }
 
 .promo-brand {
-    color: #d8e8f4 !important;
-}
-
-.promo-brand b {
-    color: white !important;
+    color: rgba(255,255,255,.85) !important;
 }
 
 .promo-tags span {
-    background: rgba(255,255,255,.09) !important;
-    border: 1px solid rgba(255,255,255,.15) !important;
-    color: #dbe8f1 !important;
-    border-radius: 3px !important;
+    background: rgba(255,255,255,.10) !important;
+
+    border:
+        1px solid
+        rgba(255,255,255,.16) !important;
+
+    color: white !important;
 }
 
 .follow-button {
     background: white !important;
-    color: #123f63 !important;
-    border-radius: 4px !important;
+
+    color: var(--primary-dark) !important;
+
+    border-radius: 8px !important;
 }
 
-.promo-symbol {
-    opacity: .08 !important;
-}
 
-/* ---------- FOOTER ---------- */
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
 footer {
-    border-top: 1px solid var(--line);
     margin-top: 30px;
+
+    padding-top: 22px !important;
+
+    border-top: 1px solid var(--border);
 }
 
 .footer-logo {
-    color: #24384c !important;
+    color: #263d52 !important;
 }
 
 .footer-logo b {
-    color: var(--brand) !important;
+    color: var(--primary) !important;
 }
 
-/* ---------- MOBILE ---------- */
+.footer-links a {
+    color: #52718b !important;
+}
 
-@media (max-width: 600px) {
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 768px) {
+
     .calendar-page {
-        padding: 18px 12px 35px !important;
+        padding: 15px 14px 40px !important;
+    }
+
+    .brand-header {
+        padding: 0 18px 20px !important;
+
+        border-radius: 18px !important;
     }
 
     .brand-content {
-        grid-template-columns: 1fr auto !important;
-        gap: 12px !important;
-        padding: 27px 0 16px !important;
+        gap: 18px !important;
+
+        padding: 28px 0 20px !important;
     }
 
     .brand-content h1 {
-        font-size: 39px !important;
-        letter-spacing: -1.8px !important;
+        font-size: 47px !important;
+
+        letter-spacing: -2px !important;
     }
 
     .calendar-icon {
-        width: 56px !important;
-        height: 56px !important;
-    }
-
-    .stats-grid {
-        gap: 9px !important;
-        margin-bottom: 25px !important;
-    }
-
-    .stat-card {
-        padding: 12px !important;
-    }
-
-    .stat-card strong {
-        font-size: 20px !important;
-    }
-
-    .section-heading {
-        align-items: flex-start !important;
+        width: 62px !important;
+        height: 62px !important;
     }
 
     .section-heading h2 {
-        font-size: 20px !important;
-    }
-
-    .day-card {
-        padding: 0 12px !important;
-    }
-
-    .day-header {
-        min-height: 45px !important;
-    }
-
-    .ipo-row {
-        min-height: 58px !important;
+        font-size: 21px !important;
     }
 
     .ipo-name {
         font-size: 14px !important;
     }
-
-    .status {
-        padding: 5px 7px !important;
-    }
-
-    .guide-items {
-        gap: 10px !important;
-    }
 }
 
-@media (max-width: 380px) {
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .calendar-page {
+        padding: 10px 10px 30px !important;
+    }
+
+    /* Header */
+
+    .brand-header {
+        border-radius: 16px !important;
+
+        padding:
+            0 14px 17px !important;
+
+        margin-bottom: 13px !important;
+    }
+
+    .brand-top {
+        min-height: 45px;
+    }
+
+    .brand-logo {
+        font-size: 14px !important;
+    }
+
+    .brand-tag {
+        display: none !important;
+    }
+
+    .brand-content {
+        grid-template-columns:
+            minmax(0, 1fr)
+            auto !important;
+
+        gap: 10px !important;
+
+        padding: 25px 0 18px !important;
+    }
+
     .brand-content h1 {
-        font-size: 34px !important;
+        font-size: 35px !important;
+
+        line-height: 1 !important;
+
+        letter-spacing: -1.6px !important;
+    }
+
+    .brand-content p {
+        font-size: 8.5px !important;
+
+        margin-top: 9px !important;
     }
 
     .calendar-icon {
-        width: 48px !important;
-        height: 48px !important;
+        width: 50px !important;
+        height: 50px !important;
+
+        border-radius: 12px !important;
+
+        font-size: 21px !important;
+    }
+
+    .brand-features {
+        flex-wrap: wrap;
+
+        gap: 6px !important;
+
+        font-size: 6px !important;
+
+        letter-spacing: .8px !important;
+    }
+
+
+    /* Stats */
+
+    .stats-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr)) !important;
+
+        gap: 8px !important;
+
+        margin-bottom: 22px !important;
+    }
+
+    .stat-card {
+        min-height: 73px;
+
+        gap: 9px !important;
+
+        padding: 10px !important;
+
+        border-radius: 11px !important;
+    }
+
+    .stat-icon {
+        width: 34px !important;
+        height: 34px !important;
+
+        border-radius: 9px !important;
+
+        font-size: 14px !important;
+    }
+
+    .stat-card strong {
+        font-size: 19px !important;
+    }
+
+    .stat-card span {
+        font-size: 5.8px !important;
+
+        letter-spacing: .7px !important;
+    }
+
+
+    /* Section */
+
+    .section-heading {
+        margin-bottom: 10px !important;
+
+        padding-left: 9px !important;
+
+        border-left-width: 3px !important;
+    }
+
+    .section-heading h2 {
+        font-size: 18px !important;
+
+        letter-spacing: -.3px !important;
+    }
+
+    .section-heading p {
+        font-size: 6px !important;
+    }
+
+    .live-badge {
+        padding: 6px 8px !important;
+
+        font-size: 5.5px !important;
+    }
+
+
+    /* Day card */
+
+    .day-card {
+        border-radius: 12px !important;
+
+        padding: 0 11px !important;
+
+        margin-bottom: 10px !important;
+    }
+
+    .day-header {
+        min-height: 44px !important;
+    }
+
+    .day-label {
+        font-size: 7px !important;
+    }
+
+    .day-date {
+        font-size: 10px !important;
+    }
+
+
+    /* IPO rows */
+
+    .ipo-row {
+        min-height: 57px !important;
+
+        gap: 7px !important;
     }
 
     .ipo-name {
+        font-size: 12.5px !important;
+
+        line-height: 1.35 !important;
+    }
+
+    .ipo-type {
+        padding: 2px 5px !important;
+
+        margin-left: 3px !important;
+
+        font-size: 5px !important;
+    }
+
+    .status {
+        padding: 5px 6px !important;
+
+        border-radius: 6px !important;
+
+        font-size: 5.8px !important;
+
+        letter-spacing: .4px !important;
+    }
+
+
+    /* Guide */
+
+    .status-guide {
+        padding: 13px !important;
+
+        border-radius: 11px !important;
+    }
+
+    .guide-items {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr)) !important;
+
+        gap: 11px !important;
+    }
+
+    .guide-title {
+        font-size: 7px !important;
+    }
+
+    .guide-item strong {
+        font-size: 7px !important;
+    }
+
+    .guide-item small {
+        font-size: 6px !important;
+    }
+
+
+    /* Promotion */
+
+    .promotion-card {
+        padding: 18px !important;
+
+        border-radius: 12px !important;
+    }
+
+    .promotion-card h2 {
+        font-size: 20px !important;
+    }
+
+    .promotion-card p {
+        font-size: 8px !important;
+
+        line-height: 1.6 !important;
+    }
+
+    .promo-tags {
+        gap: 5px !important;
+    }
+
+    .promo-tags span {
+        font-size: 6px !important;
+    }
+
+    .follow-button {
+        padding: 8px 11px !important;
+
+        font-size: 7px !important;
+    }
+
+
+    /* Footer */
+
+    footer {
+        padding-top: 18px !important;
+    }
+
+    .footer-logo {
         font-size: 13px !important;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+
+        font-size: 7px !important;
     }
 }
 
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .brand-content h1 {
+        font-size: 31px !important;
+
+        letter-spacing: -1.3px !important;
+    }
+
+    .calendar-icon {
+        width: 45px !important;
+        height: 45px !important;
+    }
+
+    .ipo-name {
+        font-size: 11.5px !important;
+    }
+
+    .status {
+        padding: 4px 5px !important;
+
+        font-size: 5.2px !important;
+    }
+
+    .day-date {
+        font-size: 9px !important;
+    }
+}
