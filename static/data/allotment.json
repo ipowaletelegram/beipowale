@@ -1,20 +1,4 @@
 [
-    {
-    "company": "Technocraft Ventures Ltd IPO",
-    "logo": "/static/logos/techno.png",
-    "registrar": "Big Share",
-    "allotment": "2026-08-12",
-    "featured": false,
-    "url": "https://ipo.bigshareonline.com/IPO_Status.html"
-},
-    {
-    "company": "Leap India Ltd",
-    "logo": "/static/logos/leap.png",
-    "registrar": "MUFG",
-    "allotment": "2026-08-12",
-    "featured": false,
-    "url": "https://in.mpms.mufg.com/Initial_Offer/public-issues.html"
-},
   {
     "company": "Dhoot Transmission Ltd",
     "logo": "/static/logos/dhoot.png",
