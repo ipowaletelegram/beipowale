@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>IPO Documents | DRHP, RHP & Anchor Investor List | BE.IPOWALE</title>
+
+    <meta name="description"
+        content="Find IPO documents including DRHP, RHP, Anchor Investor List, Prospectus and other important IPO documents at BE.IPOWALE.">
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical"
+        href="{{ request.url }}">
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/ipo-documents.css') }}">
+</head>
+
+
+<body>
+
+    <!-- HEADER -->
+
+    <header class="top-header">
+
+        <div class="header-inner">
+
+            <a href="/" class="brand">
+
+                <div class="brand-logo">
+                    BE
+                </div>
+
+                <div>
+                    <div class="brand-name">
+                        BE.IPOWALE
+                    </div>
+
+                    <div class="brand-tagline">
+                        Daily IPO Updates
+                    </div>
+                </div>
+
+            </a>
+
+
+            <a href="/" class="home-btn">
+                ← Home
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <main class="documents-page">
+
+
+        <!-- HERO -->
+
+        <section class="hero-section">
+
+            <div class="hero-icon">
+                📄
+            </div>
+
+            <div>
+
+                <h1>
+                    IPO Documents
+                </h1>
+
+                <p>
+                    DRHP, RHP, Anchor Investor List & Other IPO Documents
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- SEARCH -->
+
+        <section class="controls">
+
+            <div class="search-box">
+
+                <span class="search-icon">
+                    🔍
+                </span>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search company..."
+                    autocomplete="off">
+
+            </div>
+
+
+            <div class="filter-buttons">
+
+                <button
+                    class="filter-btn active"
+                    data-filter="ALL">
+                    All
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-filter="DRHP">
+                    DRHP
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-filter="RHP">
+                    RHP
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-filter="ANCHOR">
+                    Anchor
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-filter="PROSPECTUS">
+                    Prospectus
+                </button>
+
+                <button
+                    class="filter-btn"
+                    data-filter="OTHER">
+                    Other
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- DOCUMENT COUNT -->
+
+        <div class="result-info">
+
+            <span id="resultCount">
+                Loading documents...
+            </span>
+
+        </div>
+
+
+        <!-- COMPANY DOCUMENTS -->
+
+        <section
+            id="documentsContainer"
+            class="documents-container">
+
+        </section>
+
+
+        <!-- NO RESULT -->
+
+        <div
+            id="noResults"
+            class="no-results hidden">
+
+            <div class="no-results-icon">
+                📂
+            </div>
+
+            <h3>
+                No documents found
+            </h3>
+
+            <p>
+                Try searching another company or document type.
+            </p>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <div class="footer-brand">
+            BE.IPOWALE
+        </div>
+
+        <p>
+            Daily IPO Updates
+        </p>
+
+        <div class="footer-links">
+
+            <a href="/">
+                Home
+            </a>
+
+            <a href="/ipo-calendar">
+                IPO Calendar
+            </a>
+
+            <a href="/allotment">
+                Allotment
+            </a>
+
+            <a href="/blog">
+                Blog
+            </a>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 BE.IPOWALE. All Rights Reserved.
+        </div>
+
+    </footer>
+
+
+    <script
+        src="{{ url_for('static', filename='js/ipo-documents.js') }}">
+    </script>
+
+</body>
+
+</html>
