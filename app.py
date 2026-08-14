@@ -3,8 +3,11 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 import os
 import json
+import csv
+import io
+import requests
 
-
+GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQeTO-2tCHWLT6qJOUUIadywyp1GO8MHHRkHkMzNFjfskCjH97Wu2FuJHHWH8rTLwaqcq8rBcPCl7C_/pub?output=csv"
 app = Flask(__name__)
 
 
@@ -129,7 +132,49 @@ def ipo_calendar():
 # =========================================================
 # IPO CALENDAR JSON API
 # =========================================================
+@app.route("/api/ipo-documents")
+def api_ipo_documents():
 
+    try:
+
+        response = requests.get(
+            GOOGLE_SHEET_CSV_URL,
+            timeout=15
+        )
+
+        response.raise_for_status()
+
+        csv_text = response.text
+
+        reader = csv.DictReader(
+            io.StringIO(csv_text)
+        )
+
+        documents = []
+
+        for row in reader:
+
+            company = row.get("Company", "").strip()
+            doc_type = row.get("Type", "").strip().upper()
+            document_url = row.get("Document URL", "").strip()
+
+            if company and doc_type and document_url:
+
+                documents.append({
+                    "company": company,
+                    "type": doc_type,
+                    "url": document_url
+                })
+
+        return jsonify(documents)
+
+    except Exception as e:
+
+        print("IPO DOCUMENT ERROR:", e)
+
+        return jsonify({
+            "error": str(e)
+        }), 500
 @app.route("/api/ipo-calendar")
 def ipo_calendar_data():
 
