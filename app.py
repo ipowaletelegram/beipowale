@@ -7,8 +7,16 @@ import csv
 import io
 import requests
 
+
+# =========================================================
+# GOOGLE SHEETS
+# =========================================================
+
 GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQeTO-2tCHWLT6qJOUUIadywyp1GO8MHHRkHkMzNFjfskCjH97Wu2FuJHHWH8rTLwaqcq8rBcPCl7C_/pub?output=csv"
+
 GOOGLE_CALENDAR_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQtFKVcWHp5Zu--wYNHdQNXGtKiNwN1wVXx4YJQQDXTatfK8E11d-bjpoSEjGTp1JLU9Gft0fkRvTbr/pub?output=csv"
+
+
 app = Flask(__name__)
 
 
@@ -37,9 +45,16 @@ def allotment():
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
+
+
+# =========================================================
+# IPO DOCUMENTS
+# =========================================================
+
 @app.route("/ipo-documents")
 def ipo_documents():
     return render_template("ipo-documents.html")
+
 
 # =========================================================
 # BLOG
@@ -74,7 +89,6 @@ def ipo_calendar():
         "%Y-%m-%d"
     )
 
-    # Existing calendar image folder
     calendar_folder = os.path.join(
         app.static_folder,
         "calendar"
@@ -82,7 +96,9 @@ def ipo_calendar():
 
     latest_image = None
 
+
     # Check today's calendar image
+
     for ext in [
         ".jpg",
         ".jpeg",
@@ -131,8 +147,9 @@ def ipo_calendar():
 
 
 # =========================================================
-# IPO CALENDAR JSON API
+# IPO DOCUMENTS GOOGLE SHEET API
 # =========================================================
+
 @app.route("/api/ipo-documents")
 def api_ipo_documents():
 
@@ -140,12 +157,17 @@ def api_ipo_documents():
 
         response = requests.get(
             GOOGLE_SHEET_CSV_URL,
-            timeout=15
+            timeout=20,
+            headers={
+                "User-Agent": "Mozilla/5.0"
+            }
         )
 
         response.raise_for_status()
 
-        csv_text = response.text
+        csv_text = response.text.lstrip(
+            "\ufeff"
+        )
 
         reader = csv.DictReader(
             io.StringIO(csv_text)
@@ -153,41 +175,71 @@ def api_ipo_documents():
 
         documents = []
 
+
         for row in reader:
 
-            company = row.get("Company", "").strip()
-            doc_type = row.get("Type", "").strip().upper()
-            document_url = row.get("Document URL", "").strip()
+            company = row.get(
+                "Company",
+                ""
+            ).strip()
 
-            if company and doc_type and document_url:
+
+            doc_type = row.get(
+                "Type",
+                ""
+            ).strip().upper()
+
+
+            document_url = row.get(
+                "Document URL",
+                ""
+            ).strip()
+
+
+            if (
+                company
+                and doc_type
+                and document_url
+            ):
 
                 documents.append({
+
                     "company": company,
+
                     "type": doc_type,
+
                     "url": document_url
+
                 })
 
-        return jsonify(documents)
+
+        print(
+            "IPO DOCUMENTS:",
+            len(documents)
+        )
+
+
+        return jsonify(
+            documents
+        )
+
 
     except Exception as e:
 
-        print("IPO DOCUMENT ERROR:", e)
+        print(
+            "IPO DOCUMENT ERROR:",
+            repr(e)
+        )
+
 
         return jsonify({
-            "error": str(e)
+
+            "error": True,
+
+            "message": str(e)
+
         }), 500
 
-        # =================================================
-        # Make sure JSON contains a list
-        # =================================================
-
-        if not isinstance(data, list):
-
-            return jsonify({
-                "error": True,
-                "message": "Invalid IPO calendar JSON format",
-                "data": []
-            }), 500
 
 # =========================================================
 # IPO CALENDAR GOOGLE SHEET API
@@ -208,7 +260,9 @@ def ipo_calendar_data():
 
         response.raise_for_status()
 
-        csv_text = response.text.lstrip("\ufeff")
+        csv_text = response.text.lstrip(
+            "\ufeff"
+        )
 
         reader = csv.DictReader(
             io.StringIO(csv_text)
@@ -223,6 +277,7 @@ def ipo_calendar_data():
                 "Company",
                 ""
             ).strip()
+
 
             ipo_type = row.get(
                 "Type",
@@ -255,6 +310,7 @@ def ipo_calendar_data():
 
 
             if not company:
+
                 continue
 
 
@@ -262,20 +318,34 @@ def ipo_calendar_data():
 
                 "company": company,
 
-                "type": ipo_type or "Mainboard",
+                "type":
+                    ipo_type
+                    or "Mainboard",
 
-                "open_date": open_date,
+                "open_date":
+                    open_date,
 
-                "close_date": close_date,
+                "close_date":
+                    close_date,
 
-                "allotment_date": allotment_date,
+                "allotment_date":
+                    allotment_date,
 
-                "listing_date": listing_date
+                "listing_date":
+                    listing_date
 
             })
 
 
-        return jsonify(calendar_data)
+        print(
+            "IPO CALENDAR:",
+            len(calendar_data)
+        )
+
+
+        return jsonify(
+            calendar_data
+        )
 
 
     except Exception as e:
@@ -285,6 +355,7 @@ def ipo_calendar_data():
             repr(e)
         )
 
+
         return jsonify({
 
             "error": True,
@@ -293,6 +364,7 @@ def ipo_calendar_data():
 
         }), 500
 
+
 # =========================================================
 # RUN APPLICATION
 # =========================================================
@@ -300,12 +372,16 @@ def ipo_calendar_data():
 if __name__ == "__main__":
 
     app.run(
+
         host="0.0.0.0",
+
         port=int(
             os.environ.get(
                 "PORT",
                 5000
             )
         ),
+
         debug=False
+
     )
