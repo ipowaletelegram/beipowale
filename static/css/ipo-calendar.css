@@ -250,7 +250,7 @@ body {
 }
 
 .stat-card {
-    min-height: 88px;
+    min-height: 60px;
 
     display: flex !important;
     align-items: center !important;
@@ -263,7 +263,7 @@ body {
 
     border-radius: 14px !important;
 
-    padding: 16px 18px !important;
+    padding: 8px 14px !important;
 
     box-shadow:
         0 5px 18px rgba(20,55,85,.045) !important;
@@ -281,8 +281,8 @@ body {
 }
 
 .stat-icon {
-    width: 43px !important;
-    height: 43px !important;
+    width: 36px !important;
+    height: 36px !important;
 
     flex-shrink: 0;
 
@@ -304,7 +304,7 @@ body {
 
     color: var(--text) !important;
 
-    font-size: 25px !important;
+    font-size: 22px !important;
 
     line-height: 1;
 }
