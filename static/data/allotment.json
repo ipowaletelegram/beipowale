@@ -86,7 +86,15 @@
     "allotment": "2026-08-24",
     "featured": false,
     "url": "https://in.mpms.mufg.com/Initial_Offer/public-issues.html"
-}
+},
+  {
+    "company": "Tempsens Instruments Ltd",
+    "logo": "/static/logos/temp.png",
+    "registrar": "Kfin Technologies",
+    "allotment": "2026-08-25",
+    "featured": false,
+    "url": "https://ipostatus.kfintech.com/"
+},
   
   
 ]
