@@ -1,21 +1,5 @@
 [
   {
-    "company": "Dhoot Transmission Ltd",
-    "logo": "/static/logos/dhoot.png",
-    "registrar": "Kfin Technologies",
-    "allotment": "2026-08-13",
-    "featured": false,
-    "url": "https://ipostatus.kfintech.com/"
-},
-  {
-    "company": "Molbio Diagnostics Ltd",
-    "logo": "/static/logos/molbio.png",
-    "registrar": "Kfin Technologies",
-    "allotment": "2026-08-13",
-    "featured": false,
-    "url": "https://ipostatus.kfintech.com/"
-},
-  {
     "company": "Milky Mist Dairy Food Ltd",
     "logo": "/static/logos/milky.png",
     "registrar": "Kfin Technologies",
