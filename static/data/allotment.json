@@ -1,13 +1,5 @@
 [
   {
-    "company": "Milky Mist Dairy Food Ltd",
-    "logo": "/static/logos/milky.png",
-    "registrar": "Kfin Technologies",
-    "allotment": "2026-08-14",
-    "featured": false,
-    "url": "https://ipostatus.kfintech.com/"
-},
-  {
     "company": "Shiprocket Ltd",
     "logo": "/static/logos/shiprocket.png",
     "registrar": "Kfin Technologies",
@@ -22,6 +14,14 @@
     "allotment": "2026-08-17",
     "featured": false,
     "url": "https://in.mpms.mufg.com/Initial_Offer/public-issues.html"
+},
+  {
+    "company": "Milky Mist Dairy Food Ltd",
+    "logo": "/static/logos/milky.png",
+    "registrar": "Kfin Technologies",
+    "allotment": "2026-08-14",
+    "featured": false,
+    "url": "https://ipostatus.kfintech.com/"
 },
     {
     "company": "Lalithaa Jewellery Mart Ltd",
