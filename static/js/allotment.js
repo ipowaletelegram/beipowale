@@ -12,36 +12,38 @@ const loading = document.getElementById("loading");
 const emptyState = document.getElementById("emptyState");
 const topBtn = document.getElementById("topBtn");
 
+
 /* -----------------------------
    Status
 ------------------------------ */
 
-function getStatus(date){
+function getStatus(date) {
 
     const today = new Date();
-    today.setHours(0,0,0,0);
+    today.setHours(0, 0, 0, 0);
 
     const allotment = new Date(date);
-    allotment.setHours(0,0,0,0);
+    allotment.setHours(0, 0, 0, 0);
 
-    if(allotment.getTime()===today.getTime()){
+    if (allotment.getTime() === today.getTime()) {
         return "Today's Allotment";
     }
 
-    if(allotment>today){
+    if (allotment > today) {
         return "Upcoming";
     }
 
     return "Closed";
 }
 
+
 /* -----------------------------
    Status Badge
 ------------------------------ */
 
-function getStatusBadge(status){
+function getStatusBadge(status) {
 
-    switch(status){
+    switch (status) {
 
         case "Today's Allotment":
             return "🟢 Today's Allotment";
@@ -51,121 +53,423 @@ function getStatusBadge(status){
 
         default:
             return "⚫ Closed";
-
     }
 
 }
+
 
 /* -----------------------------
    Countdown
 ------------------------------ */
 
-function getCountdown(date){
+function getCountdown(date) {
 
     const today = new Date();
 
-    today.setHours(0,0,0,0);
+    today.setHours(0, 0, 0, 0);
 
     const allotment = new Date(date);
 
-    allotment.setHours(0,0,0,0);
+    allotment.setHours(0, 0, 0, 0);
 
     const diff = Math.ceil(
-        (allotment-today)/(1000*60*60*24)
+        (allotment - today) /
+        (1000 * 60 * 60 * 24)
     );
 
-    if(diff===0)
+    if (diff === 0)
         return "Today";
 
-    if(diff===1)
+    if (diff === 1)
         return "Tomorrow";
 
-    if(diff>1)
-        return diff+" Days Left";
+    if (diff > 1)
+        return diff + " Days Left";
 
     return "Completed";
-
 }
+
 
 /* -----------------------------
    Format Date
 ------------------------------ */
 
-function formatDate(date){
+function formatDate(date) {
 
-    return new Date(date).toLocaleDateString("en-IN",{
+    return new Date(date).toLocaleDateString("en-IN", {
 
-        day:"2-digit",
+        day: "2-digit",
 
-        month:"short",
+        month: "short",
 
-        year:"numeric"
+        year: "numeric"
 
     });
 
 }
 
+
+/* ==========================================
+   GOOGLE SHEET
+========================================== */
+
+const GOOGLE_SHEET_URL =
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vRTdEelMixOXPSgQ3IBE0pyHj7sEOYH9WOq9HPCrxZyQlo1l87Dms8xvWLH4Fs2otKN6ubn-4zyUnnM/pub?output=csv";
+
+
 /* -----------------------------
-   Load JSON
+   CSV Parser
 ------------------------------ */
 
-async function loadData(){
+function parseCSV(text) {
 
-    try{
+    const rows = [];
 
-        const response = await fetch("/static/data/allotment.json");
+    let row = [];
 
-        if(!response.ok){
+    let value = "";
 
-            throw new Error("Unable to load JSON");
+    let insideQuotes = false;
+
+
+    for (let i = 0; i < text.length; i++) {
+
+        const char = text[i];
+
+        const next = text[i + 1];
+
+
+        /* Double quote inside quoted value */
+
+        if (
+            char === '"' &&
+            insideQuotes &&
+            next === '"'
+        ) {
+
+            value += '"';
+
+            i++;
 
         }
 
-        ipoData = await response.json();
 
-        ipoData.forEach(ipo=>{
+        /* Start / End quote */
 
-            ipo.status = getStatus(ipo.allotment);
+        else if (char === '"') {
+
+            insideQuotes = !insideQuotes;
+
+        }
+
+
+        /* Comma */
+
+        else if (
+            char === "," &&
+            !insideQuotes
+        ) {
+
+            row.push(value.trim());
+
+            value = "";
+
+        }
+
+
+        /* New line */
+
+        else if (
+            (char === "\n" || char === "\r") &&
+            !insideQuotes
+        ) {
+
+            if (
+                char === "\r" &&
+                next === "\n"
+            ) {
+
+                i++;
+
+            }
+
+
+            row.push(value.trim());
+
+
+            if (
+                row.some(
+                    cell => cell !== ""
+                )
+            ) {
+
+                rows.push(row);
+
+            }
+
+
+            row = [];
+
+            value = "";
+
+        }
+
+
+        /* Normal character */
+
+        else {
+
+            value += char;
+
+        }
+
+    }
+
+
+    /* Last row */
+
+    if (
+        value !== "" ||
+        row.length > 0
+    ) {
+
+        row.push(value.trim());
+
+
+        if (
+            row.some(
+                cell => cell !== ""
+            )
+        ) {
+
+            rows.push(row);
+
+        }
+
+    }
+
+
+    return rows;
+
+}
+
+
+/* ==========================================
+   LOAD DATA FROM GOOGLE SHEET
+========================================== */
+
+async function loadData() {
+
+    try {
+
+        /* -----------------------------
+           Fetch Google Sheet
+        ------------------------------ */
+
+        const response = await fetch(
+            GOOGLE_SHEET_URL +
+            "&cache=" +
+            Date.now()
+        );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Unable to load Google Sheet"
+            );
+
+        }
+
+
+        /* -----------------------------
+           Read CSV
+        ------------------------------ */
+
+        const csvText =
+            await response.text();
+
+
+        /* -----------------------------
+           Parse CSV
+        ------------------------------ */
+
+        const rows =
+            parseCSV(csvText);
+
+
+        if (rows.length < 2) {
+
+            throw new Error(
+                "Google Sheet is empty"
+            );
+
+        }
+
+
+        /* -----------------------------
+           First row = Headers
+        ------------------------------ */
+
+        const headers =
+            rows[0].map(header =>
+                header
+                    .trim()
+                    .toLowerCase()
+            );
+
+
+        /* -----------------------------
+           Convert rows to objects
+        ------------------------------ */
+
+        ipoData = rows
+            .slice(1)
+
+            .filter(row =>
+                row[0] &&
+                row[0].trim() !== ""
+            )
+
+            .map(row => {
+
+                const ipo = {};
+
+
+                headers.forEach(
+                    (header, index) => {
+
+                        ipo[header] =
+                            row[index] !== undefined
+                                ? row[index].trim()
+                                : "";
+
+                    }
+                );
+
+
+                /* Convert featured */
+
+                ipo.featured =
+                    String(
+                        ipo.featured
+                    ).toLowerCase() === "true";
+
+
+                return ipo;
+
+            });
+
+
+        /* -----------------------------
+           Calculate Status
+        ------------------------------ */
+
+        ipoData.forEach(ipo => {
+
+            ipo.status =
+                getStatus(
+                    ipo.allotment
+                );
 
         });
 
-        ipoData.sort((a,b)=>{
 
-            return new Date(a.allotment)-new Date(b.allotment);
+        /* -----------------------------
+           Sort by Allotment Date
+        ------------------------------ */
+
+        ipoData.sort((a, b) => {
+
+            return (
+                new Date(a.allotment) -
+                new Date(b.allotment)
+            );
 
         });
 
-        filteredData = [...ipoData];
+
+        /* -----------------------------
+           Reset Filtered Data
+        ------------------------------ */
+
+        filteredData = [
+            ...ipoData
+        ];
+
+
+        /* -----------------------------
+           Update Dashboard
+        ------------------------------ */
 
         updateDashboard();
 
+
+        /* -----------------------------
+           Update Ticker
+        ------------------------------ */
+
         updateTicker();
 
-        renderCards(filteredData);
+
+        /* -----------------------------
+           Render Cards
+        ------------------------------ */
+
+        renderCards(
+            filteredData
+        );
+
+
+        /* -----------------------------
+           Console
+        ------------------------------ */
+
+        console.log(
+            "Google Sheet Loaded:",
+            ipoData
+        );
 
     }
 
-    catch(error){
 
-        console.error(error);
+    catch (error) {
 
-        cards.innerHTML=`
+        console.error(
+            "Google Sheet Error:",
+            error
+        );
 
-        <div class="empty">
 
-            <h2>Unable to load IPO Data</h2>
+        if (cards) {
 
-        </div>
+            cards.innerHTML = `
 
-        `;
+                <div class="empty">
+
+                    <h2>
+                        Unable to load IPO Data
+                    </h2>
+
+                    <p>
+                        Please try again later.
+                    </p>
+
+                </div>
+
+            `;
+
+        }
 
     }
 
-    finally{
 
-        if(loading){
+    finally {
 
-            loading.style.display="none";
+        if (loading) {
+
+            loading.style.display =
+                "none";
 
         }
 
@@ -173,165 +477,243 @@ async function loadData(){
 
 }
 
-/* -----------------------------
-   Dashboard
------------------------------- */
 
-function updateDashboard(){
+/* ==========================================
+   DASHBOARD
+========================================== */
 
-    const total=document.getElementById("totalCount");
+function updateDashboard() {
 
-    const upcoming=document.getElementById("upcomingCount");
+    const total =
+        document.getElementById(
+            "totalCount"
+        );
 
-    const today=document.getElementById("todayCount");
+    const upcoming =
+        document.getElementById(
+            "upcomingCount"
+        );
 
-    const closed=document.getElementById("closedCount");
+    const today =
+        document.getElementById(
+            "todayCount"
+        );
 
-    if(total)
+    const closed =
+        document.getElementById(
+            "closedCount"
+        );
 
-        total.innerText=ipoData.length;
 
-    if(upcoming)
+    if (total) {
 
-        upcoming.innerText=
+        total.innerText =
+            ipoData.length;
 
-        ipoData.filter(i=>i.status==="Upcoming").length;
+    }
 
-    if(today)
 
-        today.innerText=
+    if (upcoming) {
 
-        ipoData.filter(i=>i.status==="Today's Allotment").length;
+        upcoming.innerText =
+            ipoData.filter(
+                i =>
+                    i.status === "Upcoming"
+            ).length;
 
-    if(closed)
+    }
 
-        closed.innerText=
 
-        ipoData.filter(i=>i.status==="Closed").length;
+    if (today) {
+
+        today.innerText =
+            ipoData.filter(
+                i =>
+                    i.status ===
+                    "Today's Allotment"
+            ).length;
+
+    }
+
+
+    if (closed) {
+
+        closed.innerText =
+            ipoData.filter(
+                i =>
+                    i.status === "Closed"
+            ).length;
+
+    }
 
 }
 
-/* -----------------------------
-   Cards
------------------------------- */
 
-function renderCards(data){
+/* ==========================================
+   CARDS
+========================================== */
 
-    cards.innerHTML="";
+function renderCards(data) {
 
-    if(data.length===0){
+    if (!cards) return;
 
-        emptyState.style.display="block";
+
+    cards.innerHTML = "";
+
+
+    if (data.length === 0) {
+
+        if (emptyState) {
+
+            emptyState.style.display =
+                "block";
+
+        }
 
         return;
 
     }
 
-    emptyState.style.display="none";
 
-    data.forEach(ipo=>{
+    if (emptyState) {
 
-        cards.innerHTML+=`
+        emptyState.style.display =
+            "none";
+
+    }
+
+
+    data.forEach(ipo => {
+
+        cards.innerHTML += `
 
 <div class="card">
 
-<div class="card-top"></div>
+    <div class="card-top"></div>
 
-${ipo.status==="Today's Allotment"
 
-?`<div class="ribbon">TODAY'S ALLOTMENT</div>`
+    ${
+        ipo.status === "Today's Allotment"
 
-:""}
+        ? `
+        <div class="ribbon">
+            TODAY'S ALLOTMENT
+        </div>
+        `
 
-<div class="card-body">
+        : ""
+    }
 
-<img
 
-src="${ipo.logo}"
+    <div class="card-body">
 
-alt="${ipo.company}"
 
-class="card-logo"
+        <img
 
-onerror="this.src='/static/logo.jpg'">
+            src="${ipo.logo}"
 
-<h2>${ipo.company}</h2>
+            alt="${ipo.company}"
 
-<div class="info">
+            class="card-logo"
 
-<span class="label">
+            onerror="
+                this.src='/static/logo.jpg'
+            "
 
-Registrar
+        >
 
-</span>
 
-<span class="value">
+        <h2>
+            ${ipo.company}
+        </h2>
 
-${ipo.registrar}
 
-</span>
+        <div class="info">
 
-</div>
+            <span class="label">
+                Registrar
+            </span>
 
-<div class="info">
+            <span class="value">
+                ${ipo.registrar}
+            </span>
 
-<span class="label">
+        </div>
 
-Allotment
 
-</span>
+        <div class="info">
 
-<span class="value">
+            <span class="label">
+                Allotment
+            </span>
 
-${formatDate(ipo.allotment)}
+            <span class="value">
+                ${formatDate(
+                    ipo.allotment
+                )}
+            </span>
 
-</span>
+        </div>
 
-</div>
 
-<div class="info">
+        <div class="info">
 
-<span class="label">
+            <span class="label">
+                Countdown
+            </span>
 
-Countdown
+            <span class="value">
+                ${getCountdown(
+                    ipo.allotment
+                )}
+            </span>
 
-</span>
+        </div>
 
-<span class="value">
 
-${getCountdown(ipo.allotment)}
+        <span
 
-</span>
+            class="status
+                ${ipo.status
+                    .toLowerCase()
+                    .replace(/\s+/g, "-")
+                    .replace(/'/g, "")
+                }"
 
-</div>
+        >
 
-<span class="status ${ipo.status.toLowerCase().replace(/\\s+/g,'-').replace(/'/g,'')}">
+            ${getStatusBadge(
+                ipo.status
+            )}
 
-${getStatusBadge(ipo.status)}
+        </span>
 
-</span>
 
-<a
+        <a
 
-href="${ipo.url}"
+            href="${ipo.url}"
 
-target="_blank"
+            target="_blank"
 
-rel="noopener noreferrer"
+            rel="noopener noreferrer"
 
-class="btn">
+            class="btn"
 
-🏛 Check Official Allotment ↗
+        >
 
-</a>
+            🏛 Check Official Allotment ↗
 
-<p class="official-note">
+        </a>
 
-🛡️ Redirects to Official Registrar Website
 
-</p>
+        <p class="official-note">
 
-</div>
+            🛡️ Redirects to Official Registrar Website
+
+        </p>
+
+
+    </div>
 
 </div>
 
@@ -340,158 +722,266 @@ class="btn">
     });
 
 }
-/* -----------------------------
-   Search
------------------------------- */
+
+
+/* ==========================================
+   SEARCH
+========================================== */
 
 if (search) {
 
-    search.addEventListener("keyup", function () {
+    search.addEventListener(
+        "keyup",
+        function () {
 
-        const keyword = this.value.trim().toLowerCase();
+            const keyword =
+                this.value
+                    .trim()
+                    .toLowerCase();
 
-        filteredData = ipoData.filter(ipo =>
 
-            ipo.company.toLowerCase().includes(keyword) ||
+            filteredData =
+                ipoData.filter(ipo =>
 
-            ipo.registrar.toLowerCase().includes(keyword)
+                    (
+                        ipo.company || ""
+                    )
+                    .toLowerCase()
+                    .includes(keyword)
 
-        );
+                    ||
 
-        renderCards(filteredData);
+                    (
+                        ipo.registrar || ""
+                    )
+                    .toLowerCase()
+                    .includes(keyword)
 
-    });
+                );
+
+
+            renderCards(
+                filteredData
+            );
+
+        }
+    );
 
 }
 
-/* -----------------------------
-   Filters
------------------------------- */
 
-document.querySelectorAll(".filter-btn").forEach(btn => {
+/* ==========================================
+   FILTERS
+========================================== */
 
-    btn.addEventListener("click", () => {
+document
+    .querySelectorAll(".filter-btn")
+    .forEach(btn => {
 
-        document.querySelectorAll(".filter-btn")
-            .forEach(button => button.classList.remove("active"));
+        btn.addEventListener(
+            "click",
+            () => {
 
-        btn.classList.add("active");
 
-        const filter = btn.dataset.filter;
+                /* Remove active */
 
-        switch (filter) {
+                document
+                    .querySelectorAll(
+                        ".filter-btn"
+                    )
+                    .forEach(button => {
 
-            case "all":
-                filteredData = [...ipoData];
-                break;
+                        button.classList
+                            .remove("active");
 
-            case "Today's Allotment":
-                filteredData = ipoData.filter(
-                    ipo => ipo.status === "Today's Allotment"
+                    });
+
+
+                /* Add active */
+
+                btn.classList.add(
+                    "active"
                 );
-                break;
 
-            case "Upcoming":
-                filteredData = ipoData.filter(
-                    ipo => ipo.status === "Upcoming"
+
+                const filter =
+                    btn.dataset.filter;
+
+
+                switch (filter) {
+
+
+                    case "all":
+
+                        filteredData =
+                            [
+                                ...ipoData
+                            ];
+
+                        break;
+
+
+                    case "Today's Allotment":
+
+                        filteredData =
+                            ipoData.filter(
+                                ipo =>
+                                    ipo.status ===
+                                    "Today's Allotment"
+                            );
+
+                        break;
+
+
+                    case "Upcoming":
+
+                        filteredData =
+                            ipoData.filter(
+                                ipo =>
+                                    ipo.status ===
+                                    "Upcoming"
+                            );
+
+                        break;
+
+
+                    case "Closed":
+
+                        filteredData =
+                            ipoData.filter(
+                                ipo =>
+                                    ipo.status ===
+                                    "Closed"
+                            );
+
+                        break;
+
+
+                    default:
+
+                        filteredData =
+                            [
+                                ...ipoData
+                            ];
+
+                }
+
+
+                renderCards(
+                    filteredData
                 );
-                break;
 
-            case "Closed":
-                filteredData = ipoData.filter(
-                    ipo => ipo.status === "Closed"
-                );
-                break;
+            }
 
-            default:
-                filteredData = [...ipoData];
-
-        }
-
-        renderCards(filteredData);
+        );
 
     });
 
-});
 
-/* -----------------------------
-   Live Ticker
------------------------------- */
+/* ==========================================
+   LIVE TICKER
+========================================== */
 
 function updateTicker() {
 
     if (!ticker) return;
 
+
     if (ipoData.length === 0) {
 
-        ticker.innerHTML = "No IPO Available";
+        ticker.innerHTML =
+            "No IPO Available";
 
         return;
 
     }
 
+
     ticker.innerHTML = "";
+
 
     ipoData.forEach(ipo => {
 
         ticker.innerHTML += `
+
             🔥 ${ipo.company}
+
             • ${ipo.status}
+
             &nbsp;&nbsp;&nbsp;&nbsp;
+
         `;
 
     });
 
 }
 
-/* -----------------------------
-   Back To Top
------------------------------- */
 
-window.addEventListener("scroll", () => {
+/* ==========================================
+   BACK TO TOP
+========================================== */
 
-    if (!topBtn) return;
+window.addEventListener(
+    "scroll",
+    () => {
 
-    if (window.scrollY > 300) {
+        if (!topBtn) return;
 
-        topBtn.style.display = "block";
 
-    } else {
+        if (window.scrollY > 300) {
 
-        topBtn.style.display = "none";
+            topBtn.style.display =
+                "block";
+
+        }
+
+        else {
+
+            topBtn.style.display =
+                "none";
+
+        }
 
     }
+);
 
-});
 
 if (topBtn) {
 
-    topBtn.addEventListener("click", () => {
+    topBtn.addEventListener(
+        "click",
+        () => {
 
-        window.scrollTo({
+            window.scrollTo({
 
-            top: 0,
+                top: 0,
 
-            behavior: "smooth"
+                behavior: "smooth"
 
-        });
+            });
 
-    });
+        }
+    );
 
 }
 
-/* -----------------------------
-   Auto Refresh
------------------------------- */
 
-setInterval(() => {
+/* ==========================================
+   AUTO REFRESH
+========================================== */
 
-    loadData();
+setInterval(
+    () => {
 
-}, 300000); // Refresh every 5 minutes
+        loadData();
 
-/* -----------------------------
-   Initial Load
------------------------------- */
+    },
+    300000
+); // 5 minutes
+
+
+/* ==========================================
+   INITIAL LOAD
+========================================== */
 
 loadData();
