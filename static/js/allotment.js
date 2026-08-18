@@ -336,16 +336,18 @@ async function loadData() {
                 const ipo = {};
 
 
-                headers.forEach(
-                    (header, index) => {
+               headers.forEach((header, index) => {
 
-                        ipo[header] =
-                            row[index] !== undefined
-                                ? row[index].trim()
-                                : "";
+                const cleanHeader = header
+                    .trim()
+                     .toLowerCase();
 
-                    }
-                );
+            ipo[cleanHeader] =
+                row[index] !== undefined
+                 ? row[index].trim()
+                     : "";
+
+            });
 
 
                 /* Convert featured */
