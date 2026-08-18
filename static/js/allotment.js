@@ -1,40 +1,78 @@
 /* ==========================================
-   BE.IPOWALE - IPO Allotment
+   BE.IPOWALE - IPO ALLOTMENT
+   Google Sheet Powered
+========================================== */
+
+
+/* ==========================================
+   GLOBAL VARIABLES
 ========================================== */
 
 let ipoData = [];
 let filteredData = [];
 
-const cards = document.getElementById("cards");
-const search = document.getElementById("search");
-const ticker = document.getElementById("ticker");
-const loading = document.getElementById("loading");
-const emptyState = document.getElementById("emptyState");
-const topBtn = document.getElementById("topBtn");
+
+/* ==========================================
+   DOM ELEMENTS
+========================================== */
+
+const cards =
+    document.getElementById("cards");
+
+const search =
+    document.getElementById("search");
+
+const ticker =
+    document.getElementById("ticker");
+
+const loading =
+    document.getElementById("loading");
+
+const emptyState =
+    document.getElementById("emptyState");
+
+const topBtn =
+    document.getElementById("topBtn");
 
 
 /* ==========================================
-   GOOGLE SHEET SETTINGS
+   GOOGLE SHEET CONFIGURATION
 ========================================== */
 
 const GOOGLE_SHEET_URL =
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vRTdEelMixOXPSgQ3IBE0pyHj7sEOYH9WOq9HPCrxZyQlo1l87Dms8xvWLH4Fs2otKN6ubn-4zyUnnM/pub?output=csv";
 
 
-/* Logo folder */
+/* ==========================================
+   LOGO CONFIGURATION
+========================================== */
 
-const LOGO_PATH = "/static/logos/";
-
-
-/* Google Sheet timeout */
-
-const SHEET_TIMEOUT = 8000;
+const LOGO_PATH =
+    "/static/logos/";
 
 
-/* Local storage backup */
+/* ==========================================
+   FALLBACK LOGO
+========================================== */
+
+const FALLBACK_LOGO =
+    "/static/logo.jpg";
+
+
+/* ==========================================
+   GOOGLE SHEET TIMEOUT
+========================================== */
+
+const SHEET_TIMEOUT =
+    8000;
+
+
+/* ==========================================
+   LOCAL STORAGE
+========================================== */
 
 const STORAGE_KEY =
-    "beipowale_allotment_data";
+    "beipowale_allotment_data_v2";
 
 
 /* ==========================================
@@ -44,10 +82,15 @@ const STORAGE_KEY =
 function getStatus(date) {
 
     if (!date) {
+
         return "Closed";
+
     }
 
-    const today = new Date();
+
+    const today =
+        new Date();
+
 
     today.setHours(
         0,
@@ -59,6 +102,18 @@ function getStatus(date) {
 
     const allotment =
         new Date(date);
+
+
+    if (
+        isNaN(
+            allotment.getTime()
+        )
+    ) {
+
+        return "Closed";
+
+    }
+
 
     allotment.setHours(
         0,
@@ -79,7 +134,8 @@ function getStatus(date) {
 
 
     if (
-        allotment > today
+        allotment.getTime() >
+        today.getTime()
     ) {
 
         return "Upcoming";
@@ -110,6 +166,8 @@ function getStatusBadge(status) {
             return "🟡 Upcoming";
 
 
+        case "Closed":
+
         default:
 
             return "⚫ Closed";
@@ -126,11 +184,15 @@ function getStatusBadge(status) {
 function getCountdown(date) {
 
     if (!date) {
+
         return "N/A";
+
     }
 
 
-    const today = new Date();
+    const today =
+        new Date();
+
 
     today.setHours(
         0,
@@ -143,6 +205,18 @@ function getCountdown(date) {
     const allotment =
         new Date(date);
 
+
+    if (
+        isNaN(
+            allotment.getTime()
+        )
+    ) {
+
+        return "N/A";
+
+    }
+
+
     allotment.setHours(
         0,
         0,
@@ -151,21 +225,22 @@ function getCountdown(date) {
     );
 
 
-    const diff = Math.ceil(
+    const diff =
+        Math.ceil(
 
-        (
-            allotment -
-            today
-        ) /
+            (
+                allotment -
+                today
+            ) /
 
-        (
-            1000 *
-            60 *
-            60 *
-            24
-        )
+            (
+                1000 *
+                60 *
+                60 *
+                24
+            )
 
-    );
+        );
 
 
     if (diff === 0) {
@@ -184,8 +259,10 @@ function getCountdown(date) {
 
     if (diff > 1) {
 
-        return diff +
-            " Days Left";
+        return (
+            diff +
+            " Days Left"
+        );
 
     }
 
@@ -202,17 +279,19 @@ function getCountdown(date) {
 function formatDate(date) {
 
     if (!date) {
+
         return "N/A";
+
     }
 
 
-    const parsedDate =
+    const parsed =
         new Date(date);
 
 
     if (
         isNaN(
-            parsedDate.getTime()
+            parsed.getTime()
         )
     ) {
 
@@ -221,7 +300,7 @@ function formatDate(date) {
     }
 
 
-    return parsedDate.toLocaleDateString(
+    return parsed.toLocaleDateString(
         "en-IN",
         {
 
@@ -238,26 +317,136 @@ function formatDate(date) {
 
 
 /* ==========================================
+   CLEAN TEXT
+========================================== */
+
+function cleanText(value) {
+
+    if (
+        value === undefined ||
+        value === null
+    ) {
+
+        return "";
+
+    }
+
+
+    return String(value)
+        .replace(
+            /^\uFEFF/,
+            ""
+        )
+        .trim();
+
+}
+
+
+/* ==========================================
+   NORMALIZE HEADER
+========================================== */
+
+function normalizeHeader(header) {
+
+    return cleanText(header)
+
+        .toLowerCase()
+
+        .replace(
+            /[\u200B-\u200D\uFEFF]/g,
+            ""
+        )
+
+        .replace(
+            /[_-]+/g,
+            " "
+        )
+
+        .replace(
+            /\s+/g,
+            " "
+        )
+
+        .trim();
+
+}
+
+
+/* ==========================================
+   GET VALUE USING MULTIPLE COLUMN NAMES
+========================================== */
+
+function getColumnValue(
+    row,
+    aliases
+) {
+
+    for (
+        const alias of aliases
+    ) {
+
+        const key =
+            normalizeHeader(
+                alias
+            );
+
+
+        if (
+            Object.prototype.hasOwnProperty.call(
+                row,
+                key
+            )
+        ) {
+
+            const value =
+                cleanText(
+                    row[key]
+                );
+
+
+            if (value !== "") {
+
+                return value;
+
+            }
+
+        }
+
+    }
+
+
+    return "";
+
+}
+
+
+/* ==========================================
    LOGO PATH
 ========================================== */
 
 function getLogoPath(logo) {
 
+    logo =
+        cleanText(logo);
+
+
     if (!logo) {
 
-        return "/static/logo.jpg";
+        return FALLBACK_LOGO;
 
     }
 
 
-    logo = String(logo).trim();
-
-
-    /* Already full URL */
+    /* Full URL */
 
     if (
-        logo.startsWith("http://") ||
-        logo.startsWith("https://")
+        logo.startsWith(
+            "http://"
+        ) ||
+
+        logo.startsWith(
+            "https://"
+        )
     ) {
 
         return logo;
@@ -265,7 +454,7 @@ function getLogoPath(logo) {
     }
 
 
-    /* Already website path */
+    /* Existing website path */
 
     if (
         logo.startsWith("/")
@@ -278,28 +467,10 @@ function getLogoPath(logo) {
 
     /* Filename only */
 
-    return LOGO_PATH + logo;
-
-}
-
-
-/* ==========================================
-   SAFE TEXT
-========================================== */
-
-function safeText(value) {
-
-    if (
-        value === undefined ||
-        value === null
-    ) {
-
-        return "";
-
-    }
-
-
-    return String(value).trim();
+    return (
+        LOGO_PATH +
+        logo
+    );
 
 }
 
@@ -316,7 +487,8 @@ function parseCSV(text) {
 
     let value = "";
 
-    let insideQuotes = false;
+    let insideQuotes =
+        false;
 
 
     for (
@@ -332,7 +504,9 @@ function parseCSV(text) {
             text[i + 1];
 
 
-        /* Double quote */
+        /* -----------------------------
+           Double quote inside quoted field
+        ------------------------------ */
 
         if (
             char === '"' &&
@@ -344,24 +518,32 @@ function parseCSV(text) {
 
             i++;
 
+            continue;
+
         }
 
 
-        /* Start / End quote */
+        /* -----------------------------
+           Quote
+        ------------------------------ */
 
-        else if (
+        if (
             char === '"'
         ) {
 
             insideQuotes =
                 !insideQuotes;
 
+            continue;
+
         }
 
 
-        /* Comma */
+        /* -----------------------------
+           Comma
+        ------------------------------ */
 
-        else if (
+        if (
             char === "," &&
             !insideQuotes
         ) {
@@ -372,12 +554,16 @@ function parseCSV(text) {
 
             value = "";
 
+            continue;
+
         }
 
 
-        /* New line */
+        /* -----------------------------
+           New line
+        ------------------------------ */
 
-        else if (
+        if (
             (
                 char === "\n" ||
                 char === "\r"
@@ -407,7 +593,9 @@ function parseCSV(text) {
                 )
             ) {
 
-                rows.push(row);
+                rows.push(
+                    row
+                );
 
             }
 
@@ -416,21 +604,23 @@ function parseCSV(text) {
 
             value = "";
 
-        }
-
-
-        /* Normal character */
-
-        else {
-
-            value += char;
+            continue;
 
         }
+
+
+        /* -----------------------------
+           Normal character
+        ------------------------------ */
+
+        value += char;
 
     }
 
 
-    /* Last row */
+    /* -----------------------------
+       Last row
+    ------------------------------ */
 
     if (
         value !== "" ||
@@ -449,7 +639,9 @@ function parseCSV(text) {
             )
         ) {
 
-            rows.push(row);
+            rows.push(
+                row
+            );
 
         }
 
@@ -462,15 +654,345 @@ function parseCSV(text) {
 
 
 /* ==========================================
-   LOAD GOOGLE SHEET DATA
+   CONVERT CSV TO OBJECTS
 ========================================== */
 
-async function loadData() {
+function convertCSVToObjects(
+    rows
+) {
+
+    if (
+        !rows ||
+        rows.length < 2
+    ) {
+
+        return [];
+
+    }
+
+
+    /* -----------------------------
+       Headers
+    ------------------------------ */
+
+    const headers =
+        rows[0].map(
+            header =>
+                normalizeHeader(
+                    header
+                )
+        );
+
+
+    console.log(
+        "Google Sheet Headers:",
+        headers
+    );
+
+
+    /* -----------------------------
+       Data rows
+    ------------------------------ */
+
+    const rawData =
+        rows
+            .slice(1)
+            .filter(
+                row =>
+                    row &&
+                    cleanText(
+                        row[0]
+                    ) !== ""
+            )
+            .map(
+                row => {
+
+                    const object =
+                        {};
+
+
+                    headers.forEach(
+                        (
+                            header,
+                            index
+                        ) => {
+
+                            object[
+                                header
+                            ] =
+
+                                row[index] !==
+                                undefined
+
+                                ?
+
+                                cleanText(
+                                    row[index]
+                                )
+
+                                :
+
+                                "";
+
+                        }
+                    );
+
+
+                    return object;
+
+                }
+            );
+
+
+    /* -----------------------------
+       Convert to standard structure
+    ------------------------------ */
+
+    const finalData =
+        rawData.map(
+            raw => {
+
+
+                /* COMPANY */
+
+                const company =
+                    getColumnValue(
+                        raw,
+                        [
+                            "company",
+                            "company name",
+                            "company_name",
+                            "ipo",
+                            "ipo name",
+                            "ipo_name"
+                        ]
+                    );
+
+
+                /* LOGO */
+
+                const logo =
+                    getColumnValue(
+                        raw,
+                        [
+                            "logo",
+                            "logo name",
+                            "logo_name",
+                            "image",
+                            "image name",
+                            "image_name"
+                        ]
+                    );
+
+
+                /* REGISTRAR */
+
+                const registrar =
+                    getColumnValue(
+                        raw,
+                        [
+                            "registrar",
+                            "register",
+                            "registered",
+                            "registrar name",
+                            "registrar_name",
+                            "registrarname"
+                        ]
+                    );
+
+
+                /* ALLOTMENT */
+
+                const allotment =
+                    getColumnValue(
+                        raw,
+                        [
+                            "allotment",
+                            "allotment date",
+                            "allotment_date",
+                            "allotmentdate"
+                        ]
+                    );
+
+
+                /* FEATURED */
+
+                const featuredValue =
+                    getColumnValue(
+                        raw,
+                        [
+                            "featured",
+                            "feature",
+                            "is featured",
+                            "is_featured"
+                        ]
+                    );
+
+
+                /* URL */
+
+                const url =
+                    getColumnValue(
+                        raw,
+                        [
+                            "url",
+                            "link",
+                            "status link",
+                            "status_link",
+                            "status url",
+                            "status_url",
+                            "registrar link",
+                            "registrar_link"
+                        ]
+                    );
+
+
+                return {
+
+                    company:
+                        company,
+
+                    logo:
+                        getLogoPath(
+                            logo
+                        ),
+
+                    registrar:
+                        registrar,
+
+                    allotment:
+                        allotment,
+
+                    featured:
+                        (
+                            featuredValue
+                                .toLowerCase() ===
+                            "true"
+                        ),
+
+                    url:
+                        url,
+
+                    status:
+                        getStatus(
+                            allotment
+                        )
+
+                };
+
+            }
+        );
+
+
+    return finalData;
+
+}
+
+
+/* ==========================================
+   SORT DATA
+========================================== */
+
+function sortIPOData(
+    data
+) {
+
+    return data.sort(
+        (a, b) => {
+
+
+            /* Featured first */
+
+            if (
+                a.featured &&
+                !b.featured
+            ) {
+
+                return -1;
+
+            }
+
+
+            if (
+                !a.featured &&
+                b.featured
+            ) {
+
+                return 1;
+
+            }
+
+
+            /* Then date */
+
+            const dateA =
+                new Date(
+                    a.allotment
+                ).getTime();
+
+
+            const dateB =
+                new Date(
+                    b.allotment
+                ).getTime();
+
+
+            if (
+                isNaN(dateA)
+            ) {
+
+                return 1;
+
+            }
+
+
+            if (
+                isNaN(dateB)
+            ) {
+
+                return -1;
+
+            }
+
+
+            return (
+                dateA -
+                dateB
+            );
+
+        }
+    );
+
+}
+
+
+/* ==========================================
+   LOAD DATA FROM GOOGLE SHEET
+========================================== */
+
+async function loadData(
+    showLoader = true
+) {
 
     try {
 
         /* -----------------------------
-           Timeout Controller
+           Show loader only initial load
+        ------------------------------ */
+
+        if (
+            showLoader &&
+            loading
+        ) {
+
+            loading.style.display =
+                "flex";
+
+        }
+
+
+        /* -----------------------------
+           Abort controller
         ------------------------------ */
 
         const controller =
@@ -489,7 +1011,7 @@ async function loadData() {
 
 
         /* -----------------------------
-           Fetch Google Sheet
+           Fetch
         ------------------------------ */
 
         const response =
@@ -501,9 +1023,11 @@ async function loadData() {
 
                 {
 
-                    method: "GET",
+                    method:
+                        "GET",
 
-                    cache: "no-store",
+                    cache:
+                        "no-store",
 
                     signal:
                         controller.signal
@@ -513,7 +1037,9 @@ async function loadData() {
             );
 
 
-        clearTimeout(timeout);
+        clearTimeout(
+            timeout
+        );
 
 
         if (
@@ -521,7 +1047,7 @@ async function loadData() {
         ) {
 
             throw new Error(
-                "Google Sheet returned " +
+                "Google Sheet HTTP " +
                 response.status
             );
 
@@ -529,7 +1055,7 @@ async function loadData() {
 
 
         /* -----------------------------
-           Read CSV
+           Read response
         ------------------------------ */
 
         const csvText =
@@ -542,7 +1068,7 @@ async function loadData() {
         ) {
 
             throw new Error(
-                "Google Sheet returned empty data"
+                "Google Sheet returned empty response"
             );
 
         }
@@ -553,7 +1079,9 @@ async function loadData() {
         ------------------------------ */
 
         const rows =
-            parseCSV(csvText);
+            parseCSV(
+                csvText
+            );
 
 
         if (
@@ -561,225 +1089,45 @@ async function loadData() {
         ) {
 
             throw new Error(
-                "Google Sheet is empty"
+                "Google Sheet has no IPO rows"
             );
 
         }
 
 
         /* -----------------------------
-           Headers
+           Convert data
         ------------------------------ */
 
-        const headers =
-            rows[0].map(
-                header =>
-
-                    safeText(header)
-                        .toLowerCase()
-                        .replace(
-                            /^\uFEFF/,
-                            ""
-                        )
+        let newData =
+            convertCSVToObjects(
+                rows
             );
 
 
-        console.log(
-            "Google Sheet Headers:",
-            headers
-        );
+        if (
+            newData.length === 0
+        ) {
+
+            throw new Error(
+                "No valid IPO data found"
+            );
+
+        }
 
 
         /* -----------------------------
-           Convert rows to objects
+           Sort
         ------------------------------ */
 
-        const newData = rows
-            .slice(1)
-
-            .filter(
-                row =>
-                    row[0] &&
-                    safeText(row[0]) !== ""
-            )
-
-            .map(
-                row => {
-
-                    const ipo = {};
-
-
-                    headers.forEach(
-                        (
-                            header,
-                            index
-                        ) => {
-
-                            const cleanHeader =
-                                safeText(
-                                    header
-                                )
-                                .toLowerCase();
-
-
-                            ipo[
-                                cleanHeader
-                            ] =
-
-                                row[index] !==
-                                undefined
-
-                                ?
-
-                                safeText(
-                                    row[index]
-                                )
-
-                                :
-
-                                "";
-
-                        }
-                    );
-
-
-                    /* -----------------------------
-                       Registrar Fix
-                    ------------------------------ */
-
-                    if (
-                        !ipo.registrar
-                    ) {
-
-                        if (
-                            ipo.registered
-                        ) {
-
-                            ipo.registrar =
-                                ipo.registered;
-
-                        }
-
-                        else if (
-                            ipo.registrarname
-                        ) {
-
-                            ipo.registrar =
-                                ipo.registrarname;
-
-                        }
-
-                        else if (
-                            ipo.registrar_name
-                        ) {
-
-                            ipo.registrar =
-                                ipo.registrar_name;
-
-                        }
-
-                        else {
-
-                            ipo.registrar =
-                                "Registrar";
-
-                        }
-
-                    }
-
-
-                    /* -----------------------------
-                       Featured
-                    ------------------------------ */
-
-                    ipo.featured =
-                        String(
-                            ipo.featured
-                        )
-                        .trim()
-                        .toLowerCase() ===
-                        "true";
-
-
-                    /* -----------------------------
-                       Logo
-                    ------------------------------ */
-
-                    ipo.logo =
-                        getLogoPath(
-                            ipo.logo
-                        );
-
-
-                    return ipo;
-
-                }
+        newData =
+            sortIPOData(
+                newData
             );
 
 
         /* -----------------------------
-           Calculate Status
-        ------------------------------ */
-
-        newData.forEach(
-            ipo => {
-
-                ipo.status =
-                    getStatus(
-                        ipo.allotment
-                    );
-
-            }
-        );
-
-
-        /* -----------------------------
-           Featured First
-        ------------------------------ */
-
-        newData.sort(
-            (a, b) => {
-
-                /* Featured first */
-
-                if (
-                    a.featured &&
-                    !b.featured
-                ) {
-
-                    return -1;
-
-                }
-
-
-                if (
-                    !a.featured &&
-                    b.featured
-                ) {
-
-                    return 1;
-
-                }
-
-
-                /* Then allotment date */
-
-                return (
-                    new Date(
-                        a.allotment
-                    ) -
-
-                    new Date(
-                        b.allotment
-                    )
-                );
-
-            }
-        );
-
-
-        /* -----------------------------
-           Save Data
+           Save global data
         ------------------------------ */
 
         ipoData =
@@ -793,7 +1141,7 @@ async function loadData() {
 
 
         /* -----------------------------
-           Local Backup
+           Local backup
         ------------------------------ */
 
         localStorage.setItem(
@@ -808,22 +1156,12 @@ async function loadData() {
 
 
         /* -----------------------------
-           Update Dashboard
+           Update page
         ------------------------------ */
 
         updateDashboard();
 
-
-        /* -----------------------------
-           Update Ticker
-        ------------------------------ */
-
         updateTicker();
-
-
-        /* -----------------------------
-           Render Cards
-        ------------------------------ */
 
         renderCards(
             filteredData
@@ -831,100 +1169,149 @@ async function loadData() {
 
 
         console.log(
-            "Google Sheet Loaded:",
+            "✅ Google Sheet Loaded",
             ipoData
         );
 
-    }
 
+        console.log(
+            "📊 Total IPOs:",
+            ipoData.length
+        );
+
+
+        /* -----------------------------
+           Registrar debugging
+        ------------------------------ */
+
+        console.table(
+            ipoData.map(
+                ipo => ({
+
+                    Company:
+                        ipo.company,
+
+                    Registrar:
+                        ipo.registrar,
+
+                    Allotment:
+                        ipo.allotment,
+
+                    Featured:
+                        ipo.featured
+
+                })
+            )
+        );
+
+
+    }
 
     catch (error) {
 
         console.error(
-            "Google Sheet Error:",
+            "❌ Google Sheet Error:",
             error
         );
 
 
         /* =================================
-           FALLBACK TO LOCAL DATA
+           LOAD LOCAL BACKUP
         ================================= */
 
         try {
 
-            const savedData =
+            const saved =
                 localStorage.getItem(
                     STORAGE_KEY
                 );
 
 
             if (
-                savedData
+                !saved
             ) {
 
-                ipoData =
-                    JSON.parse(
-                        savedData
-                    );
-
-
-                /* Recalculate status */
-
-                ipoData.forEach(
-                    ipo => {
-
-                        ipo.status =
-                            getStatus(
-                                ipo.allotment
-                            );
-
-
-                        ipo.logo =
-                            getLogoPath(
-                                ipo.logo
-                            );
-
-                    }
-                );
-
-
-                filteredData =
-                    [
-                        ...ipoData
-                    ];
-
-
-                updateDashboard();
-
-                updateTicker();
-
-                renderCards(
-                    filteredData
-                );
-
-
-                console.log(
-                    "Loaded saved IPO data"
+                throw new Error(
+                    "No local backup available"
                 );
 
             }
 
 
-            else {
+            let savedData =
+                JSON.parse(
+                    saved
+                );
+
+
+            if (
+                !Array.isArray(
+                    savedData
+                )
+            ) {
 
                 throw new Error(
-                    "No saved IPO data"
+                    "Invalid local backup"
                 );
 
             }
 
-        }
 
+            /* Recalculate status */
+
+            savedData.forEach(
+                ipo => {
+
+                    ipo.status =
+                        getStatus(
+                            ipo.allotment
+                        );
+
+
+                    ipo.logo =
+                        getLogoPath(
+                            ipo.logo
+                        );
+
+                }
+            );
+
+
+            savedData =
+                sortIPOData(
+                    savedData
+                );
+
+
+            ipoData =
+                savedData;
+
+
+            filteredData =
+                [
+                    ...ipoData
+                ];
+
+
+            updateDashboard();
+
+            updateTicker();
+
+            renderCards(
+                filteredData
+            );
+
+
+            console.log(
+                "⚠️ Loaded saved IPO data"
+            );
+
+        }
 
         catch (backupError) {
 
             console.error(
-                "Backup Error:",
+                "❌ Backup Error:",
                 backupError
             );
 
@@ -953,12 +1340,16 @@ async function loadData() {
 
     }
 
-
     finally {
 
-        /* Always stop loading */
+        /* -----------------------------
+           Always hide initial loader
+        ------------------------------ */
 
-        if (loading) {
+        if (
+            showLoader &&
+            loading
+        ) {
 
             loading.style.display =
                 "none";
@@ -1047,13 +1438,17 @@ function updateDashboard() {
 
 
 /* ==========================================
-   CARDS
+   RENDER CARDS
 ========================================== */
 
-function renderCards(data) {
+function renderCards(
+    data
+) {
 
     if (!cards) {
+
         return;
+
     }
 
 
@@ -1089,17 +1484,35 @@ function renderCards(data) {
     data.forEach(
         ipo => {
 
+
+            /* -----------------------------
+               Safe values
+            ------------------------------ */
+
             const company =
-                safeText(
+                cleanText(
                     ipo.company
-                );
+                ) ||
+                "IPO";
 
 
             const registrar =
-                safeText(
+                cleanText(
                     ipo.registrar
                 ) ||
-                "Registrar";
+                "Not Available";
+
+
+            const allotment =
+                cleanText(
+                    ipo.allotment
+                );
+
+
+            const url =
+                cleanText(
+                    ipo.url
+                );
 
 
             const logo =
@@ -1108,17 +1521,29 @@ function renderCards(data) {
                 );
 
 
-            const allotment =
-                safeText(
-                    ipo.allotment
+            const status =
+                ipo.status ||
+                getStatus(
+                    allotment
                 );
 
 
-            const url =
-                safeText(
-                    ipo.url
-                );
+            const statusClass =
+                status
+                    .toLowerCase()
+                    .replace(
+                        /\s+/g,
+                        "-"
+                    )
+                    .replace(
+                        /'/g,
+                        ""
+                    );
 
+
+            /* -----------------------------
+               Featured badge
+            ------------------------------ */
 
             const featuredBadge =
                 ipo.featured
@@ -1126,9 +1551,13 @@ function renderCards(data) {
                 ?
 
                 `
+
                     <div class="featured-badge">
+
                         ⭐ FEATURED
+
                     </div>
+
                 `
 
                 :
@@ -1136,16 +1565,24 @@ function renderCards(data) {
                 "";
 
 
+            /* -----------------------------
+               Today ribbon
+            ------------------------------ */
+
             const todayRibbon =
-                ipo.status ===
+                status ===
                 "Today's Allotment"
 
                 ?
 
                 `
+
                     <div class="ribbon">
+
                         TODAY'S ALLOTMENT
+
                     </div>
+
                 `
 
                 :
@@ -1153,146 +1590,180 @@ function renderCards(data) {
                 "";
 
 
-            const statusClass =
-                safeText(
-                    ipo.status
-                )
-                .toLowerCase()
-                .replace(
-                    /\s+/g,
-                    "-"
-                )
-                .replace(
-                    /'/g,
-                    ""
-                );
+            /* -----------------------------
+               Official button
+            ------------------------------ */
 
+            const officialButton =
+                url
+
+                ?
+
+                `
+
+                    <a
+
+                        href="${url}"
+
+                        target="_blank"
+
+                        rel="noopener noreferrer"
+
+                        class="btn"
+
+                    >
+
+                        🏛 Check Official Allotment ↗
+
+                    </a>
+
+                `
+
+                :
+
+                `
+
+                    <div class="btn">
+
+                        🏛 Official Link Not Available
+
+                    </div>
+
+                `;
+
+
+            /* -----------------------------
+               Create card
+            ------------------------------ */
 
             cards.innerHTML += `
 
-<div class="card">
+                <div class="card">
 
-    <div class="card-top"></div>
-
-
-    ${featuredBadge}
+                    <div class="card-top"></div>
 
 
-    ${todayRibbon}
+                    ${featuredBadge}
 
 
-    <div class="card-body">
+                    ${todayRibbon}
 
 
-        <img
-
-            src="${logo}"
-
-            alt="${company}"
-
-            class="card-logo"
-
-            onerror="
-                this.onerror=null;
-                this.src='/static/logo.jpg';
-            "
-
-        >
+                    <div class="card-body">
 
 
-        <h2>
-            ${company}
-        </h2>
+                        <img
+
+                            src="${logo}"
+
+                            alt="${company}"
+
+                            class="card-logo"
+
+                            onerror="
+
+                                this.onerror=null;
+
+                                this.src='${FALLBACK_LOGO}';
+
+                            "
+
+                        >
 
 
-        <div class="info">
+                        <h2>
 
-            <span class="label">
-                Registrar
-            </span>
+                            ${company}
 
-            <span class="value">
-                ${registrar}
-            </span>
-
-        </div>
+                        </h2>
 
 
-        <div class="info">
+                        <div class="info">
 
-            <span class="label">
-                Allotment
-            </span>
+                            <span class="label">
 
-            <span class="value">
-                ${formatDate(
-                    allotment
-                )}
-            </span>
+                                Registrar
 
-        </div>
+                            </span>
 
 
-        <div class="info">
+                            <span class="value">
 
-            <span class="label">
-                Countdown
-            </span>
+                                ${registrar}
 
-            <span class="value">
-                ${getCountdown(
-                    allotment
-                )}
-            </span>
+                            </span>
 
-        </div>
+                        </div>
 
 
-        <span
+                        <div class="info">
 
-            class="
-                status
-                ${statusClass}
-            "
+                            <span class="label">
 
-        >
+                                Allotment
 
-            ${getStatusBadge(
-                ipo.status
-            )}
-
-        </span>
+                            </span>
 
 
-        <a
+                            <span class="value">
 
-            href="${url}"
+                                ${formatDate(
+                                    allotment
+                                )}
 
-            target="_blank"
+                            </span>
 
-            rel="noopener noreferrer"
-
-            class="btn"
-
-        >
-
-            🏛 Check Official Allotment ↗
-
-        </a>
+                        </div>
 
 
-        <p class="official-note">
+                        <div class="info">
 
-            🛡️ Redirects to Official Registrar Website
+                            <span class="label">
 
-        </p>
+                                Countdown
+
+                            </span>
 
 
-    </div>
+                            <span class="value">
 
-</div>
+                                ${getCountdown(
+                                    allotment
+                                )}
 
-`;
+                            </span>
+
+                        </div>
+
+
+                        <span
+
+                            class="status ${statusClass}"
+
+                        >
+
+                            ${getStatusBadge(
+                                status
+                            )}
+
+                        </span>
+
+
+                        ${officialButton}
+
+
+                        <p class="official-note">
+
+                            🛡️ Redirects to Official Registrar Website
+
+                        </p>
+
+
+                    </div>
+
+                </div>
+
+            `;
 
         }
     );
@@ -1307,13 +1778,14 @@ function renderCards(data) {
 if (search) {
 
     search.addEventListener(
-        "keyup",
+        "input",
         function () {
 
             const keyword =
-                this.value
-                    .trim()
-                    .toLowerCase();
+                cleanText(
+                    this.value
+                )
+                .toLowerCase();
 
 
             filteredData =
@@ -1321,14 +1793,14 @@ if (search) {
                     ipo => {
 
                         const company =
-                            safeText(
+                            cleanText(
                                 ipo.company
                             )
                             .toLowerCase();
 
 
                         const registrar =
-                            safeText(
+                            cleanText(
                                 ipo.registrar
                             )
                             .toLowerCase();
@@ -1363,7 +1835,7 @@ if (search) {
 
 
 /* ==========================================
-   FILTERS
+   FILTER BUTTONS
 ========================================== */
 
 document
@@ -1371,23 +1843,25 @@ document
         ".filter-btn"
     )
     .forEach(
-        btn => {
+        button => {
 
-            btn.addEventListener(
+            button.addEventListener(
                 "click",
                 () => {
 
 
-                    /* Remove active */
+                    /* -----------------------------
+                       Remove active
+                    ------------------------------ */
 
                     document
                         .querySelectorAll(
                             ".filter-btn"
                         )
                         .forEach(
-                            button => {
+                            btn => {
 
-                                button.classList
+                                btn.classList
                                     .remove(
                                         "active"
                                     );
@@ -1396,16 +1870,22 @@ document
                         );
 
 
-                    /* Add active */
+                    /* -----------------------------
+                       Add active
+                    ------------------------------ */
 
-                    btn.classList.add(
+                    button.classList.add(
                         "active"
                     );
 
 
                     const filter =
-                        btn.dataset.filter;
+                        button.dataset.filter;
 
+
+                    /* -----------------------------
+                       Filter
+                    ------------------------------ */
 
                     switch (
                         filter
@@ -1486,7 +1966,9 @@ document
 function updateTicker() {
 
     if (!ticker) {
+
         return;
+
     }
 
 
@@ -1509,13 +1991,23 @@ function updateTicker() {
     ipoData.forEach(
         ipo => {
 
+            const featured =
+                ipo.featured
+                    ? " ⭐"
+                    : "";
+
+
             ticker.innerHTML += `
 
-                🔥 ${safeText(
+                🔥
+                ${cleanText(
                     ipo.company
                 )}
 
-                • ${safeText(
+                ${featured}
+
+                •
+                ${cleanText(
                     ipo.status
                 )}
 
@@ -1538,7 +2030,9 @@ window.addEventListener(
     () => {
 
         if (!topBtn) {
+
             return;
+
         }
 
 
@@ -1584,22 +2078,31 @@ if (topBtn) {
 
 /* ==========================================
    AUTO REFRESH
+   Every 5 Minutes
 ========================================== */
 
 setInterval(
     () => {
 
-        loadData();
+        /*
+           false = don't show
+           full-page loader
+        */
+
+        loadData(
+            false
+        );
 
     },
 
     300000
-
-); // 5 minutes
+);
 
 
 /* ==========================================
    INITIAL LOAD
 ========================================== */
 
-loadData();
+loadData(
+    true
+);
