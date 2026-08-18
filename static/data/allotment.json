@@ -15,14 +15,6 @@
     "featured": false,
     "url": "https://in.mpms.mufg.com/Initial_Offer/public-issues.html"
 },
-  {
-    "company": "Milky Mist Dairy Food Ltd",
-    "logo": "/static/logos/milky.png",
-    "registrar": "Kfin Technologies",
-    "allotment": "2026-08-14",
-    "featured": false,
-    "url": "https://ipostatus.kfintech.com/"
-},
     {
     "company": "Lalithaa Jewellery Mart Ltd",
     "logo": "/static/logos/lalithaa.png",
@@ -78,7 +70,13 @@
     "allotment": "2026-08-25",
     "featured": false,
     "url": "https://ipostatus.kfintech.com/"
+},
+  {
+    "company": "Augmont Enterprises Ltd",
+    "logo": "/static/logos/aug.png",
+    "registrar": "MUFG",
+    "allotment": "2026-08-27",
+    "featured": false,
+    "url": "https://in.mpms.mufg.com/Initial_Offer/public-issues.html"
 }
-  
-  
-]
+  ]
