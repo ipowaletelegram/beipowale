@@ -13,113 +13,300 @@ const emptyState = document.getElementById("emptyState");
 const topBtn = document.getElementById("topBtn");
 
 
-/* -----------------------------
-   Status
------------------------------- */
-
-function getStatus(date) {
-
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-
-    const allotment = new Date(date);
-    allotment.setHours(0, 0, 0, 0);
-
-    if (allotment.getTime() === today.getTime()) {
-        return "Today's Allotment";
-    }
-
-    if (allotment > today) {
-        return "Upcoming";
-    }
-
-    return "Closed";
-}
-
-
-/* -----------------------------
-   Status Badge
------------------------------- */
-
-function getStatusBadge(status) {
-
-    switch (status) {
-
-        case "Today's Allotment":
-            return "🟢 Today's Allotment";
-
-        case "Upcoming":
-            return "🟡 Upcoming";
-
-        default:
-            return "⚫ Closed";
-    }
-
-}
-
-
-/* -----------------------------
-   Countdown
------------------------------- */
-
-function getCountdown(date) {
-
-    const today = new Date();
-
-    today.setHours(0, 0, 0, 0);
-
-    const allotment = new Date(date);
-
-    allotment.setHours(0, 0, 0, 0);
-
-    const diff = Math.ceil(
-        (allotment - today) /
-        (1000 * 60 * 60 * 24)
-    );
-
-    if (diff === 0)
-        return "Today";
-
-    if (diff === 1)
-        return "Tomorrow";
-
-    if (diff > 1)
-        return diff + " Days Left";
-
-    return "Completed";
-}
-
-
-/* -----------------------------
-   Format Date
------------------------------- */
-
-function formatDate(date) {
-
-    return new Date(date).toLocaleDateString("en-IN", {
-
-        day: "2-digit",
-
-        month: "short",
-
-        year: "numeric"
-
-    });
-
-}
-
-
 /* ==========================================
-   GOOGLE SHEET
+   GOOGLE SHEET SETTINGS
 ========================================== */
 
 const GOOGLE_SHEET_URL =
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vRTdEelMixOXPSgQ3IBE0pyHj7sEOYH9WOq9HPCrxZyQlo1l87Dms8xvWLH4Fs2otKN6ubn-4zyUnnM/pub?output=csv";
 
 
-/* -----------------------------
-   CSV Parser
------------------------------- */
+/* Logo folder */
+
+const LOGO_PATH = "/static/logos/";
+
+
+/* Google Sheet timeout */
+
+const SHEET_TIMEOUT = 8000;
+
+
+/* Local storage backup */
+
+const STORAGE_KEY =
+    "beipowale_allotment_data";
+
+
+/* ==========================================
+   STATUS
+========================================== */
+
+function getStatus(date) {
+
+    if (!date) {
+        return "Closed";
+    }
+
+    const today = new Date();
+
+    today.setHours(
+        0,
+        0,
+        0,
+        0
+    );
+
+
+    const allotment =
+        new Date(date);
+
+    allotment.setHours(
+        0,
+        0,
+        0,
+        0
+    );
+
+
+    if (
+        allotment.getTime() ===
+        today.getTime()
+    ) {
+
+        return "Today's Allotment";
+
+    }
+
+
+    if (
+        allotment > today
+    ) {
+
+        return "Upcoming";
+
+    }
+
+
+    return "Closed";
+
+}
+
+
+/* ==========================================
+   STATUS BADGE
+========================================== */
+
+function getStatusBadge(status) {
+
+    switch (status) {
+
+        case "Today's Allotment":
+
+            return "🟢 Today's Allotment";
+
+
+        case "Upcoming":
+
+            return "🟡 Upcoming";
+
+
+        default:
+
+            return "⚫ Closed";
+
+    }
+
+}
+
+
+/* ==========================================
+   COUNTDOWN
+========================================== */
+
+function getCountdown(date) {
+
+    if (!date) {
+        return "N/A";
+    }
+
+
+    const today = new Date();
+
+    today.setHours(
+        0,
+        0,
+        0,
+        0
+    );
+
+
+    const allotment =
+        new Date(date);
+
+    allotment.setHours(
+        0,
+        0,
+        0,
+        0
+    );
+
+
+    const diff = Math.ceil(
+
+        (
+            allotment -
+            today
+        ) /
+
+        (
+            1000 *
+            60 *
+            60 *
+            24
+        )
+
+    );
+
+
+    if (diff === 0) {
+
+        return "Today";
+
+    }
+
+
+    if (diff === 1) {
+
+        return "Tomorrow";
+
+    }
+
+
+    if (diff > 1) {
+
+        return diff +
+            " Days Left";
+
+    }
+
+
+    return "Completed";
+
+}
+
+
+/* ==========================================
+   FORMAT DATE
+========================================== */
+
+function formatDate(date) {
+
+    if (!date) {
+        return "N/A";
+    }
+
+
+    const parsedDate =
+        new Date(date);
+
+
+    if (
+        isNaN(
+            parsedDate.getTime()
+        )
+    ) {
+
+        return date;
+
+    }
+
+
+    return parsedDate.toLocaleDateString(
+        "en-IN",
+        {
+
+            day: "2-digit",
+
+            month: "short",
+
+            year: "numeric"
+
+        }
+    );
+
+}
+
+
+/* ==========================================
+   LOGO PATH
+========================================== */
+
+function getLogoPath(logo) {
+
+    if (!logo) {
+
+        return "/static/logo.jpg";
+
+    }
+
+
+    logo = String(logo).trim();
+
+
+    /* Already full URL */
+
+    if (
+        logo.startsWith("http://") ||
+        logo.startsWith("https://")
+    ) {
+
+        return logo;
+
+    }
+
+
+    /* Already website path */
+
+    if (
+        logo.startsWith("/")
+    ) {
+
+        return logo;
+
+    }
+
+
+    /* Filename only */
+
+    return LOGO_PATH + logo;
+
+}
+
+
+/* ==========================================
+   SAFE TEXT
+========================================== */
+
+function safeText(value) {
+
+    if (
+        value === undefined ||
+        value === null
+    ) {
+
+        return "";
+
+    }
+
+
+    return String(value).trim();
+
+}
+
+
+/* ==========================================
+   CSV PARSER
+========================================== */
 
 function parseCSV(text) {
 
@@ -132,14 +319,20 @@ function parseCSV(text) {
     let insideQuotes = false;
 
 
-    for (let i = 0; i < text.length; i++) {
+    for (
+        let i = 0;
+        i < text.length;
+        i++
+    ) {
 
-        const char = text[i];
+        const char =
+            text[i];
 
-        const next = text[i + 1];
+        const next =
+            text[i + 1];
 
 
-        /* Double quote inside quoted value */
+        /* Double quote */
 
         if (
             char === '"' &&
@@ -156,9 +349,12 @@ function parseCSV(text) {
 
         /* Start / End quote */
 
-        else if (char === '"') {
+        else if (
+            char === '"'
+        ) {
 
-            insideQuotes = !insideQuotes;
+            insideQuotes =
+                !insideQuotes;
 
         }
 
@@ -170,7 +366,9 @@ function parseCSV(text) {
             !insideQuotes
         ) {
 
-            row.push(value.trim());
+            row.push(
+                value.trim()
+            );
 
             value = "";
 
@@ -180,7 +378,10 @@ function parseCSV(text) {
         /* New line */
 
         else if (
-            (char === "\n" || char === "\r") &&
+            (
+                char === "\n" ||
+                char === "\r"
+            ) &&
             !insideQuotes
         ) {
 
@@ -194,12 +395,15 @@ function parseCSV(text) {
             }
 
 
-            row.push(value.trim());
+            row.push(
+                value.trim()
+            );
 
 
             if (
                 row.some(
-                    cell => cell !== ""
+                    cell =>
+                        cell !== ""
                 )
             ) {
 
@@ -233,12 +437,15 @@ function parseCSV(text) {
         row.length > 0
     ) {
 
-        row.push(value.trim());
+        row.push(
+            value.trim()
+        );
 
 
         if (
             row.some(
-                cell => cell !== ""
+                cell =>
+                    cell !== ""
             )
         ) {
 
@@ -255,7 +462,7 @@ function parseCSV(text) {
 
 
 /* ==========================================
-   LOAD DATA FROM GOOGLE SHEET
+   LOAD GOOGLE SHEET DATA
 ========================================== */
 
 async function loadData() {
@@ -263,20 +470,59 @@ async function loadData() {
     try {
 
         /* -----------------------------
+           Timeout Controller
+        ------------------------------ */
+
+        const controller =
+            new AbortController();
+
+
+        const timeout =
+            setTimeout(
+                () => {
+
+                    controller.abort();
+
+                },
+                SHEET_TIMEOUT
+            );
+
+
+        /* -----------------------------
            Fetch Google Sheet
         ------------------------------ */
 
-        const response = await fetch(
-            GOOGLE_SHEET_URL +
-            "&cache=" +
-            Date.now()
-        );
+        const response =
+            await fetch(
+
+                GOOGLE_SHEET_URL +
+                "&cache=" +
+                Date.now(),
+
+                {
+
+                    method: "GET",
+
+                    cache: "no-store",
+
+                    signal:
+                        controller.signal
+
+                }
+
+            );
 
 
-        if (!response.ok) {
+        clearTimeout(timeout);
+
+
+        if (
+            !response.ok
+        ) {
 
             throw new Error(
-                "Unable to load Google Sheet"
+                "Google Sheet returned " +
+                response.status
             );
 
         }
@@ -290,6 +536,18 @@ async function loadData() {
             await response.text();
 
 
+        if (
+            !csvText ||
+            csvText.trim() === ""
+        ) {
+
+            throw new Error(
+                "Google Sheet returned empty data"
+            );
+
+        }
+
+
         /* -----------------------------
            Parse CSV
         ------------------------------ */
@@ -298,7 +556,9 @@ async function loadData() {
             parseCSV(csvText);
 
 
-        if (rows.length < 2) {
+        if (
+            rows.length < 2
+        ) {
 
             throw new Error(
                 "Google Sheet is empty"
@@ -308,96 +568,243 @@ async function loadData() {
 
 
         /* -----------------------------
-           First row = Headers
+           Headers
         ------------------------------ */
 
         const headers =
-            rows[0].map(header =>
-                header
-                    .trim()
-                    .toLowerCase()
+            rows[0].map(
+                header =>
+
+                    safeText(header)
+                        .toLowerCase()
+                        .replace(
+                            /^\uFEFF/,
+                            ""
+                        )
             );
+
+
+        console.log(
+            "Google Sheet Headers:",
+            headers
+        );
 
 
         /* -----------------------------
            Convert rows to objects
         ------------------------------ */
 
-        ipoData = rows
+        const newData = rows
             .slice(1)
 
-            .filter(row =>
-                row[0] &&
-                row[0].trim() !== ""
+            .filter(
+                row =>
+                    row[0] &&
+                    safeText(row[0]) !== ""
             )
 
-            .map(row => {
+            .map(
+                row => {
 
-                const ipo = {};
-
-
-               headers.forEach((header, index) => {
-
-                const cleanHeader = header
-                    .trim()
-                     .toLowerCase();
-
-            ipo[cleanHeader] =
-                row[index] !== undefined
-                 ? row[index].trim()
-                     : "";
-
-            });
+                    const ipo = {};
 
 
-                /* Convert featured */
+                    headers.forEach(
+                        (
+                            header,
+                            index
+                        ) => {
 
-                ipo.featured =
-                    String(
-                        ipo.featured
-                    ).toLowerCase() === "true";
+                            const cleanHeader =
+                                safeText(
+                                    header
+                                )
+                                .toLowerCase();
 
 
-                return ipo;
+                            ipo[
+                                cleanHeader
+                            ] =
 
-            });
+                                row[index] !==
+                                undefined
+
+                                ?
+
+                                safeText(
+                                    row[index]
+                                )
+
+                                :
+
+                                "";
+
+                        }
+                    );
+
+
+                    /* -----------------------------
+                       Registrar Fix
+                    ------------------------------ */
+
+                    if (
+                        !ipo.registrar
+                    ) {
+
+                        if (
+                            ipo.registered
+                        ) {
+
+                            ipo.registrar =
+                                ipo.registered;
+
+                        }
+
+                        else if (
+                            ipo.registrarname
+                        ) {
+
+                            ipo.registrar =
+                                ipo.registrarname;
+
+                        }
+
+                        else if (
+                            ipo.registrar_name
+                        ) {
+
+                            ipo.registrar =
+                                ipo.registrar_name;
+
+                        }
+
+                        else {
+
+                            ipo.registrar =
+                                "Registrar";
+
+                        }
+
+                    }
+
+
+                    /* -----------------------------
+                       Featured
+                    ------------------------------ */
+
+                    ipo.featured =
+                        String(
+                            ipo.featured
+                        )
+                        .trim()
+                        .toLowerCase() ===
+                        "true";
+
+
+                    /* -----------------------------
+                       Logo
+                    ------------------------------ */
+
+                    ipo.logo =
+                        getLogoPath(
+                            ipo.logo
+                        );
+
+
+                    return ipo;
+
+                }
+            );
 
 
         /* -----------------------------
            Calculate Status
         ------------------------------ */
 
-        ipoData.forEach(ipo => {
+        newData.forEach(
+            ipo => {
 
-            ipo.status =
-                getStatus(
-                    ipo.allotment
+                ipo.status =
+                    getStatus(
+                        ipo.allotment
+                    );
+
+            }
+        );
+
+
+        /* -----------------------------
+           Featured First
+        ------------------------------ */
+
+        newData.sort(
+            (a, b) => {
+
+                /* Featured first */
+
+                if (
+                    a.featured &&
+                    !b.featured
+                ) {
+
+                    return -1;
+
+                }
+
+
+                if (
+                    !a.featured &&
+                    b.featured
+                ) {
+
+                    return 1;
+
+                }
+
+
+                /* Then allotment date */
+
+                return (
+                    new Date(
+                        a.allotment
+                    ) -
+
+                    new Date(
+                        b.allotment
+                    )
                 );
 
-        });
+            }
+        );
 
 
         /* -----------------------------
-           Sort by Allotment Date
+           Save Data
         ------------------------------ */
 
-        ipoData.sort((a, b) => {
+        ipoData =
+            newData;
 
-            return (
-                new Date(a.allotment) -
-                new Date(b.allotment)
-            );
 
-        });
+        filteredData =
+            [
+                ...ipoData
+            ];
 
 
         /* -----------------------------
-           Reset Filtered Data
+           Local Backup
         ------------------------------ */
 
-        filteredData = [
-            ...ipoData
-        ];
+        localStorage.setItem(
+
+            STORAGE_KEY,
+
+            JSON.stringify(
+                ipoData
+            )
+
+        );
 
 
         /* -----------------------------
@@ -423,10 +830,6 @@ async function loadData() {
         );
 
 
-        /* -----------------------------
-           Console
-        ------------------------------ */
-
         console.log(
             "Google Sheet Loaded:",
             ipoData
@@ -443,23 +846,108 @@ async function loadData() {
         );
 
 
-        if (cards) {
+        /* =================================
+           FALLBACK TO LOCAL DATA
+        ================================= */
 
-            cards.innerHTML = `
+        try {
 
-                <div class="empty">
+            const savedData =
+                localStorage.getItem(
+                    STORAGE_KEY
+                );
 
-                    <h2>
-                        Unable to load IPO Data
-                    </h2>
 
-                    <p>
-                        Please try again later.
-                    </p>
+            if (
+                savedData
+            ) {
 
-                </div>
+                ipoData =
+                    JSON.parse(
+                        savedData
+                    );
 
-            `;
+
+                /* Recalculate status */
+
+                ipoData.forEach(
+                    ipo => {
+
+                        ipo.status =
+                            getStatus(
+                                ipo.allotment
+                            );
+
+
+                        ipo.logo =
+                            getLogoPath(
+                                ipo.logo
+                            );
+
+                    }
+                );
+
+
+                filteredData =
+                    [
+                        ...ipoData
+                    ];
+
+
+                updateDashboard();
+
+                updateTicker();
+
+                renderCards(
+                    filteredData
+                );
+
+
+                console.log(
+                    "Loaded saved IPO data"
+                );
+
+            }
+
+
+            else {
+
+                throw new Error(
+                    "No saved IPO data"
+                );
+
+            }
+
+        }
+
+
+        catch (backupError) {
+
+            console.error(
+                "Backup Error:",
+                backupError
+            );
+
+
+            if (cards) {
+
+                cards.innerHTML = `
+
+                    <div class="empty">
+
+                        <h2>
+                            Unable to load IPO Data
+                        </h2>
+
+                        <p>
+                            Please refresh the page.
+                        </p>
+
+                    </div>
+
+                `;
+
+            }
 
         }
 
@@ -467,6 +955,8 @@ async function loadData() {
 
 
     finally {
+
+        /* Always stop loading */
 
         if (loading) {
 
@@ -491,15 +981,18 @@ function updateDashboard() {
             "totalCount"
         );
 
+
     const upcoming =
         document.getElementById(
             "upcomingCount"
         );
 
+
     const today =
         document.getElementById(
             "todayCount"
         );
+
 
     const closed =
         document.getElementById(
@@ -519,8 +1012,9 @@ function updateDashboard() {
 
         upcoming.innerText =
             ipoData.filter(
-                i =>
-                    i.status === "Upcoming"
+                ipo =>
+                    ipo.status ===
+                    "Upcoming"
             ).length;
 
     }
@@ -530,8 +1024,8 @@ function updateDashboard() {
 
         today.innerText =
             ipoData.filter(
-                i =>
-                    i.status ===
+                ipo =>
+                    ipo.status ===
                     "Today's Allotment"
             ).length;
 
@@ -542,8 +1036,9 @@ function updateDashboard() {
 
         closed.innerText =
             ipoData.filter(
-                i =>
-                    i.status === "Closed"
+                ipo =>
+                    ipo.status ===
+                    "Closed"
             ).length;
 
     }
@@ -557,13 +1052,19 @@ function updateDashboard() {
 
 function renderCards(data) {
 
-    if (!cards) return;
+    if (!cards) {
+        return;
+    }
 
 
-    cards.innerHTML = "";
+    cards.innerHTML =
+        "";
 
 
-    if (data.length === 0) {
+    if (
+        !data ||
+        data.length === 0
+    ) {
 
         if (emptyState) {
 
@@ -585,26 +1086,99 @@ function renderCards(data) {
     }
 
 
-    data.forEach(ipo => {
+    data.forEach(
+        ipo => {
 
-        cards.innerHTML += `
+            const company =
+                safeText(
+                    ipo.company
+                );
+
+
+            const registrar =
+                safeText(
+                    ipo.registrar
+                ) ||
+                "Registrar";
+
+
+            const logo =
+                getLogoPath(
+                    ipo.logo
+                );
+
+
+            const allotment =
+                safeText(
+                    ipo.allotment
+                );
+
+
+            const url =
+                safeText(
+                    ipo.url
+                );
+
+
+            const featuredBadge =
+                ipo.featured
+
+                ?
+
+                `
+                    <div class="featured-badge">
+                        ⭐ FEATURED
+                    </div>
+                `
+
+                :
+
+                "";
+
+
+            const todayRibbon =
+                ipo.status ===
+                "Today's Allotment"
+
+                ?
+
+                `
+                    <div class="ribbon">
+                        TODAY'S ALLOTMENT
+                    </div>
+                `
+
+                :
+
+                "";
+
+
+            const statusClass =
+                safeText(
+                    ipo.status
+                )
+                .toLowerCase()
+                .replace(
+                    /\s+/g,
+                    "-"
+                )
+                .replace(
+                    /'/g,
+                    ""
+                );
+
+
+            cards.innerHTML += `
 
 <div class="card">
 
     <div class="card-top"></div>
 
 
-    ${
-        ipo.status === "Today's Allotment"
+    ${featuredBadge}
 
-        ? `
-        <div class="ribbon">
-            TODAY'S ALLOTMENT
-        </div>
-        `
 
-        : ""
-    }
+    ${todayRibbon}
 
 
     <div class="card-body">
@@ -612,21 +1186,22 @@ function renderCards(data) {
 
         <img
 
-            src="${ipo.logo}"
+            src="${logo}"
 
-            alt="${ipo.company}"
+            alt="${company}"
 
             class="card-logo"
 
             onerror="
-                this.src='/static/logo.jpg'
+                this.onerror=null;
+                this.src='/static/logo.jpg';
             "
 
         >
 
 
         <h2>
-            ${ipo.company}
+            ${company}
         </h2>
 
 
@@ -637,7 +1212,7 @@ function renderCards(data) {
             </span>
 
             <span class="value">
-                ${ipo.registrar}
+                ${registrar}
             </span>
 
         </div>
@@ -651,7 +1226,7 @@ function renderCards(data) {
 
             <span class="value">
                 ${formatDate(
-                    ipo.allotment
+                    allotment
                 )}
             </span>
 
@@ -666,7 +1241,7 @@ function renderCards(data) {
 
             <span class="value">
                 ${getCountdown(
-                    ipo.allotment
+                    allotment
                 )}
             </span>
 
@@ -675,12 +1250,10 @@ function renderCards(data) {
 
         <span
 
-            class="status
-                ${ipo.status
-                    .toLowerCase()
-                    .replace(/\s+/g, "-")
-                    .replace(/'/g, "")
-                }"
+            class="
+                status
+                ${statusClass}
+            "
 
         >
 
@@ -693,7 +1266,7 @@ function renderCards(data) {
 
         <a
 
-            href="${ipo.url}"
+            href="${url}"
 
             target="_blank"
 
@@ -721,7 +1294,8 @@ function renderCards(data) {
 
 `;
 
-    });
+        }
+    );
 
 }
 
@@ -743,22 +1317,38 @@ if (search) {
 
 
             filteredData =
-                ipoData.filter(ipo =>
+                ipoData.filter(
+                    ipo => {
 
-                    (
-                        ipo.company || ""
-                    )
-                    .toLowerCase()
-                    .includes(keyword)
+                        const company =
+                            safeText(
+                                ipo.company
+                            )
+                            .toLowerCase();
 
-                    ||
 
-                    (
-                        ipo.registrar || ""
-                    )
-                    .toLowerCase()
-                    .includes(keyword)
+                        const registrar =
+                            safeText(
+                                ipo.registrar
+                            )
+                            .toLowerCase();
 
+
+                        return (
+
+                            company.includes(
+                                keyword
+                            )
+
+                            ||
+
+                            registrar.includes(
+                                keyword
+                            )
+
+                        );
+
+                    }
                 );
 
 
@@ -777,107 +1367,116 @@ if (search) {
 ========================================== */
 
 document
-    .querySelectorAll(".filter-btn")
-    .forEach(btn => {
+    .querySelectorAll(
+        ".filter-btn"
+    )
+    .forEach(
+        btn => {
 
-        btn.addEventListener(
-            "click",
-            () => {
-
-
-                /* Remove active */
-
-                document
-                    .querySelectorAll(
-                        ".filter-btn"
-                    )
-                    .forEach(button => {
-
-                        button.classList
-                            .remove("active");
-
-                    });
+            btn.addEventListener(
+                "click",
+                () => {
 
 
-                /* Add active */
+                    /* Remove active */
 
-                btn.classList.add(
-                    "active"
-                );
+                    document
+                        .querySelectorAll(
+                            ".filter-btn"
+                        )
+                        .forEach(
+                            button => {
 
+                                button.classList
+                                    .remove(
+                                        "active"
+                                    );
 
-                const filter =
-                    btn.dataset.filter;
-
-
-                switch (filter) {
-
-
-                    case "all":
-
-                        filteredData =
-                            [
-                                ...ipoData
-                            ];
-
-                        break;
+                            }
+                        );
 
 
-                    case "Today's Allotment":
+                    /* Add active */
 
-                        filteredData =
-                            ipoData.filter(
-                                ipo =>
-                                    ipo.status ===
-                                    "Today's Allotment"
-                            );
-
-                        break;
+                    btn.classList.add(
+                        "active"
+                    );
 
 
-                    case "Upcoming":
-
-                        filteredData =
-                            ipoData.filter(
-                                ipo =>
-                                    ipo.status ===
-                                    "Upcoming"
-                            );
-
-                        break;
+                    const filter =
+                        btn.dataset.filter;
 
 
-                    case "Closed":
-
-                        filteredData =
-                            ipoData.filter(
-                                ipo =>
-                                    ipo.status ===
-                                    "Closed"
-                            );
-
-                        break;
+                    switch (
+                        filter
+                    ) {
 
 
-                    default:
+                        case "all":
 
-                        filteredData =
-                            [
-                                ...ipoData
-                            ];
+                            filteredData =
+                                [
+                                    ...ipoData
+                                ];
+
+                            break;
+
+
+                        case "Today's Allotment":
+
+                            filteredData =
+                                ipoData.filter(
+                                    ipo =>
+                                        ipo.status ===
+                                        "Today's Allotment"
+                                );
+
+                            break;
+
+
+                        case "Upcoming":
+
+                            filteredData =
+                                ipoData.filter(
+                                    ipo =>
+                                        ipo.status ===
+                                        "Upcoming"
+                                );
+
+                            break;
+
+
+                        case "Closed":
+
+                            filteredData =
+                                ipoData.filter(
+                                    ipo =>
+                                        ipo.status ===
+                                        "Closed"
+                                );
+
+                            break;
+
+
+                        default:
+
+                            filteredData =
+                                [
+                                    ...ipoData
+                                ];
+
+                    }
+
+
+                    renderCards(
+                        filteredData
+                    );
 
                 }
+            );
 
-
-                renderCards(
-                    filteredData
-                );
-
-            }
-
-        );
-
-    });
+        }
+    );
 
 
 /* ==========================================
@@ -886,10 +1485,14 @@ document
 
 function updateTicker() {
 
-    if (!ticker) return;
+    if (!ticker) {
+        return;
+    }
 
 
-    if (ipoData.length === 0) {
+    if (
+        ipoData.length === 0
+    ) {
 
         ticker.innerHTML =
             "No IPO Available";
@@ -899,22 +1502,29 @@ function updateTicker() {
     }
 
 
-    ticker.innerHTML = "";
+    ticker.innerHTML =
+        "";
 
 
-    ipoData.forEach(ipo => {
+    ipoData.forEach(
+        ipo => {
 
-        ticker.innerHTML += `
+            ticker.innerHTML += `
 
-            🔥 ${ipo.company}
+                🔥 ${safeText(
+                    ipo.company
+                )}
 
-            • ${ipo.status}
+                • ${safeText(
+                    ipo.status
+                )}
 
-            &nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
 
-        `;
+            `;
 
-    });
+        }
+    );
 
 }
 
@@ -927,10 +1537,14 @@ window.addEventListener(
     "scroll",
     () => {
 
-        if (!topBtn) return;
+        if (!topBtn) {
+            return;
+        }
 
 
-        if (window.scrollY > 300) {
+        if (
+            window.scrollY > 300
+        ) {
 
             topBtn.style.display =
                 "block";
@@ -978,7 +1592,9 @@ setInterval(
         loadData();
 
     },
+
     300000
+
 ); // 5 minutes
 
 
